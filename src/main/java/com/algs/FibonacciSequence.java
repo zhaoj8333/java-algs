@@ -34,7 +34,6 @@ public class FibonacciSequence {
 
     }
 
-
     @Param(value = {"1", "5", "10", "30", "40"})
     private int length;
 
@@ -61,6 +60,10 @@ public class FibonacciSequence {
 
     /**
      * @return Integer of the n-th number
+     *
+     * i  j sum
+     * -  -  -  -  -  -  -  -   -  -
+     * 0  1  1  2  3  5  8  13  21 44 .... result
      */
     @Benchmark
     public int fibOptimizeByArray(Blackhole blackhole) {
