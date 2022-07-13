@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class TimeTool {
+public class TimeUtil {
 
     private static final SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS");
 

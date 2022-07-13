@@ -1,82 +1,92 @@
 package com.algs.datastructure.trie;
 
-import com.algs.util.AlgsUtil;
-import joptsimple.internal.Strings;
+import com.algs.util.ObjectUtil;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.zip.CheckedInputStream;
 
-public class Trie<V> {
+public class Trie {
 
     private int size;
-    private final Node<V> root = new Node<>();
+    private final Node root = new Node();  // root Node doesn't store value
 
     public int size() {
-        return size;
+        return this.size;
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return this.size == 0;
     }
 
     public void clear() {
-        size = 0;
-        root.getChildren().clear();
+        this.root.clear();
+        this.size = 0;
     }
 
-    public V get(String key) {
-        Node<V> node = node(key);
-        return Objects.nonNull(node) ? node.value : null;
+    public Character get(String key) {
+        Node node = node(key);
+        return Objects.nonNull(node) && node.isEnd() ? node.getValue() : null;
     }
 
     public boolean contains(String key) {
-        return Objects.nonNull(node(key));
+        Node node = node(key);
+        return Objects.nonNull(node) && node.isEnd();
     }
 
-    private Node<V> node(String key) {
-        AlgsUtil.requireStringNonEmpty(key);
-        Node<V> node = this.root;
+    public Node node(String key) {
+        ObjectUtil.requireNonEmpty(key);
+        Node node = this.root;
         for (int i = 0; i < key.length(); i++) {
-            char ch = key.charAt(i);
-            Node<V> child = node.getChildren().get(ch);
-            if (Objects.isNull(child)) {
+            node = node.getChildren().get(key.charAt(i));
+            if (Objects.isNull(node)) {
                 return null;
+            }
+        }
+        return node;
+    }
+
+    public void add(String key) {
+        ObjectUtil.requireNonEmpty(key);
+        Node node = this.root;
+        for (int i = 0; i < key.length(); i++) {
+            Character ch = key.charAt(i);
+            Node child = node.getChild(ch);
+            if (Objects.isNull(child)) {
+                child = node.addChild(ch);
+                child.setCh(node.getCh());
             }
             node = child;
         }
-        return node.isEnd() ? node : null;
-    }
-
-    public V add(String key, V value) {
-        return null;
-    }
-
-    public V remove(String v) {
-        return null;
+        if (!node.isEnd()) {
+            node.setEnd(true);
+            this.size++;
+        }
     }
 
     public boolean startsWith(String prefix) {
-        return false;
+        return Objects.nonNull(node(prefix));
     }
 
-    private static class Node<V> {
-        Map<Character, Node<V>> children;
-        private V value;
-        private boolean end;
-
-        public V getValue() {
-            return value;
+    public Character remove(String key) {
+        Node node = node(key);
+        if (Objects.isNull(node) || !node.isEnd()) {
+            return null;
         }
-
-        public boolean isEnd() {
-            return end;
+        this.size--;
+        if (!node.hasChildren()) {
+            node.setEnd(false);
+            return node.getValue();
         }
-
-        public Map<Character, Node<V>> getChildren() {
-            return Objects.isNull(children) ? (children = new HashMap<>()) : children;
+        // reversely delete
+        Node parent;
+        while (Objects.nonNull(parent = node.getParent())) {
+            parent.getChildren().remove(node.getCh());
+            if (parent.isEnd() || parent.hasChildren()) {
+                break;
+            }
+            node = parent;
         }
-
+        node.setEnd(false);
+        return node.getValue();
     }
+
 }
