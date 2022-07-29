@@ -4,7 +4,11 @@ import com.algs.util.RangeUtil;
 
 public class SingleLinkedListImpl<E> extends AbstractList<E> {
 
-    private Node<E> head = new Node<>(null, null);
+    private final Node<E> head = new Node<>(null, null);
+
+    public Node<E> getHead() {
+        return head;
+    }
 
     @Override
     public void clear() {
@@ -13,7 +17,6 @@ public class SingleLinkedListImpl<E> extends AbstractList<E> {
     }
 
     private Node<E> node(int index) {
-        RangeUtil.requireRange(index, 0, size - 1);
         Node<E> node = this.head;
         for (int i = 0; i < index; i++) {
             node = node.next;
@@ -28,10 +31,12 @@ public class SingleLinkedListImpl<E> extends AbstractList<E> {
 
     @Override
     public void add(int index, E element) {
+        RangeUtil.requireRangeWhenAdd(index, 0, size);
         Node<E> node = node(index);
         Node<E> insertedNode = new Node<>(element);
         insertedNode.next = node.next;
         node.next = insertedNode;
+        size++;
     }
 
     @Override

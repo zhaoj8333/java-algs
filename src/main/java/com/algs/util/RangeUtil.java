@@ -6,16 +6,27 @@ public class RangeUtil {
         throw new AssertionError("No " + RangeUtil.class.getName() + " Instance for you");
     }
 
-    public static void requireRange(int index, int min, int max) {
+    public static void requireIndexRange(int index, int min, int max) {
         if (index < min || index >= max) {
-            throw new IndexOutOfBoundsException("require index range [" + min + ", " + max + ")");
+            throw new IndexOutOfBoundsException(String.format("require index range [%d, %d)", min, max));
         }
     }
 
     public static void requireRangeWhenAdd(int index, int min, int max) {
         if (index < min || index > max) {
-            throw new IndexOutOfBoundsException("require index range [" + min + ", " + max + "]");
+            throw new IndexOutOfBoundsException(String.format("require index range [%d, %d]", min, max));
         }
     }
 
+    public static void requireNumberRange(double number, double min, double max) {
+        if (number <= min || number >= max) {
+            throw new RuntimeException(String.format("require number range (%f, %f)", min, max));
+        }
+    }
+
+    public static void requireNumberRange(float number, float min, float max) {
+        if (number <= min || number >= max) {
+            throw new RuntimeException(String.format("require number range (%f, %f)", min, max));
+        }
+    }
 }
