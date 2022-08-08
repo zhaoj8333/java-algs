@@ -9,6 +9,7 @@ import java.awt.geom.Point2D;
 
 @Data
 class ArrowHead {
+
     private double height;
     private double angle;
     private Color color;

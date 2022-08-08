@@ -12,17 +12,17 @@ public class SingleLinkedListPanelImplTest {
 
 //        nullLayout();
 
-        label();
+//        label();
 
 //        jframe();
 
 //        jDialog();
 
-//        SingleLinkedListImpl<String> ssl = new SingleLinkedListImpl<>();
-//        for (int i = 0; i < 10; i++) {
-//            ssl.add(RandomStringUtils.random(5));
-//        }
-//        SingleLinkedListGraphImpl<String> sllp = new SingleLinkedListGraphImpl<>(ssl);
+        SingleLinkedListImpl<String> ssl = new SingleLinkedListImpl<>();
+        for (int i = 0; i < 10; i++) {
+            ssl.add(RandomStringUtils.random(5));
+        }
+        SingleLinkedListGraphImpl<String> sllp = new SingleLinkedListGraphImpl<>(ssl);
 
     }
 
@@ -53,7 +53,6 @@ public class SingleLinkedListPanelImplTest {
         Box box = Box.createVerticalBox();
         vbox.add(get);
         jp.add(box);
-
 
         JButton input = new JButton("select");
         input.setBackground(Color.RED);

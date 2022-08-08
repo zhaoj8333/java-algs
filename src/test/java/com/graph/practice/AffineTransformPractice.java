@@ -36,8 +36,8 @@ public class AffineTransformPractice extends JPanel {
         g2.setStroke(stroke);
 
 //        rotate(g2);
-//        move(g2);
-        flip(g2);
+        move(g2);
+//        flip(g2);
    }
 
     private void flip(Graphics2D g2) {
@@ -52,7 +52,7 @@ public class AffineTransformPractice extends JPanel {
     }
 
     private void move(Graphics2D g) {
-//        moveDot(g);
+        moveDot(g);
 //        moveLine(g);
     }
 
@@ -123,11 +123,12 @@ public class AffineTransformPractice extends JPanel {
         AffineTransform transform1 = g.getTransform();
         AffineTransform tfm = new AffineTransform();
         g.setTransform(tfm);
+//        g.draw(aDouble1);
         for (int i = 0; i < 24; i++) {
             g.draw(aDouble1);
-            tfm.rotate(Math.toRadians(15.0), x, y);
-//            tfm.rotate(Math.toRadians(15.0));
-            g.setTransform(tfm);
+//            tfm.rotate(Math.toRadians(15.0), x, y);
+            tfm.rotate(Math.toRadians(15.0));
+//            g.setTransform(tfm);
         }
         g.setTransform(transform1);
     }

@@ -7,14 +7,14 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
-public class ObjectFieldGraphContainer extends JPanel {
+public class FieldGraph extends JPanel {
 
     private static final Color backgroundColor = new Color(0x04B0F3);
     private static final Color boarderColor = new Color(0x3961AE);
     private boolean isPointer;
     private Graphics parentGraphics;
 
-    public ObjectFieldGraphContainer(String name, boolean isPointer, Graphics parentGraphics) {
+    public FieldGraph(String name, boolean isPointer, Graphics parentGraphics) {
         if (isPointer) {
             ObjectUtil.requireNonNull(parentGraphics);
             this.parentGraphics = parentGraphics;

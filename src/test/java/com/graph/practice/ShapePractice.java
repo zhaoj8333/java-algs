@@ -4,10 +4,31 @@ import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
+import java.util.*;
+import java.util.List;
 
+/**
+ * Java 2D primitives includes:
+ *  point({@link java.awt.geom.Point2D}
+ *  line {@link java.awt.geom.Line2D}
+ *  rectagular shapes:
+ *      {@link java.awt.geom.RectangularShape},
+ *      {@link java.awt.geom.RoundRectangle2D}
+ *      {@link java.awt.geom.Ellipse2D}
+ *      {@link java.awt.geom.Arc2D}
+ *      {@link java.awt.geom.Dimension2D}
+ *
+ *  quadratic and cubic curves with control points:
+ *      {@link java.awt.geom.QuadCurve2D}
+ *      {@link java.awt.geom.CubicCurve2D}
+ *
+ *  arbitrary shapes
+ *      {@link java.awt.geom.Path2D}
+ *
+ *  Xxx2D classes have two nested public static subclass XXX2D, Double and Float to support different precision rendering
+ *  (thus leads to different accuracy and smoothness)
+ */
 public class ShapePractice {
 
     private static class ShapeImpl extends JPanel {
@@ -30,7 +51,7 @@ public class ShapePractice {
 //            drawOvals(g);
 //            rectangle(g);
 //            lineWithStyle(g);
-            triangle(g);
+//            triangle(g);
 
         }
 
@@ -254,11 +275,185 @@ public class ShapePractice {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+//            paintShape((Graphics2D) g);
+//            paintFullStar((Graphics2D) g, baseX, baseY);
+//            paintFullStar1((Graphics2D) g, baseX, baseY);
+//            paintArrow((Graphics2D) g, baseX, baseY, 20, 80, 30);
 
-            paintRectangle((Graphics2D) g);
+            Random r = new Random();
+            int targetX = r.nextInt(180) + 90;
+            int targetY = r.nextInt(180) + 90;
+//            System.out.println(String.format("from:  %d, %d", fromX, fromY));
+//            System.out.println(String.format("to:    %d, %d", targetX, targetY));
+
+//            paintArror((Graphics2D) g, 324, 182, 268, 190);
+            paintArrowLine((Graphics2D) g, 0, 200, targetX, targetY);
+
         }
 
-        private void paintRectangle(Graphics2D g) {
+        private void drawCorordinateSystem(Graphics2D g) {
+            float[] dashes = {2, 5};
+            g.drawLine(0, 0, 800, 0);
+            g.drawLine(0, 0, 0, 800);
+            g.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL, 10.0f, dashes, 0));
+            for (int i = 0; i < 700; i += 100) {
+                g.drawLine(0, 100 + i, 800, 100 + i);
+                g.drawLine(i + 100, 0, 100 + i, 800);
+            }
+        }
+
+        private void paintArrowLine(Graphics2D g, int fromX, int fromY, int targetX, int targetY) {
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            List<Point> points = new ArrayList<>();
+            points.add(new Point(fromX, fromY));
+            points.add(new Point(targetX, targetY));
+
+            List<Point> points1 = new ArrayList<>();
+            points1.add(new Point(fromX, fromY));
+            points1.add(new Point(targetX, targetY));
+
+            drawLineArrow(g, points, 30, 20);
+            drawCurveArrow(g, points1, 30, 20);
+        }
+
+        private void drawCurveArrow(Graphics2D g, List<Point> points, int vertexAngle, int height) {
+            GeneralPath path = new GeneralPath();
+            Point first = points.get(0);
+            path.moveTo(first.getX(), first.getY());
+            for (int i = 0; i <= points.size() - 2; i++) {
+                Point curr = points.get(i);
+                Point next = points.get(i + 1);
+                path.curveTo((curr.x + next.x) >> 1, curr.y, (curr.x + next.x) >> 1, next.y, next.x, next.y);
+            }
+            drawTriangle(g, points, vertexAngle, height, first);
+            g.draw(path);
+            path.closePath();
+        }
+
+        private void drawLineArrow(Graphics2D g, List<Point> points, int vertexAngle, int height) {
+            GeneralPath path = new GeneralPath();
+            Point first = points.get(0);
+            path.moveTo(first.getX(), first.getY());
+            Point last = points.get(points.size() - 1);
+            path.lineTo(last.getX(), last.getY());
+            drawTriangle(g, points, vertexAngle, height, first);
+            g.draw(path);
+            path.closePath();
+        }
+
+        private void drawTriangle(Graphics2D g, List<Point> points, int vertexAngle, int height, Point first) {
+            Point last = points.get(points.size() - 1);
+            int foot = (int) (height * Math.tan(Math.toRadians(vertexAngle >> 1)));
+            Polygon triangle = new Polygon();
+            triangle.addPoint(last.x, last.y - height);
+            triangle.addPoint(last.x - foot, last.y);
+            triangle.addPoint(last.x + foot, last.y);
+
+            AffineTransform newTrfm = new AffineTransform();
+            AffineTransform oldTrfm = g.getTransform();
+            g.setTransform(newTrfm);
+            double rotateDegree = 90 + Math.toDegrees(Math.atan2(last.y - first.y, last.x - first.x));
+            newTrfm.rotate(Math.toRadians(rotateDegree), last.getX(), last.getY());
+            g.setTransform(newTrfm);
+            g.draw(triangle);
+            g.fill(triangle);
+            g.setTransform(oldTrfm);
+        }
+
+        private void paintFullStar1(Graphics2D g, int baseX, int baseY) {
+            int centerX = 0;
+            int centerY = 0;
+            int sideLength = 150;
+
+            double AC = sideLength * Math.sin(Math.toRadians(126)) / Math.sin(Math.toRadians(36));
+            double AH = sideLength * Math.cos(Math.toRadians(18));
+            double aX = 0;
+            double aY = -AC;
+            double BH = sideLength * Math.sin(Math.toRadians(18));
+            double bX = -BH;
+            double bY = -(AC - AH);
+            double dX = -bX;
+            double dY = bY;
+            g.setColor(Color.RED);
+
+            AffineTransform trfm = new AffineTransform();
+            AffineTransform oldTrfm = g.getTransform();
+            g.setTransform(trfm);
+            for (int i = 0; i < 5; i++) {
+                GeneralPath path = new GeneralPath();
+                path.moveTo(baseX + centerX, baseY + centerY);
+
+                path.lineTo(baseX + aX, baseY + aY);
+                path.lineTo(baseX + bX, baseY + bY);
+                path.lineTo(baseX, baseY);
+                path.lineTo(baseX + aX, baseY + aY);
+                g.fill(path);
+                path.lineTo(baseX + dX, baseY + dY);
+                path.lineTo(baseX, baseY);
+                path.closePath();
+                g.draw(path);
+
+                g.rotate(Math.toRadians(72), baseX, baseY);
+            }
+            g.setTransform(oldTrfm);
+
+        }
+
+        /**
+         * Draw a star: each vertex angle of a star is 36 degrees
+         * @param g
+         */
+        private void paintFullStar(Graphics2D g, int baseX, int baseY) {
+            int centerX = 0;
+            int centerY = 0;
+            int sideLength = 100;
+            GeneralPath path = new GeneralPath();
+            path.moveTo(baseX + centerX, baseY + centerY);
+
+            double AC = sideLength * Math.sin(Math.toRadians(126)) / Math.sin(Math.toRadians(36));
+            double AH = sideLength * Math.cos(Math.toRadians(18));
+            double aX = 0;
+            double aY = -AC;
+            double BH = sideLength * Math.sin(Math.toRadians(18));
+            double bX = -BH;
+            double bY = -(AC - AH);
+            double dX = -bX;
+            double dY = bY;
+            path.lineTo(baseX + bX, baseY + bY);
+            path.lineTo(baseX + aX, baseY + aY);
+            path.lineTo(baseX + dX, baseY + dY);
+            g.setColor(Color.RED);
+            path.lineTo(baseX, baseY);
+            path.closePath();
+            g.draw(path);
+            g.fill(path);
+
+            AffineTransform trfm = new AffineTransform();
+            AffineTransform oldTrfm = g.getTransform();
+            g.setTransform(trfm);
+            for (int i = 0; i < 4; i++) {
+                g.rotate(Math.toRadians(72), baseX, baseY);
+                g.draw(path);
+                g.fill(path);
+            }
+            g.setTransform(oldTrfm);
+
+        }
+
+        private void paintShape(Graphics2D g) {
+
+            int[] x = { -20, 0, 20, 0 };
+            int[] y = { 20, 10, 20, -20 };
+
+            GeneralPath p = new GeneralPath();
+            p.moveTo(x[0], y[0]);
+
+            for (int i = 1; i < x.length; i++) {
+                p.lineTo(x[i], y[i]);
+            }
+            p.closePath();
+            g.translate(100, 100);
+            g.draw(p);
 
         }
     }
@@ -270,14 +465,13 @@ public class ShapePractice {
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
                 e.printStackTrace();
             }
-            JFrame jf = new JFrame("Testing");
+            JFrame jf = new JFrame(ShapePractice.class.getName());
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             jf.setSize(new Dimension(1202, 900));
             jf.setLayout(new BorderLayout());
 //            jf.add(new ShapeImpl(Color.RED));
-            jf.add(new Triangle());
-//            jf.add();
-//            jf.add(new CustomPolygon());
+//            jf.add(new Triangle());
+            jf.add(new CustomPolygon());
             jf.setLocationRelativeTo(null);
             jf.setVisible(true);
         });
