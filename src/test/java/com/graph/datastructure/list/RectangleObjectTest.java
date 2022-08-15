@@ -22,7 +22,7 @@ public class RectangleObjectTest extends TestCase {
             jf.setSize(new Dimension(1502, 900));
             jf.setLayout(new BorderLayout());
 
-            object = new RectangleObject(new Point(100, 100));
+            object = new RectangleObject();
 //            object.setShapeWidth(120);
 //            object.setShapeHeight(200);
 //            object.setBorderWidth(1);

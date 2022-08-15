@@ -19,36 +19,4 @@ public abstract class ShapeWithBorder implements Locatable {
      protected Point brushPoint;
      protected boolean isPointer;
 
-     abstract int getOuterWidth();
-
-     abstract int getInnerWidth();
-
-     abstract int getOuterHeight();
-
-     abstract int getInnerHeight();
-
-     abstract Point getTopLeft();
-
-     abstract Point getOuterTopLeft();
-
-     abstract Point getInnerTopLeft();
-
-     abstract Point getOuterBottomLeft();
-
-     abstract Point getInnerBottomLeft();
-
-     abstract Point getOuterTopRight();
-
-     abstract Point getInnerTopRight();
-
-     abstract Point getOuterBottomRight();
-
-     abstract Point getInnerBottomRight();
-
-     abstract Point getCenter();
-
-     abstract Point getTopLeftByCenterPoint(Point centerPoint);
-
-     abstract Point getTopLeftByCenterCoordinate(double x, double y);
-
 }

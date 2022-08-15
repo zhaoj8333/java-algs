@@ -23,9 +23,9 @@ public class ObjectGraph<O> extends JPanel {
         prepareObject();
     }
 
-    public ObjectGraph(@NonNull O dataObject, ShapeWithBorder location) {
+    public ObjectGraph(@NonNull O dataObject) {
         this.object = dataObject;
-        this.shape = location;
+        this.shape = new RectangleObject();
         prepareObject();
     }
 
@@ -50,7 +50,6 @@ public class ObjectGraph<O> extends JPanel {
                 try {
                     Method declaredMethod = superClass.getDeclaredMethod(getterMethod);
                     Object fieldObj = declaredMethod.invoke(object);
-                    // todo
                     ClassLoader classLoader = fieldObj.getClass().getClassLoader();
                     fields.add(new RectangleObject(Objects.nonNull(classLoader)));
                 } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
@@ -67,6 +66,7 @@ public class ObjectGraph<O> extends JPanel {
         Graphics2D g = (Graphics2D) gr;
 
         GraphicsUtil.drawCoordinateSystem(g);
+        GraphicsUtil.locate(g, shape);
 
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //        g.setColor(Color.GREEN);
@@ -77,7 +77,6 @@ public class ObjectGraph<O> extends JPanel {
 //        g.setStroke(new BasicStroke());
 //        g.setColor(Color.RED);
 
-        locate(g);
 //        draw(g);
 
     }
@@ -95,28 +94,6 @@ public class ObjectGraph<O> extends JPanel {
         int innerHeight = shape.getInnerHeight();
         g.drawLine(topLeft.x, topLeft.y, topLeft.x, topLeft.y + outerHeight - 1);
         g.drawLine(innerTopLeft.x, innerTopLeft.y, innerTopLeft.x, innerTopLeft.y + innerHeight - 1);
-    }
-
-    public void locate(Graphics2D g) {
-        java.util.List<Point> points = List.of(
-            shape.getTopLeft(),
-            shape.getInnerTopLeft(),
-            shape.getOuterTopLeft(),
-            shape.getOuterBottomLeft(),
-            shape.getInnerBottomLeft(),
-            shape.getInnerTopRight(),
-            shape.getOuterTopRight(),
-            shape.getInnerBottomRight(),
-            shape.getOuterBottomRight(),
-            shape.getCenter()
-        );
-
-        g.setColor(Color.RED);
-        int diameter = 6;
-        for (Point point : points) {
-            g.drawOval(point.x - diameter / 2, point.y - diameter / 2, diameter, diameter);
-            g.fillOval(point.x - diameter / 2, point.y - diameter / 2, diameter, diameter);
-        }
     }
 
     public void draw(Graphics2D g) {

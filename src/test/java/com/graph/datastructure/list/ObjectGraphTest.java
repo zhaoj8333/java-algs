@@ -15,16 +15,9 @@ public class ObjectGraphTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            JFrame jf = new JFrame(ShapePractice.class.getName());
-            jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            jf.setSize(new Dimension(1202, 900));
-            jf.setLayout(new BorderLayout());
-            RectangleObject linkedList = new RectangleObject(new Point(100, 100));
-            linkedList.setShapeHeight(220);
-            linkedList.setShapeWidth(140);
-            linkedList.setBorderWidth(20);
-            jf.add(new ObjectGraph<>(new SingleLinkedListImpl<>(), linkedList));
-            jf.setLocationRelativeTo(null);
+            JFrame jf = new AlgoWindow(ShapePractice.class.getName());
+            jf.add(new ObjectGraph<>(new SingleLinkedListImpl<>()));
+            jf.setSize(AlgoWindow.dimension);
             jf.setVisible(true);
         });
     }

@@ -6,17 +6,29 @@ import java.awt.*;
 
 public class RectangleObject extends ShapeWithBorder {
 
-    public RectangleObject(Point topLeft) {
-        this.topLeft = topLeft;
-        this.brushPoint = topLeft;
+    public RectangleObject() {
+        this.isPointer   = false;
+        this.shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
+        this.shapeHeight = GraphConstants.RECTANGLE_HEIGHT;
+        this.borderWidth = GraphConstants.RECTANGLE_BOARDER_WIDTH;
+        Point center = new Point(AlgoWindow.dimension.width >> 1, (int) (AlgoWindow.dimension.height * 0.3));
+        this.topLeft = getTopLeftByCenterPoint(center);
     }
 
     public RectangleObject(boolean isPointer) {
-        Point center = new Point(GraphicsUtil.screen.width >> 1, GraphicsUtil.screen.height >> 1);
-        topLeft = getTopLeftByCenterPoint(center);
-        shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
-        shapeHeight = GraphConstants.RECTANGLE_HEIGHT;
+        this.isPointer   = isPointer;
+        this.shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
+        this.shapeHeight = GraphConstants.RECTANGLE_HEIGHT;
+        this.borderWidth = GraphConstants.RECTANGLE_BOARDER_WIDTH;
+        Point center = new Point(AlgoWindow.dimension.width >> 1, (int) (AlgoWindow.dimension.height * 0.3));
+        this.topLeft = getTopLeftByCenterPoint(center);
+    }
+
+    public void setIsPointer(boolean isPointer) {
         this.isPointer = isPointer;
+        if (isPointer) {
+
+        }
     }
 
     @Override
