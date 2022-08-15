@@ -1,14 +1,16 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.list.SingleLinkedListImpl;
 import com.graph.practice.ShapePractice;
+import junit.framework.TestCase;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ObjectGraphTest {
+public class RectangleObjectTest extends TestCase {
 
-    public ObjectGraphTest() {
+    private RectangleObject object;
+
+    public RectangleObjectTest() {
         EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -17,20 +19,26 @@ public class ObjectGraphTest {
             }
             JFrame jf = new JFrame(ShapePractice.class.getName());
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            jf.setSize(new Dimension(1202, 900));
+            jf.setSize(new Dimension(1502, 900));
             jf.setLayout(new BorderLayout());
-            RectangleObject linkedList = new RectangleObject(new Point(100, 100));
-            linkedList.setShapeHeight(220);
-            linkedList.setShapeWidth(140);
-            linkedList.setBorderWidth(20);
-            jf.add(new ObjectGraph<>(new SingleLinkedListImpl<>(), linkedList));
+
+            object = new RectangleObject(new Point(100, 100));
+//            object.setShapeWidth(120);
+//            object.setShapeHeight(200);
+//            object.setBorderWidth(1);
+//            object.setFieldMargin(10);
+//
+//            jf.add(object);
             jf.setLocationRelativeTo(null);
             jf.setVisible(true);
+
+            System.out.println(object.getOuterTopLeft());
+
         });
     }
 
     public static void main(String[] args) {
-        new ObjectGraphTest();
+        RectangleObjectTest test = new RectangleObjectTest();
     }
 
 }

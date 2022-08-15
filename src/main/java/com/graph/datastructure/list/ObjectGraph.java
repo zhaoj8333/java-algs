@@ -1,128 +1,183 @@
 package com.graph.datastructure.list;
 
+import com.algs.util.GraphicsUtil;
 import lombok.NonNull;
-import lombok.SneakyThrows;
-import org.intellij.lang.annotations.JdkConstants;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
 
 public class ObjectGraph<O> extends JPanel {
 
+    public String title = "LinkedList";
     private O object;
-    private String name;
-    private ObjectGraph<O> parentObject;
-    private final List<Field> fields = new ArrayList<>(4);
+    private ShapeWithBorder shape;
+    private final List<RectangleObject> fields = new ArrayList<>();
 
     public ObjectGraph() {
-        this.name = "Null";
+        prepareObject();
     }
 
-    public ObjectGraph(@NonNull O object) {
-        this.object = object;
-        this.parseObject(object);
+    public ObjectGraph(@NonNull O dataObject, ShapeWithBorder location) {
+        this.object = dataObject;
+        this.shape = location;
+        prepareObject();
     }
 
-    private void parseObject(Object obj) {
-        Class<?> clazz = obj.getClass();
-        try {
-            Field nameField = clazz.getDeclaredField("name");
-            nameField.setAccessible(true);
-            this.name = (String) clazz.getDeclaredMethod("getName").invoke(object);
-        } catch (ReflectiveOperationException e) {
-            this.name = clazz.getSimpleName().replace("Impl", "");
-        }
-        appendFields(clazz);
-    }
-
-    private void appendFields(Class<?> clazz) {
-        if (Objects.isNull(clazz) || Objects.isNull(clazz.getClassLoader())) {
+    private void prepareObject() {
+        if (Objects.isNull(object)) {
+            fields.add(null);
             return;
         }
-        Field[] declaredFields = clazz.getDeclaredFields();
-        fields.addAll(Arrays.asList(declaredFields));
-        Class<?> superclass = clazz.getSuperclass();
-        appendFields(superclass);
+        prepare(object);
     }
 
-    public int getNodeWidth() {
-        return 150;
-    }
-
-    private int getNodeHeight() {
-        return 200;
-    }
-
-    private int getNodeStartX() {
-        return 60;
-    }
-
-    private int getNodeStartY() {
-        return 60;
+    private void prepare(O object) {
+        Class<?> thisClass = object.getClass();
+        Class<?> superClass = thisClass;
+        while (Objects.nonNull(superClass)) {
+            Field[] declaredFields = superClass.getDeclaredFields();
+            for (Field declaredField : declaredFields) {
+                String fieldName = declaredField.getName();
+                char[] chars = fieldName.toCharArray();
+                chars[0] = (char) (chars[0] - ('a' - 'A'));
+                String getterMethod = "get" + new String(chars);
+                try {
+                    Method declaredMethod = superClass.getDeclaredMethod(getterMethod);
+                    Object fieldObj = declaredMethod.invoke(object);
+                    // todo
+                    ClassLoader classLoader = fieldObj.getClass().getClassLoader();
+                    fields.add(new RectangleObject(Objects.nonNull(classLoader)));
+                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+            }
+            superClass = superClass.getSuperclass();
+        }
     }
 
     @Override
-    protected void paintComponent(Graphics graphics) {
-        Graphics2D g = (Graphics2D) graphics;
+    protected void paintComponent(Graphics gr) {
+        super.paintComponent(gr);
+        Graphics2D g = (Graphics2D) gr;
+
+        GraphicsUtil.drawCoordinateSystem(g);
+
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        super.paintComponent(g);
-        drawObject(g, this, false);
+//        g.setColor(Color.GREEN);
+//        BasicStroke stroke = new BasicStroke(shape.borderWidth, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, null, 0.0f);
+//        g.setStroke(stroke);
+//        g.drawRect(shape.topLeft.x, shape.topLeft.y, shape.shapeWidth, shape.shapeHeight);
+
+//        g.setStroke(new BasicStroke());
+//        g.setColor(Color.RED);
+
+        locate(g);
+//        draw(g);
+
     }
 
-    private void drawStringInRect(Graphics2D g, String content, int rectX, int rectY, int rectWidth, int rectHeight) {
+    public void locateByLine(Graphics2D g) {
+        int outerWidth = shape.getOuterWidth();
+        int innerWidth = shape.getInnerWidth();
+        Point topLeft = shape.getOuterTopLeft();
+        Point innerTopLeft = shape.getInnerTopLeft();
+        g.drawLine(topLeft.x, topLeft.y, topLeft.x + outerWidth - 1, topLeft.y);
 
+        g.drawLine(innerTopLeft.x, innerTopLeft.y, innerTopLeft.x + innerWidth - 1, innerTopLeft.y);
+
+        int outerHeight = shape.getOuterHeight();
+        int innerHeight = shape.getInnerHeight();
+        g.drawLine(topLeft.x, topLeft.y, topLeft.x, topLeft.y + outerHeight - 1);
+        g.drawLine(innerTopLeft.x, innerTopLeft.y, innerTopLeft.x, innerTopLeft.y + innerHeight - 1);
     }
 
-    public void drawObject(Graphics2D g, ObjectGraph<O> object, boolean verticalAlignMiddle) {
+    public void locate(Graphics2D g) {
+        java.util.List<Point> points = List.of(
+            shape.getTopLeft(),
+            shape.getInnerTopLeft(),
+            shape.getOuterTopLeft(),
+            shape.getOuterBottomLeft(),
+            shape.getInnerBottomLeft(),
+            shape.getInnerTopRight(),
+            shape.getOuterTopRight(),
+            shape.getInnerBottomRight(),
+            shape.getOuterBottomRight(),
+            shape.getCenter()
+        );
+
+        g.setColor(Color.RED);
+        int diameter = 6;
+        for (Point point : points) {
+            g.drawOval(point.x - diameter / 2, point.y - diameter / 2, diameter, diameter);
+            g.fillOval(point.x - diameter / 2, point.y - diameter / 2, diameter, diameter);
+        }
+    }
+
+    public void draw(Graphics2D g) {
 
         g.setColor(new Color(Integer.parseInt("5D5792", 16)));
-        BasicStroke basicStroke = new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f);
-        g.setStroke(basicStroke);
-        g.drawRect(object.getNodeStartX(), object.getNodeStartY(), object.getNodeWidth(), object.getNodeHeight());
-        g.setColor(new Color(Integer.parseInt("722FA5", 16)));
-        g.fillRect(object.getNodeStartX(), object.getNodeStartY(), object.getNodeWidth(), object.getNodeHeight());
+        BasicStroke stroke = new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f);
+        g.setStroke(stroke);
 
-        Font font = new Font(null, Font.BOLD, (int) (1.6 * (this.getNodeWidth()) / this.name.length()));
+        Font font = new Font(null, Font.BOLD, (int) (1.6 * (shape.shapeWidth) / title.length()));
         FontMetrics fontMetrics = g.getFontMetrics(font);
-        int x = this.getNodeStartX() + (this.getNodeWidth() - fontMetrics.stringWidth(this.name)) / 2;
-        int y = this.getNodeStartY() + font.getSize() + 5;
-        if (verticalAlignMiddle) {
-            y = this.getNodeStartY() + ((this.getNodeHeight() - fontMetrics.getHeight()) / 2) + fontMetrics.getAscent();
-        }
-        g.setColor(Color.WHITE);
+        int x = shape.getTopLeft().x + (shape.getShapeWidth() - fontMetrics.stringWidth(title)) / 2;
+        int y = shape.getTopLeft().x + font.getSize() + fontMetrics.getAscent() - 5;
+
+        g.setColor(Color.RED);
         g.setFont(font);
-        g.drawString(this.name, x, y);
+        g.drawString(title, x, y);
 
-        drawFields(g);
-    }
 
-    private void drawFields(Graphics2D g) {
-        BasicStroke basicStroke = new BasicStroke(3.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 5.0f);
-        g.setStroke(basicStroke);
-        for (int i = 0; i < this.fields.size(); i++) {
-            g.setColor(new Color(Integer.parseInt("3383C8", 16)));
-            int x = this.getNodeStartX() + 3;
-            int y = this.getNodeStartY() + (i * 100) + 30;
-            int width = this.getNodeWidth() - 6;
-            int height = 40;
-            g.drawRect(x, y, width, height);
-            g.setColor(new Color(Integer.parseInt("04B0F3", 16)));
-            g.fillRect(x, y, width, height);
+        Class<?> superClass = object.getClass();
+        while (Objects.nonNull(superClass)) {
+            Field[] declaredFields = superClass.getDeclaredFields();
+            try {
+                for (int i = 0; i < declaredFields.length; i++) {
+                    String fieldName = declaredFields[i].getName();
+                    String drawString = fieldName;
+                    char[] chars = fieldName.toCharArray();
+                    chars[0] = (char) (chars[0] - ('a' - 'A'));
+                    String getterMethod = "get" + new String(chars);
+                    try {
+                        Method declaredMethod = superClass.getDeclaredMethod(getterMethod);
+                        Object fieldObj = declaredMethod.invoke(object);
+                        ClassLoader classLoader = fieldObj.getClass().getClassLoader();
+                        if (Objects.isNull(classLoader)) {
+                            drawString += " (" + fieldObj + ")";
+//                            System.out.println("-------- null classloader : " + drawString);
+                        } else {
+//                            drawString = ;
+                        }
+                    } catch (NoSuchMethodException e) {
 
-            g.setColor(Color.WHITE);
-            g.drawString(this.fields.get(i).getName(), x, y + 10);
-            repaint();
+                    }
+                    g.setColor(new Color(Integer.parseInt("3961AE", 16)));
+                    g.drawRect(shape.getTopLeft().x, shape.getTopLeft().y, shape.getShapeWidth(), 30);
+                    g.setColor(new Color(Integer.parseInt("04B0F3", 16)));
+                    g.fillRect(this.shape.getTopLeft().x, shape.getTopLeft().y, shape.getShapeWidth(), 30);
+
+                    g.setColor(Color.WHITE);
+                    font = new Font(null, Font.BOLD, (int) (1.6 * (shape.getShapeWidth()) / title.length()));
+                    fontMetrics = g.getFontMetrics(font);
+                    x = shape.getTopLeft().x + (shape.getShapeWidth() - fontMetrics.stringWidth(title)) / 2;
+                    y = shape.getTopLeft().y + font.getSize() + fontMetrics.getAscent() - 10;
+                    g.drawString(drawString, x, y);
+                }
+            } catch (ReflectiveOperationException e) {
+                e.printStackTrace();
+            }
+            superClass = superClass.getSuperclass();
         }
+
+
+
     }
 
     @Override

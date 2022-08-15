@@ -5,7 +5,7 @@ public abstract class AbstractList<E> implements List<E> {
     protected int size;
 
     @Override
-    public int size() {
+    public int getSize() {
         return size;
     }
 

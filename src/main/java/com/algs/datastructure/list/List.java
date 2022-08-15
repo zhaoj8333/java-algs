@@ -4,7 +4,7 @@ public interface List<E> {
 
     int ELEMENT_NOT_FOUND = -1;
 
-    int size();
+    int getSize();
     boolean isEmpty();
     void clear();
     boolean contains(E element);
