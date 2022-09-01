@@ -1,4 +1,4 @@
-package com.graph.datastructure.list;
+package com.graph.object;
 
 import javax.swing.*;
 import java.awt.*;

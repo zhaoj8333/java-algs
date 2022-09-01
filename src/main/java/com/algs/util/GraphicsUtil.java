@@ -1,6 +1,6 @@
 package com.algs.util;
 
-import com.graph.datastructure.list.Locatable;
+import com.graph.object.Locatable;
 
 import java.awt.*;
 import java.util.List;
@@ -26,16 +26,16 @@ public class GraphicsUtil {
 
     public static void locate(Graphics2D g, Locatable shape) {
         java.util.List<Point> points = List.of(
-                shape.getTopLeft(),
-                shape.getInnerTopLeft(),
-                shape.getOuterTopLeft(),
-                shape.getOuterBottomLeft(),
-                shape.getInnerBottomLeft(),
-                shape.getInnerTopRight(),
-                shape.getOuterTopRight(),
-                shape.getInnerBottomRight(),
-                shape.getOuterBottomRight(),
-                shape.getCenter()
+//            shape.getTopLeft(),
+//            shape.getInnerTopLeft(),
+            shape.getOuterTopLeft(),
+            shape.getOuterBottomLeft(),
+//            shape.getInnerBottomLeft(),
+//            shape.getInnerTopRight(),
+            shape.getOuterTopRight(),
+//            shape.getInnerBottomRight(),
+            shape.getOuterBottomRight(),
+            shape.getCenter()
         );
 
         g.setColor(Color.RED);

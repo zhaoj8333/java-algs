@@ -1,4 +1,4 @@
-package com.graph.datastructure.list;
+package com.graph.object;
 
 public final class GraphConstants {
 
@@ -7,7 +7,7 @@ public final class GraphConstants {
 
     public final static int RECTANGLE_WIDTH = 180;
     public final static int RECTANGLE_HEIGHT = 270;
-    public final static int RECTANGLE_BOARDER_WIDTH = 20;
+    public final static int RECTANGLE_BOARDER_WIDTH = 4;
 
 
 }

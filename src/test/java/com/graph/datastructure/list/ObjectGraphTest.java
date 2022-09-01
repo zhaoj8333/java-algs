@@ -1,6 +1,8 @@
 package com.graph.datastructure.list;
 
 import com.algs.datastructure.list.SingleLinkedListImpl;
+import com.graph.object.AlgoWindow;
+import com.graph.object.ObjectGraph;
 import com.graph.practice.ShapePractice;
 
 import javax.swing.*;
@@ -16,7 +18,12 @@ public class ObjectGraphTest {
                 e.printStackTrace();
             }
             JFrame jf = new AlgoWindow(ShapePractice.class.getName());
-            jf.add(new ObjectGraph<>(new SingleLinkedListImpl<>()));
+
+            SingleLinkedListImpl<String> list = new SingleLinkedListImpl<>();
+            list.add(null);
+
+            jf.add(new ObjectGraph<>(list));
+            jf.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             jf.setSize(AlgoWindow.dimension);
             jf.setVisible(true);
         });

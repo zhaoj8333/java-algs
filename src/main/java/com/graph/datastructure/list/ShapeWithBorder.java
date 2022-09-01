@@ -1,5 +1,7 @@
 package com.graph.datastructure.list;
 
+import com.graph.object.Drawable;
+import com.graph.object.Locatable;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,7 @@ import java.awt.*;
 @Data
 @Getter
 @Setter
-public abstract class ShapeWithBorder implements Locatable {
+public abstract class ShapeWithBorder implements Locatable, Drawable {
 
      protected Point topLeft;
      protected int shapeWidth;
@@ -17,6 +19,6 @@ public abstract class ShapeWithBorder implements Locatable {
      protected int borderWidth;
      protected int fieldMargin;
      protected Point brushPoint;
-     protected boolean isPointer;
+     protected Point linkedPoint;
 
 }

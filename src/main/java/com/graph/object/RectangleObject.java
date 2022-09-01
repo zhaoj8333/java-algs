@@ -1,34 +1,17 @@
-package com.graph.datastructure.list;
+package com.graph.object;
 
-import com.algs.util.GraphicsUtil;
+import com.graph.datastructure.list.ShapeWithBorder;
 
 import java.awt.*;
 
 public class RectangleObject extends ShapeWithBorder {
 
     public RectangleObject() {
-        this.isPointer   = false;
         this.shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
         this.shapeHeight = GraphConstants.RECTANGLE_HEIGHT;
         this.borderWidth = GraphConstants.RECTANGLE_BOARDER_WIDTH;
         Point center = new Point(AlgoWindow.dimension.width >> 1, (int) (AlgoWindow.dimension.height * 0.3));
         this.topLeft = getTopLeftByCenterPoint(center);
-    }
-
-    public RectangleObject(boolean isPointer) {
-        this.isPointer   = isPointer;
-        this.shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
-        this.shapeHeight = GraphConstants.RECTANGLE_HEIGHT;
-        this.borderWidth = GraphConstants.RECTANGLE_BOARDER_WIDTH;
-        Point center = new Point(AlgoWindow.dimension.width >> 1, (int) (AlgoWindow.dimension.height * 0.3));
-        this.topLeft = getTopLeftByCenterPoint(center);
-    }
-
-    public void setIsPointer(boolean isPointer) {
-        this.isPointer = isPointer;
-        if (isPointer) {
-
-        }
     }
 
     @Override
@@ -130,6 +113,19 @@ public class RectangleObject extends ShapeWithBorder {
         Point point = new Point();
         point.setLocation(x - (shapeWidth >> 1), y - (shapeHeight >> 1));
         return point;
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        BasicStroke stroke = new BasicStroke(borderWidth, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, null, 0.0f);
+        g.setStroke(stroke);
+        g.drawRect(topLeft.x, topLeft.y, shapeWidth, shapeHeight);
+        g.fillRect(topLeft.x, topLeft.y, shapeWidth, shapeHeight);
+    }
+
+    @Override
+    public String toString() {
+        return "RectangleObject" + topLeft;
     }
 
 }

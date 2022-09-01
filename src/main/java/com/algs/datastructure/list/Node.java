@@ -1,5 +1,8 @@
 package com.algs.datastructure.list;
 
+import lombok.Getter;
+
+@Getter
 public class Node<E> {
 
     public E element;

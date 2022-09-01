@@ -2,6 +2,7 @@ package com.algs.util;
 
 import org.apache.commons.lang.StringUtils;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public final class ObjectUtil {
@@ -22,5 +23,11 @@ public final class ObjectUtil {
         }
     }
 
+    public static String getGetterMethodName(Field field) {
+        String fieldName = field.getName();
+        char[] chars = fieldName.toCharArray();
+        chars[0] = (char) (chars[0] - ('a' - 'A'));
+        return "get" + new String(chars);
+    }
 
 }

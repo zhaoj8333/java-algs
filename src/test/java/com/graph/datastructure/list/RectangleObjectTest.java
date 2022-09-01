@@ -1,5 +1,6 @@
 package com.graph.datastructure.list;
 
+import com.graph.object.RectangleObject;
 import com.graph.practice.ShapePractice;
 import junit.framework.TestCase;
 
