@@ -1,7 +1,8 @@
 package com.graph.object;
 
 import com.algs.util.ObjectUtil;
-import com.graph.datastructure.list.ShapeWithBorder;
+import com.graph.object.intrusive.node.BorderShape;
+import com.graph.object.intrusive.node.RectangleObject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -57,14 +58,27 @@ public class ObjectStructImpl extends ObjectStruct {
     protected void prepareShape() {
         shape = new RectangleObject();
         if (isNull()) {
-            prepareNull();
+            prepareNullShape();
+            return;
+        }
+        prepareObjectShape();
+
+    }
+
+    private void prepareObjectShape() {
+        RectangleObject ro = new RectangleObject();
+        ro.setShapeWidth(200);
+        ro.setBorderWidth(1);
+        int shapeHeight = 0;
+        for (ObjectStruct child : this.children) {
+
         }
 
 
     }
 
-    protected void prepareNull() {
-        ShapeWithBorder ro = new RectangleObject();
+    protected void prepareNullShape() {
+        BorderShape ro = new RectangleObject();
         ro.setShapeWidth(200);
         ro.setShapeHeight(150);
         ro.setBorderWidth(1);

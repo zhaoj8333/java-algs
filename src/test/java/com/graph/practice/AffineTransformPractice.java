@@ -177,10 +177,10 @@ public class AffineTransformPractice extends JPanel {
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             jf.setSize(new Dimension(1202, 900));
             jf.setLayout(new BorderLayout());
-//            jf.add(new ShapeImpl(Color.RED));
+//            jf.testAdd(new ShapeImpl(Color.RED));
             jf.add(new AffineTransformPractice());
-//            jf.add();
-//            jf.add(new CustomPolygon());
+//            jf.testAdd();
+//            jf.testAdd(new CustomPolygon());
             jf.setLocationRelativeTo(null);
             jf.setVisible(true);
         });

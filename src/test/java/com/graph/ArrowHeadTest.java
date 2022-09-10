@@ -1,6 +1,6 @@
 package com.graph;
 
-import com.graph.ele.ArrowPanel;
+import com.graph.element.ArrowPanel;
 
 import javax.swing.*;
 import java.awt.*;

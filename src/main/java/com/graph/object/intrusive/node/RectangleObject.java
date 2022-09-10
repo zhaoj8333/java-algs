@@ -1,10 +1,11 @@
-package com.graph.object;
+package com.graph.object.intrusive.node;
 
-import com.graph.datastructure.list.ShapeWithBorder;
+import com.graph.object.AlgoWindow;
+import com.graph.object.GraphConstants;
 
 import java.awt.*;
 
-public class RectangleObject extends ShapeWithBorder {
+public class RectangleObject extends BorderShape {
 
     public RectangleObject() {
         this.shapeWidth  = GraphConstants.RECTANGLE_WIDTH;
@@ -116,7 +117,7 @@ public class RectangleObject extends ShapeWithBorder {
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void toShape(Graphics2D g) {
         BasicStroke stroke = new BasicStroke(borderWidth, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, null, 0.0f);
         g.setStroke(stroke);
         g.drawRect(topLeft.x, topLeft.y, shapeWidth, shapeHeight);
@@ -128,4 +129,13 @@ public class RectangleObject extends ShapeWithBorder {
         return "RectangleObject" + topLeft;
     }
 
+    @Override
+    public void resize(Graphics2D g) {
+
+    }
+
+    @Override
+    public void move(Graphics2D g) {
+
+    }
 }

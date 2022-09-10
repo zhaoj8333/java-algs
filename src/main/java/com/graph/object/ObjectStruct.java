@@ -1,6 +1,6 @@
 package com.graph.object;
 
-import com.graph.datastructure.list.ShapeWithBorder;
+import com.graph.object.intrusive.node.BorderShape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public abstract class ObjectStruct {
     public String text;
     public boolean isLink;
     protected Object objectRefer;
-    protected ShapeWithBorder shape;
+    protected BorderShape shape;
     protected ObjectStruct parent;
     protected List<ObjectStruct> children;
 

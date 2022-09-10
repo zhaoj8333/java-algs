@@ -1,6 +1,6 @@
 package com.algs.util;
 
-import org.apache.commons.lang.StringUtils;
+//import org.apache.commons.lang.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
@@ -12,7 +12,7 @@ public final class ObjectUtil {
     }
 
     public static void requireNonEmpty(String string) {
-        if (StringUtils.isEmpty(string)) {
+        if (Objects.isNull(string) || string.isEmpty()) {
             throw new IllegalArgumentException("require String non empty");
         }
     }

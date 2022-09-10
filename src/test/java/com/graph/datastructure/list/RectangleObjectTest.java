@@ -1,6 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.graph.object.RectangleObject;
+import com.graph.object.intrusive.node.RectangleObject;
 import com.graph.practice.ShapePractice;
 import junit.framework.TestCase;
 
@@ -29,7 +29,7 @@ public class RectangleObjectTest extends TestCase {
 //            object.setBorderWidth(1);
 //            object.setFieldMargin(10);
 //
-//            jf.add(object);
+//            jf.testAdd(object);
             jf.setLocationRelativeTo(null);
             jf.setVisible(true);
 

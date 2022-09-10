@@ -1,6 +1,6 @@
 package com.algs.util;
 
-import com.graph.object.Locatable;
+import com.graph.object.intrusive.node.Locatable;
 
 import java.awt.*;
 import java.util.List;

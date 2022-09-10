@@ -1,4 +1,4 @@
-package com.graph.ele;
+package com.graph.element;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.graph.datastructure.list;
 
 import com.algs.datastructure.list.SingleLinkedListImpl;
-import org.apache.commons.lang.RandomStringUtils;
+//import org.apache.commons.lang.RandomStringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class SingleLinkedListPanelImplTest {
 
         SingleLinkedListImpl<String> ssl = new SingleLinkedListImpl<>();
         for (int i = 0; i < 10; i++) {
-            ssl.add(RandomStringUtils.random(5));
+//            ssl.testAdd(RandomStringUtils.random(5));
         }
         SingleLinkedListGraphImpl<String> sllp = new SingleLinkedListGraphImpl<>(ssl);
 

@@ -1,4 +1,4 @@
-package com.graph.object;
+package com.graph.object.intrusive.node;
 
 import java.awt.*;
 
@@ -37,5 +37,7 @@ public interface Locatable {
     Point getTopLeftByCenterPoint(Point centerPoint);
 
     Point getTopLeftByCenterCoordinate(double x, double y);
+
+    void move(Graphics2D g);
 
 }

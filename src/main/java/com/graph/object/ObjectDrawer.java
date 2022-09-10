@@ -2,7 +2,7 @@ package com.graph.object;
 
 import com.algs.util.GraphicsUtil;
 import com.algs.util.ObjectUtil;
-import com.graph.datastructure.list.ShapeWithBorder;
+import com.graph.object.intrusive.node.BorderShape;
 
 import java.awt.*;
 
@@ -10,7 +10,7 @@ public class ObjectDrawer {
 
     protected final Object dataObject;
     protected ObjectStruct objectStruct;
-    protected ShapeWithBorder shape;
+    protected BorderShape shape;
     protected Graphics2D g;
 
     public ObjectDrawer(Object dataObject) {
@@ -36,6 +36,7 @@ public class ObjectDrawer {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         prepare();
+//        locateByLine();
 
 
 
