@@ -1,37 +1,38 @@
 package com.algs.datastructure.collection.bag;
 
+import com.algs.datastructure.collection.CollectionDefaultValues;
+
 import java.util.Arrays;
 import java.util.Objects;
 
+@SuppressWarnings("unchecked")
 public class ArrayBagImpl<E> implements IBag<E> {
-
-    private static final int DEFAULT_CAPACITY = 10;
 
     private int size;
     private E[] entries;
 
     public ArrayBagImpl() {
-        this(DEFAULT_CAPACITY);
+        this(CollectionDefaultValues.DEFAULT_CAPACITY);
     }
 
     public ArrayBagImpl(int size) {
         entries = (E[]) new Object[size];
     }
 
-    private boolean isFull() {
-        return size == entries.length;
-    }
-
-    private void resize(int newSize) {
-        E[] newEntries = (E[]) new Object[newSize];
+    private void ensureCapacity(int capacity) {
+        int oldCapacity = entries.length;
+        if (oldCapacity >= capacity) {
+            return;
+        }
+        E[] newEntries = (E[]) new Object[capacity];
         System.arraycopy(entries, 0, newEntries, 0, entries.length);
         entries = newEntries;
     }
 
     @Override
     public void add(E item) {
-        if (isFull()) {
-            resize(size << 1);
+        if (size == entries.length) {
+            ensureCapacity(size << 1);
         }
         entries[size++] = item;
     }
@@ -103,7 +104,9 @@ public class ArrayBagImpl<E> implements IBag<E> {
 
     @Override
     public void clear() {
-        Arrays.fill(entries, null);
+        for (int i = 0; i < size; i++) {
+            entries[i] = null;
+        }
         size = 0;
     }
 

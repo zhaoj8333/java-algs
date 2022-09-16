@@ -1,15 +1,18 @@
 package com.algs.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.Iterable;
+import com.algs.datastructure.collection.Collection;
 
-public interface IStack<E> extends Iterable<E> {
+/**
+ * {@link java.util.Stack}
+ *
+ * LIFO
+ */
+public interface IStack<E> extends Collection<E> {
 
     void push(E item);
 
     E pop();
 
-    boolean isEmpty();
-
-    int size();
+    E top();
 
 }

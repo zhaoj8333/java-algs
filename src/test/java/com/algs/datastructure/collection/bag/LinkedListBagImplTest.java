@@ -1,20 +1,20 @@
 package com.algs.datastructure.collection.bag;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class LinkedListBagImplTest {
 
     private IBag<Integer> bag;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         bag = new LinkedListBagImpl<>();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         bag.clear();
         bag = null;
@@ -26,27 +26,27 @@ public class LinkedListBagImplTest {
         bag.add(3);
         bag.add(9);
 
-        Assert.assertEquals(3, bag.size());
+        Assertions.assertEquals(3, bag.size());
     }
 
     @Test
     public void testIsEmpty() {
-        Assert.assertTrue(bag.isEmpty());
+        Assertions.assertTrue(bag.isEmpty());
         bag.add(19);
         bag.add(3);
         bag.add(9);
 
-        Assert.assertFalse(bag.isEmpty());
+        Assertions.assertFalse(bag.isEmpty());
     }
 
     @Test
     public void testSize() {
-        Assert.assertEquals(0, bag.size());
+        Assertions.assertEquals(0, bag.size());
         bag.add(19);
         bag.add(3);
         bag.add(9);
 
-        Assert.assertEquals(3, bag.size());
+        Assertions.assertEquals(3, bag.size());
     }
 
     @Test
@@ -57,8 +57,8 @@ public class LinkedListBagImplTest {
         bag.add(9);
         bag.add(82);
 
-        Assert.assertEquals(2, bag.numberOf(19));
-        Assert.assertEquals(1, bag.numberOf(9));
+        Assertions.assertEquals(2, bag.numberOf(19));
+        Assertions.assertEquals(1, bag.numberOf(9));
     }
 
     @Test
@@ -68,8 +68,8 @@ public class LinkedListBagImplTest {
         bag.add(19);
         bag.add(9);
         bag.add(82);
-        Assert.assertTrue(bag.contains(19));
-        Assert.assertFalse(bag.contains(1));
+        Assertions.assertTrue(bag.contains(19));
+        Assertions.assertFalse(bag.contains(1));
     }
 
     @Test
@@ -85,8 +85,8 @@ public class LinkedListBagImplTest {
         bag.remove();
         System.out.println(bag);
 
-        Assert.assertFalse(bag.contains(19));
-        Assert.assertEquals(2, bag.size());
+        Assertions.assertFalse(bag.contains(19));
+        Assertions.assertEquals(2, bag.size());
 
     }
 
@@ -99,7 +99,7 @@ public class LinkedListBagImplTest {
 
         bag.clear();
 
-        Assert.assertEquals(0, bag.size());
+        Assertions.assertEquals(0, bag.size());
 
     }
 
@@ -116,7 +116,7 @@ public class LinkedListBagImplTest {
             tmp[3 - i - 1] = (Integer) integers[i];
         }
 
-        Assert.assertArrayEquals("", tmp, ints);
+        Assertions.assertArrayEquals(tmp, ints);
     }
 
 }

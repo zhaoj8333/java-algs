@@ -1,15 +1,17 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.Iterable;
+import com.algs.datastructure.collection.Collection;
 
-public interface IQueue<E> extends Iterable<E> {
+/**
+ * FIFO
+ */
+public interface IQueue<E> extends Collection<E> {
 
-    void enqueue(E item);
+    void enque(E item);
 
-    E dequeue();
+    E deque();
 
-    boolean isEmpty();
-
-    int size();
+    E peek();
 
 }
+

@@ -1,21 +1,21 @@
 package com.algs.datastructure.collection.bag;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ArrayBagImplTest {
 
     final int expectedSize = 1282;
     IBag<Integer> bag;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         bag = new ArrayBagImpl<>();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         bag.clear();
         bag = null;
@@ -36,29 +36,29 @@ public class ArrayBagImplTest {
             is[i] = (int) bagarray[i];
         }
 
-        Assert.assertArrayEquals(is, ints);
-        Assert.assertFalse(bag.isEmpty());
-        Assert.assertEquals(expectedSize, bag.size());
+        Assertions.assertArrayEquals(is, ints);
+        Assertions.assertFalse(bag.isEmpty());
+        Assertions.assertEquals(expectedSize, bag.size());
 
     }
 
     @Test
     public void testIsEmpty() {
-        Assert.assertTrue(bag.isEmpty());
+        Assertions.assertTrue(bag.isEmpty());
 
         bag.add(21);
 
-        Assert.assertFalse(bag.isEmpty());
+        Assertions.assertFalse(bag.isEmpty());
     }
 
     @Test
     public void testSize() {
-        Assert.assertTrue(bag.isEmpty());
+        Assertions.assertTrue(bag.isEmpty());
 
         bag.add(21);
         bag.add(1);
 
-        Assert.assertEquals(2, bag.size());
+        Assertions.assertEquals(2, bag.size());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ArrayBagImplTest {
         bag.add(1);
         bag.add(21);
 
-        Assert.assertEquals(2, bag.numberOf(21));
+        Assertions.assertEquals(2, bag.numberOf(21));
     }
 
     @Test
@@ -80,9 +80,9 @@ public class ArrayBagImplTest {
 
         int removed = bag.remove();
 
-        Assert.assertEquals(15, removed);
-        Assert.assertFalse(bag.contains(15));
-        Assert.assertEquals(4, bag.size());
+        Assertions.assertEquals(15, removed);
+        Assertions.assertFalse(bag.contains(15));
+        Assertions.assertEquals(4, bag.size());
     }
 
     @Test
@@ -95,8 +95,8 @@ public class ArrayBagImplTest {
 
         Integer removed = bag.remove(8);
         bag.remove(0);
-        Assert.assertFalse(bag.contains(8));
-        Assert.assertEquals(4, bag.size());
+        Assertions.assertFalse(bag.contains(8));
+        Assertions.assertEquals(4, bag.size());
 
     }
 
@@ -110,8 +110,8 @@ public class ArrayBagImplTest {
 
         bag.clear();
 
-        Assert.assertTrue(bag.isEmpty());
-        Assert.assertThrows(RuntimeException.class, bag::remove);
+        Assertions.assertTrue(bag.isEmpty());
+        Assertions.assertThrows(RuntimeException.class, bag::remove);
 
     }
 
@@ -123,11 +123,11 @@ public class ArrayBagImplTest {
         bag.add(8);
         bag.add(15);
 
-        Assert.assertTrue(bag.contains(21));
-        Assert.assertTrue(bag.contains(13));
-        Assert.assertTrue(bag.contains(28));
-        Assert.assertTrue(bag.contains(8));
-        Assert.assertTrue(bag.contains(15));
+        Assertions.assertTrue(bag.contains(21));
+        Assertions.assertTrue(bag.contains(13));
+        Assertions.assertTrue(bag.contains(28));
+        Assertions.assertTrue(bag.contains(8));
+        Assertions.assertTrue(bag.contains(15));
 
     }
 
@@ -146,7 +146,7 @@ public class ArrayBagImplTest {
             bagInts[i] = (int) bagEntryArray[i];
         }
 
-        Assert.assertArrayEquals(ints, bagInts);
+        Assertions.assertArrayEquals(ints, bagInts);
 
     }
 }

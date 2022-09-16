@@ -2,6 +2,8 @@ package com.algs.util;
 
 //import org.apache.commons.lang.StringUtils;
 
+import com.algs.datastructure.collection.Collection;
+
 import java.lang.reflect.Field;
 import java.util.Objects;
 
@@ -20,6 +22,12 @@ public final class ObjectUtil {
     public static void requireNonNull(Object object) {
         if (Objects.isNull(object)) {
             throw new IllegalArgumentException("require Object non empty");
+        }
+    }
+
+    public static void requireNonEmpty(Collection collection) {
+        if (collection.isEmpty()) {
+            throw new RuntimeException("Already Empty");
         }
     }
 

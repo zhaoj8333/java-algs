@@ -1,6 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.SingleLinkedListImpl;
 //import org.apache.commons.lang.RandomStringUtils;
 
 import javax.swing.*;

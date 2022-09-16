@@ -2,12 +2,11 @@ package com.graph.datastructure.list;
 
 import com.graph.object.intrusive.node.RectangleObject;
 import com.graph.practice.ShapePractice;
-import junit.framework.TestCase;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class RectangleObjectTest extends TestCase {
+public class RectangleObjectTest {
 
     private RectangleObject object;
 

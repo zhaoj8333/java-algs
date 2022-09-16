@@ -1,4 +1,4 @@
-package com.algs.datastructure.list;
+package com.algs.datastructure.collection.list;
 
 public interface List<E> {
 

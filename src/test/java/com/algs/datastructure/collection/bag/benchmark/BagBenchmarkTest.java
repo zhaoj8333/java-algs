@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.bag.benchmark;
 import com.algs.datastructure.collection.bag.ArrayBagImpl;
 import com.algs.datastructure.collection.bag.IBag;
 import com.algs.datastructure.collection.bag.LinkedListBagImpl;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;

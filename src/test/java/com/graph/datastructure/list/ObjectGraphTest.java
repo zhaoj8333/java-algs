@@ -1,6 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.SingleLinkedListImpl;
 import com.graph.object.AlgoWindow;
 import com.graph.object.ObjectGraph;
 import com.graph.practice.ShapePractice;

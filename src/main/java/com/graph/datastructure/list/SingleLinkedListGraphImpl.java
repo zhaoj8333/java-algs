@@ -1,7 +1,7 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.list.Node;
-import com.algs.datastructure.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.Node;
+import com.algs.datastructure.collection.list.SingleLinkedListImpl;
 import com.algs.util.ObjectUtil;
 
 import javax.swing.*;
