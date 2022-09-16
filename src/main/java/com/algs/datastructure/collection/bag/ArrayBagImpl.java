@@ -2,7 +2,6 @@ package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 @SuppressWarnings("unchecked")

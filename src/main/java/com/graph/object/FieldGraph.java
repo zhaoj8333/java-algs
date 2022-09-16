@@ -5,7 +5,6 @@ import com.algs.util.ObjectUtil;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.geom.Line2D;
 
 public class FieldGraph extends JPanel {
 

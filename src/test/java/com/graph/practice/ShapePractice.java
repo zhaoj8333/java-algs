@@ -4,9 +4,12 @@ import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
-import java.util.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Line2D;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Java 2D primitives includes:

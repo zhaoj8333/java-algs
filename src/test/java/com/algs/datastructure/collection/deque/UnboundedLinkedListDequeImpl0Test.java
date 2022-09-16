@@ -2,8 +2,6 @@ package com.algs.datastructure.collection.deque;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UnboundedLinkedListDequeImpl0Test {
 
     @Test
