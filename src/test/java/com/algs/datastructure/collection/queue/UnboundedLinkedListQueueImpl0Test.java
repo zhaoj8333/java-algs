@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -124,5 +125,21 @@ class UnboundedLinkedListQueueImpl0Test {
         integers = q.toArray();
         Assertions.assertEquals(5, (int)integers[0]);
 
+    }
+
+    @Test
+    void iterate() {
+        IQueue<Integer> q = new UnboundedLinkedListQueueImpl0<>();
+        q.enque(1);
+        q.enque(2);
+        q.enque(3);
+        q.enque(4);
+        q.enque(5);
+
+        Iterator<Integer> itr = q.iterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.println(next);
+        }
     }
 }

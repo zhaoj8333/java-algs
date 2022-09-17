@@ -11,18 +11,13 @@ import java.util.Objects;
 @SuppressWarnings("unchecked")
 public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
 
-    @Override
-    public Iterator<E> iterator() {
-        return null;
-    }
-
     private static class Node<E> {
-        E data;
+        E item;
         Node<E> prev;
         Node<E> next;
 
         public Node(E data, Node<E> prev, Node<E> next) {
-            this.data = data;
+            this.item = data;
             this.prev = prev;
             this.next = next;
         }
@@ -53,7 +48,7 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
         }
         Node<E> node = head;
         while (Objects.nonNull(node)) {
-            if (Objects.equals(node.data, item)) {
+            if (Objects.equals(node.item, item)) {
                 return node;
             }
             node = node.next;
@@ -90,7 +85,6 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     /**
-     *
      * head <-> (newRemovedNode) <-> node <-> tail
      */
     @Override
@@ -99,7 +93,7 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
             throw new RuntimeException("Already Empty");
         }
         Node<E> node = head.next;   // removed node
-        E data = node.data;
+        E data = node.item;
         head.next = node.next;
         node.next.prev = head;
         size--;
@@ -108,7 +102,7 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
 
     @Override
     public E peek() {
-        return head.next.data;
+        return head.next.item;
     }
 
     @Override
@@ -129,11 +123,32 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
         E[] array = (E[]) new Object[size];
         Node<E> node = head.next;
         int index = 0;
-        while (Objects.nonNull(node) && Objects.nonNull(node.data)) {
-            array[index++] = node.data;
+        while (Objects.nonNull(node) && Objects.nonNull(node.item)) {
+            array[index++] = node.item;
             node = node.next;
         }
         return array;
     }
 
+    private class LinkedListQueueIterator0<E> implements Iterator<E> {
+
+        private Node<E> next = (Node<E>) head.next;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(next.next);
+        }
+
+        @Override
+        public E next() {
+            E item = next.item;
+            next = next.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListQueueIterator0<>();
+    }
 }
