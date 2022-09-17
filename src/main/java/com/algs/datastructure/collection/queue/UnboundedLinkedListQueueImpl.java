@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -11,12 +12,12 @@ import java.util.Objects;
 public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
 
     private static class Node<E> {
-        E data;
+        E item;
         Node<E> prev;
         Node<E> next;
 
         public Node(E data, Node<E> prev, Node<E> next) {
-            this.data = data;
+            this.item = data;
             this.prev = prev;
             this.next = next;
         }
@@ -42,7 +43,7 @@ public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
         }
         Node<E> node = head;
         while (Objects.nonNull(node)) {
-            if (Objects.equals(node.data, item)) {
+            if (Objects.equals(node.item, item)) {
                 return node;
             }
             node = node.next;
@@ -97,12 +98,12 @@ public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
         }
         head = next;
         size--;
-        return node.data;
+        return node.item;
     }
 
     @Override
     public E peek() {
-        return head.next.data;
+        return head.next.item;
     }
 
     @Override
@@ -124,10 +125,31 @@ public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
         Node<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
-            array[index++] = node.data;
+            array[index++] = node.item;
             node = node.next;
         }
         return array;
     }
 
+    private class LinkedListQueueIterator<E> implements Iterator<E> {
+
+        private Node<E> node = (Node<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListQueueIterator<>();
+    }
 }

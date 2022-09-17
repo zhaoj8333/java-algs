@@ -1,15 +1,17 @@
 package com.algs.datastructure.collection.bag;
 
+import com.algs.datastructure.collection.Iterator;
+
 import java.util.Objects;
 
 public class LinkedListBagImpl<E> implements IBag<E> {
 
     private static class Node<E> {
-        E data;
+        E item;
         Node<E> next;
 
         public Node(E data, Node<E> next) {
-            this.data = data;
+            this.item = data;
             this.next = next;
         }
     }
@@ -42,7 +44,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         int number = 0;
         Node<E> node = this.head;
         while (Objects.nonNull(node)) {
-            if (Objects.equals(item, node.data)) {
+            if (Objects.equals(item, node.item)) {
                 number ++;
             }
             node = node.next;
@@ -58,7 +60,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     private Node<E> node(E item) {
         Node<E> node = head;
         while (Objects.nonNull(node)) {
-            if (Objects.equals(node.data, item)) {
+            if (Objects.equals(node.item, item)) {
                 return node;
             }
             node = node.next;
@@ -68,7 +70,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
 
     @Override
     public E remove() {
-        return remove(head.data);
+        return remove(head.item);
     }
 
     /**
@@ -83,10 +85,10 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         if (Objects.isNull(node)) {
             return null;
         }
-        E data = node.data;
+        E data = node.item;
         Node<E> oldhead = head;
         head = head.next;
-        node.data = oldhead.data;
+        node.item = oldhead.item;
         size --;
         return data;
     }
@@ -103,7 +105,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         Node<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
-            array[index++] = (E) node.data;
+            array[index++] = (E) node.item;
             node = node.next;
         }
         return array;
@@ -114,9 +116,31 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         StringBuilder sb = new StringBuilder();
         Node<E> node = head;
         while (Objects.nonNull(node)) {
-            sb.append("(").append(node.data.toString()).append(") -> ");
+            sb.append("(").append(node.item.toString()).append(") -> ");
             node = node.next;
         }
         return sb.toString();
+    }
+
+    private class LinkedListBagIterator<E> implements Iterator<E> {
+
+        private Node<E> node = (Node<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListBagIterator<>();
     }
 }

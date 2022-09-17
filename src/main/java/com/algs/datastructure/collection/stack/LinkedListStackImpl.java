@@ -1,10 +1,16 @@
 package com.algs.datastructure.collection.stack;
 
+import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
 
 public class LinkedListStackImpl<E> implements IStack<E> {
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 
     private static class Node<E> {
         E item;

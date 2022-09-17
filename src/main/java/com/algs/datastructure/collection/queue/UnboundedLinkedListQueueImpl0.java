@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -9,6 +10,11 @@ import java.util.Objects;
  */
 @SuppressWarnings("unchecked")
 public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 
     private static class Node<E> {
         E data;

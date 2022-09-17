@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.bag;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -147,6 +148,23 @@ public class ArrayBagImplTest {
         }
 
         Assertions.assertArrayEquals(ints, bagInts);
+
+    }
+
+    @Test
+    public void testIterate() {
+        bag.add(21);
+        bag.add(13);
+        bag.add(28);
+        bag.add(8);
+        bag.add(15);
+
+        Iterator<Integer> itr = bag.iterator();
+        while (itr.hasNext()) {
+            Integer item = itr.next();
+            System.out.print(item + " ");
+        }
+        System.out.println();
 
     }
 }

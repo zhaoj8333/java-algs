@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.bag;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -119,4 +120,17 @@ public class LinkedListBagImplTest {
         Assertions.assertArrayEquals(tmp, ints);
     }
 
+    @Test
+    public void testIterate() {
+        bag.add(19);
+        bag.add(3);
+        bag.add(9);
+        bag.add(82);
+
+        Iterator<Integer> itr = bag.iterator();
+        while (itr.hasNext()) {
+            Integer node = itr.next();
+            System.out.println(node);
+        }
+    }
 }

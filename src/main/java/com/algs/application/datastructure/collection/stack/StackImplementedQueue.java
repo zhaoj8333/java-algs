@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.queue;
+package com.algs.application.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.stack.IStack;
 
@@ -6,12 +6,12 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
 
-public class StackImpledQueue<E> implements Queue<E> {
+public class StackImplementedQueue<E> implements Queue<E> {
 
     private IStack<E> inStack;
     private IStack<E> outStack;
 
-    public StackImpledQueue() {
+    public StackImplementedQueue() {
         inStack = null;
         outStack = null;
     }

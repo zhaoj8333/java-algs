@@ -1,6 +1,8 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.bag.LinkedListBagImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -77,9 +79,8 @@ public class BoundedArrayQueueImpl<E> implements IQueue<E> {
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
         if (size == entries.length) {
-//            int length = entries.length;
-//            ensureCapacity(length << 1);
-            throw new RuntimeException("Already full");
+            int length = entries.length;
+            ensureCapacity(length << 1);
         }
         entries[(headIndex + size) % entries.length] = item;
         size++;
@@ -117,4 +118,23 @@ public class BoundedArrayQueueImpl<E> implements IQueue<E> {
         return array;
     }
 
+    private class ArrayQueueIterator<E> implements Iterator<E> {
+
+        private int n = -1;
+
+        @Override
+        public boolean hasNext() {
+            return n < size - 1;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[++n];
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayQueueIterator<>();
+    }
 }

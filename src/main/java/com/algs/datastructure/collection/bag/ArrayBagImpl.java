@@ -1,6 +1,7 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.datastructure.collection.Iterator;
 
 import java.util.Objects;
 
@@ -114,5 +115,25 @@ public class ArrayBagImpl<E> implements IBag<E> {
         E[] array = (E[]) new Object[size];
         System.arraycopy(entries, 0, array, 0, size);
         return array;
+    }
+
+    private class ArrayIterator<E> implements Iterator<E> {
+
+        private int n = -1;
+
+        @Override
+        public boolean hasNext() {
+            return n <= size - 2;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[++n];
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayIterator<>();
     }
 }

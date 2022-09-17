@@ -1,8 +1,10 @@
 package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class ArrayStackImpl<E> implements IStack<E> {
@@ -27,9 +29,9 @@ public class ArrayStackImpl<E> implements IStack<E> {
     @Override
     public void push(E item) {
         ObjectUtil.requireNonNull(item);
-        if (entries.length == size) {
-            throw new RuntimeException("Already Full");
-//            resize(size >> 1);
+        if (size == entries.length) {
+//            throw new RuntimeException("Already Full");
+            resize(size >> 1);
         }
         entries[size++] = item;
     }
@@ -91,5 +93,18 @@ public class ArrayStackImpl<E> implements IStack<E> {
         E[] array = (E[]) new Object[size];
         if (size >= 0) System.arraycopy(entries, 0, array, 0, size);
         return array;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayStackImpl{" +
+                "size=" + size +
+                ", entries=" + Arrays.toString(entries) +
+                '}';
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }

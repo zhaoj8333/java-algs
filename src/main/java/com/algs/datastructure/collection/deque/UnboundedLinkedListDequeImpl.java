@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
+import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -165,5 +166,27 @@ public class UnboundedLinkedListDequeImpl<E> implements IDeque<E> {
             node = node.next;
         }
         return array;
+    }
+
+    private class LinkedListDequeIterator<E> implements Iterator<E> {
+
+        private Node<E> node = (Node<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListDequeIterator<>();
     }
 }

@@ -8,6 +8,10 @@ public class TimeUtil {
 
     private static final SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS");
 
+    public static String formatTimestamp(Long timestamp) {
+        return fmt.format(new Date(timestamp));
+    }
+
     public interface Task {
         void exec();
     }

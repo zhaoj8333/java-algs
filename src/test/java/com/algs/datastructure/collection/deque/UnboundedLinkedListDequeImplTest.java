@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -155,5 +156,18 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void toArray() {
+    }
+
+    @Test
+    void iterate() {
+        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        for (int i = 0; i < 5; i++) {
+            q.enque(i);
+        }
+        Iterator<Integer> itr = q.iterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.println(next);
+        }
     }
 }

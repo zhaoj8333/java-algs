@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -123,4 +124,17 @@ class BoundedArrayQueueImplTest {
         Assertions.assertEquals(q.size(), integers.length);
     }
 
+    @Test
+    void iterate() {
+        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        for (int i = 1; i <= 7; i++) {
+            q.enque(i);
+        }
+        Iterator<Integer> itr = q.iterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.println(next);
+        }
+
+    }
 }
