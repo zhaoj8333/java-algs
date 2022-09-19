@@ -6,11 +6,13 @@ public interface Collection<E> extends Iterable<E> {
 
     boolean isEmpty();
 
-    boolean contains(E o);
+    boolean contains(E item);
 
-    void add(E o);
+    void add(E item);
 
-    E remove(E o);
+    E remove(int index);
+
+    E remove(E item);
 
     void clear();
 

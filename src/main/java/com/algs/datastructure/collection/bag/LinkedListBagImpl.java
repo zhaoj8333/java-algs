@@ -25,6 +25,11 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         size++;
     }
 
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
     private void linkHead(E item) {
         head = new Node<>(item, head);
     }

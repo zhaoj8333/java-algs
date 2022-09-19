@@ -1,18 +1,12 @@
 package com.algs.datastructure.collection.list;
 
-public interface List<E> {
+import com.algs.datastructure.collection.Collection;
 
-    int ELEMENT_NOT_FOUND = -1;
+public interface List<E> extends Collection<E> {
 
-    int getSize();
-    boolean isEmpty();
-    void clear();
-    boolean contains(E element);
-    void add(E element);
-    void add(int index, E element);
+    void add(int index, E item);
     E get(int index);
-    void set(int index, E element);
-    void remove(int index);
-    int indexOf(E element);
+    void set(int index, E item);
+    int indexOf(E item);
 
 }

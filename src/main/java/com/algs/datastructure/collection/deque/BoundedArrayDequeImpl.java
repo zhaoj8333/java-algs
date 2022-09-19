@@ -121,6 +121,11 @@ public class BoundedArrayDequeImpl<E> implements IDeque<E> {
     }
 
     @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
     public final E remove(E o) {
         throw new UnsupportedOperationException("Unsupported operation");
     }

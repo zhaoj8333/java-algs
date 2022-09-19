@@ -1,7 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.collection.list.Node;
-import com.algs.datastructure.collection.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
 import com.algs.util.ObjectUtil;
 
 import javax.swing.*;
@@ -21,19 +20,19 @@ public class SingleLinkedListGraphImpl<E> {
 
     public static final String PANEL_TITLE = "SinglyLinkedList";
 
-    private final SingleLinkedListImpl<E> data;
+    private final SinglyLinkedListImpl<E> data;
     private JFrame frame;
     private JPanel panel;
 
-    public SingleLinkedListGraphImpl(SingleLinkedListImpl<E> data) {
+    public SingleLinkedListGraphImpl(SinglyLinkedListImpl<E> data) {
         ObjectUtil.requireNonNull(data);
         initWindow();
         this.data = data;
         drawObject();
-        if (Objects.nonNull(data.getHead())) {
+//        if (Objects.nonNull(data.getHead())) {
 
-        }
-        drawNode(data.getHead());
+//        }
+//        drawNode(data.getHead());
     }
 
     private void drawObject() {
@@ -50,14 +49,14 @@ public class SingleLinkedListGraphImpl<E> {
         frame.setContentPane(panel);
         frame.setVisible(true);
     }
-
-    private void drawNode(Node<E> dataNode) {
-        while (Objects.nonNull(dataNode)) {
-//            String s = String.valueOf(dataNode.element);
-
-            dataNode = dataNode.next;
-            drawNode(dataNode);
-        }
-    }
+//
+//    private void drawNode(Node<E> dataNode) {
+//        while (Objects.nonNull(dataNode)) {
+////            String s = String.valueOf(dataNode.element);
+//
+//            dataNode = dataNode.next;
+//            drawNode(dataNode);
+//        }
+//    }
 
 }

@@ -84,6 +84,11 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     }
 
     @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
     public E remove(E o) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }

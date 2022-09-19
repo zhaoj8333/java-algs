@@ -62,6 +62,11 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
     public final E remove(E o) {
         throw new UnsupportedOperationException("Unsupport this operation");
     }

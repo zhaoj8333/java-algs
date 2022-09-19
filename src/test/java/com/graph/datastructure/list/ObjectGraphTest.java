@@ -1,6 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.collection.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
 import com.graph.object.AlgoWindow;
 import com.graph.object.ObjectGraph;
 import com.graph.practice.ShapePractice;
@@ -19,7 +19,7 @@ public class ObjectGraphTest {
             }
             JFrame jf = new AlgoWindow(ShapePractice.class.getName());
 
-            SingleLinkedListImpl<String> list = new SingleLinkedListImpl<>();
+            SinglyLinkedListImpl<String> list = new SinglyLinkedListImpl<>();
             list.add(null);
 
             jf.add(new ObjectGraph<>(list));

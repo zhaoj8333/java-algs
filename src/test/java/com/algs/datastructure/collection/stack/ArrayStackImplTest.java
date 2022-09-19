@@ -1,7 +1,13 @@
 package com.algs.datastructure.collection.stack;
 
+import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
+import com.algs.datastructure.collection.queue.IQueue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import javax.print.DocFlavor;
+import java.util.Arrays;
 
 class ArrayStackImplTest {
 
@@ -76,5 +82,42 @@ class ArrayStackImplTest {
 
     @Test
     void toArray() {
+    }
+
+    @Test
+    void _1_3_5() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        int n = 50;
+        while (n > 0) {
+            int i = n % 2;
+            s.push(i);
+            n = n / 2;
+        }
+        Iterator<Integer> itr = s.iterator();
+        StringBuilder sb = new StringBuilder();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            sb.append(next);
+        }
+        System.out.println(sb);
+        System.out.println(Integer.parseInt(sb.toString(), 2));
+    }
+
+    @Test
+    void _1_3_6() {
+        IQueue<Integer> q = new BoundedArrayQueueImpl<>();
+        for (int i = 0; i < 10; i++) {
+            q.enque(i);
+        }
+        // q: 0 1 2 3 4 5 6 7 8 9
+
+        IStack<Integer> s = new ArrayStackImpl<>();
+        while (!q.isEmpty()) {
+            s.push(q.deque());
+        }
+        while (!s.isEmpty()) {
+            q.enque(s.pop());
+        }
+        System.out.println(q);
     }
 }

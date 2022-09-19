@@ -16,9 +16,6 @@ import java.util.Objects;
  */
 public class ArithmeticExpressionEvaluator {
 
-    IStack<String> ops = new ArrayStackImpl<>();
-    IStack<Double> vals = new LinkedListStackImpl<>();
-
     private boolean isAsciiNumber(char ch) {
         return ch >= 48 && ch <= 57;
     }
@@ -72,12 +69,16 @@ public class ArithmeticExpressionEvaluator {
         if (expression.isBlank()) {
             return 0D;
         }
-        for (int i = 0; i < expression.length(); i++) {
+        IStack<String> ops = new ArrayStackImpl<>();
+        IStack<Double> vals = new LinkedListStackImpl<>();
+
+        int len = expression.length();
+        for (int i = 0; i < len; i++) {
             char c = expression.charAt(i);
             StringBuilder numberString = new StringBuilder();
             while (isAsciiNumber(c) || isDot(c)) {
                 numberString.append(c);
-                if (i >= expression.length() - 1) {
+                if (i >= len - 1) {
                     break;
                 }
                 c = expression.charAt(++i);
@@ -96,9 +97,7 @@ public class ArithmeticExpressionEvaluator {
                 ops.push(ch);
             } else if (Objects.equals("/", ch)) {
                 ops.push(ch);
-            } else if (Objects.equals("sqrt", ch)) {
-                ops.push(ch);
-            } else if (Objects.equals(")", ch)) {
+           } else if (Objects.equals(")", ch)) {
                 String op = ops.pop();
                 Double val = vals.pop();
                 if (Objects.equals("+", op)) {
@@ -112,8 +111,6 @@ public class ArithmeticExpressionEvaluator {
                         throw new ArithmeticException("divider can't be 0");
                     }
                     val = vals.pop() / val;
-                } else if (Objects.equals("sqrt", op)) {
-                    val = Math.sqrt(val);
                 }
                 vals.push(val);
             }
@@ -121,6 +118,67 @@ public class ArithmeticExpressionEvaluator {
         return vals.pop();
     }
 
+    /**
+     * 中缀表达式 左括号自动补全
+     *
+     * input: 1+2) * 3-4) * 5-6)))
+     *        |
+     *       \/
+     * result: ((1+2) * ((3-4) * (5-6)))
+     */
+    public String autoCompleteLeftBracesOfInfixExpression(String unCompleteExpression) {
+        ObjectUtil.requireNonNull(unCompleteExpression);
+        if (unCompleteExpression.isBlank()) {
+            return "";
+        }
+        IStack<String> ops = new ArrayStackImpl<>();
+        IStack<Double> vals = new LinkedListStackImpl<>();
 
+        int length = unCompleteExpression.length();
+        int[] leftBracePositions = new int[length];
+        for (int i = 0; i < length; i++) {
+            char c = unCompleteExpression.charAt(i);
+            StringBuilder numberString = new StringBuilder();
+            if (isAsciiNumber(c) || isDot(c)) {
+                numberString.append(c);
+                ++i;
+                if (i >= length - 1) {
+                    break;
+                }
+                c = unCompleteExpression.charAt(i);
+            }
+            if (numberString.length() > 0) {
+                vals.push(Double.parseDouble(numberString.toString()));
+                int numberLen = numberString.length();
+
+            }
+            String str = String.valueOf(c);
+            if (Objects.equals("(", str)) {
+
+            } else if (Objects.equals("+", str)) {
+                ops.push(str);
+            } else if (Objects.equals("-", str)) {
+                ops.push(str);
+            } else if (Objects.equals("*", str)) {
+                ops.push(str);
+            } else if (Objects.equals("/", str)) {
+                ops.push(str);
+            } else if (Objects.equals(")", str)) {
+                String op = ops.pop();
+                Double val = vals.pop();
+                if (Objects.equals("+", str)) {
+                    val = val + vals.pop();
+                } else if (Objects.equals("-", str)) {
+                    val = val - vals.pop();
+                } else if (Objects.equals("*", str)) {
+                    val = val * vals.pop();
+                } else if (Objects.equals("/", str)) {
+                    val = val / vals.pop();
+                }
+                vals.push(val);
+            }
+        }
+        return null;
+    }
 
 }

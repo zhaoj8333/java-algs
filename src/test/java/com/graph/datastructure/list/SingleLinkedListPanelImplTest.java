@@ -1,6 +1,6 @@
 package com.graph.datastructure.list;
 
-import com.algs.datastructure.collection.list.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class SingleLinkedListPanelImplTest {
 
 //        jDialog();
 
-        SingleLinkedListImpl<String> ssl = new SingleLinkedListImpl<>();
+        SinglyLinkedListImpl<String> ssl = new SinglyLinkedListImpl<>();
         for (int i = 0; i < 10; i++) {
 //            ssl.testAdd(RandomStringUtils.random(5));
         }

@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.bag.ArrayBagImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Arrays;
@@ -76,6 +77,11 @@ public class ArrayStackImpl<E> implements IStack<E> {
     }
 
     @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
     public E remove(E o) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
@@ -103,8 +109,23 @@ public class ArrayStackImpl<E> implements IStack<E> {
                 '}';
     }
 
+    private class ArrayStackIterator<E> implements Iterator<E> {
+
+        private int n = size - 1;
+
+        @Override
+        public boolean hasNext() {
+            return n >= 0;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[n--];
+        }
+    }
+
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new ArrayStackIterator<>();
     }
 }

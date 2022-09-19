@@ -38,6 +38,11 @@ public class ArrayBagImpl<E> implements IBag<E> {
     }
 
     @Override
+    public E remove(int index) {
+        return null;
+    }
+
+    @Override
     public int size() {
         return size;
     }

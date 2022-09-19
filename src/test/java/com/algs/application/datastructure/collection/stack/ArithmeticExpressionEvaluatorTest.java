@@ -54,8 +54,8 @@ class ArithmeticExpressionEvaluatorTest {
 
         IQueue<String> q = new BoundedArrayQueueImpl<>();
 //        q.enque("(1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )");    // 101
-        q.enque("((1+5.0)/2.0)");    // 101
-        q.enque("((1+5.0)/0.0)");    // 101
+//        q.enque("((1+5.0)/2.0)");    // 101
+        q.enque("((1+5.0)/0.1)");    // 101
         ArithmeticExpressionEvaluator aae = new ArithmeticExpressionEvaluator();
 
         while (!q.isEmpty()) {
@@ -65,4 +65,19 @@ class ArithmeticExpressionEvaluatorTest {
         }
 
     }
+
+    @Test
+    void __1_3_9() {
+        infixExpressionAutoCompleteLeftBraces();
+    }
+
+    @Test
+    void infixExpressionAutoCompleteLeftBraces() {
+        ArithmeticExpressionEvaluator aee = new ArithmeticExpressionEvaluator();
+        String code = aee.autoCompleteLeftBracesOfInfixExpression("");
+        System.out.println(code);
+
+    }
+
+
 }
