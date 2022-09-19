@@ -7,10 +7,11 @@ import com.algs.util.RangeUtil;
 
 import java.util.Objects;
 
-public class SinglyLinkedListImpl<E> implements List<E> {
+public class DoublyLinkedListImpl<E> implements List<E> {
 
     private static class Node<E> {
         E item;
+        Node<E> prev;
         Node<E> next;
 
         public Node(E item, Node<E> next) {
@@ -21,17 +22,19 @@ public class SinglyLinkedListImpl<E> implements List<E> {
 
     private int size;
     private final Node<E> head = new Node<>(null, null);
+    private final Node<E> tail = new Node<>(null, null);
+
+    public DoublyLinkedListImpl() {
+        head.next = tail;
+        tail.prev = head;
+    }
 
     /**
      * prev -> newNode -> next
      */
     @Override
     public void add(int index, E item) {
-        ObjectUtil.requireNonNull(item);
-        RangeUtil.requireRangeWhenAdd(index, 0, size);
-        Node<E> prev = node(index - 1);
-        prev.next = new Node<>(item, prev.next);
-        size++;
+
     }
 
     @Override
@@ -102,11 +105,7 @@ public class SinglyLinkedListImpl<E> implements List<E> {
      */
     @Override
     public E remove(int index) {
-        Node<E> prev = node(index - 1);
-        Node<E> node = prev.next;
-        prev.next = node.next;
-        size--;
-        return node.item;
+        return null;
     }
 
     @Override
@@ -132,9 +131,9 @@ public class SinglyLinkedListImpl<E> implements List<E> {
         return array;
     }
 
-    private class SinglyLinkedListIterator implements Iterator<E> {
+    private class DoublyLinkedListIterator implements Iterator<E> {
 
-        private Node<E> node = head;
+        private Node<E> node = head.next;
 
         @Override
         public boolean hasNext() {
@@ -143,15 +142,15 @@ public class SinglyLinkedListImpl<E> implements List<E> {
 
         @Override
         public E next() {
-            E item = node.next.item;
-            node = node.next;
-            return item;
+            Node<E> next = node.next;
+            next = next.next;
+            return next.item;
         }
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new SinglyLinkedListIterator();
+        return new DoublyLinkedListIterator();
     }
 
 }

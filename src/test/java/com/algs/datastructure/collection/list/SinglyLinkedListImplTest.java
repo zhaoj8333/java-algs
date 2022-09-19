@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.list;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -65,6 +66,12 @@ class SinglyLinkedListImplTest {
         Assertions.assertEquals(5, sll.get(0));
         Assertions.assertEquals(3, sll.get(2));
         Assertions.assertEquals(4, sll.size());
+
+        Iterator<Integer> itr = sll.iterator();
+        while (itr.hasNext()) {
+            Integer node = itr.next();
+            System.out.println(node);
+        }
 
         sll.clear();
         Assertions.assertTrue(sll.isEmpty());
