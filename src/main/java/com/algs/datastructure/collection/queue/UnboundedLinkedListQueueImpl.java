@@ -108,7 +108,10 @@ public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
 
     @Override
     public E peek() {
-        return head.next.item;
+        if (isEmpty()) {
+            return null;
+        }
+        return head.item;
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 class UnboundedLinkedListQueueImplTest {
 
     @Test
@@ -60,11 +62,10 @@ class UnboundedLinkedListQueueImplTest {
 
     @Test
     void dequeue() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl<>();
+        IQueue<Integer> q = new UnboundedLinkedListQueueImpl0<>();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
-        Integer i = q.deque();
-        Assertions.assertEquals(1, i);
+        q.deque();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
         Assertions.assertEquals(1, q.size());
@@ -75,7 +76,29 @@ class UnboundedLinkedListQueueImplTest {
         q.enque(5);
         q.enque(6);
 
+        Assertions.assertEquals(6, q.size());
+
+        q.deque();
+        Assertions.assertEquals(5, q.size());
+        Assertions.assertEquals(2, q.peek());
+        q.deque();
+        q.deque();
+        q.deque();
+
+        for (int i = 0; i < 4; i++) {
+            q.enque((i + 1) * 1000);
+        }
+
+        Integer peek = q.peek();
+        Assertions.assertEquals(5, peek);
+
+        q.clear();
+        Integer peek1 = q.peek();
+        Assertions.assertNull(peek1);
+        Assertions.assertTrue(q.isEmpty());
+
         Object[] integers = q.toArray();
+        System.out.println(Arrays.toString(integers));
 
     }
 

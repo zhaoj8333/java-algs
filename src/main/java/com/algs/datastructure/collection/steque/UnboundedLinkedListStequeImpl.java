@@ -1,7 +1,6 @@
 package com.algs.datastructure.collection.steque;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.stack.ISteque;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -78,7 +77,9 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public void enqueFirst(E item) {
         ObjectUtil.requireNonNull(item);
-        head = new Node<>(item, head, head.next);
+        Node<E> oldHead = head;
+        head = new Node<>(item, null, oldHead);
+        oldHead.prev = head;
         size++;
     }
 
@@ -119,7 +120,10 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public E peek() {
-        return head.next.item;
+        if (isEmpty()) {
+            return null;
+        }
+        return head.item;
     }
 
     @Override

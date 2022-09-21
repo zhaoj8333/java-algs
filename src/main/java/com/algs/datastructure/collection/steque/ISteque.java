@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.stack;
+package com.algs.datastructure.collection.steque;
 
 import com.algs.datastructure.collection.queue.IQueue;
 
