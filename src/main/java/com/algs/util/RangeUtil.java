@@ -12,6 +12,9 @@ public class RangeUtil {
         }
     }
 
+    /**
+     * [min, max]
+     */
     public static void requireRangeWhenAdd(int index, int min, int max) {
         if (index < min || index > max) {
             throw new IndexOutOfBoundsException(String.format("require index range [%d, %d]", min, max));

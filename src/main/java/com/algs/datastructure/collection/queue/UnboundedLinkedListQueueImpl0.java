@@ -118,9 +118,13 @@ public class UnboundedLinkedListQueueImpl0<E> implements IQueue<E> {
 //        }
 //        size = 0;
         // OR
-        while (!isEmpty()) {
-            deque();
-        }
+        // OR
+        head.next = tail;
+        tail.prev = head;
+        size = 0;
+//        while (!isEmpty()) {
+//            deque();
+//        }
     }
 
     @Override

@@ -8,5 +8,6 @@ public interface List<E> extends Collection<E> {
     E get(int index);
     void set(int index, E item);
     int indexOf(E item);
+    void reverse();
 
 }

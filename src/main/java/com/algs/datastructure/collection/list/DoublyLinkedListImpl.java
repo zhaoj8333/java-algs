@@ -14,15 +14,16 @@ public class DoublyLinkedListImpl<E> implements List<E> {
         Node<E> prev;
         Node<E> next;
 
-        public Node(E item, Node<E> next) {
+        public Node(E item, Node<E> prev, Node<E> next) {
             this.item = item;
+            this.prev = prev;
             this.next = next;
         }
     }
 
     private int size;
-    private final Node<E> head = new Node<>(null, null);
-    private final Node<E> tail = new Node<>(null, null);
+    private final Node<E> head = new Node<>(null, null, null);
+    private final Node<E> tail = new Node<>(null, null, null);
 
     public DoublyLinkedListImpl() {
         head.next = tail;
@@ -34,7 +35,14 @@ public class DoublyLinkedListImpl<E> implements List<E> {
      */
     @Override
     public void add(int index, E item) {
-
+        ObjectUtil.requireNonNull(item);
+        RangeUtil.requireRangeWhenAdd(index, 0, size);
+        Node<E> prev = node(index - 1);
+        Node<E> next = prev.next;
+        Node<E> node = new Node<>(item, prev, next);
+        prev.next = node;
+        next.prev = node;
+        size++;
     }
 
     @Override
@@ -78,6 +86,11 @@ public class DoublyLinkedListImpl<E> implements List<E> {
     }
 
     @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
     public int size() {
         return size;
     }
@@ -101,11 +114,17 @@ public class DoublyLinkedListImpl<E> implements List<E> {
     }
 
     /**
-     * prev -> node -> next
+     * head <->n0 <-> prev <-> removedNode <-> next <-> n*
      */
     @Override
     public E remove(int index) {
-        return null;
+        Node<E> prev = node(index - 1);
+        Node<E> node = prev.next;
+        Node<E> next = node.next;
+        prev.next = next;
+        next.prev = prev;
+        size--;
+        return node.item;
     }
 
     @Override
@@ -115,7 +134,8 @@ public class DoublyLinkedListImpl<E> implements List<E> {
 
     @Override
     public void clear() {
-        head.next = null;
+        head.next = tail;
+        tail.prev = head;
         size = 0;
     }
 
@@ -124,7 +144,7 @@ public class DoublyLinkedListImpl<E> implements List<E> {
         E[] array = (E[]) new Object[size];
         Node<E> node = head.next;
         int index = 0;
-        while (Objects.nonNull(node)) {
+        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
             array[index++] = node.item;
             node = node.next;
         }
@@ -137,14 +157,14 @@ public class DoublyLinkedListImpl<E> implements List<E> {
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(node.next);
+            return Objects.nonNull(node) && Objects.nonNull(node.next);
         }
 
         @Override
         public E next() {
-            Node<E> next = node.next;
-            next = next.next;
-            return next.item;
+            E item = node.item;
+            node = node.next;
+            return item;
         }
     }
 

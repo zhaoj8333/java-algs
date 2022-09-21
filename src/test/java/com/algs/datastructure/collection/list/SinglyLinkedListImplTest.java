@@ -4,8 +4,6 @@ import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SinglyLinkedListImplTest {
 
     @Test
@@ -90,6 +88,16 @@ class SinglyLinkedListImplTest {
 
     @Test
     void set() {
+        List<Integer> sll = new SinglyLinkedListImpl<>();
+
+        sll.add(1);
+        sll.add(2);
+        sll.add(3);
+        sll.add(4);
+
+        sll.set(0, 10);
+
+        Assertions.assertEquals(10, sll.get(0));
     }
 
     @Test
@@ -122,6 +130,29 @@ class SinglyLinkedListImplTest {
 
     @Test
     void toArray() {
+    }
+
+    @Test
+    void reverse() {
+        List<Integer> sll = new SinglyLinkedListImpl<>();
+        Integer[] integers = new Integer[10];
+        for (int i = 0; i < 10; i++) {
+            sll.add(i * 100);
+            integers[i] = i * 100;
+        }
+        Object[] integers1 = sll.toArray();
+        Assertions.assertArrayEquals(integers, integers1);
+
+        for (int i = 0; i < integers.length / 2; i++) {
+            int index = 10 - i - 1;
+            Integer tmp = integers[index];
+            integers[index] = integers[i];
+            integers[i] = tmp;
+        }
+        sll.reverse();
+        Object[] integers2 = sll.toArray();
+        Assertions.assertArrayEquals(integers, integers2);
+
     }
 
     @Test

@@ -75,6 +75,74 @@ public class SinglyLinkedListImpl<E> implements List<E> {
     }
 
     @Override
+    public void reverse() {
+//        head.next = reverse(head.next);
+//        head.next = reverse0x(head.next);
+        head.next = reverse0(head.next);
+    }
+
+    /**
+     *  head
+     *   |   next
+     *  \/   \|/
+     *  n1 -> n2 -> n3 .... -> n*
+     *
+     * newHead
+     *
+     *  have to remember three sequential node: newHead, node, next(node.next)
+     *  in each iteration, get the node(firstNode) and insert it to the newHead,
+     *  keep node(first) point to the first node of the rest of previous linkedlist
+     *
+     *  but essentially, iterate reverse is {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
+     *
+     * @param node oldHead
+     * @return newHead
+     */
+    private Node<E> reverse0(Node<E> node) {
+        Node<E> first = node;
+        Node<E> newHead = null;
+        while (Objects.nonNull(first)) {
+            Node<E> second = first.next;
+            first.next = newHead;
+            newHead = first;
+            first = second;
+        }
+        return newHead;
+    }
+
+    /**
+     *
+     * n1 -> n2 -> n3 .... -> n*
+     *
+     * equals to {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
+     * Side effect： use brand new {@link Node} to replace old {@link Node}
+     */
+    private Node<E> reverse0x(Node<E> node) {
+        Node<E> newHead = null;
+        while (Objects.nonNull(node)) {
+            newHead = new Node<>(node.item, newHead);
+            node = node.next;
+        }
+        return newHead;
+    }
+
+    /**
+     * n1 -> n2 -> n3 .... n9 -> n10 -> null
+     *      --------------------------------
+     * null <- n1 <- n2 <- n3 .... n9 <- n10
+     */
+    private Node<E> reverse(Node<E> node) {
+        if (Objects.isNull(node) || Objects.isNull(node.next)) {
+            return node;
+        }
+        Node<E> newHead = reverse(node.next);
+        Node<E> next = node.next;
+        next.next = node;
+        node.next = null;
+        return newHead;
+    }
+
+    @Override
     public int size() {
         return size;
     }
