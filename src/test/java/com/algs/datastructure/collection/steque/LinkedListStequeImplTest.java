@@ -1,19 +1,15 @@
 package com.algs.datastructure.collection.steque;
 
-import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.UnboundedLinkedListQueueImpl0;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class UnboundedLinkedListStequeImplTest {
+class LinkedListStequeImplTest {
 
     @Test
     void test() {
-        ISteque<Integer> q = new UnboundedLinkedListStequeImpl<>();
+        ISteque<Integer> q = new LinkedListStequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
         q.deque();

@@ -1,12 +1,11 @@
 package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.UnboundedLinkedListQueueImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
 
-public class UnboundedLinkedListDequeImpl0<E> implements IDeque<E> {
+public class LinkedListDequeImpl0<E> implements IDeque<E> {
 
     private static class Node<E> {
         E item;
@@ -24,7 +23,7 @@ public class UnboundedLinkedListDequeImpl0<E> implements IDeque<E> {
     private final Node<E> head = new Node<>(null, null, null);
     private final Node<E> tail = new Node<>(null, null, null);
 
-    public UnboundedLinkedListDequeImpl0() {
+    public LinkedListDequeImpl0() {
         head.next = tail;
         tail.prev = head;
     }

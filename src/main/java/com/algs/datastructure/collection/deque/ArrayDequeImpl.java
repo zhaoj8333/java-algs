@@ -2,22 +2,21 @@ package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
 
-public class BoundedArrayDequeImpl<E> implements IDeque<E> {
+public class ArrayDequeImpl<E> implements IDeque<E> {
 
     private int size;
     private int headIndex;
     private final E[] entries;
 
-    public BoundedArrayDequeImpl() {
+    public ArrayDequeImpl() {
         this(CollectionDefaultValues.DEFAULT_CAPACITY);
     }
 
-    public BoundedArrayDequeImpl(int capacity) {
+    public ArrayDequeImpl(int capacity) {
         entries = (E[]) new Object[capacity];
     }
 

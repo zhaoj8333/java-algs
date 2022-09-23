@@ -2,38 +2,19 @@ package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class UnboundedLinkedListQueueImplTest {
+class LinkedListQueueImpl0Test {
+
+    @BeforeEach
+    public void setUp() throws Exception {
+    }
 
     @Test
     void isEmpty() {
-    }
-
-    @Test
-    void contains() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl<>();
-        q.enque(1);
-        q.enque(2);
-        q.enque(3);
-        q.enque(4);
-        q.enque(5);
-
-        Assertions.assertTrue(q.contains(5));
-
-    }
-
-    @Test
-    void add() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl<>();
-        q.add(1);
-        Assertions.assertThrowsExactly(RuntimeException.class, null);
-    }
-
-    @Test
-    void remove() {
     }
 
     @Test
@@ -42,7 +23,7 @@ class UnboundedLinkedListQueueImplTest {
 
     @Test
     void enqueue() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl<>();
+        IQueue<Integer> q = new LinkedListQueueImpl0<>();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
         Assertions.assertFalse(q.isEmpty());
@@ -55,14 +36,13 @@ class UnboundedLinkedListQueueImplTest {
         q.enque(6);
 
         Object[] integers = q.toArray();
-        for (int i = 1; i <= integers.length; i++) {
-            Assertions.assertEquals(i, (Integer) integers[i - 1]);
-        }
+        System.out.println(Arrays.toString(integers));
+
     }
 
     @Test
     void dequeue() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl0<>();
+        IQueue<Integer> q = new LinkedListQueueImpl0<>();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
         q.deque();
@@ -103,6 +83,18 @@ class UnboundedLinkedListQueueImplTest {
     }
 
     @Test
+    void contains() {
+        IQueue<Integer> q = new LinkedListQueueImpl0<>();
+        q.enque(1);
+        q.enque(2);
+        q.enque(3);
+        q.enque(4);
+        q.enque(5);
+
+        Assertions.assertTrue(q.contains(5));
+    }
+
+    @Test
     void peek() {
     }
 
@@ -112,17 +104,37 @@ class UnboundedLinkedListQueueImplTest {
 
     @Test
     void toArray() {
-    }
-
-    @Test
-    void iterate() {
-        IQueue<Integer> q = new UnboundedLinkedListQueueImpl<>();
+        IQueue<Integer> q = new LinkedListQueueImpl0<>();
         q.enque(1);
         q.enque(2);
         q.enque(3);
         q.enque(4);
         q.enque(5);
-        q.enque(6);
+
+        Object[] integers = q.toArray();
+        Assertions.assertEquals(1, (int)integers[0]);
+
+        q.deque();
+        q.deque();
+        q.deque();
+        q.deque();
+
+        for (int i = 0; i < 4; i++) {
+            q.enque((i + 1) * 1000);
+        }
+        integers = q.toArray();
+        Assertions.assertEquals(5, (int)integers[0]);
+
+    }
+
+    @Test
+    void iterate() {
+        IQueue<Integer> q = new LinkedListQueueImpl0<>();
+        q.enque(1);
+        q.enque(2);
+        q.enque(3);
+        q.enque(4);
+        q.enque(5);
 
         Iterator<Integer> itr = q.iterator();
         while (itr.hasNext()) {

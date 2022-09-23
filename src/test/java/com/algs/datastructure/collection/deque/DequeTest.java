@@ -9,9 +9,9 @@ public class DequeTest {
     @Test
     void test() {
 
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
-        IDeque<Integer> q1 = new UnboundedLinkedListDequeImpl<>();
-        IDeque<Integer> q2 = new UnboundedLinkedListDequeImpl0<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
+        IDeque<Integer> q1 = new LinkedListDequeImpl<>();
+        IDeque<Integer> q2 = new LinkedListDequeImpl0<>();
         Assertions.assertTrue(q.isEmpty());
         Assertions.assertTrue(q1.isEmpty());
         for (int i = 0; i < 3; i++) {
@@ -63,7 +63,7 @@ public class DequeTest {
 
     @Test
     void iterate() {
-        IDeque<Integer> q2 = new UnboundedLinkedListDequeImpl0<>();
+        IDeque<Integer> q2 = new LinkedListDequeImpl0<>();
         for (int i = 0; i < 5; i++) {
             q2.enque(i);
         }

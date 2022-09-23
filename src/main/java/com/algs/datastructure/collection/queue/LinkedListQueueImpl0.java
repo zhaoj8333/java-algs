@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.steque;
+package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
@@ -9,7 +9,7 @@ import java.util.Objects;
  * Implemented by DoublyLinkedList
  */
 @SuppressWarnings("unchecked")
-public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
+public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     private static class Node<E> {
         E item;
@@ -24,8 +24,13 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
     }
 
     private int size;
-    private Node<E> head;
-    private Node<E> tail;
+    private final Node<E> head = new Node<>(null, null, null);
+    private final Node<E> tail = new Node<>(null, null, null);
+
+    public LinkedListQueueImpl0() {
+        head.next = tail;
+        tail.prev = head;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -53,7 +58,7 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public final void add(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
+        throw new UnsupportedOperationException("Unsupport this operation");
     }
 
     @Override
@@ -63,7 +68,7 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public final E remove(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
+        throw new UnsupportedOperationException("Unsupport this operation");
     }
 
     @Override
@@ -72,58 +77,37 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
     }
 
     /**
-     * enquedFirst <-> oldHead <-> n1 <-> n2 <-> ... <-> n*
-     */
-    @Override
-    public void enqueFirst(E item) {
-        ObjectUtil.requireNonNull(item);
-        Node<E> oldHead = head;
-        head = new Node<>(item, null, oldHead);
-        oldHead.prev = head;
-        size++;
-    }
-
-    /**
-     * head <-> n1 <-> n2 <-> ... <-> oldTail <-> enqueuedNode
+     * head <-> node <-> (newInsertedNode) <-> tail
      */
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
-        Node<E> node = new Node<>(item, tail, null);
-        if (Objects.nonNull(tail)) {
-            tail.next = node;
-        } else {
-            head = node;
-        }
-        tail = node;
+        Node<E> prev = tail.prev;
+        Node<E> node = new Node<>(item, prev, tail);
+        prev.next = node;
+        tail.prev = node;
         size++;
     }
 
     /**
-     * head(dequedNode) <-> null
-     * head(dequedNode) <-> n1 <-> n2 <-> ... <-> tail
+     * head <-> (newRemovedNode) <-> node <-> tail
      */
     @Override
     public E deque() {
-        ObjectUtil.requireNonEmpty(this);
-        Node<E> node = head;
-        Node<E> next = node.next;
-        if (Objects.nonNull(next)) {
-            next.prev = null;
-        } else {
-            tail = null;
+        if (isEmpty()) {
+            throw new RuntimeException("Already Empty");
         }
-        head = next;
+        Node<E> node = head.next;   // removed node
+        E data = node.item;
+        head.next = node.next;
+        node.next.prev = head;
         size--;
-        return node.item;
+        return data;
     }
 
     @Override
     public E peek() {
-        if (isEmpty()) {
-            return null;
-        }
-        return head.item;
+        return head.next.item;
     }
 
     @Override
@@ -134,42 +118,46 @@ public class UnboundedLinkedListStequeImpl<E> implements ISteque<E> {
 //        }
 //        size = 0;
         // OR
-        while (!isEmpty()) {
-            deque();
-        }
+        // OR
+        head.next = tail;
+        tail.prev = head;
+        size = 0;
+//        while (!isEmpty()) {
+//            deque();
+//        }
     }
 
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        Node<E> node = head;
+        Node<E> node = head.next;
         int index = 0;
-        while (Objects.nonNull(node)) {
+        while (Objects.nonNull(node) && Objects.nonNull(node.item)) {
             array[index++] = node.item;
             node = node.next;
         }
         return array;
     }
 
-    private class LinkedListQueueIterator<E> implements Iterator<E> {
+    private class LinkedListQueueIterator0<E> implements Iterator<E> {
 
-        private Node<E> node = (Node<E>) head;
+        private Node<E> next = (Node<E>) head.next;
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(node);
+            return Objects.nonNull(next.next);
         }
 
         @Override
         public E next() {
-            E item = node.item;
-            node = node.next;
+            E item = next.item;
+            next = next.next;
             return item;
         }
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new LinkedListQueueIterator<>();
+        return new LinkedListQueueIterator0<>();
     }
 }

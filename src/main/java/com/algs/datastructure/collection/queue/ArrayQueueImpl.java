@@ -2,27 +2,26 @@ package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.bag.LinkedListBagImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
 
 /**
- * {@link BoundedArrayQueueImpl}: also name is CircularQueue, RingBuffer
- * UnboundedArrayQueue: when enqueue, #{{@link BoundedArrayQueueImpl#ensureCapacity(int)}} is called, will extend the entries automatically
+ * {@link ArrayQueueImpl}: also name is CircularQueue, RingBuffer
+ * ArrayQueue: when enqueue, #{{@link ArrayQueueImpl#ensureCapacity(int)}} is called, will extend the entries automatically
  */
 @SuppressWarnings("unchecked")
-public class BoundedArrayQueueImpl<E> implements IQueue<E> {
+public class ArrayQueueImpl<E> implements IQueue<E> {
 
-    private int size;
-    private int headIndex;
-    private E[] entries;
+    protected int size;
+    protected int headIndex;
+    protected E[] entries;
 
-    public BoundedArrayQueueImpl() {
+    public ArrayQueueImpl() {
         this(CollectionDefaultValues.DEFAULT_CAPACITY);
     }
 
-    public BoundedArrayQueueImpl(int capacity) {
+    public ArrayQueueImpl(int capacity) {
         entries = (E[]) new Object[capacity];
     }
 

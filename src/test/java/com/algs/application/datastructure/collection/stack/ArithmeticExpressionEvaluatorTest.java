@@ -1,6 +1,6 @@
 package com.algs.application.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
@@ -52,7 +52,7 @@ class ArithmeticExpressionEvaluatorTest {
     @Test
     void evaluate() {
 
-        IQueue<String> q = new BoundedArrayQueueImpl<>();
+        IQueue<String> q = new ArrayQueueImpl<>();
 //        q.enque("(1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )");    // 101
 //        q.enque("((1+5.0)/2.0)");    // 101
         q.enque("((1+5.0)/0.1)");    // 101

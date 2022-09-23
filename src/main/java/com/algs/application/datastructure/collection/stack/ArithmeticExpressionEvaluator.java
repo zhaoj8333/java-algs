@@ -1,8 +1,8 @@
 package com.algs.application.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.UnboundedLinkedListQueueImpl0;
+import com.algs.datastructure.collection.queue.LinkedListQueueImpl0;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedListStackImpl;
@@ -25,7 +25,7 @@ public class ArithmeticExpressionEvaluator {
     }
 
     public IQueue<Integer> getIntFromString(String string) {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>();
+        IQueue<Integer> q = new ArrayQueueImpl<>();
         int length = string.length();
         for (int i = 0; i < length; i++) {
             char c = string.charAt(i);
@@ -45,7 +45,7 @@ public class ArithmeticExpressionEvaluator {
     }
 
     public IQueue<Double> getDoubleFromString(String string) {
-        IQueue<Double> q = new UnboundedLinkedListQueueImpl0<>();
+        IQueue<Double> q = new LinkedListQueueImpl0<>();
         int length = string.length();
         for (int i = 0; i < length; i++) {
             StringBuilder sb = new StringBuilder();

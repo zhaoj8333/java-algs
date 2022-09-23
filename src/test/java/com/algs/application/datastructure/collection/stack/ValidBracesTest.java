@@ -1,6 +1,6 @@
 package com.algs.application.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +13,7 @@ class ValidBracesTest {
 
     @BeforeEach
     void setUp() {
-        strings = new BoundedArrayQueueImpl<>(9);
+        strings = new ArrayQueueImpl<>(9);
         strings.enque("{}");
         strings.enque("({})");
         strings.enque("(){}");

@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.deque;
 
 import org.junit.jupiter.api.Test;
 
-class UnboundedLinkedListDequeImpl0Test {
+class LinkedListDequeImpl0Test {
 
     @Test
     void enqueHead() {

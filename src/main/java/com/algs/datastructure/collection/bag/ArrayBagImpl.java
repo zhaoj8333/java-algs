@@ -8,8 +8,8 @@ import java.util.Objects;
 @SuppressWarnings("unchecked")
 public class ArrayBagImpl<E> implements IBag<E> {
 
-    private int size;
-    private E[] entries;
+    protected int size;
+    protected E[] entries;
 
     public ArrayBagImpl() {
         this(CollectionDefaultValues.DEFAULT_CAPACITY);

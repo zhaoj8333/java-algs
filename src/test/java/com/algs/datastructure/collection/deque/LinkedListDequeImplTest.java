@@ -4,11 +4,11 @@ import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class BoundedArrayDequeImplTest {
+class LinkedListDequeImplTest {
 
     @Test
     void test() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         for (int i = 0; i < 3; i++) {
             q.enque(i);
@@ -34,7 +34,7 @@ class BoundedArrayDequeImplTest {
 
     @Test
     void enqueueHead() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -57,7 +57,7 @@ class BoundedArrayDequeImplTest {
 
     @Test
     void dequeueTail() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -88,7 +88,7 @@ class BoundedArrayDequeImplTest {
 
     @Test
     void enqueue() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -102,7 +102,7 @@ class BoundedArrayDequeImplTest {
 
     @Test
     void dequeue() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -124,7 +124,6 @@ class BoundedArrayDequeImplTest {
         Assertions.assertTrue(q.isEmpty());
         q.clear();
         Assertions.assertTrue(q.isEmpty());
-
     }
 
     @Test
@@ -161,8 +160,8 @@ class BoundedArrayDequeImplTest {
 
     @Test
     void iterate() {
-        IDeque<Integer> q = new BoundedArrayDequeImpl<>();
-        for (int i = 0; i < 10; i++) {
+        IDeque<Integer> q = new LinkedListDequeImpl<>();
+        for (int i = 0; i < 5; i++) {
             q.enque(i);
         }
         Iterator<Integer> itr = q.iterator();

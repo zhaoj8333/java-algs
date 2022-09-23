@@ -9,7 +9,7 @@ import java.util.Objects;
  * Implemented by DoublyLinkedList
  */
 @SuppressWarnings("unchecked")
-public class UnboundedLinkedListQueueImpl<E> implements IQueue<E> {
+public class LinkedListQueueImpl<E> implements IQueue<E> {
 
     private static class Node<E> {
         E item;

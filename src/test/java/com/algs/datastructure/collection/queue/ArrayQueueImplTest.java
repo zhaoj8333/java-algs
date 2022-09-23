@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BoundedArrayQueueImplTest {
+class ArrayQueueImplTest {
 
     @BeforeEach
     void setUp() {
@@ -18,7 +18,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void enqueue() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(10);
+        IQueue<Integer> q = new ArrayQueueImpl<>(10);
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
         }
@@ -46,7 +46,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void dequeue() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
@@ -59,7 +59,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void isEmpty() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
@@ -71,7 +71,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void contains() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
         }
@@ -83,7 +83,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void size() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
@@ -99,7 +99,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void clear() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
@@ -112,7 +112,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void toArray() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
@@ -126,7 +126,7 @@ class BoundedArrayQueueImplTest {
 
     @Test
     void iterate() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>(7);
+        IQueue<Integer> q = new ArrayQueueImpl<>(7);
         for (int i = 1; i <= 7; i++) {
             q.enque(i);
         }

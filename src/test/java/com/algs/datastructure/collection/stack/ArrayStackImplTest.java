@@ -1,13 +1,10 @@
 package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.BoundedArrayQueueImpl;
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import javax.print.DocFlavor;
-import java.util.Arrays;
 
 class ArrayStackImplTest {
 
@@ -105,7 +102,7 @@ class ArrayStackImplTest {
 
     @Test
     void _1_3_6() {
-        IQueue<Integer> q = new BoundedArrayQueueImpl<>();
+        IQueue<Integer> q = new ArrayQueueImpl<>();
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }

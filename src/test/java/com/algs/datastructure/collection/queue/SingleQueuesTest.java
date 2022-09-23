@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class SingleQueuesTest {
 
-    IQueue<Integer> arrayQ = new BoundedArrayQueueImpl<>(10);
-    IQueue<Integer> llQ = new UnboundedLinkedListQueueImpl<>();
-    IQueue<Integer> llQ0 = new UnboundedLinkedListQueueImpl0<>();
+    IQueue<Integer> arrayQ = new ArrayQueueImpl<>(10);
+    IQueue<Integer> llQ = new LinkedListQueueImpl<>();
+    IQueue<Integer> llQ0 = new LinkedListQueueImpl0<>();
 
     @Test
     void test() {

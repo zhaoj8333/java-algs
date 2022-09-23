@@ -5,7 +5,7 @@ import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
 
-public class UnboundedLinkedListDequeImpl<E> implements IDeque<E> {
+public class LinkedListDequeImpl<E> implements IDeque<E> {
 
     private static class Node<E> {
         E item;

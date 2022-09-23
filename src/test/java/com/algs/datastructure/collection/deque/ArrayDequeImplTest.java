@@ -1,14 +1,16 @@
 package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class UnboundedLinkedListDequeImplTest {
+class ArrayDequeImplTest {
 
     @Test
     void test() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         for (int i = 0; i < 3; i++) {
             q.enque(i);
@@ -34,7 +36,7 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void enqueueHead() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -57,7 +59,7 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void dequeueTail() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -88,7 +90,7 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void enqueue() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -102,7 +104,7 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void dequeue() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
+        IDeque<Integer> q = new ArrayDequeImpl<>();
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -124,6 +126,7 @@ class UnboundedLinkedListDequeImplTest {
         Assertions.assertTrue(q.isEmpty());
         q.clear();
         Assertions.assertTrue(q.isEmpty());
+
     }
 
     @Test
@@ -160,8 +163,8 @@ class UnboundedLinkedListDequeImplTest {
 
     @Test
     void iterate() {
-        IDeque<Integer> q = new UnboundedLinkedListDequeImpl<>();
-        for (int i = 0; i < 5; i++) {
+        IDeque<Integer> q = new ArrayDequeImpl<>();
+        for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
         Iterator<Integer> itr = q.iterator();
