@@ -8,7 +8,7 @@ class SinglyLinkedListImplTest {
 
     @Test
     void test() {
-        List<Integer> sll = new SinglyLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
         Assertions.assertEquals(0, sll.size());
         Assertions.assertTrue(sll.isEmpty());
 
@@ -88,7 +88,7 @@ class SinglyLinkedListImplTest {
 
     @Test
     void set() {
-        List<Integer> sll = new SinglyLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
 
         sll.add(1);
         sll.add(2);
@@ -134,7 +134,7 @@ class SinglyLinkedListImplTest {
 
     @Test
     void reverse() {
-        List<Integer> sll = new SinglyLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
         Integer[] integers = new Integer[10];
         for (int i = 0; i < 10; i++) {
             sll.add(i * 100);

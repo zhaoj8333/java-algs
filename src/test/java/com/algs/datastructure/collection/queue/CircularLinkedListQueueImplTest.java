@@ -1,13 +1,17 @@
-package com.algs.datastructure.collection.list;
+package com.algs.datastructure.collection.queue;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CircularSinglyLinkedListTest {
+class CircularLinkedListQueueImplTest {
 
     @Test
     void add() {
+    }
+
+    @Test
+    void testAdd() {
     }
 
     @Test
@@ -39,10 +43,6 @@ class CircularSinglyLinkedListTest {
     }
 
     @Test
-    void testAdd() {
-    }
-
-    @Test
     void remove() {
     }
 
@@ -52,6 +52,10 @@ class CircularSinglyLinkedListTest {
 
     @Test
     void clear() {
+    }
+
+    @Test
+    void hasCircle() {
     }
 
     @Test

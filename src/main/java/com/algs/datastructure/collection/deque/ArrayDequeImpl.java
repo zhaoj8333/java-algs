@@ -115,21 +115,6 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
     }
 
     @Override
-    public final void add(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final E remove(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
-    }
-
-    @Override
     public void clear() {
         while (!isEmpty()) {
             deque();
@@ -145,6 +130,31 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
             array[i] = entries[(headIndex + i) % entries.length];
         }
         return array;
+    }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
+    public final void add(E o) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final E remove(E o) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     private class ArrayDequeIterator<E> implements Iterator<E> {

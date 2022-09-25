@@ -122,6 +122,16 @@ public class ArrayBagImpl<E> implements IBag<E> {
         return array;
     }
 
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
     private class ArrayIterator<E> implements Iterator<E> {
 
         private int n = -1;

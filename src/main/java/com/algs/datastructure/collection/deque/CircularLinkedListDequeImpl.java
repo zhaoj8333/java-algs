@@ -1,8 +1,14 @@
-package com.algs.datastructure.collection.list;
+package com.algs.datastructure.collection.deque;
 
+import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.list.ILinkedList;
 
-public class CircularSinglyLinkedList<E> implements List<E> {
+public class CircularLinkedListDequeImpl<E> implements ILinkedList<E> {
+
+    private int size;
+    private DoublyLinkNode<E> head;
+    private DoublyLinkNode<E> tail;
 
     @Override
     public void add(int index, E item) {
@@ -65,12 +71,30 @@ public class CircularSinglyLinkedList<E> implements List<E> {
     }
 
     @Override
+    public boolean hasCircle() {
+        return false;
+    }
+
+    @Override
     public E[] toArray() {
         return null;
     }
 
+    private static class CircularDoublyLinkedListIterator<E> implements Iterator<E> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+    }
+
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new CircularDoublyLinkedListIterator<>();
     }
 }

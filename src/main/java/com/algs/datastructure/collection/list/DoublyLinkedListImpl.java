@@ -1,29 +1,18 @@
 package com.algs.datastructure.collection.list;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 import com.algs.util.RangeUtil;
 
 import java.util.Objects;
 
-public class DoublyLinkedListImpl<E> implements List<E> {
-
-    private static class Node<E> {
-        E item;
-        Node<E> prev;
-        Node<E> next;
-
-        public Node(E item, Node<E> prev, Node<E> next) {
-            this.item = item;
-            this.prev = prev;
-            this.next = next;
-        }
-    }
+public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
 
     private int size;
-    private final Node<E> head = new Node<>(null, null, null);
-    private final Node<E> tail = new Node<>(null, null, null);
+    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
     public DoublyLinkedListImpl() {
         head.next = tail;
@@ -31,17 +20,17 @@ public class DoublyLinkedListImpl<E> implements List<E> {
     }
 
     /**
-     * prev -> newNode -> next
+     * prev -> newDoublyLinkNode -> next
      */
     @Override
     public void add(int index, E item) {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(index, 0, size);
-        Node<E> prev = node(index - 1);
-        Node<E> next = prev.next;
-        Node<E> node = new Node<>(item, prev, next);
-        prev.next = node;
-        next.prev = node;
+        DoublyLinkNode<E> prev = DoublyLinkNode(index - 1);
+        DoublyLinkNode<E> next = prev.next;
+        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, prev, next);
+        prev.next = DoublyLinkNode;
+        next.prev = DoublyLinkNode;
         size++;
     }
 
@@ -52,42 +41,37 @@ public class DoublyLinkedListImpl<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        Node<E> node = node(index);
-        return Objects.isNull(node) ? null : node.item;
+        DoublyLinkNode<E> DoublyLinkNode = DoublyLinkNode(index);
+        return Objects.isNull(DoublyLinkNode) ? null : DoublyLinkNode.item;
     }
 
     @Override
     public void set(int index, E item) {
-        Node<E> node = node(index);
-        if (Objects.nonNull(node)) {
-            node.item = item;
+        DoublyLinkNode<E> DoublyLinkNode = DoublyLinkNode(index);
+        if (Objects.nonNull(DoublyLinkNode)) {
+            DoublyLinkNode.item = item;
         }
     }
 
     @Override
     public int indexOf(E item) {
-        Node<E> node = head.next;
+        DoublyLinkNode<E> DoublyLinkNode = head.next;
         if (Objects.isNull(item)) {
             for (int i = 0; i < size; i++) {
-                if (Objects.isNull(node)) {
+                if (Objects.isNull(DoublyLinkNode)) {
                     return i;
                 }
-                node = node.next;
+                DoublyLinkNode = DoublyLinkNode.next;
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (Objects.equals(node.item, item)) {
+                if (Objects.equals(DoublyLinkNode.item, item)) {
                     return i;
                 }
-                node = node.next;
+                DoublyLinkNode = DoublyLinkNode.next;
             }
         }
         return CollectionDefaultValues.ELEMENT_NOT_FOUND;
-    }
-
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
@@ -105,31 +89,26 @@ public class DoublyLinkedListImpl<E> implements List<E> {
         return indexOf(item) == CollectionDefaultValues.ELEMENT_NOT_FOUND;
     }
 
-    private Node<E> node(int index) {
-        Node<E> node = head;
+    private DoublyLinkNode<E> DoublyLinkNode(int index) {
+        DoublyLinkNode<E> DoublyLinkNode = head;
         for (int i = -1; i < index; i++) {
-            node = node.next;
+            DoublyLinkNode = DoublyLinkNode.next;
         }
-        return node;
+        return DoublyLinkNode;
     }
 
     /**
-     * head <->n0 <-> prev <-> removedNode <-> next <-> n*
+     * head <->n0 <-> prev <-> removedDoublyLinkNode <-> next <-> n*
      */
     @Override
     public E remove(int index) {
-        Node<E> prev = node(index - 1);
-        Node<E> node = prev.next;
-        Node<E> next = node.next;
+        DoublyLinkNode<E> prev = DoublyLinkNode(index - 1);
+        DoublyLinkNode<E> DoublyLinkNode = prev.next;
+        DoublyLinkNode<E> next = DoublyLinkNode.next;
         prev.next = next;
         next.prev = prev;
         size--;
-        return node.item;
-    }
-
-    @Override
-    public E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
+        return DoublyLinkNode.item;
     }
 
     @Override
@@ -142,28 +121,43 @@ public class DoublyLinkedListImpl<E> implements List<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        Node<E> node = head.next;
+        DoublyLinkNode<E> DoublyLinkNode = head.next;
         int index = 0;
-        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
-            array[index++] = node.item;
-            node = node.next;
+        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next)) {
+            array[index++] = DoublyLinkNode.item;
+            DoublyLinkNode = DoublyLinkNode.next;
         }
         return array;
     }
 
+    @Override
+    public boolean hasCircle() {
+        return false;
+    }
+
+    @Override
+    public E remove(E item) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
     private class DoublyLinkedListIterator implements Iterator<E> {
 
-        private Node<E> node = head.next;
+        private DoublyLinkNode<E> DoublyLinkNode = head.next;
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(node) && Objects.nonNull(node.next);
+            return Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next);
         }
 
         @Override
         public E next() {
-            E item = node.item;
-            node = node.next;
+            E item = DoublyLinkNode.item;
+            DoublyLinkNode = DoublyLinkNode.next;
             return item;
         }
     }

@@ -4,13 +4,11 @@ import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DoublyLinkedListImplTest {
 
     @Test
     void test() {
-        List<Integer> dll = new DoublyLinkedListImpl<>();
+        IList<Integer> dll = new DoublyLinkedListImpl<>();
         Assertions.assertEquals(0, dll.size());
         Assertions.assertTrue(dll.isEmpty());
 

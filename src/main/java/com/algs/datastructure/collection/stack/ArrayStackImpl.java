@@ -72,6 +72,26 @@ public class ArrayStackImpl<E> implements IStack<E> {
     }
 
     @Override
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            entries[i] = null;
+        }
+        size = 0;
+    }
+
+    @Override
+    public E[] toArray() {
+        E[] array = (E[]) new Object[size];
+        if (size >= 0) System.arraycopy(entries, 0, array, 0, size);
+        return array;
+    }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
     public void add(E o) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
@@ -87,18 +107,8 @@ public class ArrayStackImpl<E> implements IStack<E> {
     }
 
     @Override
-    public void clear() {
-        for (int i = 0; i < size; i++) {
-            entries[i] = null;
-        }
-        size = 0;
-    }
-
-    @Override
-    public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        if (size >= 0) System.arraycopy(entries, 0, array, 0, size);
-        return array;
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override

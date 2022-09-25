@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
+import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -7,21 +8,9 @@ import java.util.Objects;
 
 public class LinkedListDequeImpl0<E> implements IDeque<E> {
 
-    private static class Node<E> {
-        E item;
-        Node<E> prev;
-        Node<E> next;
-
-        public Node(E item, Node<E> prev, Node<E> next) {
-            this.item = item;
-            this.prev = prev;
-            this.next = next;
-        }
-    }
-
     private int size;
-    private final Node<E> head = new Node<>(null, null, null);
-    private final Node<E> tail = new Node<>(null, null, null);
+    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
     public LinkedListDequeImpl0() {
         head.next = tail;
@@ -29,55 +18,55 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> enquedNode(oldHead) <-> tail
+     * head <-> enquedDoublyLinkNode(oldHead) <-> tail
      */
     @Override
     public void enqueHead(E item) {
         ObjectUtil.requireNonNull(item);
-        Node<E> next = head.next;
-        Node<E> node = new Node<>(item, head, next);
-        head.next = node;
-        next.prev = node;
+        DoublyLinkNode<E> next = head.next;
+        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, head, next);
+        head.next = DoublyLinkNode;
+        next.prev = DoublyLinkNode;
         size++;
     }
 
     /**
-     * head <-> dequedNode <-> n2 <-> tail
+     * head <-> dequedDoublyLinkNode <-> n2 <-> tail
      */
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        Node<E> node = head.next;
-        node.next.prev = head;
-        head.next = node.next;
+        DoublyLinkNode<E> DoublyLinkNode = head.next;
+        DoublyLinkNode.next.prev = head;
+        head.next = DoublyLinkNode.next;
         size--;
-        return node.item;
+        return DoublyLinkNode.item;
     }
 
     /**
-     * head <-> ... <-> n2 <-> enqueuedNode <-> tail
+     * head <-> ... <-> n2 <-> enqueuedDoublyLinkNode <-> tail
      */
     @Override
     public void enqueTail(E item) {
         ObjectUtil.requireNonNull(item);
-        Node<E> prev = tail.prev;
-        Node<E> node = new Node<>(item, prev, tail);
-        prev.next = node;
-        tail.prev = node;
+        DoublyLinkNode<E> prev = tail.prev;
+        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, prev, tail);
+        prev.next = DoublyLinkNode;
+        tail.prev = DoublyLinkNode;
         size++;
     }
 
     /**
-     * head <-> n1 <-> ... <-> prev <-> dequedNode <-> tail
+     * head <-> n1 <-> ... <-> prev <-> dequedDoublyLinkNode <-> tail
      */
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        Node<E> node = tail.prev;
-        node.prev.next = tail;
-        tail.prev = node.prev;
+        DoublyLinkNode<E> DoublyLinkNode = tail.prev;
+        DoublyLinkNode.prev.next = tail;
+        tail.prev = DoublyLinkNode.prev;
         size--;
-        return node.item;
+        return DoublyLinkNode.item;
     }
 
     @Override
@@ -120,15 +109,39 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private Node<E> node(E item) {
-        Node<E> node = head.next;
-        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
-            if (Objects.equals(node.item, item)) {
-                return node;
+    private DoublyLinkNode<E> node(E item) {
+        DoublyLinkNode<E> DoublyLinkNode = head.next;
+        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next)) {
+            if (Objects.equals(DoublyLinkNode.item, item)) {
+                return DoublyLinkNode;
             }
-            node = node.next;
+            DoublyLinkNode = DoublyLinkNode.next;
         }
         return null;
+    }
+
+    @Override
+    public void clear() {
+        head.next = null;
+        tail.prev = null;
+        size = 0;
+    }
+
+    @Override
+    public E[] toArray() {
+        E[] array = (E[]) new Object[size];
+        DoublyLinkNode<E> DoublyLinkNode = head.next;
+        int index = 0;
+        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next)) {
+            array[index++] = DoublyLinkNode.item;
+            DoublyLinkNode = DoublyLinkNode.next;
+        }
+        return array;
+    }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override
@@ -147,37 +160,23 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     @Override
-    public void clear() {
-        head.next = null;
-        tail.prev = null;
-        size = 0;
-    }
-
-    @Override
-    public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        Node<E> node = head.next;
-        int index = 0;
-        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
-            array[index++] = node.item;
-            node = node.next;
-        }
-        return array;
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     private class LinkedListQueueIterator<E> implements Iterator<E> {
 
-        private Node<E> node = (Node<E>) head.next;
+        private DoublyLinkNode<E> DoublyLinkNode = (DoublyLinkNode<E>) head.next;
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(node.next);
+            return Objects.nonNull(DoublyLinkNode.next);
         }
 
         @Override
         public E next() {
-            E item = node.item;
-            node = node.next;
+            E item = DoublyLinkNode.item;
+            DoublyLinkNode = DoublyLinkNode.next;
             return item;
         }
     }

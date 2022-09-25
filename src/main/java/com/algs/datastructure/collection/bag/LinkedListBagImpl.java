@@ -1,23 +1,14 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.SinglyLinkNode;
 
 import java.util.Objects;
 
 public class LinkedListBagImpl<E> implements IBag<E> {
 
-    private static class Node<E> {
-        E item;
-        Node<E> next;
-
-        public Node(E data, Node<E> next) {
-            this.item = data;
-            this.next = next;
-        }
-    }
-
     private int size;
-    private Node<E> head;
+    private SinglyLinkNode<E> head;
 
     @Override
     public void add(E item) {
@@ -25,13 +16,8 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         size++;
     }
 
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
     private void linkHead(E item) {
-        head = new Node<>(item, head);
+        head = new SinglyLinkNode<>(item, head);
     }
 
     @Override
@@ -47,7 +33,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     @Override
     public int numberOf(E item) {
         int number = 0;
-        Node<E> node = this.head;
+        SinglyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(item, node.item)) {
                 number ++;
@@ -62,8 +48,8 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         return Objects.nonNull(node(item));
     }
 
-    private Node<E> node(E item) {
-        Node<E> node = head;
+    private SinglyLinkNode<E> node(E item) {
+        SinglyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -86,12 +72,12 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         if (isEmpty()) {
             throw new RuntimeException("Already Empty");
         }
-        Node<E> node = node(item);
+        SinglyLinkNode<E> node = node(item);
         if (Objects.isNull(node)) {
             return null;
         }
         E data = node.item;
-        Node<E> oldhead = head;
+        SinglyLinkNode<E> oldhead = head;
         head = head.next;
         node.item = oldhead.item;
         size --;
@@ -107,7 +93,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        Node<E> node = head;
+        SinglyLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = (E) node.item;
@@ -117,9 +103,24 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     }
 
     @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Node<E> node = head;
+        SinglyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             sb.append("(").append(node.item.toString()).append(") -> ");
             node = node.next;
@@ -129,7 +130,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
 
     private class LinkedListBagIterator<E> implements Iterator<E> {
 
-        private Node<E> node = (Node<E>) head;
+        private SinglyLinkNode<E> node = (SinglyLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

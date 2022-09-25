@@ -2,7 +2,7 @@ package com.algs.util;
 
 //import org.apache.commons.lang.StringUtils;
 
-import com.algs.datastructure.collection.Collection;
+import com.algs.datastructure.collection.ICollection;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
@@ -25,7 +25,7 @@ public final class ObjectUtil {
         }
     }
 
-    public static void requireNonEmpty(Collection collection) {
+    public static void requireNonEmpty(ICollection collection) {
         if (collection.isEmpty()) {
             throw new RuntimeException("Already Empty");
         }

@@ -1,6 +1,7 @@
 package com.algs.datastructure.collection.steque;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -11,21 +12,9 @@ import java.util.Objects;
 @SuppressWarnings("unchecked")
 public class LinkedListStequeImpl<E> implements ISteque<E> {
 
-    private static class Node<E> {
-        E item;
-        Node<E> prev;
-        Node<E> next;
-
-        public Node(E data, Node<E> prev, Node<E> next) {
-            this.item = data;
-            this.prev = prev;
-            this.next = next;
-        }
-    }
-
     private int size;
-    private Node<E> head;
-    private Node<E> tail;
+    private DoublyLinkNode<E> head;
+    private DoublyLinkNode<E> tail;
 
     @Override
     public boolean isEmpty() {
@@ -37,11 +26,11 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private Node<E> node(E item) {
+    private DoublyLinkNode<E> node(E item) {
         if (Objects.isNull(item)) {
             return null;
         }
-        Node<E> node = head;
+        DoublyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -49,21 +38,6 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
             node = node.next;
         }
         return null;
-    }
-
-    @Override
-    public final void add(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final E remove(E o) {
-        throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
@@ -77,19 +51,19 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public void enqueFirst(E item) {
         ObjectUtil.requireNonNull(item);
-        Node<E> oldHead = head;
-        head = new Node<>(item, null, oldHead);
+        DoublyLinkNode<E> oldHead = head;
+        head = new DoublyLinkNode<>(item, null, oldHead);
         oldHead.prev = head;
         size++;
     }
 
     /**
-     * head <-> n1 <-> n2 <-> ... <-> oldTail <-> enqueuedNode
+     * head <-> n1 <-> n2 <-> ... <-> oldTail <-> enqueuedDoublyLinkNode
      */
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
-        Node<E> node = new Node<>(item, tail, null);
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, tail, null);
         if (Objects.nonNull(tail)) {
             tail.next = node;
         } else {
@@ -100,14 +74,14 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     }
 
     /**
-     * head(dequedNode) <-> null
-     * head(dequedNode) <-> n1 <-> n2 <-> ... <-> tail
+     * head(dequedDoublyLinkNode) <-> null
+     * head(dequedDoublyLinkNode) <-> n1 <-> n2 <-> ... <-> tail
      */
     @Override
     public E deque() {
         ObjectUtil.requireNonEmpty(this);
-        Node<E> node = head;
-        Node<E> next = node.next;
+        DoublyLinkNode<E> node = head;
+        DoublyLinkNode<E> next = node.next;
         if (Objects.nonNull(next)) {
             next.prev = null;
         } else {
@@ -128,7 +102,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public void clear() {
-//        Node<E> node = head.next;
+//        DoublyLinkNode<E> node = head.next;
 //        while (Objects.nonNull(node) && Objects.nonNull(node.data)) {
 //            node = null;
 //        }
@@ -142,7 +116,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        Node<E> node = head;
+        DoublyLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = node.item;
@@ -151,9 +125,34 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         return array;
     }
 
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
+    public final void add(E o) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final E remove(E o) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
     private class LinkedListQueueIterator<E> implements Iterator<E> {
 
-        private Node<E> node = (Node<E>) head;
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

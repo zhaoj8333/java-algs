@@ -1,6 +1,7 @@
 package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.SinglyLinkNode;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -12,18 +13,8 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         return null;
     }
 
-    private static class Node<E> {
-        E item;
-        Node<E> next;
-
-        public Node(E item, Node<E> next) {
-            this.item = item;
-            this.next = next;
-        }
-    }
-
     private int size;
-    private Node<E> top;
+    private SinglyLinkNode<E> top;
 
     /**
      * newTop -> oldTop -> n1 -> ... -> n
@@ -31,7 +22,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     @Override
     public void push(E item) {
         ObjectUtil.requireNonNull(item);
-        top = new Node<>(item, top);
+        top = new SinglyLinkNode<>(item, top);
         size++;
     }
 
@@ -41,7 +32,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     @Override
     public E pop() {
         ObjectUtil.requireNonEmpty(this);
-        Node<E> node = top;
+        SinglyLinkNode<E> node = top;
         top = node.next;
         size--;
         return node.item;
@@ -67,8 +58,8 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         return Objects.nonNull(node(item));
     }
 
-    private Node<E> node(E item) {
-        Node<E> node = top;
+    private SinglyLinkNode<E> node(E item) {
+        SinglyLinkNode<E> node = top;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -76,6 +67,23 @@ public class LinkedListStackImpl<E> implements IStack<E> {
             node = node.next;
         }
         return null;
+    }
+
+    @Override
+    public E[] toArray() {
+        E[] array = (E[]) new Object[size];
+        SinglyLinkNode<E> node = top;
+        int index = 0;
+        while (Objects.nonNull(node)) {
+            array[index++] = node.item;
+            node = node.next;
+        }
+        return array;
+    }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override
@@ -100,14 +108,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     }
 
     @Override
-    public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        Node<E> node = top;
-        int index = 0;
-        while (Objects.nonNull(node)) {
-            array[index++] = node.item;
-            node = node.next;
-        }
-        return array;
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 }

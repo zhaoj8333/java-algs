@@ -45,21 +45,6 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final void add(E o) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final E remove(E o) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
     public int size() {
         return size;
     }
@@ -120,6 +105,31 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
             array[i] = entries[(headIndex + i) % entries.length];
         }
         return array;
+    }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
+    public final void add(E o) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final E remove(E o) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     private class ArrayQueueIterator<E> implements Iterator<E> {
