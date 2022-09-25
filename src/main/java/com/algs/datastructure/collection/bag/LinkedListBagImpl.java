@@ -103,17 +103,17 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     }
 
     @Override
-    public E get(int index) {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override
-    public E remove(int index) {
+    public final E remove(int index) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
-    public void reverse() {
+    public final void reverse() {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 

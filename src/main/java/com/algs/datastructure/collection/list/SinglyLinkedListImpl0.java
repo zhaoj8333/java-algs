@@ -1,27 +1,27 @@
-package com.algs.datastructure.collection.queue;
+package com.algs.datastructure.collection.list;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.SinglyLinkNode;
 
-public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
-
-    private int size;
-    private SinglyLinkNode<E> head;
-    private SinglyLinkNode<E> tail;
+public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
 
     @Override
-    public void enque(E item) {
+    public boolean hasCircle() {
+        return false;
+    }
+
+    @Override
+    public void add(int index, E item) {
 
     }
 
     @Override
-    public E deque() {
-        return null;
+    public void set(int index, E item) {
+
     }
 
     @Override
-    public E peek() {
-        return null;
+    public int indexOf(E item) {
+        return 0;
     }
 
     @Override
@@ -74,21 +74,8 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
 
     }
 
-    private static class CircularSinglyLinkedListIterator<E> implements Iterator<E> {
-
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        @Override
-        public E next() {
-            return null;
-        }
-    }
-
     @Override
     public Iterator<E> iterator() {
-        return new CircularSinglyLinkedListIterator<>();
+        return null;
     }
 }

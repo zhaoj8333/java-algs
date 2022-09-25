@@ -8,11 +8,6 @@ import java.util.Objects;
 
 public class LinkedListStackImpl<E> implements IStack<E> {
 
-    @Override
-    public Iterator<E> iterator() {
-        return null;
-    }
-
     private int size;
     private SinglyLinkNode<E> top;
 
@@ -82,33 +77,56 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     }
 
     @Override
-    public E get(int index) {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
-
-    @Override
-    public void add(E o) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public E remove(E o) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
     public void clear() {
         top = null;
         size = 0;
     }
 
     @Override
-    public void reverse() {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
+
+    @Override
+    public final void add(E o) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final E remove(E o) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    private class LinkedListStackIterator<E> implements Iterator<E> {
+
+        private SinglyLinkNode<E> node = (SinglyLinkNode<E>) top;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListStackIterator<>();
+    }
+
 }

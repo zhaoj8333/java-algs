@@ -180,7 +180,7 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public E remove(E item) {
+    public final E remove(E item) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 

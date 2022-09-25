@@ -2,37 +2,56 @@ package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.list.ILinkedList;
 
-public class CircularLinkedListDequeImpl<E> implements ILinkedList<E> {
+public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
 
     private int size;
     private DoublyLinkNode<E> head;
     private DoublyLinkNode<E> tail;
 
     @Override
-    public void add(int index, E item) {
+    public void enqueHead(E item) {
 
     }
 
     @Override
-    public E get(int index) {
+    public E dequeHead() {
         return null;
     }
 
     @Override
-    public void set(int index, E item) {
+    public void enqueTail(E item) {
 
     }
 
     @Override
-    public int indexOf(E item) {
-        return 0;
+    public E dequeTail() {
+        return null;
     }
 
     @Override
-    public void reverse() {
+    public E peekHead() {
+        return null;
+    }
 
+    @Override
+    public E peekTail() {
+        return null;
+    }
+
+    @Override
+    public void enque(E item) {
+
+    }
+
+    @Override
+    public E deque() {
+        return null;
+    }
+
+    @Override
+    public E peek() {
+        return null;
     }
 
     @Override
@@ -43,6 +62,11 @@ public class CircularLinkedListDequeImpl<E> implements ILinkedList<E> {
     @Override
     public boolean isEmpty() {
         return false;
+    }
+
+    @Override
+    public E get(int index) {
+        return null;
     }
 
     @Override
@@ -71,13 +95,13 @@ public class CircularLinkedListDequeImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public boolean hasCircle() {
-        return false;
+    public E[] toArray() {
+        return null;
     }
 
     @Override
-    public E[] toArray() {
-        return null;
+    public void reverse() {
+
     }
 
     private static class CircularDoublyLinkedListIterator<E> implements Iterator<E> {

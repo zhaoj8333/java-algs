@@ -24,9 +24,9 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     public void enqueHead(E item) {
         ObjectUtil.requireNonNull(item);
         DoublyLinkNode<E> next = head.next;
-        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, head, next);
-        head.next = DoublyLinkNode;
-        next.prev = DoublyLinkNode;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, head, next);
+        head.next = node;
+        next.prev = node;
         size++;
     }
 
@@ -36,11 +36,11 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> DoublyLinkNode = head.next;
-        DoublyLinkNode.next.prev = head;
-        head.next = DoublyLinkNode.next;
+        DoublyLinkNode<E> node = head.next;
+        node.next.prev = head;
+        head.next = node.next;
         size--;
-        return DoublyLinkNode.item;
+        return node.item;
     }
 
     /**
@@ -50,9 +50,9 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     public void enqueTail(E item) {
         ObjectUtil.requireNonNull(item);
         DoublyLinkNode<E> prev = tail.prev;
-        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, prev, tail);
-        prev.next = DoublyLinkNode;
-        tail.prev = DoublyLinkNode;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, prev, tail);
+        prev.next = node;
+        tail.prev = node;
         size++;
     }
 
@@ -62,11 +62,11 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> DoublyLinkNode = tail.prev;
-        DoublyLinkNode.prev.next = tail;
-        tail.prev = DoublyLinkNode.prev;
+        DoublyLinkNode<E> node = tail.prev;
+        node.prev.next = tail;
+        tail.prev = node.prev;
         size--;
-        return DoublyLinkNode.item;
+        return node.item;
     }
 
     @Override
@@ -110,12 +110,12 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     private DoublyLinkNode<E> node(E item) {
-        DoublyLinkNode<E> DoublyLinkNode = head.next;
-        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next)) {
-            if (Objects.equals(DoublyLinkNode.item, item)) {
-                return DoublyLinkNode;
+        DoublyLinkNode<E> node = head.next;
+        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
+            if (Objects.equals(node.item, item)) {
+                return node;
             }
-            DoublyLinkNode = DoublyLinkNode.next;
+            node = node.next;
         }
         return null;
     }
@@ -130,53 +130,53 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> DoublyLinkNode = head.next;
+        DoublyLinkNode<E> node = head.next;
         int index = 0;
-        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.next)) {
-            array[index++] = DoublyLinkNode.item;
-            DoublyLinkNode = DoublyLinkNode.next;
+        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
+            array[index++] = node.item;
+            node = node.next;
         }
         return array;
     }
 
     @Override
-    public E get(int index) {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override
-    public void add(E o) {
+    public final void add(E o) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
-    public E remove(int index) {
+    public final E remove(int index) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
-    public E remove(E o) {
+    public final E remove(E o) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
-    public void reverse() {
+    public final void reverse() {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     private class LinkedListQueueIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> DoublyLinkNode = (DoublyLinkNode<E>) head.next;
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(DoublyLinkNode.next);
+            return Objects.nonNull(node.next);
         }
 
         @Override
         public E next() {
-            E item = DoublyLinkNode.item;
-            DoublyLinkNode = DoublyLinkNode.next;
+            E item = node.item;
+            node = node.next;
             return item;
         }
     }

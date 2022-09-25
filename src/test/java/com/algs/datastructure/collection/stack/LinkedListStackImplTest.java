@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.stack;
 
+import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,12 @@ class LinkedListStackImplTest {
         integers[2] = 2;
         integers[3] = 1;
         Assertions.assertArrayEquals(integers, array);
+
+        Iterator<Integer> itr = s.iterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.println(next);
+        }
 
         s.clear();
         Assertions.assertTrue(s.isEmpty());

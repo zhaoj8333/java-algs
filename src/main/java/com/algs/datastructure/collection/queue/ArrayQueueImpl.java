@@ -108,7 +108,7 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public E get(int index) {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
@@ -118,7 +118,7 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public final E remove(int index) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
@@ -128,7 +128,7 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public void reverse() {
+    public final void reverse() {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 

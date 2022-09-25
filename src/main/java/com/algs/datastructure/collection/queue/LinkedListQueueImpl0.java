@@ -28,19 +28,19 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     @Override
     public boolean contains(E item) {
-        return Objects.nonNull(DoublyLinkNode(item));
+        return Objects.nonNull(node(item));
     }
 
-    private DoublyLinkNode<E> DoublyLinkNode(E item) {
+    private DoublyLinkNode<E> node(E item) {
         if (Objects.isNull(item)) {
             return null;
         }
-        DoublyLinkNode<E> DoublyLinkNode = head;
-        while (Objects.nonNull(DoublyLinkNode)) {
-            if (Objects.equals(DoublyLinkNode.item, item)) {
-                return DoublyLinkNode;
+        DoublyLinkNode<E> node = head;
+        while (Objects.nonNull(node)) {
+            if (Objects.equals(node.item, item)) {
+                return node;
             }
-            DoublyLinkNode = DoublyLinkNode.next;
+            node = node.next;
         }
         return null;
     }
@@ -57,9 +57,9 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
         DoublyLinkNode<E> prev = tail.prev;
-        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, prev, tail);
-        prev.next = DoublyLinkNode;
-        tail.prev = DoublyLinkNode;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, prev, tail);
+        prev.next = node;
+        tail.prev = node;
         size++;
     }
 
@@ -71,10 +71,10 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
         if (isEmpty()) {
             throw new RuntimeException("Already Empty");
         }
-        DoublyLinkNode<E> DoublyLinkNode = head.next;   // removed DoublyLinkNode
-        E data = DoublyLinkNode.item;
-        head.next = DoublyLinkNode.next;
-        DoublyLinkNode.next.prev = head;
+        DoublyLinkNode<E> node = head.next;   // removed DoublyLinkNode
+        E data = node.item;
+        head.next = node.next;
+        node.next.prev = head;
         size--;
         return data;
     }
@@ -104,17 +104,17 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> DoublyLinkNode = head.next;
+        DoublyLinkNode<E> node = head.next;
         int index = 0;
-        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.item)) {
-            array[index++] = DoublyLinkNode.item;
-            DoublyLinkNode = DoublyLinkNode.next;
+        while (Objects.nonNull(node) && Objects.nonNull(node.item)) {
+            array[index++] = node.item;
+            node = node.next;
         }
         return array;
     }
 
     @Override
-    public E get(int index) {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
@@ -124,7 +124,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public final E remove(int index) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
@@ -134,7 +134,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     @Override
-    public void reverse() {
+    public final void reverse() {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 

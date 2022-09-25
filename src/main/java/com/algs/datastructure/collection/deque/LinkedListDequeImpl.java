@@ -34,14 +34,14 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> DoublyLinkNode = head;
-        DoublyLinkNode<E> next = DoublyLinkNode.next;
+        DoublyLinkNode<E> node = head;
+        DoublyLinkNode<E> next = node.next;
         if (Objects.nonNull(next)) {
             next.prev = null;
         }
         head = next;
         size--;
-        return DoublyLinkNode.item;
+        return node.item;
     }
 
     /**
@@ -50,13 +50,13 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
      */
     @Override
     public void enqueTail(E item) {
-        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, tail, null);
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, tail, null);
         if (Objects.nonNull(tail)) {
-            tail.next = DoublyLinkNode;
+            tail.next = node;
         } else {
-            head = DoublyLinkNode;
+            head = node;
         }
-        tail = DoublyLinkNode;
+        tail = node;
         size++;
     }
 
@@ -67,14 +67,14 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> DoublyLinkNode = tail;
+        DoublyLinkNode<E> node = tail;
         DoublyLinkNode<E> prev = tail.prev;
         if (Objects.nonNull(prev)) {
             prev.next = null;
         }
         tail = prev;
         size--;
-        return DoublyLinkNode.item;
+        return node.item;
     }
 
     @Override
@@ -118,12 +118,12 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     }
 
     private DoublyLinkNode<E> node(E item) {
-        DoublyLinkNode<E> DoublyLinkNode = head;
-        while (Objects.nonNull(DoublyLinkNode)) {
-            if (Objects.equals(DoublyLinkNode.item, item)) {
-                return DoublyLinkNode;
+        DoublyLinkNode<E> node = head;
+        while (Objects.nonNull(node)) {
+            if (Objects.equals(node.item, item)) {
+                return node;
             }
-            DoublyLinkNode = DoublyLinkNode.next;
+            node = node.next;
         }
         return null;
     }
@@ -138,53 +138,53 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> DoublyLinkNode = head;
+        DoublyLinkNode<E> node = head;
         int index = 0;
-        while (Objects.nonNull(DoublyLinkNode)) {
-            array[index++] = DoublyLinkNode.item;
-            DoublyLinkNode = DoublyLinkNode.next;
+        while (Objects.nonNull(node)) {
+            array[index++] = node.item;
+            node = node.next;
         }
         return array;
     }
 
     @Override
-    public E get(int index) {
+    public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     @Override
-    public void add(E o) {
+    public final void add(E o) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
-    public E remove(int index) {
+    public final E remove(int index) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
-    public E remove(E o) {
+    public final E remove(E o) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
-    public void reverse() {
+    public final void reverse() {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
     private class LinkedListDequeIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> DoublyLinkNode = (DoublyLinkNode<E>) head;
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {
-            return Objects.nonNull(DoublyLinkNode);
+            return Objects.nonNull(node);
         }
 
         @Override
         public E next() {
-            E item = DoublyLinkNode.item;
-            DoublyLinkNode = DoublyLinkNode.next;
+            E item = node.item;
+            node = node.next;
             return item;
         }
     }
