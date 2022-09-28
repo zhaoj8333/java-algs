@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class CircularLinkedListQueueImplTest {
 
     @Test
+    void test() {
+        IQueue<Integer> q = new CircularLinkedListQueueImpl<>();
+    }
+
+    @Test
     void add() {
     }
 

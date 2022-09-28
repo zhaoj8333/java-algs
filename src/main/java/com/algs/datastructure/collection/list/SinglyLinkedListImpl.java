@@ -37,11 +37,14 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public void set(int index, E item) {
+    public E set(int index, E item) {
+        E oldVal = null;
         SinglyLinkNode<E> node = node(index);
         if (Objects.nonNull(node)) {
+            oldVal = node.item;
             node.item = item;
         }
+        return oldVal;
     }
 
     @Override
