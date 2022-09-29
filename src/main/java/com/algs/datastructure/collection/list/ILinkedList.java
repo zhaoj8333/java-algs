@@ -33,6 +33,4 @@ package com.algs.datastructure.collection.list;
  */
 public interface ILinkedList<E> extends IList<E> {
 
-    boolean hasCircle();
-
 }

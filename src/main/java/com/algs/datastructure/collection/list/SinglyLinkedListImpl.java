@@ -178,11 +178,6 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public boolean hasCircle() {
-        return false;
-    }
-
-    @Override
     public final E remove(E item) {
         throw new UnsupportedOperationException("unsupported operation");
     }

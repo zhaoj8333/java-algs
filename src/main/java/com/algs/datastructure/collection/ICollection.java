@@ -1,7 +1,5 @@
 package com.algs.datastructure.collection;
 
-import com.algs.IComparable;
-
 public interface ICollection<E> extends Iterable<E> {
 
     int size();

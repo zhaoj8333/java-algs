@@ -15,11 +15,6 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
     private SinglyLinkNode<E> head;
 
     @Override
-    public boolean hasCircle() {
-        return false;
-    }
-
-    @Override
     public void add(E item) {
         add(size, item);
     }

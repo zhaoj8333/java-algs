@@ -17,6 +17,8 @@ public class SinglyLinkNode<E> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SinglyLinkNode<?> that = (SinglyLinkNode<?>) o;
+        if (item == null) return false;
+        if (that.item == null) return false;
         return Objects.equals(item, that.item) &&
                 Objects.equals(next, that.next);
     }
