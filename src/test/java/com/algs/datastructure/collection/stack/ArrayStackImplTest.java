@@ -43,6 +43,10 @@ class ArrayStackImplTest {
 
     @Test
     void push() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        for (int i = 0; i < 18; i++) {
+            s.push(i);
+        }
     }
 
     @Test

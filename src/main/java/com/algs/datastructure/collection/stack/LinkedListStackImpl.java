@@ -4,6 +4,7 @@ import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.SinglyLinkNode;
 import com.algs.util.ObjectUtil;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class LinkedListStackImpl<E> implements IStack<E> {
@@ -129,4 +130,8 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         return new LinkedListStackIterator<>();
     }
 
+    @Override
+    public String toString() {
+        return Arrays.toString(toArray());
+    }
 }

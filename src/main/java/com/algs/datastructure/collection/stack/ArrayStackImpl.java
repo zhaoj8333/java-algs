@@ -32,7 +32,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
         ObjectUtil.requireNonNull(item);
         if (size == entries.length) {
 //            throw new RuntimeException("Already Full");
-            resize(size >> 1);
+            resize(size << 1);
         }
         entries[size++] = item;
     }
@@ -113,10 +113,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
 
     @Override
     public String toString() {
-        return "ArrayStackImpl{" +
-                "size=" + size +
-                ", entries=" + Arrays.toString(entries) +
-                '}';
+        return Arrays.toString(toArray());
     }
 
     private class ArrayStackIterator<E> implements Iterator<E> {

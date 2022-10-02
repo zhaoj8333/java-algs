@@ -30,6 +30,7 @@ public class LinkedListQueueImpl<E> implements IQueue<E> {
         if (Objects.isNull(item)) {
             return null;
         }
+        ObjectUtil.requireNonNull(item);
         DoublyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {

@@ -6,6 +6,7 @@ import com.algs.datastructure.collection.SinglyLinkNode;
 import com.algs.util.ObjectUtil;
 import com.algs.util.RangeUtil;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
@@ -192,6 +193,11 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
             node = node.next;
         }
         return array;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(toArray());
     }
 
     private class SinglyLinkedListIterator implements Iterator<E> {

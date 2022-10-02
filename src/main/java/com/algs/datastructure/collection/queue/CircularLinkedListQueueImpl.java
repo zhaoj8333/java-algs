@@ -28,12 +28,12 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
         }
         SinglyLinkNode<E> slow = head.next;
         SinglyLinkNode<E> fast = head.next.next;
-        while (Objects.nonNull(slow) && Objects.nonNull(fast)) {
+        while (Objects.nonNull(fast) && Objects.nonNull(fast.next)) {
+            slow = slow.next;
+            fast = fast.next.next;
             if (Objects.equals(slow, fast)) {
                 return true;
             }
-            slow = slow.next;
-            fast = fast.next.next;
         }
         return false;
     }
