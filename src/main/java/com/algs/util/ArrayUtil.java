@@ -1,5 +1,8 @@
 package com.algs.util;
 
+import com.algs.datastructure.collection.ICollection;
+import com.algs.datastructure.collection.Iterator;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -19,5 +22,23 @@ public class ArrayUtil {
         }
     }
 
+    public static Object[] toArray(ICollection collection) {
+        Iterator itr = collection.iterator();
+        Object[] array = new Object[collection.size()];
+        int index = 0;
+        while (itr.hasNext()) {
+            array[index++] = itr.next();
+        }
+        return array;
+    }
+
+    public static String toString(ICollection collection) {
+        Iterator itr = collection.iterator();
+        StringBuilder sb = new StringBuilder();
+        while (itr.hasNext()) {
+            sb.append(itr.next());
+        }
+        return sb.toString();
+    }
 
 }
