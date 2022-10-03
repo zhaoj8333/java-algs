@@ -179,11 +179,6 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
         SinglyLinkNode<E> node = head.next;
@@ -220,6 +215,11 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     @Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator();
+    }
+
+    @Override
+    public final E remove(E item) {
+        throw new UnsupportedOperationException("unsupported operation");
     }
 
 }

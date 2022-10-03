@@ -152,6 +152,28 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
         return array;
     }
 
+    private class CircularLinkedListDequeIterator<E> implements Iterator<E> {
+
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.isNull(node.item);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new CircularLinkedListDequeIterator<>();
+    }
+
     @Override
     public E get(int index) {
         throw new UnsupportedOperationException("Unsupported Operation");
@@ -177,25 +199,4 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
-    private class CircularLinkedListDequeIterator<E> implements Iterator<E> {
-
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
-
-        @Override
-        public boolean hasNext() {
-            return Objects.isNull(node.item);
-        }
-
-        @Override
-        public E next() {
-            E item = node.item;
-            node = node.next;
-            return item;
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new CircularLinkedListDequeIterator<>();
-    }
 }

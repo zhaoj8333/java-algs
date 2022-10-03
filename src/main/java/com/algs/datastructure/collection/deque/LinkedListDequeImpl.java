@@ -147,6 +147,28 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
         return array;
     }
 
+    private class LinkedListDequeIterator<E> implements Iterator<E> {
+
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListDequeIterator<>();
+    }
+
     @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
@@ -172,25 +194,4 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    private class LinkedListDequeIterator<E> implements Iterator<E> {
-
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
-
-        @Override
-        public boolean hasNext() {
-            return Objects.nonNull(node);
-        }
-
-        @Override
-        public E next() {
-            E item = node.item;
-            node = node.next;
-            return item;
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new LinkedListDequeIterator<>();
-    }
 }

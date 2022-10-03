@@ -3,9 +3,6 @@ package com.algs.util;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayUtilTest {
 
@@ -16,7 +13,7 @@ class ArrayUtilTest {
             array[i - 1] = i * 10;
         }
         System.out.println(Arrays.toString(array));
-        ArrayUtil.shuffle(array);
+        CollectionUtil.shuffle(array);
         System.out.println(Arrays.toString(array));
 
     }

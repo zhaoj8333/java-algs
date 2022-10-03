@@ -125,6 +125,28 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         return array;
     }
 
+    private class LinkedListQueueIterator<E> implements Iterator<E> {
+
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(node);
+        }
+
+        @Override
+        public E next() {
+            E item = node.item;
+            node = node.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListQueueIterator<>();
+    }
+
     @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
@@ -150,25 +172,4 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    private class LinkedListQueueIterator<E> implements Iterator<E> {
-
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
-
-        @Override
-        public boolean hasNext() {
-            return Objects.nonNull(node);
-        }
-
-        @Override
-        public E next() {
-            E item = node.item;
-            node = node.next;
-            return item;
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new LinkedListQueueIterator<>();
-    }
 }

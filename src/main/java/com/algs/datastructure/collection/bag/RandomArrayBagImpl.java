@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ArrayUtil;
+import com.algs.util.CollectionUtil;
 
 @SuppressWarnings("unchecked")
 public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
@@ -29,7 +29,7 @@ public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
         for (int i = 0; i < entries.length; i++) {
             itr.accessSequence[i] = i;
         }
-        ArrayUtil.shuffle(itr.accessSequence);
+        CollectionUtil.shuffle(itr.accessSequence);
         return itr;
     }
 }

@@ -147,11 +147,6 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
         return newHead;
     }
 
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
     private class SinglyLinkedListIterator implements Iterator<E> {
 
         private SinglyLinkNode<E> node = head;
@@ -173,4 +168,10 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator();
     }
+
+    @Override
+    public final E remove(E item) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
 }

@@ -111,31 +111,6 @@ public class DestackImplByDeque<E> implements ICollection<E> {
         return false;
     }
 
-    @Override
-    public final E get(int index) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public void add(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public E remove(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
     public void clear() {
         head = tail = null;
         leftSize = rightSize = 0;
@@ -195,6 +170,31 @@ public class DestackImplByDeque<E> implements ICollection<E> {
 
     public Iterator<E> iterator() {
         return new DestackIterator<>();
+    }
+
+    @Override
+    public final E get(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public void add(E item) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public E remove(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public E remove(E item) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("Unsupported Operation");
     }
 
 }

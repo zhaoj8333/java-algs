@@ -86,6 +86,32 @@ class ArrayStackImplTest {
     }
 
     @Test
+    void iterator() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        for (int i = 0; i < 8; i++) {
+            s.push(i);
+        }
+        Iterator<Integer> itr = s.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+
+    }
+
+    @Test
+    void reverseIterator() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        for (int i = 0; i < 8; i++) {
+            s.push(i);
+        }
+        Iterator<Integer> itr = s.reverseIterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+
+    }
+
+    @Test
     void _1_3_5() {
         IStack<Integer> s = new ArrayStackImpl<>();
         int n = 50;

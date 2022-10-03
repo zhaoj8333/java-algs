@@ -107,6 +107,26 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
         return array;
     }
 
+    private class ArrayQueueIterator<E> implements Iterator<E> {
+
+        private int n = -1;
+
+        @Override
+        public boolean hasNext() {
+            return n < size - 1;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[++n];
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayQueueIterator<>();
+    }
+
     @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
@@ -132,23 +152,4 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    private class ArrayQueueIterator<E> implements Iterator<E> {
-
-        private int n = -1;
-
-        @Override
-        public boolean hasNext() {
-            return n < size - 1;
-        }
-
-        @Override
-        public E next() {
-            return (E) entries[++n];
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new ArrayQueueIterator<>();
-    }
 }

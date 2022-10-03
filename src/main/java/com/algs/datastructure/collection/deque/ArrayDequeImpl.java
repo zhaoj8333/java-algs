@@ -132,6 +132,26 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
         return array;
     }
 
+    private class ArrayDequeIterator<E> implements Iterator<E> {
+
+        private int n = -1;
+
+        @Override
+        public boolean hasNext() {
+            return n < size - 1;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[++n];
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayDequeIterator<>();
+    }
+
     @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
@@ -157,23 +177,4 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    private class ArrayDequeIterator<E> implements Iterator<E> {
-
-        private int n = -1;
-
-        @Override
-        public boolean hasNext() {
-            return n < size - 1;
-        }
-
-        @Override
-        public E next() {
-            return (E) entries[++n];
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new ArrayDequeIterator<>();
-    }
 }

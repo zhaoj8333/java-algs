@@ -103,21 +103,6 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     }
 
     @Override
-    public final E get(int index) {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
-
-    @Override
-    public final E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
-
-    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         SinglyLinkNode<E> node = head;
@@ -149,4 +134,20 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     public Iterator<E> iterator() {
         return new LinkedListBagIterator<>();
     }
+
+    @Override
+    public final E get(int index) {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
+    @Override
+    public final E remove(int index) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final void reverse() {
+        throw new UnsupportedOperationException("UnsupportedOperation");
+    }
+
 }

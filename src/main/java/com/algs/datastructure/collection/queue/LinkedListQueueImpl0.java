@@ -113,6 +113,28 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
         return array;
     }
 
+    private class LinkedListQueueIterator0<E> implements Iterator<E> {
+
+        private DoublyLinkNode<E> next = (DoublyLinkNode<E>) head.next;
+
+        @Override
+        public boolean hasNext() {
+            return Objects.nonNull(next.next);
+        }
+
+        @Override
+        public E next() {
+            E item = next.item;
+            next = next.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListQueueIterator0<>();
+    }
+
     @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
@@ -138,25 +160,4 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    private class LinkedListQueueIterator0<E> implements Iterator<E> {
-
-        private DoublyLinkNode<E> next = (DoublyLinkNode<E>) head.next;
-
-        @Override
-        public boolean hasNext() {
-            return Objects.nonNull(next.next);
-        }
-
-        @Override
-        public E next() {
-            E item = next.item;
-            next = next.next;
-            return item;
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new LinkedListQueueIterator0<>();
-    }
 }

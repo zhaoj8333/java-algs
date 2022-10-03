@@ -6,7 +6,7 @@ import com.algs.datastructure.collection.Iterator;
 import java.util.Objects;
 import java.util.Random;
 
-public class ArrayUtil {
+public class CollectionUtil {
 
     public static void shuffle(int[] array) {
         if (Objects.isNull(array) || array.length == 0) {
@@ -35,9 +35,11 @@ public class ArrayUtil {
     public static String toString(ICollection collection) {
         Iterator itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
+        sb.append("[");
         while (itr.hasNext()) {
-            sb.append(itr.next());
+            sb.append(itr.next()).append(", ");
         }
+        sb.append("]");
         return sb.toString();
     }
 

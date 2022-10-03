@@ -85,4 +85,36 @@ class LinkedListStackImplTest {
     @Test
     void toArray() {
     }
+
+    @Test
+    void iterator() {
+        IStack<Integer> s = new LinkedListStackImpl<>();
+
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+
+        Iterator<Integer> itr = s.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+    }
+
+    @Test
+    void reverseIterator() {
+        IStack<Integer> s = new LinkedListStackImpl<>();
+
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+
+        Iterator<Integer> itr = s.reverseIterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+    }
 }

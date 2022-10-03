@@ -87,6 +87,51 @@ public class ArrayStackImpl<E> implements IStack<E> {
     }
 
     @Override
+    public String toString() {
+        return Arrays.toString(toArray());
+    }
+
+    private class ArrayStackIterator<E> implements Iterator<E> {
+
+        private int n = size - 1;
+
+        @Override
+        public boolean hasNext() {
+            return n >= 0;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[n--];
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayStackIterator<>();
+    }
+
+    private final class ArrayStackReverseIterator<E> implements Iterator<E> {
+
+        private int n = 0;
+
+        @Override
+        public boolean hasNext() {
+            return n < size;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[n++];
+        }
+    }
+
+    @Override
+    public final Iterator<E> reverseIterator() {
+        return new ArrayStackReverseIterator<>();
+    }
+
+    @Override
     public final E get(int index) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
@@ -111,28 +156,4 @@ public class ArrayStackImpl<E> implements IStack<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(toArray());
-    }
-
-    private class ArrayStackIterator<E> implements Iterator<E> {
-
-        private int n = size - 1;
-
-        @Override
-        public boolean hasNext() {
-            return n >= 0;
-        }
-
-        @Override
-        public E next() {
-            return (E) entries[n--];
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new ArrayStackIterator<>();
-    }
 }

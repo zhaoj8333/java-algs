@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ArrayUtil;
+import com.algs.util.CollectionUtil;
 
 import java.util.Objects;
 
@@ -118,17 +118,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
 
     @Override
     public E[] toArray() {
-        return (E[]) ArrayUtil.toArray(this);
-    }
-
-    @Override
-    public E get(int index) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
+        return (E[]) CollectionUtil.toArray(this);
     }
 
     private class ArrayIterator<E> implements Iterator<E> {
@@ -150,4 +140,15 @@ public class ArrayBagImpl<E> implements IBag<E> {
     public Iterator<E> iterator() {
         return new ArrayIterator<>();
     }
+
+    @Override
+    public E get(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public void reverse() {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
 }

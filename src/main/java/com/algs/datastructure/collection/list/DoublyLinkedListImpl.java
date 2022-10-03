@@ -133,16 +133,6 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
         return array;
     }
 
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
     private class DoublyLinkedListIterator implements Iterator<E> {
 
         private DoublyLinkNode<E> node = head.next;
@@ -163,6 +153,16 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
     @Override
     public Iterator<E> iterator() {
         return new DoublyLinkedListIterator();
+    }
+
+    @Override
+    public final E remove(E item) {
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public final void reverse() {
+        throw new UnsupportedOperationException("unsupported operation");
     }
 
 }

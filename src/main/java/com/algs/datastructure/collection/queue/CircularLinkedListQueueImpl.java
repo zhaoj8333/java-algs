@@ -105,31 +105,6 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final E get(int index) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public final void add(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public final E remove(int index) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
     public void clear() {
         head = tail = null;
         size = 0;
@@ -169,4 +144,30 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
     public Iterator<E> iterator() {
         return new CircularLinkedListQueueIterator<>();
     }
+
+    @Override
+    public final E get(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final void add(E item) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final E remove(int index) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final E remove(E item) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public final void reverse() {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
 }
