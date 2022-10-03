@@ -1,5 +1,6 @@
 package com.algs.application.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
 
@@ -8,28 +9,52 @@ import java.util.Objects;
 
 public class FileSystemRead {
 
-    public IQueue<String> read(String path) {
-        IQueue<String> files = new LinkedListQueueImpl<>();
+    public IQueue<String> readRecursively(String path) {
+        IQueue<String> files = new ArrayQueueImpl<>();
         File file = new File(path);
+        files.enque(file.getAbsolutePath());
         if (file.isDirectory()) {
-            read(file, files);
-        } else {
-            files.enque(file.getAbsolutePath());
+            readRecursively(file, files);
         }
         return files;
     }
 
-    private void read(File file, IQueue<String> files) {
-        files.enque(file.getAbsolutePath());
+    private void readRecursively(File file, IQueue<String> files) {
         File[] subDirectory = file.listFiles();
         if (Objects.nonNull(subDirectory)) {
             for (File subFile : subDirectory) {
                 files.enque(subFile.getAbsolutePath());
                 if (subFile.isDirectory()) {
-                    read(subFile, files);
+                    readRecursively(subFile, files);
                 }
             }
         }
     }
 
+    public IQueue<String> read(String path) {
+        IQueue<File> readSequence = new LinkedListQueueImpl<>();
+        IQueue<String> q = new ArrayQueueImpl<>();
+        File file = new File(path);
+        if (!file.isDirectory()) {
+            q.enque(file.getAbsolutePath());
+        } else {
+            readSequence.enque(file);
+            while (!readSequence.isEmpty()) {
+                File dir = readSequence.deque();
+                q.enque(dir.getAbsolutePath());
+                File[] files = dir.listFiles();
+                if (Objects.isNull(files)) {
+                    continue;
+                }
+                for (File f : files) {
+                    if (f.isDirectory()) {
+                        readSequence.enque(f);
+                    } else {
+                        q.enque(f.getAbsolutePath());
+                    }
+                }
+            }
+        }
+        return q;
+   }
 }
