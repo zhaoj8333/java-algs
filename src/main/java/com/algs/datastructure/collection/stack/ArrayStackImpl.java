@@ -2,15 +2,16 @@ package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.CollectionDefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.bag.ArrayBagImpl;
 import com.algs.util.ObjectUtil;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Objects;
 
 public class ArrayStackImpl<E> implements IStack<E> {
 
     private int size;
+    private int modCount;
     private E[] entries;
 
     public ArrayStackImpl() {
@@ -30,8 +31,8 @@ public class ArrayStackImpl<E> implements IStack<E> {
     @Override
     public void push(E item) {
         ObjectUtil.requireNonNull(item);
+        modCount++;
         if (size == entries.length) {
-//            throw new RuntimeException("Already Full");
             resize(size << 1);
         }
         entries[size++] = item;
@@ -40,6 +41,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
     @Override
     public E pop() {
         ObjectUtil.requireNonEmpty(this);
+        modCount++;
         E entry = entries[size - 1];
         entries[size - 1] = null;
         size--;
@@ -76,6 +78,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
         for (int i = 0; i < size; i++) {
             entries[i] = null;
         }
+        modCount++;
         size = 0;
     }
 
@@ -117,6 +120,26 @@ public class ArrayStackImpl<E> implements IStack<E> {
 
         @Override
         public boolean hasNext() {
+            return n < size;
+        }
+
+        @Override
+        public E next() {
+            return (E) entries[n++];
+        }
+    }
+
+
+    private final class UnmodifiableArrayStackReverseIterator<E> implements Iterator<E> {
+
+        private int n = 0;
+        private final int expectedModCount = modCount;
+
+        @Override
+        public boolean hasNext() {
+            if (expectedModCount != modCount) {
+                throw new ConcurrentModificationException("Can't modify elements while iterating");
+            }
             return n < size;
         }
 

@@ -42,6 +42,19 @@ class ArrayStackImplTest {
     }
 
     @Test
+    void testUnmodifiableIterator() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        for (int i = 10; i > 0; i--) {
+            s.push(i);
+        }
+        Iterator<Integer> itr = s.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+
+    }
+
+    @Test
     void push() {
         IStack<Integer> s = new ArrayStackImpl<>();
         for (int i = 0; i < 18; i++) {

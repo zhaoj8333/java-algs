@@ -93,7 +93,9 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         private SinglyLinkNode<E> newTop;
 
         public LinkedListStackIterator() {
-            newTop = new SinglyLinkNode(top.item, top.next);
+            if (Objects.nonNull(top)) {
+                newTop = new SinglyLinkNode(top.item, top.next);
+            }
         }
 
         @Override
@@ -160,16 +162,15 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     private class LinkedListStackReverseIterator<E> implements Iterator<E> {
 
         private int i;
-        private E[] array;
+        private final E[] array;
 
         public LinkedListStackReverseIterator() {
             Iterator<E> itr = (Iterator<E>) iterator();
-            E[] array = (E[]) new Object[size];
+            array = (E[]) new Object[size];
             int index = 0;
             while (itr.hasNext()) {
                 array[size - (index++) - 1] = itr.next();
             }
-            this.array = array;
         }
 
         @Override

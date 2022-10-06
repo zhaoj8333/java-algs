@@ -27,4 +27,5 @@ public class SinglyLinkNode<E> {
     public int hashCode() {
         return Objects.hash(item, next);
     }
+
 }

@@ -2,6 +2,7 @@ package com.algs.util;
 
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
+import org.apache.commons.lang.math.RandomUtils;
 
 import java.util.Objects;
 import java.util.Random;
@@ -41,6 +42,24 @@ public class CollectionUtil {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    public static int[] randomArray(int size) {
+        int[] array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = RandomUtils.nextInt();
+        }
+        return array;
+    }
+
+    public static int[] toPrimitive(ICollection collection) {
+        int[] ints = new int[collection.size()];
+        int index = 0;
+        Iterator itr = collection.iterator();
+        while (itr.hasNext()) {
+            ints[index++] = (int) itr.next();
+        }
+        return ints;
     }
 
 }

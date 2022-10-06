@@ -1,7 +1,6 @@
-package com.algs.application.datastructure.collection.queue;
+package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedListStackImpl;
@@ -11,40 +10,30 @@ import com.algs.util.ObjectUtil;
 import java.util.Objects;
 
 /**
- * Use {@link com.algs.datastructure.collection.stack.IStack}
- * to implement {@link com.algs.datastructure.collection.queue.IQueue}
+ * Use {@link IStack}
+ * to implement {@link IQueue}, assure constant time of {@link IQueue#deque()}
+ * // TODO: 10/4/22 {@link com.algs.datastructure.collection.queue.StackQueueImplOpt1Test}
  */
-public class StackQueueImpl<E> implements IQueue<E> {
+public class StackQueueImplOpt1<E> implements IQueue<E> {
 
-    private final IStack<E> h = new ArrayStackImpl<>();
-    private final IStack<E> t = new LinkedListStackImpl<>();
+    private final IStack<E> h  = new ArrayStackImpl<>();
+    private final IStack<E> t  = new LinkedListStackImpl<>();
 
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
         t.push(item);
+        h.push(t.pop());
     }
 
-    /**
-     * Worst complexity is O(n)
-     */
     @Override
     public E deque() {
-        if (h.isEmpty()) {
-            while (!t.isEmpty()) {
-                h.push(t.pop());
-            }
-        }
+        ObjectUtil.requireNonEmpty(this);
         return h.pop();
     }
 
     @Override
     public E peek() {
-        if (h.isEmpty()) {
-            while (!t.isEmpty()) {
-                h.push(t.pop());
-            }
-        }
         return h.top();
     }
 
@@ -102,9 +91,9 @@ public class StackQueueImpl<E> implements IQueue<E> {
         return CollectionUtil.toString(this);
     }
 
-    private class StackQueueIterator<E> implements Iterator<E> {
+    private class StackQueueOpt1Iterator<E> implements Iterator<E> {
 
-        private final Iterator<E> itr1 = (Iterator<E>) h.iterator();
+        private final Iterator<E> itr1 = (Iterator<E>) h.reverseIterator();
         private final Iterator<E> itr2 = (Iterator<E>) t.reverseIterator();
 
         @Override
@@ -126,7 +115,7 @@ public class StackQueueImpl<E> implements IQueue<E> {
 
     @Override
     public final Iterator<E> iterator() {
-        return new StackQueueIterator<>();
+        return new StackQueueOpt1Iterator<>();
     }
 
     @Override

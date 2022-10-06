@@ -1,11 +1,11 @@
-package com.algs.application.datastructure.collection.queue;
+package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.IQueue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StackQueueImplTest {
 
