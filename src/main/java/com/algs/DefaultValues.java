@@ -1,6 +1,6 @@
-package com.algs.datastructure.collection;
+package com.algs;
 
-public class CollectionDefaultValues {
+public class DefaultValues {
 
     public static final int DEFAULT_CAPACITY = 10;
     public static final int ELEMENT_NOT_FOUND = -1;

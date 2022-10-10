@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -13,7 +13,7 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
     private final E[] entries;
 
     public ArrayDequeImpl() {
-        this(CollectionDefaultValues.DEFAULT_CAPACITY);
+        this(DefaultValues.DEFAULT_CAPACITY);
     }
 
     public ArrayDequeImpl(int capacity) {

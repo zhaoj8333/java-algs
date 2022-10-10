@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.CollectionUtil;
+import edu.princeton.cs.algs4.StdRandom;
 
 @SuppressWarnings("unchecked")
 public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
@@ -29,7 +30,7 @@ public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
         for (int i = 0; i < entries.length; i++) {
             itr.accessSequence[i] = i;
         }
-        CollectionUtil.shuffle(itr.accessSequence);
+        StdRandom.shuffle(itr.accessSequence);
         return itr;
     }
 }

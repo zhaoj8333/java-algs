@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.list;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.SinglyLinkNode;
 import com.algs.util.ObjectUtil;
@@ -66,7 +66,7 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
                 node = node.next;
             }
         }
-        return CollectionDefaultValues.ELEMENT_NOT_FOUND;
+        return DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
@@ -149,7 +149,7 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public boolean contains(E item) {
-        return indexOf(item) == CollectionDefaultValues.ELEMENT_NOT_FOUND;
+        return indexOf(item) == DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     private SinglyLinkNode<E> node(int index) {

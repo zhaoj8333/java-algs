@@ -13,7 +13,6 @@ class ArrayUtilTest {
             array[i - 1] = i * 10;
         }
         System.out.println(Arrays.toString(array));
-        CollectionUtil.shuffle(array);
         System.out.println(Arrays.toString(array));
 
     }

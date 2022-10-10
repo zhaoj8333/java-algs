@@ -1,10 +1,12 @@
-package com.algs.util;
+package com.algs.analysis;
+
+import com.algs.util.TimeUtil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Task {
+public abstract class StopWatchTask {
 
     protected Object result;
 
@@ -14,15 +16,11 @@ public abstract class Task {
 
     protected long end;
 
-    public StringBuilder getProfile() {
-        return profile;
-    }
-
-    private void beforeExec() {
+    protected void beforeExec() {
         if (profile.length() > 0) {
             throw new NullPointerException("already executed, please new another instance to run");
         }
-        Class<? extends Task> klass = this.getClass();
+        Class<? extends StopWatchTask> klass = this.getClass();
         profile.append('\n');
         profile.append("class:").append(klass.getName());
         profile.append('\n');
@@ -34,10 +32,10 @@ public abstract class Task {
                 field.setAccessible(true);
                 Object value = field.get(this);
                 if (value.getClass().isArray()) {
-                    String s = value.getClass().toGenericString();
+                    String s = value.getClass().toString();
                     profile.append("[").append(s).append("], ");
                 } else {
-                    profile.append(value);
+                    profile.append(value).append(", ");
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
@@ -46,7 +44,7 @@ public abstract class Task {
         profile.append('\n');
     }
 
-    private void afterExec() {
+    protected void afterExec() {
         profile.append("result:").append(result);
         profile.append('\n');
         profile.append("begin:").append(TimeUtil.formatTimestamp(begin));
@@ -70,7 +68,7 @@ public abstract class Task {
         }
     }
 
-    private void renderStopWatchProfile() {
+    protected void renderStopWatchProfile() {
         String profileString = this.profile.toString();
         String[] lines = profileString.split("\n");
         List<TableLine> table = new ArrayList<>(7);
@@ -89,7 +87,7 @@ public abstract class Task {
         }
         StringBuilder renderString = new StringBuilder();
         int extraDashRepeat = 2;
-        appendTable(renderString, maxTitleDashNum + extraDashRepeat);
+        appendTable(renderString, maxTitleDashNum + extraDashRepeat, maxValueDashNum + 1 + extraDashRepeat);
         for (TableLine tableLine : table) {
             appendData(
                     renderString,
@@ -98,7 +96,7 @@ public abstract class Task {
                     maxValueDashNum - tableLine.value.length() + extraDashRepeat / 2
             );
         }
-        appendTable(renderString, maxTitleDashNum + extraDashRepeat);
+        appendTable(renderString, maxTitleDashNum + extraDashRepeat, maxValueDashNum + 1 + extraDashRepeat);
         System.out.println(renderString);
     }
 
@@ -119,17 +117,17 @@ public abstract class Task {
         sb.append('\n');
     }
 
-    private void appendTable(StringBuilder sb, int size) {
+    private void appendTable(StringBuilder sb, int titleSize, int valueSize) {
         sb.append('+');
-        sb.append("-".repeat(size));
+        sb.append("-".repeat(titleSize));
         sb.append('+');
-        sb.append("-".repeat(size));
+        sb.append("-".repeat(valueSize));
         sb.append("+\n");
     }
 
-    public abstract Object profileTask();
+    protected abstract Object profileTask();
 
-    public final void exec() {
+    public void exec() {
         beforeExec();
         begin = System.currentTimeMillis();
 

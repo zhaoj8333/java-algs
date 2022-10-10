@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.bag;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.CollectionUtil;
 
@@ -13,7 +13,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
     protected E[] entries;
 
     public ArrayBagImpl() {
-        this(CollectionDefaultValues.DEFAULT_CAPACITY);
+        this(DefaultValues.DEFAULT_CAPACITY);
     }
 
     public ArrayBagImpl(int size) {

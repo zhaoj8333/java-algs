@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -18,7 +18,7 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     protected E[] entries;
 
     public ArrayQueueImpl() {
-        this(CollectionDefaultValues.DEFAULT_CAPACITY);
+        this(DefaultValues.DEFAULT_CAPACITY);
     }
 
     public ArrayQueueImpl(int capacity) {

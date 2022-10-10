@@ -1,13 +1,11 @@
 package com.algs.analysis;
 
-import com.algs.util.Task;
-
-public class ThreeSum extends Task {
+public class ThreeSum extends StopWatchTask {
 
     private final int[] array;
-    private final int sum;
+    private final long sum;
 
-    public ThreeSum(int[] array, int sum) {
+    public ThreeSum(int[] array, long sum) {
         this.array = array;
         this.sum = sum;
     }
@@ -23,7 +21,7 @@ public class ThreeSum extends Task {
         for (int i = len; i > 0; i--) {
             for (int j = i + 1; j < len; j++) {
                 for (int k = j + 1; k < len; k++) {
-                    if (array[i] + array[j] + array[k] == sum) {
+                    if ((long)array[i] + (long)array[j] + (long)array[k] == sum) {
                         cnt++;
                     }
                 }

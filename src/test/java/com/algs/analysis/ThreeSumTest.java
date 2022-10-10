@@ -3,21 +3,32 @@ package com.algs.analysis;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.CollectionUtil;
 import com.algs.util.FileUtil;
-import com.algs.util.Task;
 import org.junit.jupiter.api.Test;
 
 class ThreeSumTest {
 
     @Test
     void test() {
-        count();
+        long i = (long) Integer.MAX_VALUE + (long) Integer.MAX_VALUE;
+        System.out.println(i);
+
+        countK();
+        countM();
     }
 
-    void count() {
+    void countK() {
         IList<Integer> array = FileUtil.readInts("data/1Kints.txt");
         assert array != null;
         int[] ints = CollectionUtil.toPrimitive(array);
-        Task ts = new ThreeSum(ints, 0);
+        StopWatchTask ts = new ThreeSum(ints, 0l);
+        ts.exec();
+    }
+
+    void countM() {
+        IList<Integer> array = FileUtil.readInts("data/32Kints.txt");
+        assert array != null;
+        int[] ints = CollectionUtil.toPrimitive(array);
+        StopWatchTask ts = new ThreeSum(ints, 0l);
         ts.exec();
     }
 }

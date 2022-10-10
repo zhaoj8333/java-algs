@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -15,7 +15,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
     private E[] entries;
 
     public ArrayStackImpl() {
-        this(CollectionDefaultValues.DEFAULT_CAPACITY);
+        this(DefaultValues.DEFAULT_CAPACITY);
     }
 
     public ArrayStackImpl(int capacity) {

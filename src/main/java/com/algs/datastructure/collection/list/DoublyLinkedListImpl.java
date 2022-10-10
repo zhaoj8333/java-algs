@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.list;
 
-import com.algs.datastructure.collection.CollectionDefaultValues;
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
@@ -74,7 +74,7 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
                 node = node.next;
             }
         }
-        return CollectionDefaultValues.ELEMENT_NOT_FOUND;
+        return DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public boolean contains(E item) {
-        return indexOf(item) == CollectionDefaultValues.ELEMENT_NOT_FOUND;
+        return indexOf(item) == DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     private DoublyLinkNode<E> node(int index) {

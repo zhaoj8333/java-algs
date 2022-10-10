@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.list;
 
 import com.algs.datastructure.collection.Iterator;
 
+// // TODO: 10/8/22  
 public class StaticLinkedList<E> implements ILinkedList<E> {
 
     @Override

@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.CollectionUtil;
+import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Random;
 
@@ -51,7 +52,7 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
         for (int i = 0; i < size; i++) {
             itr.randomSequence[i] = i;
         }
-        CollectionUtil.shuffle(itr.randomSequence);
+        StdRandom.shuffle(itr.randomSequence);
         return itr;
     }
 }
