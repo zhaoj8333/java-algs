@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class QuSizeImpl extends QuickUnionImpl {
 
-    private final int[] sizes;
+    private final int[] sz;
 
     public QuSizeImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
@@ -20,8 +20,8 @@ public class QuSizeImpl extends QuickUnionImpl {
 
     public QuSizeImpl(int capacity) {
         super(capacity);
-        sizes = new int[capacity];
-        ArraysUtil.fill(sizes, 1);
+        sz = new int[capacity];
+        ArraysUtil.fill(sz, 1);
     }
 
     @Override
@@ -31,18 +31,19 @@ public class QuSizeImpl extends QuickUnionImpl {
         if (Objects.equals(rootA, rootB)) {
             return;
         }
-        count--;
-        if (sizes[rootA] < sizes[rootB]) {
+        if (sz[rootA] < sz[rootB]) {
             id[rootA] = rootB;
-            sizes[rootB] += sizes[rootA];
+            sz[rootB] += sz[rootA];
         } else {
             id[rootB] = rootA;
-            sizes[rootA] += sizes[rootB];
+            sz[rootA] += sz[rootB];
         }
+        count--;
     }
 
     @Override
     public int[] getIds() {
         return id;
     }
+
 }

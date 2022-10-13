@@ -1,7 +1,7 @@
 package com.algs.algo.unionfind.non_generic.qu.weight.path_compression;
 
 import com.algs.DefaultValues;
-import com.algs.algo.unionfind.non_generic.qu.IUnionFind;
+import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.util.ArraysUtil;
 import com.algs.util.RangeUtil;
 
@@ -10,26 +10,24 @@ import java.util.Objects;
 /**
  * 该路径压缩成本稍高
  */
-public class QuFullPathCompressionImpl implements IUnionFind {
+public class QuPcImpl implements IUnionFind {
 
     protected int count;
-    protected final int[] heights;
+    protected final int[] rank;
     protected final int[] id;
 
-    public QuFullPathCompressionImpl() {
+    public QuPcImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public QuFullPathCompressionImpl(int capacity) {
-        if (capacity < 1) {
-            throw new IllegalArgumentException("capacity should >= 1");
-        }
+    public QuPcImpl(int capacity) {
+        RangeUtil.requireGreaterThan(capacity, 0);
         id = new int[capacity];
         for (int i = 0; i < id.length; i++) {
             id[i] = i;
         }
-        heights = new int[capacity];
-        ArraysUtil.fill(heights, 1);
+        rank = new int[capacity];
+        ArraysUtil.fill(rank, 1);
         count = capacity;
     }
 
@@ -45,17 +43,22 @@ public class QuFullPathCompressionImpl implements IUnionFind {
         if (Objects.equals(rootA, rootB)) {
             return;
         }
-        count--;
-        if (heights[rootA] > heights[rootB]) {
+        if (rank[rootA] > rank[rootB]) {
             id[rootB] = rootA;
-        } else if (heights[rootA] < heights[rootB]) {
+        } else if (rank[rootA] < rank[rootB]) {
             id[rootA] = rootB;
         } else {
             id[rootA] = rootB;
-            heights[rootB]++;
+            rank[rootB]++;
         }
+        count--;
     }
 
+    /**
+     * 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+     * ------------------------------
+     * [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+     */
     @Override
     public int find(int a) {
         RangeUtil.requireIndexRange(a, 0, id.length);

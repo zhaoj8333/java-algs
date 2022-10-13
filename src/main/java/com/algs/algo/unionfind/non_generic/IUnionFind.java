@@ -1,4 +1,4 @@
-package com.algs.algo.unionfind.non_generic.qu;
+package com.algs.algo.unionfind.non_generic;
 
 public interface IUnionFind {
 

@@ -3,6 +3,7 @@ package com.algs.algo.unionfind.non_generic.qu.weight;
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.util.ArraysUtil;
+import com.algs.util.RangeUtil;
 
 import java.util.Objects;
 
@@ -30,7 +31,6 @@ public class QuRankImpl extends QuickUnionImpl {
         if (Objects.equals(rootA, rootB)) {
             return;
         }
-        count--;
         if (rank[rootA] > rank[rootB]) {
             id[rootB] = rootA;
         } else if (rank[rootA] < rank[rootB]) {
@@ -39,6 +39,7 @@ public class QuRankImpl extends QuickUnionImpl {
             id[rootB] = rootA;
             rank[rootA]++;
         }
+        count--;
     }
 
     @Override

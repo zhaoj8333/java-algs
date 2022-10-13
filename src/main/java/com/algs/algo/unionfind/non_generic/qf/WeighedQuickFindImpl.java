@@ -2,25 +2,29 @@ package com.algs.algo.unionfind.non_generic.qf;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
+import com.algs.util.ArraysUtil;
 import com.algs.util.RangeUtil;
 
 import java.util.Objects;
 
-public class QuickFindImpl implements IUnionFind {
+public class WeighedQuickFindImpl implements IUnionFind {
 
-    protected final int[] id;
-    protected int count;
+    private final int[] id;
+    private final int[] sz;
+    private int count;
 
-    public QuickFindImpl() {
+    public WeighedQuickFindImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public QuickFindImpl(int capacity) {
+    public WeighedQuickFindImpl(int capacity) {
         RangeUtil.requireGreaterThan(capacity, 0);
         id = new int[capacity];
-        for (int i = 0; i < id.length; ) {
-            id[i] = i++;
+        for (int i = 0; i < id.length; i++) {
+            id[i] = i;
         }
+        sz = new int[capacity];
+        ArraysUtil.fill(sz, 1);
         count = capacity;
     }
 
@@ -31,14 +35,26 @@ public class QuickFindImpl implements IUnionFind {
 
     @Override
     public void union(int a, int b) {
-        int idA = find(a);
-        int idB = find(b);
-        if (Objects.equals(idA, idB)) {
+        int rootA = find(a);
+        int rootB = find(b);
+        if (Objects.equals(rootA, rootB)) {
             return;
         }
+        int ts = sz[a] + sz[b];
+        int oId, nId;
+        if (sz[a] < sz[b]) {
+            oId = rootA;
+            nId = rootB;
+        } else {
+            oId = rootB;
+            nId = rootA;
+        }
         for (int i = 0; i < id.length; i++) {
-            if (Objects.equals(id[i], idA)) {
-                id[i] = idB;
+            if (Objects.equals(id[i], oId)) {
+                id[i] = nId;
+            }
+            if (Objects.equals(id[i], nId)) {
+                sz[i] = ts;
             }
         }
         count--;

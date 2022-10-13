@@ -2,6 +2,7 @@ package com.algs.algo.unionfind;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.IDisjointSet;
+import com.algs.util.RangeUtil;
 
 public class QuickFindImpl<E> implements IDisjointSet<E> {
 
@@ -12,9 +13,7 @@ public class QuickFindImpl<E> implements IDisjointSet<E> {
     }
 
     public QuickFindImpl(int capacity) {
-        if (capacity < 1) {
-            throw new IllegalArgumentException("capacity must >= 1");
-        }
+        RangeUtil.requireGreaterThan(capacity, 0);
         id = (E[]) new Object[capacity];
     }
 

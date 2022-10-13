@@ -2,6 +2,7 @@ package com.algs.util;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.net.URL;
@@ -9,12 +10,36 @@ import java.util.Objects;
 
 public class FileUtil {
 
-    public static IList<Integer> readInts(String fileName) {
-        URL resource = FileUtil.class.getClassLoader().getResource(fileName);
-        if (Objects.isNull(resource)) {
-            return null;
+    public static IList<Pair<Integer>> readPairs(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Pair<Integer>> pairs = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            LineNumberReader lnr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                lnr = new LineNumberReader(isr);
+                String line;
+                while ((line = lnr.readLine()) != null) {
+                    if (!line.contains(" ")) {
+                        continue;
+                    }
+                    String[] s = line.split(" ");
+                    pairs.add(new Pair<>(Integer.valueOf(s[0]), Integer.valueOf(s[1])));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, lnr);
+            }
         }
-        File file = new File(resource.getFile());
+        return pairs;
+    }
+
+    public static IList<Integer> readInts(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
         IList<Integer> ints = new SinglyLinkedListImpl<>();
         if (file.isFile() && file.exists()) {
             InputStreamReader isr = null;
@@ -29,19 +54,32 @@ public class FileUtil {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                try {
-                    if (isr != null) {
-                        isr.close();
-                    }
-                    if (lnr != null) {
-                        lnr.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                close(isr, lnr);
             }
         }
         return ints;
+    }
+
+    private static void close(InputStreamReader isr, LineNumberReader lnr) {
+        try {
+            if (isr != null) {
+                isr.close();
+            }
+            if (lnr != null) {
+                lnr.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Nullable
+    private static File getFile(String fileName) {
+        URL resource = FileUtil.class.getClassLoader().getResource(fileName);
+        if (Objects.isNull(resource)) {
+            return null;
+        }
+        return new File(resource.getFile());
     }
 
 

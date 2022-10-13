@@ -1,6 +1,6 @@
-package com.algs.algo.unionfind;
+package com.algs.algo.unionfind.non_generic.qu;
 
-import com.algs.algo.unionfind.non_generic.qu.IUnionFind;
+import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.analysis.StopWatchTask;
 import org.apache.commons.lang.math.RandomUtils;
 

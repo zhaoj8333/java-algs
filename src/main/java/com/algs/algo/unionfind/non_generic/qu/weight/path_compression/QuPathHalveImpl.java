@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * 路径减半: 每隔一个节点指向其祖父节点
  */
-public class QuPathHalveImpl extends QuFullPathCompressionImpl {
+public class QuPathHalveImpl extends QuPcImpl {
 
     public QuPathHalveImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
@@ -18,6 +18,13 @@ public class QuPathHalveImpl extends QuFullPathCompressionImpl {
         super(capacity);
     }
 
+    /**
+     *  0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+     * ------------------------------
+     * [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+     *
+     * [2, 4, 5, 6, 7, 8, 9, 9, 9]
+     */
     @Override
     public int find(int a) {
         RangeUtil.requireIndexRange(a, 0, id.length);

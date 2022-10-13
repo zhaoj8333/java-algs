@@ -6,6 +6,12 @@ public class RangeUtil {
         throw new AssertionError("No " + RangeUtil.class.getName() + " Instance for you");
     }
 
+    public static void requireGreaterThan(int capacity, int threshold) {
+        if (capacity <= threshold) {
+            throw new RuntimeException("capacity should greater than " + threshold);
+        }
+    }
+
     public static void requireIndexRange(int index, int min, int max) {
         if (index < min || index >= max) {
             throw new IndexOutOfBoundsException(String.format("require index range [%d, %d)", min, max));

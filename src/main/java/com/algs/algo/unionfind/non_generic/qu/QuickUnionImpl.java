@@ -1,6 +1,7 @@
 package com.algs.algo.unionfind.non_generic.qu;
 
 import com.algs.DefaultValues;
+import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.util.RangeUtil;
 
 import java.util.Objects;
@@ -15,9 +16,7 @@ public class QuickUnionImpl implements IUnionFind {
     }
 
     public QuickUnionImpl(int capacity) {
-        if (capacity < 1) {
-            throw new IllegalArgumentException("capacity must >= 1");
-        }
+        RangeUtil.requireGreaterThan(capacity, 0);
         id = new int[capacity];
         for (int i = 0; i < id.length; i++) {
             id[i] = i;
@@ -37,8 +36,8 @@ public class QuickUnionImpl implements IUnionFind {
         if (Objects.equals(rootA, rootB)) {
             return;
         }
-        count--;
         id[rootA] = rootB;
+        count--;
     }
 
     @Override
