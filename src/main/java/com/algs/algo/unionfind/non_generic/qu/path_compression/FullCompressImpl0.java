@@ -1,4 +1,4 @@
-package com.algs.algo.unionfind.non_generic.qu.weight.path_compression;
+package com.algs.algo.unionfind.non_generic.qu.path_compression;
 
 import com.algs.DefaultValues;
 import com.algs.util.RangeUtil;
@@ -8,13 +8,13 @@ import java.util.Objects;
 /**
  * 该路径压缩成本稍高
  */
-public class QuPcImpl0 extends QuPcImpl {
+public class FullCompressImpl0 extends FullCompressImpl {
 
-    public QuPcImpl0() {
+    public FullCompressImpl0() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public QuPcImpl0(int capacity) {
+    public FullCompressImpl0(int capacity) {
         super(capacity);
     }
 

@@ -1,36 +1,45 @@
 package com.algs.datastructure.collection.bag;
 
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.CollectionUtil;
 import edu.princeton.cs.algs4.StdRandom;
 
 @SuppressWarnings("unchecked")
 public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
 
-    private class ArrayIterator<E> implements Iterator<E> {
+    public RandomArrayBagImpl() {
+        this(DefaultValues.DEFAULT_CAPACITY);
+    }
+
+    public RandomArrayBagImpl(int size) {
+        super(size);
+    }
+
+    private class RandomArrayBagIterator<E> implements Iterator<E> {
 
         private int n = 0;
-        public int[] accessSequence = new int[size];
+        public int[] seq = new int[size];
 
         @Override
         public boolean hasNext() {
-            return n <= size - 2;
+            return n < size;
         }
 
         @Override
         public E next() {
-            int seq = accessSequence[n++];
+            int seq = this.seq[n++];
             return (E) entries[seq];
         }
     }
 
     @Override
     public Iterator<E> iterator() {
-        ArrayIterator<E> itr = new ArrayIterator<>();
-        for (int i = 0; i < entries.length; i++) {
-            itr.accessSequence[i] = i;
+        RandomArrayBagIterator<E> itr = new RandomArrayBagIterator<>();
+        for (int i = 0; i < size; i++) {
+            itr.seq[i] = i;
         }
-        StdRandom.shuffle(itr.accessSequence);
+        StdRandom.shuffle(itr.seq);
         return itr;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.algs.algo.unionfind.non_generic.qu.weight.path_compression;
+package com.algs.algo.unionfind.non_generic.qu.path_compression;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
@@ -10,17 +10,17 @@ import java.util.Objects;
 /**
  * 该路径压缩成本稍高
  */
-public class QuPcImpl implements IUnionFind {
+public class FullCompressImpl implements IUnionFind {
 
     protected int count;
     protected final int[] rank;
     protected final int[] id;
 
-    public QuPcImpl() {
+    public FullCompressImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public QuPcImpl(int capacity) {
+    public FullCompressImpl(int capacity) {
         RangeUtil.requireGreaterThan(capacity, 0);
         id = new int[capacity];
         for (int i = 0; i < id.length; i++) {

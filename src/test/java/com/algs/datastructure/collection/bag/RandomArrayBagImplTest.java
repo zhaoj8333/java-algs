@@ -1,7 +1,10 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.util.ArraysUtil;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 class RandomArrayBagImplTest {
 
@@ -13,9 +16,11 @@ class RandomArrayBagImplTest {
         }
         Iterator<Integer> itr = bag.iterator();
         while (itr.hasNext()) {
-            System.out.println(itr.next());
+            System.out.print(itr.next() + ", ");
         }
+        System.out.println();
 
-
+        Object[] integers = bag.toArray();
+        System.out.println(Arrays.toString(integers));
     }
 }

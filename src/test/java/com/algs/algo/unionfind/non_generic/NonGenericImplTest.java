@@ -3,10 +3,9 @@ package com.algs.algo.unionfind.non_generic;
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.QuRankImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.QuSizeImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.path_compression.QuPcImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.path_compression.QuPcImpl0;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.*;
+import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.util.Pair;
@@ -19,16 +18,46 @@ import java.util.Arrays;
 class NonGenericImplTest {
 
     @Test
+    void testPathSplitting() {
+        IUnionFind qu = new SplittingWithoutWeightImpl();
+
+        qu.union(0, 1);
+        qu.union(1, 2);
+        qu.union(2, 3);
+        qu.union(3, 4);
+        qu.union(4, 5);
+
+        qu.find(0);
+        qu.find(2);
+
+    }
+
+    @Test
+    void testPathHalving() {
+        IUnionFind qu = new HalvingWithoutWeightImpl();
+
+        qu.union(0, 1);
+        qu.union(1, 2);
+        qu.union(2, 3);
+        qu.union(3, 4);
+        qu.union(4, 5);
+
+        qu.find(0);
+        qu.find(2);
+
+    }
+
+    @Test
     void test() {
         IQueue<IUnionFind> ufs = new ArrayQueueImpl<>();
 //        ufs.enque(new QuickUnionImpl());
 //        ufs.enque(new QuPathCompressImpl());
 //        ufs.enque(new QuPcImpl0());
-        ufs.enque(new QuPcImpl());
+//        ufs.enque(new QuPcImpl());
 //        ufs.enque(new QuSizeImpl());
 //        ufs.enque(new QuRankImpl());
 //        ufs.enque(new QuPathSplitImpl());
-//        ufs.enque(new QuPathHalveImpl());
+        ufs.enque(new HalvingImpl());
 //        ufs.enque(new WeighedQuickFindImpl());
 
         while (!ufs.isEmpty()) {
@@ -67,7 +96,7 @@ class NonGenericImplTest {
 
     @Test
     void find() {
-        IUnionFind uf = new QuPcImpl0();
+        IUnionFind uf = new FullCompressImpl0();
         Assertions.assertEquals(0, uf.find(0));
         Assertions.assertEquals(2, uf.find(2));
         Assertions.assertEquals(4, uf.find(4));
@@ -118,11 +147,11 @@ class NonGenericImplTest {
         printPath(qf, pairs);
         System.out.println(repeat);
 
-        qf = new QuSizeImpl();
+        qf = new SizeWeightImpl();
         printPath(qf, pairs);
         System.out.println(repeat);
 
-        qf = new QuRankImpl();
+        qf = new RankWeightImpl();
         printPath(qf, pairs);
 
     }

@@ -1,15 +1,15 @@
 package com.graph.analysis.algo.unionfind.qu.weight.path_compression;
 
-import com.algs.algo.unionfind.non_generic.qu.weight.QuSizeImpl;
+import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.DrawUtil;
 import com.algs.util.Pair;
 import com.graph.GraphicAnalysis;
-import edu.princeton.cs.algs4.StdDraw;
 
 import java.util.Objects;
 
-public class QuSizeAlysImpl extends QuSizeImpl implements GraphicAnalysis {
+public class QuSizeAlysImpl extends SizeWeightImpl implements GraphicAnalysis {
 
     private int totalCost = 0;
     private int cost;
@@ -39,10 +39,10 @@ public class QuSizeAlysImpl extends QuSizeImpl implements GraphicAnalysis {
 
     @Override
     public void analyze() {
-        StdDraw.setXscale(0, id.length + 30);
-        StdDraw.setYscale(0, id.length * 2);
-        StdDraw.setPenRadius(0.003);
-        StdDraw.textLeft(1, id.length, String.valueOf(id.length));
+        DrawUtil.setXscale(0, id.length + 30);
+        DrawUtil.setYscale(0, id.length * 2);
+        DrawUtil.setPenRadius(0.003);
+        DrawUtil.textLeft(1, id.length, String.valueOf(id.length));
 
         int i = 0;
         Iterator<Pair<Integer>> itr = data.iterator();

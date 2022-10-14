@@ -10,5 +10,10 @@ public interface IUnionFind {
 
     boolean connected(int a, int b);
 
+    default boolean notConnectedThenUnion(int a, int b) {
+        return false;
+    }
+
     int[] getIds();
+
 }

@@ -3,22 +3,21 @@ package com.algs.algo.unionfind.non_generic.qu.weight;
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.util.ArraysUtil;
-import com.algs.util.RangeUtil;
 
 import java.util.Objects;
 
 /**
- * 解决 @{@link QuSizeImpl} 带来的树不平衡问题
+ * 解决 @{@link SizeWeightImpl} 带来的树不平衡问题
  */
-public class QuRankImpl extends QuickUnionImpl {
+public class RankWeightImpl extends QuickUnionImpl {
 
     private final int[] rank;
 
-    public QuRankImpl() {
+    public RankWeightImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public QuRankImpl(int capacity) {
+    public RankWeightImpl(int capacity) {
         super(capacity);
         rank = new int[capacity];
         ArraysUtil.fill(rank, 1);
