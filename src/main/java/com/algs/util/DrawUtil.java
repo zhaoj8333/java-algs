@@ -94,7 +94,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
     private static Color penColor;
 
-    private static final int DEFAULT_SIZE = 512;
+    private static final int DEFAULT_SIZE = 768;
     private static int width  = DEFAULT_SIZE;
     private static int height = DEFAULT_SIZE;
     private static final double DEFAULT_PEN_RADIUS = 0.002;
@@ -207,7 +207,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
 
         frame.setContentPane(draw);
         frame.addKeyListener(std);    // JLabel cannot get keyboard focus
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
         // frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
         frame.setTitle("");

@@ -1,44 +1,56 @@
-package com.graph.analysis.algo.unionfind.qu.weight.path_compression;
+package com.graph.analysis.algo.unionfind.qu.weight;
 
-import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.DrawUtil;
 import com.algs.util.Pair;
+import com.algs.util.RangeUtil;
 import com.graph.GraphicAnalysis;
 
 import java.util.Objects;
 
-public class QuRankAlysImpl extends RankWeightImpl implements GraphicAnalysis {
+public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysis {
 
     private int totalCost = 0;
     private int cost;
     private final IList<Pair<Integer>> data;
 
-    public QuRankAlysImpl(IList<Pair<Integer>> data) {
-        super(data.size());
-        this.data = data;
+    public QuickUnionAlysImpl(IList<Pair<Integer>> pairs) {
+        super(pairs.size());
+        this.data = pairs;
     }
 
     @Override
     public int find(int a) {
-        while (!Objects.equals(a, id[a])) {
+        RangeUtil.requireIndexRange(a, 0, id.length);
+        while (!Objects.equals(id[a], a)) {
             a = id[a];
-            cost++;
+            cost += 2;
         }
-        totalCost += cost;
         return a;
     }
 
     @Override
     public void union(int a, int b) {
-        super.union(a, b);
-        cost++;
-        totalCost += cost;
+        int idA = find(a);
+        int idB = find(b);
+        if (Objects.equals(idA, idB)) {
+            return;
+        }
+        id[idA] = id[idB];
+        cost += 2;
+        count--;
+    }
+
+    @Override
+    public boolean connected(int a, int b) {
+        return Objects.equals(find(a), find(b));
     }
 
     @Override
     public void analyze() {
+        DrawUtil.setTitle(QuickUnionImpl.class.getSimpleName());
         DrawUtil.setXscale(0, id.length + 30);
         DrawUtil.setYscale(0, id.length * 2);
         DrawUtil.setPenRadius(0.003);
@@ -53,13 +65,14 @@ public class QuRankAlysImpl extends RankWeightImpl implements GraphicAnalysis {
             Integer b = pair.b;
             if (connected(a, b)) {
                 i++;
+                totalCost += cost;
                 plot(i, cost, totalCost);
                 continue;
             }
             union(a, b);
             i++;
+            totalCost += cost;
             plot(i, cost, totalCost);
         }
     }
-
 }

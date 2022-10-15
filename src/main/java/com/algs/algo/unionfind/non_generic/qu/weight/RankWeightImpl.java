@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class RankWeightImpl extends QuickUnionImpl {
 
-    private final int[] rank;
+    protected final int[] rank;
 
     public RankWeightImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);

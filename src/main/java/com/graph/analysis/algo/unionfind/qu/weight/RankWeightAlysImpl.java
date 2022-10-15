@@ -1,58 +1,56 @@
-package com.graph.analysis.algo.unionfind.qu;
+package com.graph.analysis.algo.unionfind.qu.weight;
 
-import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
+import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.DrawUtil;
 import com.algs.util.Pair;
-import com.algs.util.RangeUtil;
 import com.graph.GraphicAnalysis;
 
 import java.util.Objects;
 
-public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysis {
+public class RankWeightAlysImpl extends RankWeightImpl implements GraphicAnalysis {
 
     private int totalCost = 0;
     private int cost;
     private final IList<Pair<Integer>> data;
 
-    public QuickUnionAlysImpl(IList<Pair<Integer>> pairs) {
-        super(pairs.size());
-        this.data = pairs;
+    public RankWeightAlysImpl(IList<Pair<Integer>> data) {
+        super(data.size());
+        this.data = data;
     }
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
-        while (!Objects.equals(id[a], a)) {
+        while (!Objects.equals(a, id[a])) {
             a = id[a];
-            cost++;
+            cost += 2;
         }
-        totalCost += cost;
         return a;
     }
 
     @Override
     public void union(int a, int b) {
-        int idA = find(a);
-        int idB = find(b);
-        if (Objects.equals(idA, idB)) {
+        int rootA = find(a);
+        int rootB = find(b);
+        if (Objects.equals(rootA, rootB)) {
             return;
         }
-        id[idA] = id[idB];
+        if (rank[rootA] > rank[rootB]) {
+            id[rootB] = rootA;
+        } else if (rank[rootA] < rank[rootB]) {
+            id[rootA] = rootB;
+        } else {
+            id[rootB] = rootA;
+            rank[rootA]++;
+        }
+        cost += 2;
         count--;
-        totalCost += cost;
-    }
-
-    @Override
-    public boolean connected(int a, int b) {
-        boolean connected = super.connected(a, b);
-        totalCost += cost;
-        return connected;
     }
 
     @Override
     public void analyze() {
+        DrawUtil.setTitle(RankWeightImpl.class.getSimpleName());
         DrawUtil.setXscale(0, id.length + 30);
         DrawUtil.setYscale(0, id.length * 2);
         DrawUtil.setPenRadius(0.003);
@@ -67,12 +65,15 @@ public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysi
             Integer b = pair.b;
             if (connected(a, b)) {
                 i++;
+                totalCost += cost;
                 plot(i, cost, totalCost);
                 continue;
             }
             union(a, b);
             i++;
+            totalCost += cost;
             plot(i, cost, totalCost);
         }
     }
+
 }

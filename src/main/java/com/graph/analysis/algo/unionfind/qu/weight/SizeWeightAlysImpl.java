@@ -1,4 +1,4 @@
-package com.graph.analysis.algo.unionfind.qu.weight.path_compression;
+package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
 import com.algs.datastructure.collection.Iterator;
@@ -9,13 +9,13 @@ import com.graph.GraphicAnalysis;
 
 import java.util.Objects;
 
-public class QuSizeAlysImpl extends SizeWeightImpl implements GraphicAnalysis {
+public class SizeWeightAlysImpl extends SizeWeightImpl implements GraphicAnalysis {
 
     private int totalCost = 0;
     private int cost;
     private final IList<Pair<Integer>> data;
 
-    public QuSizeAlysImpl(IList<Pair<Integer>> data) {
+    public SizeWeightAlysImpl(IList<Pair<Integer>> data) {
         super(data.size());
         this.data = data;
     }
@@ -39,6 +39,7 @@ public class QuSizeAlysImpl extends SizeWeightImpl implements GraphicAnalysis {
 
     @Override
     public void analyze() {
+        DrawUtil.setTitle(SizeWeightImpl.class.getSimpleName());
         DrawUtil.setXscale(0, id.length + 30);
         DrawUtil.setYscale(0, id.length * 2);
         DrawUtil.setPenRadius(0.003);

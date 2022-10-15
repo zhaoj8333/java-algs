@@ -1,31 +1,21 @@
-package com.graph.analysis.algo.unionfind.qu.weight.path_compression;
+package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.FileUtil;
 import com.algs.util.Pair;
 import com.graph.GraphicAnalysis;
-import com.graph.analysis.algo.unionfind.qf.QuickFindAlysImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class QuSizeAlysImplTest {
+class QuickUnionAlysImplTest {
 
     public static void main(String[] args) {
 
         IList<Pair<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
         assert pairs != null;
-        GraphicAnalysis qfa = new QuSizeAlysImpl(pairs);
-        qfa.analyze();
-
-    }
-
-    @Test
-    void union() {
-    }
-
-    @Test
-    void getIds() {
+        GraphicAnalysis qua = new QuickUnionAlysImpl(pairs);
+        qua.analyze();
     }
 
     @Test
@@ -33,7 +23,7 @@ class QuSizeAlysImplTest {
     }
 
     @Test
-    void testUnion() {
+    void union() {
     }
 
     @Test
@@ -45,7 +35,11 @@ class QuSizeAlysImplTest {
     }
 
     @Test
-    void testGetIds() {
+    void getIds() {
+    }
+
+    @Test
+    void notConnectedThenUnion() {
     }
 
     @Test
@@ -57,7 +51,11 @@ class QuSizeAlysImplTest {
     }
 
     @Test
-    void testUnion1() {
+    void testUnion() {
+    }
+
+    @Test
+    void testConnected() {
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.graph.analysis.algo.unionfind.qu.weight.path_compression;
+package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.FileUtil;
@@ -6,15 +6,13 @@ import com.algs.util.Pair;
 import com.graph.GraphicAnalysis;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class QuRankAlysImplTest {
+class RankWeightAlysImplTest {
 
     public static void main(String[] args) {
 
         IList<Pair<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
         assert pairs != null;
-        GraphicAnalysis qfa = new QuRankAlysImpl(pairs);
+        GraphicAnalysis qfa = new RankWeightAlysImpl(pairs);
         qfa.analyze();
 
     }
