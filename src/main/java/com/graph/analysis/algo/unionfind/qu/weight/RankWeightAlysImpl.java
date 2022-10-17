@@ -3,19 +3,19 @@ package com.graph.analysis.algo.unionfind.qu.weight;
 import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.Connection;
 import com.algs.util.DrawUtil;
-import com.algs.util.Pair;
-import com.graph.GraphicAnalysis;
+import com.graph.analysis.algo.unionfind.IUnionFindAlys;
 
 import java.util.Objects;
 
-public class RankWeightAlysImpl extends RankWeightImpl implements GraphicAnalysis {
+public class RankWeightAlysImpl extends RankWeightImpl implements IUnionFindAlys {
 
     private int totalCost = 0;
     private int cost;
-    private final IList<Pair<Integer>> data;
+    private final IList<Connection<Integer>> data;
 
-    public RankWeightAlysImpl(IList<Pair<Integer>> data) {
+    public RankWeightAlysImpl(IList<Connection<Integer>> data) {
         super(data.size());
         this.data = data;
     }
@@ -57,12 +57,12 @@ public class RankWeightAlysImpl extends RankWeightImpl implements GraphicAnalysi
         DrawUtil.textLeft(1, id.length, String.valueOf(id.length));
 
         int i = 0;
-        Iterator<Pair<Integer>> itr = data.iterator();
+        Iterator<Connection<Integer>> itr = data.iterator();
         while (itr.hasNext()) {
             cost = 0;
-            Pair<Integer> pair = itr.next();
-            Integer a = pair.a;
-            Integer b = pair.b;
+            Connection<Integer> connection = itr.next();
+            Integer a = connection.a;
+            Integer b = connection.b;
             if (connected(a, b)) {
                 i++;
                 totalCost += cost;
@@ -76,4 +76,8 @@ public class RankWeightAlysImpl extends RankWeightImpl implements GraphicAnalysi
         }
     }
 
+    @Override
+    public int getCost() {
+        return cost;
+    }
 }

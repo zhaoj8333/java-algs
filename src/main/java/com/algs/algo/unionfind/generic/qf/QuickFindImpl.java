@@ -1,12 +1,12 @@
-package com.algs.algo.unionfind;
+package com.algs.algo.unionfind.generic.qf;
 
 import com.algs.DefaultValues;
-import com.algs.algo.unionfind.IDisjointSet;
+import com.algs.algo.unionfind.generic.IDisjointSet;
 import com.algs.util.RangeUtil;
 
 public class QuickFindImpl<E> implements IDisjointSet<E> {
 
-    private E[] id;
+    private final E[] id;
 
     public QuickFindImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
@@ -36,4 +36,5 @@ public class QuickFindImpl<E> implements IDisjointSet<E> {
     public boolean connected(E p, E q) {
         return false;
     }
+
 }

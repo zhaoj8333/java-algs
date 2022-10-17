@@ -1,28 +1,23 @@
-package com.graph.analysis.algo.unionfind.qu.weight;
+package com.graph.analysis.algo.unionfind;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.FileUtil;
 import com.algs.util.Connection;
+import com.algs.util.FileUtil;
 import com.graph.GraphicAnalysis;
 import org.junit.jupiter.api.Test;
 
-class SizeWeightAlysImplTest {
+class ErdosRenyiAlysImplTest {
 
     public static void main(String[] args) {
 
         IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/mediumUF.txt");
-        assert pairs != null;
-        GraphicAnalysis qfa = new SizeWeightAlysImpl(pairs);
-        qfa.analyze();
-
+//        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/tinyUF.txt");
+        GraphicAnalysis ga = new ErdosRenyiAlysImpl(pairs);
+        ga.analyze();
     }
 
     @Test
-    void union() {
-    }
-
-    @Test
-    void getIds() {
+    void generate() {
     }
 
     @Test
@@ -30,19 +25,7 @@ class SizeWeightAlysImplTest {
     }
 
     @Test
-    void testUnion() {
-    }
-
-    @Test
-    void find() {
-    }
-
-    @Test
-    void connected() {
-    }
-
-    @Test
-    void testGetIds() {
+    void testCount() {
     }
 
     @Test
@@ -50,11 +33,11 @@ class SizeWeightAlysImplTest {
     }
 
     @Test
-    void testFind() {
+    void testCount1() {
     }
 
     @Test
-    void testUnion1() {
+    void testAllUnderSameSize() {
     }
 
     @Test

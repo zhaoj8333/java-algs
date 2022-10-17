@@ -3,25 +3,11 @@ package com.algs.algo.unionfind.non_generic;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.datastructure.collection.bag.IBag;
 import com.algs.datastructure.collection.bag.RandomArrayBagImpl;
+import com.algs.util.Connection;
 
 import java.util.Random;
 
 public class RandomGridGenerator extends QuickUnionImpl {
-
-    public static class Connection {
-        int p;
-        int q;
-
-        public Connection(int p, int q) {
-            this.p = p;
-            this.q = q;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + p + " -> " + q + ']';
-        }
-    }
 
     public static IBag<Connection> generate(int n) {
         IBag<Connection> bag = new RandomArrayBagImpl<>();

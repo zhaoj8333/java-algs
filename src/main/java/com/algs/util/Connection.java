@@ -1,10 +1,10 @@
 package com.algs.util;
 
-public class Pair<E> {
+public class Connection<E> {
     public E a;
     public E b;
 
-    public Pair(E a, E b) {
+    public Connection(E a, E b) {
         this.a = a;
         this.b = b;
     }

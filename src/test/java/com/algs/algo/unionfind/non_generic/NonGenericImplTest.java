@@ -8,7 +8,7 @@ import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
 import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.util.Pair;
+import com.algs.util.Connection;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -125,42 +125,42 @@ class NonGenericImplTest {
 
     @Test
     void _1_5_1_2_3() {
-        Pair[] pairs = new Pair[8];
-        pairs[0] = new Pair(9, 0);
-        pairs[1] = new Pair(3, 4);
-        pairs[2] = new Pair(5, 8);
-        pairs[3] = new Pair(7, 2);
-        pairs[4] = new Pair(2, 1);
-        pairs[5] = new Pair(5, 7);
-        pairs[6] = new Pair(0, 3);
-        pairs[7] = new Pair(4, 2);
+        Connection[] connections = new Connection[8];
+        connections[0] = new Connection(9, 0);
+        connections[1] = new Connection(3, 4);
+        connections[2] = new Connection(5, 8);
+        connections[3] = new Connection(7, 2);
+        connections[4] = new Connection(2, 1);
+        connections[5] = new Connection(5, 7);
+        connections[6] = new Connection(0, 3);
+        connections[7] = new Connection(4, 2);
         System.out.print("        ");
 
         IUnionFind qf = new QuickFindImpl();
         print(qf);
 
-        printPath(qf, pairs);
+        printPath(qf, connections);
         String repeat = "-".repeat(50);
         System.out.println(repeat);
 
         qf = new QuickUnionImpl();
-        printPath(qf, pairs);
+        printPath(qf, connections);
         System.out.println(repeat);
 
         qf = new SizeWeightImpl();
-        printPath(qf, pairs);
+        printPath(qf, connections);
         System.out.println(repeat);
 
         qf = new RankWeightImpl();
-        printPath(qf, pairs);
+        printPath(qf, connections);
 
     }
 
-    private void printPath(IUnionFind uf, Pair[] pairs) {
+    private void printPath(IUnionFind uf, Connection[] connections) {
         System.out.println();
-        for (Pair pair : pairs) {
-            System.out.print(pair);
-            uf.union((int) pair.a, (int) pair.b);
+        for (Connection connection : connections) {
+            System.out.print(connection);
+            uf.union((int) connection.a, (int) connection.b);
             System.out.print(": ");
             print(uf);
         }

@@ -4,7 +4,7 @@ import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightLinkedListImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.DrawUtil;
-import com.algs.util.Pair;
+import com.algs.util.Connection;
 import com.algs.util.RangeUtil;
 import com.graph.GraphicAnalysis;
 
@@ -19,9 +19,9 @@ public class RankWeightLinkedListAlysImpl extends RankWeightLinkedListImpl imple
 
     private int totalCost = 0;
     private int cost;
-    private final IList<Pair<Integer>> data;
+    private final IList<Connection<Integer>> data;
 
-    public RankWeightLinkedListAlysImpl(IList<Pair<Integer>> data) {
+    public RankWeightLinkedListAlysImpl(IList<Connection<Integer>> data) {
         this.data = data;
         for (int i = 0; i < data.size(); i++) {
             id.add(i);
@@ -81,12 +81,12 @@ public class RankWeightLinkedListAlysImpl extends RankWeightLinkedListImpl imple
         DrawUtil.textLeft(1, id.size(), String.valueOf(id.size()));
 
         int i = 0;
-        Iterator<Pair<Integer>> itr = data.iterator();
+        Iterator<Connection<Integer>> itr = data.iterator();
         while (itr.hasNext()) {
             cost = 0;
-            Pair<Integer> pair = itr.next();
-            Integer a = pair.a;
-            Integer b = pair.b;
+            Connection<Integer> connection = itr.next();
+            Integer a = connection.a;
+            Integer b = connection.b;
             if (connected(a, b)) {
                 i++;
                 totalCost += cost;

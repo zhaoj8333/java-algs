@@ -133,6 +133,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static boolean mousePressed = false;
     private static double mouseX = 0;
     private static double mouseY = 0;
+    private static double withHeightRatio = 1.6;
 
     // queue of typed key characters
     private static final LinkedList<Character> keysTyped = new LinkedList<Character>();
@@ -180,14 +181,14 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static void init() {
         if (frame != null) frame.setVisible(false);
         frame = new JFrame();
-        offscreenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        onscreenImage  = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        offscreenImage = new BufferedImage((int) (width * withHeightRatio), height, BufferedImage.TYPE_INT_ARGB);
+        onscreenImage  = new BufferedImage((int) (width * withHeightRatio), height, BufferedImage.TYPE_INT_ARGB);
         offscreen = offscreenImage.createGraphics();
         onscreen  = onscreenImage.createGraphics();
         setXscale();
         setYscale();
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
-        offscreen.fillRect(0, 0, width, height);
+        offscreen.fillRect(0, 0, (int) (width * withHeightRatio), height);
         setPenColor();
         setPenRadius();
         setFont();

@@ -3,20 +3,20 @@ package com.graph.analysis.algo.unionfind.qu.weight;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.Connection;
 import com.algs.util.DrawUtil;
-import com.algs.util.Pair;
 import com.algs.util.RangeUtil;
-import com.graph.GraphicAnalysis;
+import com.graph.analysis.algo.unionfind.IUnionFindAlys;
 
 import java.util.Objects;
 
-public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysis {
+public class QuickUnionAlysImpl extends QuickUnionImpl implements IUnionFindAlys {
 
     private int totalCost = 0;
     private int cost;
-    private final IList<Pair<Integer>> data;
+    private final IList<Connection<Integer>> data;
 
-    public QuickUnionAlysImpl(IList<Pair<Integer>> pairs) {
+    public QuickUnionAlysImpl(IList<Connection<Integer>> pairs) {
         super(pairs.size());
         this.data = pairs;
     }
@@ -57,12 +57,12 @@ public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysi
         DrawUtil.textLeft(1, id.length, String.valueOf(id.length));
 
         int i = 0;
-        Iterator<Pair<Integer>> itr = data.iterator();
+        Iterator<Connection<Integer>> itr = data.iterator();
         while (itr.hasNext()) {
             cost = 0;
-            Pair<Integer> pair = itr.next();
-            Integer a = pair.a;
-            Integer b = pair.b;
+            Connection<Integer> connection = itr.next();
+            Integer a = connection.a;
+            Integer b = connection.b;
             if (connected(a, b)) {
                 i++;
                 totalCost += cost;
@@ -74,5 +74,10 @@ public class QuickUnionAlysImpl extends QuickUnionImpl implements GraphicAnalysi
             totalCost += cost;
             plot(i, cost, totalCost);
         }
+    }
+
+    @Override
+    public int getCost() {
+        return cost;
     }
 }

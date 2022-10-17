@@ -3,19 +3,19 @@ package com.graph.analysis.algo.unionfind.qf;
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.Connection;
 import com.algs.util.DrawUtil;
-import com.algs.util.Pair;
-import com.graph.GraphicAnalysis;
+import com.graph.analysis.algo.unionfind.IUnionFindAlys;
 
 import java.util.Objects;
 
-public class QuickFindAlysImpl extends QuickFindImpl implements GraphicAnalysis {
+public class QuickFindAlysImpl extends QuickFindImpl implements IUnionFindAlys {
 
     private int totalCost = 0;
     private int cost;
-    private final IList<Pair<Integer>> data;
+    private final IList<Connection<Integer>> data;
 
-    public QuickFindAlysImpl(IList<Pair<Integer>> pairs) {
+    public QuickFindAlysImpl(IList<Connection<Integer>> pairs) {
         super(pairs.size());
         this.data = pairs;
     }
@@ -41,14 +41,6 @@ public class QuickFindAlysImpl extends QuickFindImpl implements GraphicAnalysis 
             cost++;
         }
         count--;
-        totalCost += cost;
-    }
-
-    @Override
-    public boolean connected(int a, int b) {
-        boolean connected = super.connected(a, b);
-        totalCost += cost;
-        return connected;
     }
 
     @Override
@@ -59,20 +51,27 @@ public class QuickFindAlysImpl extends QuickFindImpl implements GraphicAnalysis 
         DrawUtil.textLeft(1, id.length, String.valueOf(id.length));
 
         int i = 0;
-        Iterator<Pair<Integer>> itr = data.iterator();
+        Iterator<Connection<Integer>> itr = data.iterator();
         while (itr.hasNext()) {
             cost = 0;
-            Pair<Integer> pair = itr.next();
-            Integer a = pair.a;
-            Integer b = pair.b;
+            Connection<Integer> connection = itr.next();
+            Integer a = connection.a;
+            Integer b = connection.b;
             if (connected(a, b)) {
                 i++;
+                totalCost += cost;
                 plot(i, cost, totalCost);
                 continue;
             }
             union(a, b);
             i++;
+            totalCost += cost;
             plot(i, cost, totalCost);
         }
+    }
+
+    @Override
+    public int getCost() {
+        return cost;
     }
 }

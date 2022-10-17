@@ -1,5 +1,7 @@
 package com.algs.algo.unionfind;
 
+import com.algs.algo.unionfind.generic.IDisjointSet;
+import com.algs.algo.unionfind.generic.qf.QuickFindImpl;
 import org.junit.jupiter.api.Test;
 
 class QuickFindImplTest {

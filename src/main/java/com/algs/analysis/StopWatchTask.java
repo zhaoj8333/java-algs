@@ -2,6 +2,7 @@ package com.algs.analysis;
 
 import com.algs.util.TimeUtil;
 
+import javax.management.MBeanRegistration;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +128,7 @@ public abstract class StopWatchTask {
 
     protected abstract Object profileTask();
 
-    public void exec() {
+    public long exec() {
         beforeExec();
         begin = System.currentTimeMillis();
 
@@ -136,6 +137,8 @@ public abstract class StopWatchTask {
         end = System.currentTimeMillis();
         afterExec();
         renderStopWatchProfile();
+
+        return end - begin;
     };
 
 

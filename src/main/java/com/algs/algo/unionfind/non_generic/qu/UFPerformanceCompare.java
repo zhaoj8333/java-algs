@@ -1,8 +1,13 @@
 package com.algs.algo.unionfind.non_generic.qu;
 
+import com.algs.algo.unionfind.non_generic.ErdosRenyi;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.analysis.StopWatchTask;
 import org.apache.commons.lang.math.RandomUtils;
+
+import java.lang.reflect.Constructor;
+import java.util.Random;
 
 /**
  * Using both path compression, splitting, or halving and union by rank or size ensures that the
@@ -13,15 +18,12 @@ import org.apache.commons.lang.math.RandomUtils;
  */
 public class UFPerformanceCompare extends StopWatchTask {
 
-    private final int[] array;
     private final IUnionFind uf;
+    private final int size;
+    private final Random r = new Random();
 
     public UFPerformanceCompare(int size, IUnionFind uf) {
-        array = new int[size];
-        for (int i = 0; i < size; i++) {
-            int n = RandomUtils.nextInt(size);
-            array[i] = n;
-        }
+        this.size = size;
         this.uf = uf;
     }
 
@@ -39,14 +41,20 @@ public class UFPerformanceCompare extends StopWatchTask {
 
     @Override
     public Object profileTask() {
-        for (int i = 1; i < array.length; i++) {
-            this.union(array[i - 1], array[RandomUtils.nextInt(array.length)]);
-        }
-        for (int i = 1; i < array.length; i++) {
-            this.find(array[i - 1]);
-        }
-        for (int i = 1; i < array.length; i++) {
-            this.connected(array[i - 1], array[RandomUtils.nextInt(array.length)]);
+//        for (int i = 1; i < array.length; i++) {
+//            this.union(array[i - 1], array[RandomUtils.nextInt(array.length)]);
+//        }
+//        for (int i = 1; i < array.length; i++) {
+//            this.find(array[i - 1]);
+//        }
+//        for (int i = 1; i < array.length; i++) {
+//            this.connected(array[i - 1], array[RandomUtils.nextInt(array.length)]);
+//        }
+//        return "Void";
+        while (uf.count() > 1) {
+            int a = r.nextInt(size);
+            int b = r.nextInt(size);
+            uf.union(a, b);
         }
         return "Void";
     }

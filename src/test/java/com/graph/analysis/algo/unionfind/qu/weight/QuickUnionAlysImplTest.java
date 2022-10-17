@@ -2,17 +2,15 @@ package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.FileUtil;
-import com.algs.util.Pair;
+import com.algs.util.Connection;
 import com.graph.GraphicAnalysis;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class QuickUnionAlysImplTest {
 
     public static void main(String[] args) {
 
-        IList<Pair<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/mediumUF.txt");
         assert pairs != null;
         GraphicAnalysis qua = new QuickUnionAlysImpl(pairs);
         qua.analyze();

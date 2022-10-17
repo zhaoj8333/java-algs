@@ -10,10 +10,10 @@ import java.util.Objects;
 
 public class FileUtil {
 
-    public static IList<Pair<Integer>> readPairs(String fileName) {
+    public static IList<Connection<Integer>> readPairs(String fileName) {
         File file = getFile(fileName);
         if (file == null) return null;
-        IList<Pair<Integer>> pairs = new SinglyLinkedListImpl<>();
+        IList<Connection<Integer>> pairs = new SinglyLinkedListImpl<>();
         if (file.isFile() && file.exists()) {
             InputStreamReader isr = null;
             LineNumberReader lnr = null;
@@ -26,7 +26,7 @@ public class FileUtil {
                         continue;
                     }
                     String[] s = line.split(" ");
-                    pairs.add(new Pair<>(Integer.valueOf(s[0]), Integer.valueOf(s[1])));
+                    pairs.add(new Connection<>(Integer.valueOf(s[0]), Integer.valueOf(s[1])));
                 }
             } catch (IOException e) {
                 e.printStackTrace();

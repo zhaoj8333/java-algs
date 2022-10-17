@@ -17,7 +17,7 @@ class ThreeSumTest {
     }
 
     void countK() {
-        IList<Integer> array = FileUtil.readInts("data/1Kints.txt");
+        IList<Integer> array = FileUtil.readInts("pairs/1Kints.txt");
         assert array != null;
         int[] ints = CollectionUtil.toPrimitive(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);
@@ -25,7 +25,7 @@ class ThreeSumTest {
     }
 
     void countM() {
-        IList<Integer> array = FileUtil.readInts("data/32Kints.txt");
+        IList<Integer> array = FileUtil.readInts("pairs/32Kints.txt");
         assert array != null;
         int[] ints = CollectionUtil.toPrimitive(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);

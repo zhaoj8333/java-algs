@@ -1,4 +1,4 @@
-package com.algs.algo.unionfind;
+package com.algs.algo.unionfind.generic;
 
 public interface IDisjointSet<E> {
 

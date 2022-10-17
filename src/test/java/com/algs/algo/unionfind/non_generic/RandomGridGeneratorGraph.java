@@ -1,5 +1,6 @@
 package com.algs.algo.unionfind.non_generic;
 
+import com.algs.util.Connection;
 import com.algs.util.DrawUtil;
 
 /**
@@ -17,8 +18,8 @@ public class RandomGridGeneratorGraph {
         DrawUtil.setPenRadius(0.005);
 
         for (Object conn : conns) {
-            RandomGridGenerator.Connection connection = (RandomGridGenerator.Connection) conn;
-            DrawUtil.point(connection.p, connection.q);
+            Connection connection = (Connection) conn;
+            DrawUtil.point((int) connection.a, (int) connection.b);
             Thread.sleep(10);
         }
     }

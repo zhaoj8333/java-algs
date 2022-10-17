@@ -1,7 +1,6 @@
 package com.algs.util;
 
 import com.algs.datastructure.collection.list.IList;
-import edu.princeton.cs.algs4.In;
 import org.junit.jupiter.api.Test;
 
 class FileUtilTest {
@@ -12,13 +11,13 @@ class FileUtilTest {
 
     @Test
     void readInts() {
-        IList<Integer> ints = FileUtil.readInts("data/1Kints.txt");
+        IList<Integer> ints = FileUtil.readInts("pairs/1Kints.txt");
         System.out.println(ints.size());
     }
 
     @Test
     void readPair() {
-        IList<Pair<Integer>> pairs = FileUtil.readPairs("data/uf/tinyUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/tinyUF.txt");
 
     }
 }
