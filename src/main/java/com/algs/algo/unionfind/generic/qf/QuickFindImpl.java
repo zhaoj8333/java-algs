@@ -18,6 +18,11 @@ public class QuickFindImpl<E> implements IDisjointSet<E> {
     }
 
     @Override
+    public void makeSet(E item) {
+
+    }
+
+    @Override
     public int count() {
         return 0;
     }

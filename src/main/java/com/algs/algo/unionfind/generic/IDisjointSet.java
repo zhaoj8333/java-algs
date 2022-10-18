@@ -2,12 +2,14 @@ package com.algs.algo.unionfind.generic;
 
 public interface IDisjointSet<E> {
 
+    void makeSet(E item);
+
     int count();
 
-    void union(E p, E q);
+    void union(E a, E b);
 
-    E find(E p);
+    E find(E a);
 
-    boolean connected(E p, E q);
+    boolean connected(E a, E b);
 
 }

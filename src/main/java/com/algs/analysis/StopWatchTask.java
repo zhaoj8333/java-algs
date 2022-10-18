@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class StopWatchTask {
+public abstract class StopWatchTask<E> {
 
     protected Object result;
 
@@ -36,7 +36,12 @@ public abstract class StopWatchTask {
                     String s = value.getClass().toString();
                     profile.append("[").append(s).append("], ");
                 } else {
-                    profile.append(value).append(", ");
+                    String s = String.valueOf(value);
+                    if (s.length() > 200) {
+                        profile.append("...").append(", ");
+                    } else {
+                        profile.append(value).append(", ");
+                    }
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
