@@ -2,13 +2,12 @@ package com.algs.util;
 
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import org.jetbrains.annotations.NotNull;
 
-public class CollectionUtil {
+public class CollectionUtil<E> {
 
-    public static Object [] toArray(@NotNull ICollection collection) {
-        Iterator itr = collection.iterator();
-        Object[] array = new Object[collection.size()];
+    public static <E> E[] toArray(ICollection<E> collection) {
+        Iterator<E> itr = collection.iterator();
+        E[] array =  (E[]) new Object[collection.size()];
         int index = 0;
         while (itr.hasNext()) {
             array[index++] = itr.next();
@@ -16,8 +15,8 @@ public class CollectionUtil {
         return array;
     }
 
-    public static String toString(@NotNull ICollection collection) {
-        Iterator itr = collection.iterator();
+    public static <E> String toString(ICollection<E> collection) {
+        Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         while (itr.hasNext()) {
@@ -27,7 +26,7 @@ public class CollectionUtil {
         return sb.toString();
     }
 
-    public static int [] toPrimitive(@NotNull ICollection collection) {
+    public static int [] toPrimitive(ICollection collection) {
         int[] ints = new int[collection.size()];
         int index = 0;
         Iterator itr = collection.iterator();

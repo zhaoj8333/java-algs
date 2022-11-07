@@ -10,8 +10,8 @@ import com.algs.util.DrawUtil;
 import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.unionfind.qf.QuickFindAlysImpl;
 import com.graph.analysis.algo.unionfind.qu.weight.QuickUnionAlysImpl;
-import com.graph.analysis.algo.unionfind.qu.weight.RankWeightAlysImpl;
-import com.graph.analysis.algo.unionfind.qu.weight.SizeWeightAlysImpl;
+import com.graph.analysis.algo.unionfind.qu.weight.RankWeighedAlysImpl;
+import com.graph.analysis.algo.unionfind.qu.weight.SizeWeighedAlysImpl;
 
 import java.util.Arrays;
 
@@ -38,8 +38,8 @@ public class ErdosRenyiAlysImpl implements GraphicAnalysis {
         q = new ArrayQueueImpl<>();
         q.enque(new QuickFindAlysImpl(conns));
         q.enque(new QuickUnionAlysImpl(conns));
-        q.enque(new SizeWeightAlysImpl(conns));
-        q.enque(new RankWeightAlysImpl(conns));
+        q.enque(new SizeWeighedAlysImpl(conns));
+        q.enque(new RankWeighedAlysImpl(conns));
     }
 
     public void compute(IUnionFindAlys uf) {

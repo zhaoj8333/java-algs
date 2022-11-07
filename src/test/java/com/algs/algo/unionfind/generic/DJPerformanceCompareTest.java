@@ -1,8 +1,7 @@
 package com.algs.algo.unionfind.generic;
 
-import com.algs.algo.unionfind.generic.qu.WeighedQuickUnionWithPathHalvingImpl;
+import com.algs.algo.unionfind.generic.qu.WeighedPathHalvingImpl;
 import com.algs.analysis.StopWatchTask;
-import com.algs.datastructure.collection.deque.ArrayDequeImpl;
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.deque.LinkedListDequeImpl0;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ class DJPerformanceCompareTest {
         int max = 500000;
         for (int size = 200000; size < max; size *= 2) {
             IDeque<Village> villages = new LinkedListDequeImpl0<>();
-            IDisjointSet<Village> ds = new WeighedQuickUnionWithPathHalvingImpl<>(size);
+            IDisjointSet<Village> ds = new WeighedPathHalvingImpl<>(size);
             for (int i = 0; i < size; i++) {
                 Village v = new Village("name" + i, "");
                 villages.enque(v);

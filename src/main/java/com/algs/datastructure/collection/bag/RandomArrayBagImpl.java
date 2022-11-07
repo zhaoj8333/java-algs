@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.bag;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import edu.princeton.cs.algs4.StdRandom;
+import com.algs.util.ArraysUtil;
 
 @SuppressWarnings("unchecked")
 public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
@@ -18,7 +18,7 @@ public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
     private class RandomArrayBagIterator<E> implements Iterator<E> {
 
         private int n = 0;
-        public int[] seq = new int[size];
+        public Integer[] seq = new Integer[size];
 
         @Override
         public boolean hasNext() {
@@ -38,7 +38,7 @@ public class RandomArrayBagImpl<E> extends ArrayBagImpl<E> {
         for (int i = 0; i < size; i++) {
             itr.seq[i] = i;
         }
-        StdRandom.shuffle(itr.seq);
+        ArraysUtil.shuffle(itr.seq);
         return itr;
     }
 

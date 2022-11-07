@@ -10,7 +10,7 @@ class ErdosRenyiAlysImplTest {
 
     public static void main(String[] args) {
 
-        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/mediumUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
 //        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/tinyUF.txt");
         GraphicAnalysis ga = new ErdosRenyiAlysImpl(pairs);
         ga.analyze();

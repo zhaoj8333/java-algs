@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.list;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.SinglyLinkNode;
+import com.algs.util.CollectionUtil;
 import com.algs.util.ObjectUtil;
 import com.algs.util.RangeUtil;
 
@@ -180,14 +181,7 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        SinglyLinkNode<E> node = head.next;
-        int index = 0;
-        while (Objects.nonNull(node)) {
-            array[index++] = node.item;
-            node = node.next;
-        }
-        return array;
+        return CollectionUtil.toArray(this);
     }
 
     @Override

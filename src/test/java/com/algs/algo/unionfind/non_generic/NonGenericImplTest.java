@@ -3,13 +3,15 @@ package com.algs.algo.unionfind.non_generic;
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.algo.unionfind.non_generic.qu.path_compression.*;
-import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl0;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingWithoutWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingWithoutWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
+import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.util.Connection;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +73,7 @@ class NonGenericImplTest {
         }
     }
 
-    void commonFunctionality(@NotNull IUnionFind uf) {
+    void commonFunctionality(IUnionFind uf) {
         Assertions.assertEquals(DefaultValues.DEFAULT_CAPACITY, uf.count());
         Assertions.assertEquals(0, uf.find(0));
         Assertions.assertEquals(3, uf.find(3));
@@ -147,11 +149,11 @@ class NonGenericImplTest {
         printPath(qf, connections);
         System.out.println(repeat);
 
-        qf = new SizeWeightImpl();
+        qf = new SizeWeighedImpl();
         printPath(qf, connections);
         System.out.println(repeat);
 
-        qf = new RankWeightImpl();
+        qf = new RankWeighedImpl();
         printPath(qf, connections);
 
     }

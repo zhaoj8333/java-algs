@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.stack;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.util.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +33,7 @@ class ArrayStackImplTest {
         ints[3] = 3;
         ints[4] = 4;
         ints[5] = 5;
+        ArraysUtil.reverse(ints);
         Assertions.assertArrayEquals(ints, integers);
 
         s.clear();

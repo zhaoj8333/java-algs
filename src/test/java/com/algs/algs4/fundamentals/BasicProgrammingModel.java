@@ -1,6 +1,5 @@
 package com.algs.algs4.fundamentals;
 
-import edu.princeton.cs.algs4.StdIn;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

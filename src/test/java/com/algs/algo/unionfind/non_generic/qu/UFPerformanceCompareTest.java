@@ -4,8 +4,8 @@ import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl0;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.RankWeightImpl;
-import com.algs.algo.unionfind.non_generic.qu.weight.SizeWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
+import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
 import com.algs.analysis.StopWatchTask;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +16,9 @@ class UFPerformanceCompareTest {
         for (int size = 10000; size < 1000000; size *= 10) {
             StopWatchTask swt = new UFPerformanceCompare(size, new QuickFindImpl(size));
             swt.exec();
-            swt = new UFPerformanceCompare(size, new SizeWeightImpl(size));
+            swt = new UFPerformanceCompare(size, new SizeWeighedImpl(size));
             swt.exec();
-            swt = new UFPerformanceCompare(size, new RankWeightImpl(size));
+            swt = new UFPerformanceCompare(size, new RankWeighedImpl(size));
             swt.exec();
             swt = new UFPerformanceCompare(size, new FullCompressImpl0(size));
             swt.exec();
@@ -35,8 +35,8 @@ class UFPerformanceCompareTest {
      * {@link QuickUnionImpl}
      *
      * O(n)
-     * {@link RankWeightImpl}
-     * {@link SizeWeightImpl}
+     * {@link RankWeighedImpl}
+     * {@link SizeWeighedImpl}
      * {@link HalvingImpl}
      * {@link SplittingImpl}
      */

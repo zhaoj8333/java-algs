@@ -1,22 +1,22 @@
 package com.algs.analysis;
 
-import com.algs.util.CollectionUtil;
-import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdRandom;
+import com.algs.util.DrawUtil;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class StdDrawTest {
 
     public static void main(String[] args) {
-//        StdDraw.point(200, 200);
-//        StdDraw.line(10, 10, 100, 100);
+//        DrawUtil.point(200, 200);
+//        DrawUtil.line(10, 10, 100, 100);
 //        function();
 
+        Random r = new Random();
         int N = 50;
         double[] a = new double[N];
         for (int i = 0; i < N; i++) {
-            a[i] = StdRandom.uniform();
+            a[i] = r.nextInt();
         }
         System.out.println(Arrays.toString(a));
         for (int i = 0; i < N; i++) {
@@ -24,19 +24,19 @@ public class StdDrawTest {
             double y = a[i] / 2.0;
             double rw = 0.5 / N;
             double rh = a[i] / 2.0;
-            StdDraw.filledRectangle(x, y, rw, rh);
+            DrawUtil.filledRectangle(x, y, rw, rh);
         }
 
     }
 
     private static void function() {
         int N = 500;
-        StdDraw.setXscale(0, N);
-        StdDraw.setYscale(0, N);
+        DrawUtil.setXscale(0, N);
+        DrawUtil.setYscale(0, N);
         for (int i = 0; i < N; i++) {
-            StdDraw.point(i, i);
-            StdDraw.point(i, i * i);
-            StdDraw.point(i, i * Math.log(i));
+            DrawUtil.point(i, i);
+            DrawUtil.point(i, i * i);
+            DrawUtil.point(i, i * Math.log(i));
         }
     }
 

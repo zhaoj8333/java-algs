@@ -2,7 +2,6 @@ package com.algs.util;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.net.URL;
@@ -60,6 +59,29 @@ public class FileUtil {
         return ints;
     }
 
+    public static IList<Character> readChars(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Character> chars = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                int len;
+                while ((len = isr.read()) != -1) {
+                    if (!Objects.equals(len, 32) && !Objects.equals(len, 10)) {
+                        chars.add((char) len);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return chars;
+    }
+
     private static void close(InputStreamReader isr, LineNumberReader lnr) {
         try {
             if (isr != null) {
@@ -73,10 +95,14 @@ public class FileUtil {
         }
     }
 
-    @Nullable
     private static File getFile(String fileName) {
         URL resource = FileUtil.class.getClassLoader().getResource(fileName);
         if (Objects.isNull(resource)) {
+            try {
+                throw new FileNotFoundException("File: " + fileName + " not exist");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             return null;
         }
         return new File(resource.getFile());

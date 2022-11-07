@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 class RankWeightLinkedListAlysImplTest {
 
     public static void main(String[] args) {
-        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/mediumUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
         assert pairs != null;
 
-        GraphicAnalysis ra = new RankWeightLinkedListAlysImpl(pairs);
+        GraphicAnalysis ra = new RankWeighedLinkedListAlysImpl(pairs);
         ra.analyze();
 
     }

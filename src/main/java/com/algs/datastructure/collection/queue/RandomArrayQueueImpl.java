@@ -1,8 +1,7 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.CollectionUtil;
-import edu.princeton.cs.algs4.StdRandom;
+import com.algs.util.ArraysUtil;
 
 import java.util.Random;
 
@@ -33,7 +32,7 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
     private class RandomArrayQueueIterator<E> implements Iterator<E> {
 
         private int n = 0;
-        public int[] randomSequence = new int[size];
+        public Integer[] randomSequence = new Integer[size];
 
         @Override
         public boolean hasNext() {
@@ -52,7 +51,7 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
         for (int i = 0; i < size; i++) {
             itr.randomSequence[i] = i;
         }
-        StdRandom.shuffle(itr.randomSequence);
+        ArraysUtil.shuffle(itr.randomSequence);
         return itr;
     }
 }

@@ -10,9 +10,9 @@ class RankWeightAlysImplTest {
 
     public static void main(String[] args) {
 
-        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/mediumUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("data/uf/mediumUF.txt");
         assert pairs != null;
-        GraphicAnalysis qfa = new RankWeightAlysImpl(pairs);
+        GraphicAnalysis qfa = new RankWeighedAlysImpl(pairs);
         qfa.analyze();
 
     }

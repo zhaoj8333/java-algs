@@ -11,13 +11,13 @@ class FileUtilTest {
 
     @Test
     void readInts() {
-        IList<Integer> ints = FileUtil.readInts("pairs/1Kints.txt");
+        IList<Integer> ints = FileUtil.readInts("data/1Kints.txt");
         System.out.println(ints.size());
     }
 
     @Test
     void readPair() {
-        IList<Connection<Integer>> pairs = FileUtil.readPairs("pairs/uf/tinyUF.txt");
+        IList<Connection<Integer>> pairs = FileUtil.readPairs("data/uf/tinyUF.txt");
 
     }
 }

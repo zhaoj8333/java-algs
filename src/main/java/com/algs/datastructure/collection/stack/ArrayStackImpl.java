@@ -2,11 +2,11 @@ package com.algs.datastructure.collection.stack;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.util.ArraysUtil;
+import com.algs.util.CollectionUtil;
 import com.algs.util.ObjectUtil;
 
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
-import java.util.Objects;
 
 public class ArrayStackImpl<E> implements IStack<E> {
 
@@ -65,33 +65,24 @@ public class ArrayStackImpl<E> implements IStack<E> {
 
     @Override
     public boolean contains(E item) {
-        for (int i = 0; i < size; i++) {
-            if (Objects.equals(item, entries[i])) {
-                return true;
-            }
-        }
-        return false;
+        return ArraysUtil.contains(entries, item);
     }
 
     @Override
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            entries[i] = null;
-        }
+        ArraysUtil.fill(entries, null);
         modCount++;
         size = 0;
     }
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        if (size >= 0) System.arraycopy(entries, 0, array, 0, size);
-        return array;
+        return CollectionUtil.toArray(this);
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(toArray());
+        return CollectionUtil.toString(this);
     }
 
     private class ArrayStackIterator<E> implements Iterator<E> {
@@ -128,7 +119,6 @@ public class ArrayStackImpl<E> implements IStack<E> {
             return (E) entries[n++];
         }
     }
-
 
     private final class UnmodifiableArrayStackReverseIterator<E> implements Iterator<E> {
 
