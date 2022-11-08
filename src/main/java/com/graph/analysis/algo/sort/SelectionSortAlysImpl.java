@@ -17,10 +17,10 @@ public class SelectionSortAlysImpl<E extends Comparable<E>> extends SelectionSor
     }
 
     @Override
-    protected int compare(E a, E b) {
+    protected int compareEntry(E a, E b) {
         cmpCount++;
         cost++;
-        return super.compare(a, b);
+        return super.compareEntry(a, b);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class SelectionSortAlysImpl<E extends Comparable<E>> extends SelectionSor
             int min = i;
             for (int j = i + 1; j < len; j++) {
                 cost ++;
-                if (compare(array[min], array[j]) < 0) {
+                if (compareEntry(array[min], array[j]) < 0) {
                     min = j;
                     cost++;
                 }
