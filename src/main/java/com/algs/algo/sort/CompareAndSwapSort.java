@@ -19,12 +19,12 @@ public abstract class CompareAndSwapSort<E extends Comparable<E>> implements ISo
         this.comparator = comparator;
     }
 
-    protected int compare(E a, E b) {
+    protected int compareEntry(E a, E b) {
         return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
     }
 
-    protected int compare(int i, int j) {
-        return compare(array[i], array[j]);
+    protected int compareIndex(int i, int j) {
+        return compareEntry(array[i], array[j]);
     }
 
     protected void swap(int i, int j) {

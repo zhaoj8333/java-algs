@@ -3,7 +3,7 @@ package com.algs.algo.sort;
 /**
  * {@link com.algs.algo.sort.ISortable}
  *
- * {@link com.algs.algo.sort.IComparisonSorting}
+ * {@link com.algs.algo.sort.CompareAndSwapSort}
  *
  * {@link com.algs.algo.sort.BubbleSortImpl}
  * {@link com.algs.algo.sort.SelectionSortImpl}

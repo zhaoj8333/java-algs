@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.map;
+package com.algs.datastructure.map;
 
 import com.algs.datastructure.collection.ICollection;
 

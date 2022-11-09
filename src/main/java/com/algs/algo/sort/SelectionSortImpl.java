@@ -17,7 +17,7 @@ public class SelectionSortImpl<E extends Comparable<E>> extends CompareAndSwapSo
         for (int i = 0; i < len; i++) {
             int min = i;
             for (int j = i + 1; j < len; j++) {
-                if (compare(array[j], array[min]) < 0) {
+                if (compareEntry(array[j], array[min]) < 0) {
                     min = j;
                 }
             }

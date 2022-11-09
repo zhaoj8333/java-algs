@@ -100,4 +100,31 @@ public class ArraysUtil<E> {
         return array;
     }
 
+    /**
+     * copy array
+     */
+    public static <E> E[] copy(E[] array) {
+        E[] target = (E[]) new Object[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
+    public static int[] copy(int[] array) {
+        int[] target = new int[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
+    public static String toString(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("}");
+        return sb.toString();
+    }
 }

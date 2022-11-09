@@ -2,6 +2,13 @@ package com.algs.algo.sort;
 
 import java.util.Comparator;
 
+/**
+ * {@link HeapSortImpl}:
+ *
+ * Advantages: ~ 2N logN
+ * Disadvantages: can't use cache, it is barely used, because it don't compare adjacent members,
+ *  the cache miss is far more higher than adjacent comparing soring: {@link QuickSortImpl}, {@link MergeSortImpl}, {@link ShellSortImpl}
+ */
 public class HeapSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
 
     private int heapSize;
@@ -17,10 +24,10 @@ public class HeapSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E>
         while (index < half) {
             int childIndex = (index << 1) + 1;
             E child = array[childIndex];
-            if (childIndex + 1 < heapSize && compare(array[childIndex + 1], child) > 0) {
+            if (childIndex + 1 < heapSize && compareEntry(array[childIndex + 1], child) > 0) {
                 child = array[++childIndex];
             }
-            if (compare(ele, child) >= 0) {
+            if (compareEntry(ele, child) >= 0) {
                 break;
             }
             array[index] = child;

@@ -21,7 +21,8 @@ public class SortImplTest {
         Class<?>[] klasses = new Class<?>[] {
 //                SelectionSortImpl.class,
 //                HeapSortImpl.class,
-                BubbleSortImpl.class,
+//                BubbleSortImpl.class,
+                InsertionSortImpl.class
         };
         for (Class<?> klass : klasses) {
             System.out.println(klass.getSimpleName());

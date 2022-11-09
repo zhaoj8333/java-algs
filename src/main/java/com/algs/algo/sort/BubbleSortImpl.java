@@ -20,7 +20,7 @@ public class BubbleSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<
         int len = array.length;
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {
-                if (compare(i, j) > 0) {
+                if (compareIndex(i, j) > 0) {
                     swap(i, j);
                 }
             }
@@ -32,7 +32,7 @@ public class BubbleSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<
         for (int i = 0; i < len; i++) {
             boolean sorted = true;
             for (int j = i + 1; j < len; j++) {
-                if (compare(i, j) > 0) {
+                if (compareIndex(i, j) > 0) {
                     swap(i, j);
                     sorted = false;
                 }
@@ -53,7 +53,7 @@ public class BubbleSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<
         for (int j = len - 1; j > 0; j--) {
             int lastSwappedAt = 0;
             for (int i = j - 1; i >= 0; i--) {
-                if (compare(i, j) > 0) {
+                if (compareIndex(i, j) > 0) {
                     swap(i, j);
                     lastSwappedAt = j;
                 }
