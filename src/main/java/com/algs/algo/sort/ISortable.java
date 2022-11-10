@@ -4,6 +4,4 @@ public interface ISortable<E> {
 
     void sort();
 
-    E[] getArray();
-
 }

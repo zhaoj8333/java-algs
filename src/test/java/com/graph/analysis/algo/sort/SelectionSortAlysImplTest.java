@@ -15,13 +15,13 @@ class SelectionSortAlysImplTest {
 //        testFile();
 
         IList<Comparable[]> list = new SinglyLinkedListImpl<>();
-        for (int i = 10; i < 90000000; i *= 10) {
+        for (int i = 10; i < 90000; i *= 10) {
             list.add(ArraysUtil.randomArray(i));
         }
         for (int i = 0; i < list.size(); i++) {
             Comparable[] comparables = list.get(i);
-            GraphicAnalysis sort = new SelectionSortAlysImpl<>(comparables, i);
-            sort.analyze();
+//            GraphicAnalysis sort = new SelectionSortAlysImpl<>(comparables);
+//            sort.analyze();
         }
     }
 
@@ -47,8 +47,8 @@ class SelectionSortAlysImplTest {
             for (int j = 0; j < objs.length; j++) {
                 ints[j] = (int) objs[j];
             }
-            GraphicAnalysis sort = new SelectionSortAlysImpl<>(ints, i);
-            sort.analyze();
+//            GraphicAnalysis sort = new SelectionSortAlysImpl<>(ints, i);
+//            sort.analyze();
 
         }
     }

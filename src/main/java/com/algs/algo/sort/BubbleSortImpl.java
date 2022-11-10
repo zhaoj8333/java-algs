@@ -62,9 +62,4 @@ public class BubbleSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<
         }
     }
 
-    @Override
-    public E[] getArray() {
-        return array;
-    }
-
 }

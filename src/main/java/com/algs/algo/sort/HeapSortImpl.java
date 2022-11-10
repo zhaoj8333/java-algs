@@ -50,9 +50,4 @@ public class HeapSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E>
         }
     }
 
-    @Override
-    public E[] getArray() {
-        return array;
-    }
-
 }

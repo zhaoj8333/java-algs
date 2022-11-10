@@ -1,19 +1,14 @@
 package com.algs.util;
 
+import com.algs.datastructure.collection.ICollection;
+import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.list.IList;
+
 import java.util.Objects;
 import java.util.Random;
 
 @SuppressWarnings("all")
-public class ArraysUtil<E> {
-
-    public static int [] randomIntArray(int size) {
-        Random r = new Random();
-        int[] array = new int[size];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt();
-        }
-        return array;
-    }
+public class ArraysUtil {
 
     public static void fill(int[] array, int value) {
         for (int i = 0; i < array.length; i++) {
@@ -67,7 +62,7 @@ public class ArraysUtil<E> {
         }
     }
 
-    private static <E> void swap(E[] array, int i, int j) {
+    public static <E> void swap(E[] array, int i, int j) {
         E tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
@@ -83,12 +78,15 @@ public class ArraysUtil<E> {
     }
 
     public static <E> void display(E[] array) {
-        System.out.print("[");
-        for (E ele : array) {
-            System.out.print(ele + ", ");
-        }
-        System.out.print("]");
-        System.out.println();
+        System.out.println(toString(array));
+    }
+
+    public static void display(Character[] array) {
+        System.out.println(toString(array));
+    }
+
+    public static void display(ICollection<Character> list) {
+        System.out.println(list.toString());
     }
 
     public static Comparable[] randomArray(int length) {
@@ -96,6 +94,16 @@ public class ArraysUtil<E> {
         Random r = new Random();
         for (int i = 0; i < length; i++) {
             array[i] = r.nextInt(length);
+        }
+        return array;
+    }
+
+    public static Integer[] randomIntArray(int length) {
+        Integer[] array = new Integer[length];
+        Random r = new Random();
+        int limit = length * 100;
+        for (int i = 0; i < length; i++) {
+            array[i] = r.nextInt(limit);
         }
         return array;
     }
@@ -109,6 +117,20 @@ public class ArraysUtil<E> {
         return target;
     }
 
+    public static <E, T> T[] copyAndConvert(E[] array) {
+        T[] target = (T[]) new Object[array.length];
+        for (int i = 0; i < array.length; i++) {
+            target[i] = (T) array[i];
+        }
+        return target;
+    }
+
+    public static Integer[] copy(Integer[] array) {
+        Integer[] target = new Integer[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
     public static int[] copy(int[] array) {
         int[] target = new int[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
@@ -116,6 +138,32 @@ public class ArraysUtil<E> {
     }
 
     public static String toString(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public static String toString(Character[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public static String toString(Object[] array) {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (int i = 0; i < array.length; i++) {

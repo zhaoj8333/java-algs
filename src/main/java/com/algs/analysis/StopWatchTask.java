@@ -140,11 +140,15 @@ public abstract class StopWatchTask<E> {
         result = profileTask();
 
         end = System.currentTimeMillis();
+        assertResult();
+
         afterExec();
         renderStopWatchProfile();
 
         return end - begin;
-    };
+    }
 
+    protected void assertResult() {
+    }
 
 }

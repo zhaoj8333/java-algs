@@ -95,9 +95,4 @@ public class InsertionSortImpl<E extends Comparable<E>> extends CompareAndSwapSo
         }
     }
 
-    @Override
-    public E[] getArray() {
-        return array;
-    }
-
 }

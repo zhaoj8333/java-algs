@@ -25,9 +25,4 @@ public class SelectionSortImpl<E extends Comparable<E>> extends CompareAndSwapSo
         }
     }
 
-    @Override
-    public E[] getArray() {
-        return array;
-    }
-
 }
