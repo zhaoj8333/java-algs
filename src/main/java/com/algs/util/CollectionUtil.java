@@ -19,8 +19,13 @@ public class CollectionUtil<E> {
         Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
         sb.append("[");
+        int index = 0;
         while (itr.hasNext()) {
-            sb.append(itr.next()).append(", ");
+            index++;
+            sb.append(itr.next());
+            if (index < collection.size()) {
+                sb.append(", ");
+            }
         }
         sb.append("]");
         return sb.toString();

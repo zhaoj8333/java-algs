@@ -11,17 +11,23 @@ class SortCompareTest {
     @Test
     void test() {
         Class<?>[] klasses = new Class<?>[] {
-                SelectionSortImpl.class,
+//                SelectionSortImpl.class,
                 HeapSortImpl.class,
-                BubbleSortImpl.class,
-                InsertionSortImpl.class
+//                BubbleSortImpl.class,
+//                InsertionSortImpl.class,
+                ShellSortImpl.class
         };
 
         exec(klasses);
     }
 
+    /**
+     * 90000:
+     * {@link HeapSortImpl}:  1016 ms
+     * {@link ShellSortImpl}: 1249 ms
+     */
     private void exec(Class<?>[] klasses) {
-        Integer[] array = ArraysUtil.randomIntArray(20000);
+        Integer[] array = ArraysUtil.randomIntArray(900000);
         System.out.println("Init done");
 
        for (Class<?> klass : klasses) {

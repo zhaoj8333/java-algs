@@ -23,7 +23,8 @@ public class SortImplTest {
 //                SelectionSortImpl.class,
 //                HeapSortImpl.class,
 //                BubbleSortImpl.class,
-                InsertionSortImpl.class
+//                InsertionSortImpl.class,
+                ShellSortImpl.class,
         };
         for (Class<?> klass : klasses) {
             System.out.println(klass.getSimpleName());
@@ -266,8 +267,6 @@ public class SortImplTest {
             if (m > n) {
                 ArraysUtil.swap(array, m, n);
             }
-
-
         }
     }
 }
