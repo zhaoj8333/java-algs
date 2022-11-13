@@ -94,9 +94,9 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
     private static Color penColor;
 
-    private static final int DEFAULT_SIZE = 768;
-    private static int width  = DEFAULT_SIZE;
-    private static int height = DEFAULT_SIZE;
+    public static final int DEFAULT_SIZE = 768;
+    public static int width  = DEFAULT_SIZE;
+    public static int height = DEFAULT_SIZE;
     private static final double DEFAULT_PEN_RADIUS = 0.002;
     private static double penRadius;
     private static boolean defer = false;
@@ -136,10 +136,10 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static double withHeightRatio = 1.6;
 
     // queue of typed key characters
-    private static final LinkedList<Character> keysTyped = new LinkedList<Character>();
+    private static final LinkedList<Character> keysTyped = new LinkedList<>();
 
     // set of key codes currently pressed down
-    private static final TreeSet<Integer> keysDown = new TreeSet<Integer>();
+    private static final TreeSet<Integer> keysDown = new TreeSet<>();
 
     // time in milliseconds (from currentTimeMillis()) when we can draw again
     // used to control the frame rate
@@ -174,7 +174,6 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
         if (w < 1 || h < 1) throw new IllegalArgumentException("width and height must be positive");
         width = w;
         height = h;
-        init();
     }
 
     // init
@@ -225,8 +224,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
         menuBar.add(menu);
         JMenuItem menuItem1 = new JMenuItem(" Save...   ");
         menuItem1.addActionListener(std);
-        menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         menu.add(menuItem1);
         return menuBar;
     }

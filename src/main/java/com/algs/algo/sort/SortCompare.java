@@ -38,4 +38,5 @@ public class SortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
     protected void assertResult() {
         Assertions.assertTrue(SortUtil.isSorted(sort.array));
     }
+
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class StdDrawTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        DrawUtil.point(200, 200);
 //        DrawUtil.line(10, 10, 100, 100);
 //        function();
@@ -16,14 +16,15 @@ public class StdDrawTest {
         int N = 50;
         double[] a = new double[N];
         for (int i = 0; i < N; i++) {
-            a[i] = r.nextInt();
+            a[i] = r.nextInt(N);
         }
         System.out.println(Arrays.toString(a));
         for (int i = 0; i < N; i++) {
             double x = 1.0 * i / N;
             double y = a[i] / 2.0;
-            double rw = 0.5 / N;
-            double rh = a[i] / 2.0;
+            double rw = 0.4 / N;
+            double rh = a[i] / 1.6;
+            Thread.sleep(10);
             DrawUtil.filledRectangle(x, y, rw, rh);
         }
 

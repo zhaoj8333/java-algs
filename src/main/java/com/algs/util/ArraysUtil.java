@@ -1,8 +1,7 @@
 package com.algs.util;
 
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.list.IList;
+import org.apache.commons.lang.math.JVMRandom;
 
 import java.util.Objects;
 import java.util.Random;
@@ -70,7 +69,7 @@ public class ArraysUtil {
 
     public static <E> void shuffle(E[] array) {
         int len = array.length;
-        Random r = new Random();
+        Random r = new JVMRandom();
         for (int i = len; i > 0; i--) {
             int random = r.nextInt(i);
             swap(array, random, i);
@@ -91,7 +90,7 @@ public class ArraysUtil {
 
     public static Comparable[] randomArray(int length) {
         Comparable[] array = new Comparable[length];
-        Random r = new Random();
+        Random r = new JVMRandom();
         for (int i = 0; i < length; i++) {
             array[i] = r.nextInt(length);
         }
@@ -100,10 +99,9 @@ public class ArraysUtil {
 
     public static Integer[] randomIntArray(int length) {
         Integer[] array = new Integer[length];
-        Random r = new Random();
-        int limit = length * 100;
+        Random r = new JVMRandom();
         for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(limit);
+            array[i] = r.nextInt(length) + 1;
         }
         return array;
     }
@@ -133,6 +131,12 @@ public class ArraysUtil {
 
     public static int[] copy(int[] array) {
         int[] target = new int[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
+    public static Character[] copy(Character[] array) {
+        Character[] target = new Character[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }

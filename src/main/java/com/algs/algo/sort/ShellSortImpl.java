@@ -2,7 +2,6 @@ package com.algs.algo.sort;
 
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.deque.LinkedListDequeImpl;
-import com.algs.util.CollectionUtil;
 
 import java.util.Comparator;
 

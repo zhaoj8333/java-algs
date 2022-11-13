@@ -5,7 +5,6 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.util.ArraysUtil;
 import com.algs.util.FileUtil;
 import com.algs.util.SortUtil;
-import org.apache.commons.lang.CharRange;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +19,12 @@ public class SortImplTest {
         Assertions.assertNotNull(chars);
 
         Class<?>[] klasses = new Class<?>[] {
-//                SelectionSortImpl.class,
-//                HeapSortImpl.class,
-//                BubbleSortImpl.class,
-//                InsertionSortImpl.class,
+                SelectionSortImpl.class,
+                HeapSortImpl.class,
+                BubbleSortImpl.class,
+                InsertionSortImpl.class,
                 ShellSortImpl.class,
+//                DequeueSortImpl.class
         };
         for (Class<?> klass : klasses) {
             System.out.println(klass.getSimpleName());
@@ -40,8 +40,8 @@ public class SortImplTest {
         while (itr.hasNext()) {
             array[index++] = itr.next();
         }
-
         ArraysUtil.display(array);
+        Character[] original = ArraysUtil.copy(array);
 
         Assertions.assertTrue(array.length > 1);
 
@@ -59,7 +59,8 @@ public class SortImplTest {
         assert sort != null;
         sort.sort();
         ArraysUtil.display(array);
-        Assertions.assertTrue(SortUtil.isSorted(array, cmp));
+//        Assertions.assertTrue(SortUtil.isSorted(array, cmp));
+        Assertions.assertTrue(SortUtil.onlySorted(original, array));
     }
 
     private Character[] getChars() {
@@ -255,18 +256,7 @@ public class SortImplTest {
             array[i] = (Character) characters[i];
         }
 
-        dequeueSort(array);
-
         Assertions.assertTrue(SortUtil.isSorted(array));
     }
 
-    private void dequeueSort(Character[] array) {
-        for (int i = 1; i < array.length; i++) {
-            Character m = array[i];
-            Character n = array[i - 1];
-            if (m > n) {
-                ArraysUtil.swap(array, m, n);
-            }
-        }
-    }
 }
