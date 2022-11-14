@@ -5,6 +5,8 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.util.ArraysUtil;
 import com.algs.util.FileUtil;
 import com.algs.util.SortUtil;
+import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
+import com.graph.analysis.algo.sort.ShellSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +21,12 @@ public class SortImplTest {
         Assertions.assertNotNull(chars);
 
         Class<?>[] klasses = new Class<?>[] {
-                SelectionSortImpl.class,
-                HeapSortImpl.class,
-                BubbleSortImpl.class,
+//                SelectionSortImpl.class,
+//                HeapSortImpl.class,
+//                BubbleSortImpl.class,
                 InsertionSortImpl.class,
-                ShellSortImpl.class,
+                SentinelInsertionSortImpl.class
+//                ShellSortImpl.class,
 //                DequeueSortImpl.class
         };
         for (Class<?> klass : klasses) {
@@ -259,4 +262,40 @@ public class SortImplTest {
         Assertions.assertTrue(SortUtil.isSorted(array));
     }
 
+    /**
+     * find best / worst cases of {@link ShellSortImpl}
+     *
+     * max:452
+     * worst: {25, 30, 18, 2, 26, 30, 10, 6, 13, 25, 1, 11, 23, 19, 28, 11, 15, 9, 26, 7, 7, 24, 28, 2, 12, 15, 27, 28, 8, 12}
+     * min:192
+     * best: {22, 23, 8, 19, 24, 17, 10, 7, 25, 27, 5, 22, 30, 16, 29, 11, 5, 5, 23, 25, 26, 6, 7, 27, 23, 25, 29, 2, 30, 27}
+     */
+    @Test
+    void _2_1_19() {
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+        Integer[] worst = new Integer[0];
+        Integer[] best  = new Integer[0];
+        for (int i = 0; i < 50000000; i++) {
+            Integer[] array = ArraysUtil.randomIntArray(30);
+            CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copy(array));
+            sort.sort();
+            int cost = sort.getCost();
+            if (cost > max) {
+                max = cost;
+                worst = array;
+            }
+            if (cost < min) {
+                min = cost;
+                best = array;
+            }
+        }
+
+        System.out.println("max:" + max);
+        System.out.println("worst: " + ArraysUtil.toString(worst));
+
+        System.out.println("min:" + min);
+        System.out.println("best: " + ArraysUtil.toString(best));
+
+    }
 }

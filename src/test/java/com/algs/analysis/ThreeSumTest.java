@@ -21,7 +21,7 @@ class ThreeSumTest {
         assert array != null;
         int[] ints = CollectionUtil.toPrimitive(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);
-        ts.exec();
+        ts.exec(true);
     }
 
     void countM() {
@@ -29,6 +29,6 @@ class ThreeSumTest {
         assert array != null;
         int[] ints = CollectionUtil.toPrimitive(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);
-        ts.exec();
+        ts.exec(true);
     }
 }

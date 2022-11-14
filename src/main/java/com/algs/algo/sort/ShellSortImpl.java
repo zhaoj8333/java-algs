@@ -1,7 +1,8 @@
 package com.algs.algo.sort;
 
-import com.algs.datastructure.collection.deque.IDeque;
-import com.algs.datastructure.collection.deque.LinkedListDequeImpl;
+import com.algs.algo.sort.shellsort.sequence.SedgeWick;
+import com.algs.algo.sort.shellsort.sequence.SequenceGenerator;
+import com.algs.datastructure.collection.Iterator;
 
 import java.util.Comparator;
 
@@ -12,41 +13,23 @@ import java.util.Comparator;
  */
 public class ShellSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
 
-    public ShellSortImpl(E[] array, Comparator<E> comparator) {
+    private final SequenceGenerator sg;
+
+    public ShellSortImpl(E[] array, Comparator<E> comparator, SequenceGenerator sg) {
         super(array, comparator);
+        this.sg = sg;
     }
 
-    /**
-     * The best step sequence evaluated: the worst complexity O(n^(4/3))
-     * 1, 5, 19, 41, 109
-     */
-    private IDeque<Integer> getSequence() {
-        IDeque<Integer> stepSeq = new LinkedListDequeImpl<>();
-        int k = 0, step;
-        while (true) {
-            if (k % 2 == 0) {
-                int pow = (int) Math.pow(2, k >> 1);
-                step = 1 + 9 * (pow * pow - pow);
-            } else {
-                int pow1 = (int) Math.pow(2, (k - 1) >> 1);
-                int pow2 = (int) Math.pow(2, (k + 1) >> 1);
-                step = 1 + 8 * pow1 * pow2 - 6 * pow2;
-            }
-            if (step >= array.length) {
-                break;
-            }
-            stepSeq.enque(step);
-            k++;
-        }
-        return stepSeq;
+    public ShellSortImpl(E[] array, Comparator<E> comparator) {
+        this(array, comparator, new SedgeWick());
     }
 
     @Override
     public void sort() {
-        IDeque<Integer> seq = getSequence();
+        Iterator<Integer> itr = this.sg.getIterator(array.length);
         int len = array.length;
-        while (!seq.isEmpty()) {
-            Integer step = seq.dequeTail();
+        while (!itr.hasNext()) {
+            Integer step = itr.next();
             for (int i = step; i < len; i++) {
                 int index = i;
                 E e = array[index];

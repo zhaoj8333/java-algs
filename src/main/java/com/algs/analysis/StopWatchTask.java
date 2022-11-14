@@ -6,6 +6,7 @@ import javax.management.MBeanRegistration;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class StopWatchTask<E> {
 
@@ -32,6 +33,9 @@ public abstract class StopWatchTask<E> {
             try {
                 field.setAccessible(true);
                 Object value = field.get(this);
+                if (Objects.isNull(value)) {
+                    continue;
+                }
                 if (value.getClass().isArray()) {
                     String s = value.getClass().toString();
                     profile.append("[").append(s).append("], ");
@@ -133,8 +137,10 @@ public abstract class StopWatchTask<E> {
 
     protected abstract Object profileTask();
 
-    public long exec() {
-        beforeExec();
+    public long exec(boolean print) {
+        if (print) {
+            beforeExec();
+        }
         begin = System.currentTimeMillis();
 
         result = profileTask();
@@ -142,9 +148,10 @@ public abstract class StopWatchTask<E> {
         end = System.currentTimeMillis();
         assertResult();
 
-        afterExec();
-        renderStopWatchProfile();
-
+        if (print) {
+            afterExec();
+            renderStopWatchProfile();
+        }
         return end - begin;
     }
 

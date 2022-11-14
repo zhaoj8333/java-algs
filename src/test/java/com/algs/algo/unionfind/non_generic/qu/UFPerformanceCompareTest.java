@@ -15,17 +15,17 @@ class UFPerformanceCompareTest {
     void compare() {
         for (int size = 10000; size < 1000000; size *= 10) {
             StopWatchTask swt = new UFPerformanceCompare(size, new QuickFindImpl(size));
-            swt.exec();
+            swt.exec(true);
             swt = new UFPerformanceCompare(size, new SizeWeighedImpl(size));
-            swt.exec();
+            swt.exec(true);
             swt = new UFPerformanceCompare(size, new RankWeighedImpl(size));
-            swt.exec();
+            swt.exec(true);
             swt = new UFPerformanceCompare(size, new FullCompressImpl0(size));
-            swt.exec();
+            swt.exec(true);
             swt = new UFPerformanceCompare(size, new SplittingImpl(size));
-            swt.exec();
+            swt.exec(true);
             swt = new UFPerformanceCompare(size, new HalvingImpl(size));
-            swt.exec();
+            swt.exec(true);
         }
     }
 
@@ -60,7 +60,7 @@ class UFPerformanceCompareTest {
 
         for (int size = n / 8; size <= n; size *= 2) {
             StopWatchTask swt = new UFPerformanceCompare(size, new HalvingImpl(size));
-            long duration = swt.exec();
+            long duration = swt.exec(true);
             System.out.println("=================================================");
             System.out.println(size + "->" + duration);
             System.out.println("=================================================");

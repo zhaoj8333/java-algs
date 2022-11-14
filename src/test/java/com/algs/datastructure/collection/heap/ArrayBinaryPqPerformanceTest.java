@@ -16,7 +16,7 @@ class ArrayBinaryPqPerformanceTest {
         };
         for (int sz : szs) {
             ArrayBinaryPqPerformance p = new ArrayBinaryPqPerformance(sz, new ArrayBinaryPqImpl<>(sz));
-            p.exec();
+            p.exec(true);
         }
     }
 

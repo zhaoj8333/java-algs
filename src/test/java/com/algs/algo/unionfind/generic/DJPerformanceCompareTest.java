@@ -32,7 +32,7 @@ class DJPerformanceCompareTest {
             StopWatchTask<Village> swt = new DJPerformanceCompare<>(ds, villages);
             System.out.println("init data spend: " + ((System.currentTimeMillis() - l) / 1000) + " s");
             System.out.println("test start");
-            long o = swt.exec();
+            long o = swt.exec(true);
             System.out.println("test end");
         }
     }

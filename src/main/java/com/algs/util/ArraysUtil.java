@@ -106,6 +106,20 @@ public class ArraysUtil {
         return array;
     }
 
+    public static Integer[] randomArrayWith2Values(int length, int val1, int val2) {
+        Integer[] array = new Integer[length];
+        Random r = new JVMRandom();
+        for (int i = 0; i < length; i++) {
+            int m = r.nextInt(length);
+            if (m % 2 == 0) {
+                array[i] = val1;
+            } else {
+                array[i] = val2;
+            }
+        }
+        return array;
+    }
+
     /**
      * copy array
      */

@@ -10,7 +10,7 @@ class SortingAlysImplTest {
         Class<?>[] klasses = new Class<?>[] {
 //                SelectionSortAlysImpl.class,
 //                InsertionSortAlysImpl.class,
-                ShellSortAlysImpl.class
+//                ShellSortAlysImpl.class,
         };
 
         exec(klasses);
@@ -38,14 +38,16 @@ class SortingAlysImplTest {
      *  20000: 56, Cost (930147),  Cmp (542920),  Swap (387227)
      *  40000: 64, Cost (2230658), Cmp (1285015), Swap (945643)
      *
+     * {@link com.algs.algo.sort.SelectionSortImpl} and {@link com.algs.algo.sort.InsertionSortImpl} are quadratic for random inputs
+     * {@link com.algs.algo.sort.ShellSortImpl} is sub quadratic for random inputs, it's worst case(3N+1 sequence) is N^3/2
      */
     private void exec(Class<?>[] klasses) {
-        Integer[] array = ArraysUtil.randomIntArray(40000);
+        Integer[] array = ArraysUtil.randomIntArray(10000);
         System.out.println("Init done");
 
         for (Class<?> klass : klasses) {
             SortAlysCompare<Integer> alys = new SortAlysCompare<>(array, klass);
-            alys.exec();
+            alys.exec(true);
         }
     }
 }
