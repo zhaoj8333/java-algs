@@ -7,7 +7,10 @@ import java.util.Comparator;
  *
  * Advantages: ~ 2N logN
  * Disadvantages: can't use cache, it is barely used, because it don't compare adjacent members,
- *  the cache miss is far more higher than adjacent comparing soring: {@link QuickSortImpl}, {@link MergeSortImpl}, {@link ShellSortImpl}
+ *  the cache miss is far more higher than adjacent comparing soring:
+ *      {@link QuickSortImpl},
+ *      {@link MergeSortImpl},
+ *      {@link ShellSortImpl}
  */
 public class HeapSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
 

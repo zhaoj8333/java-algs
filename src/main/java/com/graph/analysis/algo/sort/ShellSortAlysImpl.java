@@ -1,7 +1,7 @@
 package com.graph.analysis.algo.sort;
 
-import com.algs.algo.sort.shellsort.sequence.SedgeWick;
-import com.algs.algo.sort.shellsort.sequence.SequenceGenerator;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.SedgeWick;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.SequenceGenerator;
 import com.algs.datastructure.collection.Iterator;
 
 import java.util.Comparator;

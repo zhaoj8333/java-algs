@@ -1,16 +1,18 @@
-package com.algs.algo.sort.shellsort.sequence;
+package com.algs.algo.sort.cmp_swp.sequence;
 
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.deque.LinkedListDequeImpl;
 
-public class N3Plus1 extends SequenceGenerator {
+public class Geometric extends SequenceGenerator {
+
+    public int step;
 
     public IDeque<Integer> generate(int max) {
         IDeque<Integer> stepSeq = new LinkedListDequeImpl<>();
-        int seq = 1;
-        while (seq < max) {
-            stepSeq.enque(seq);
-            seq = seq * 3 + 1;
+        int from = 1;
+        while (from < max) {
+            stepSeq.enque(from);
+            from = from * step;
         }
         return stepSeq;
     }

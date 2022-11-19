@@ -1,6 +1,6 @@
 package com.graph.analysis.algo.sort;
 
-import com.algs.algo.sort.shellsort.sequence.SequenceGenerator;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.SequenceGenerator;
 
 import java.util.Comparator;
 

@@ -4,7 +4,6 @@ import com.algs.DefaultValues;
 import com.algs.algo.sort.ISortable;
 import com.algs.util.DrawUtil;
 import com.algs.util.ObjectUtil;
-import com.algs.util.SortUtil;
 
 import java.awt.*;
 import java.util.Comparator;
