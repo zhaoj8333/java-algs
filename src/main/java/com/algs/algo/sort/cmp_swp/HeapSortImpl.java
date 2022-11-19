@@ -1,4 +1,6 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.cmp_swp;
+
+import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
 
 import java.util.Comparator;
 

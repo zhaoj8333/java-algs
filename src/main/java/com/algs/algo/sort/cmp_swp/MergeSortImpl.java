@@ -1,9 +1,9 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.cmp_swp;
 
 import java.util.Comparator;
 
 /**
- * Devide and Merge
+ * Divide and Merge
  *
  * Comparison of:
  * {@link MergeSortTopdownImpl}

@@ -1,4 +1,4 @@
-package com.algs.algo.sort.cmp_swp.sequence;
+package com.algs.algo.sort.cmp_swp.shellsort.sequence;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.deque.IDeque;

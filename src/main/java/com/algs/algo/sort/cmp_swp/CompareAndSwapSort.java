@@ -1,5 +1,6 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.cmp_swp;
 
+import com.algs.algo.sort.ISortable;
 import com.algs.util.ObjectUtil;
 
 import java.util.Comparator;
@@ -10,7 +11,7 @@ import java.util.Objects;
  */
 public abstract class CompareAndSwapSort<E extends Comparable<E>> implements ISortable<E> {
 
-    protected E[] array;
+    public E[] array;
     protected Comparator<E> comparator;
 
     public CompareAndSwapSort(E[] array, Comparator<E> comparator) {

@@ -1,4 +1,4 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.cmp_swp;
 
 import com.algs.util.ArraysUtil;
 import jdk.jfr.Label;
