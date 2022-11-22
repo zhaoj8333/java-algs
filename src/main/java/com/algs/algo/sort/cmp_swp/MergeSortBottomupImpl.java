@@ -24,7 +24,7 @@ public class MergeSortBottomupImpl<E extends Comparable<E>> extends MergeSortImp
             for (int begin = 0; begin < len; begin += sz + sz) {
                 int end = begin + sz + sz;
                 int mid = (begin + end) >> 1;
-                merge(begin, mid, Math.min(end, array.length));
+                merge(begin, mid, Math.min(end, len));
             }
         }
     }

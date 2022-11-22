@@ -10,8 +10,11 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
 
     @Override
     public void sort() {
-//        sort(0, array.length - 1);
-        sort0(0, array.length);
+        if (array.length == 1) {
+            return;
+        }
+        sort(0, array.length - 1);
+//        sort0(0, array.length);
     }
 
     /**
@@ -48,6 +51,8 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
      * [0, array.length - 1]
      *
      * [begin, end]
+     *
+     * if the array is already sorted, merge can be skipped, so the compare time would be linear compare operations
      */
     private void sort(int begin, int end) {
         if (end <= begin) {
@@ -56,7 +61,8 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
         int mid = (end + begin) >> 1;
         sort(begin, mid);
         sort(mid + 1, end);
-        merge(begin, mid, end);
+//        merge(begin, mid, end);
+        fastMerge(begin, mid, end);
     }
 
     /**
@@ -83,4 +89,29 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
             }
         }
     }
+
+    /**
+     * Copy the right half of array in a reversed order to aux
+     * This can avoid the test of the right has been exhausted from the inner loop
+     *
+     * This may cause unstable sorting
+     */
+    private void fastMerge(int begin, int mid, int end) {
+        int auxIndex = begin;
+        for (int i = begin; i <= mid; i++) {
+            aux[auxIndex++] = array[i];
+        }
+        for (int i = end; i > mid; i--) {
+            aux[auxIndex++] = array[i];
+        }
+        int li = begin, ri = end, ai = begin;
+        while (li <= mid) {
+            if (compareEntry(aux[li], aux[ri]) <= 0) {
+                array[ai++] = aux[li++];
+            } else {
+                array[ai++] = aux[ri--];
+            }
+        }
+    }
+
 }

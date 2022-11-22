@@ -1,5 +1,8 @@
 package com.graph.analysis.algo.sort;
 
+import com.algs.algo.sort.cmp_swp.InsertionSortImpl;
+import com.algs.algo.sort.cmp_swp.SelectionSortImpl;
+import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
 import com.algs.util.ArraysUtil;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +15,15 @@ class SortingAlysImplTest {
 //                InsertionSortAlysImpl.class,
 //                ShellSortAlysImpl.class,
         };
-
+        if (klasses.length == 0) {
+            return;
+        }
+        for (Class<?> klass : klasses) {
+            String parentKlassName = klass.getSuperclass().getSimpleName();
+            if (!CompareAndSwapSortAlys.class.getSimpleName().equals(parentKlassName)) {
+                throw new IllegalCallerException("Must extend " + CompareAndSwapSortAlys.class.getName());
+            }
+        }
         exec(klasses);
     }
 
@@ -22,7 +33,7 @@ class SortingAlysImplTest {
      *  20000: 1017, Cost (400170712),  Cmp (199990000), Swap (20000)
      *  40000: 3839, Cost (1600365907), Cmp (799980000), Swap (40000)
      *
-     *  {@link com.algs.algo.sort.InsertionSortImpl}
+     *  {@link InsertionSortImpl}
      *  10000: 386, Cost (49909883), Cmp (24959938), Swap (24949945)
      *         267, Cost (24970088), Cmp (24970088), Swap (24970099)    Move
      *         188, Cost (248013),   Cmp (119007),   Swap (101)         BinarySearch
@@ -33,13 +44,13 @@ class SortingAlysImplTest {
      *         3501, Cost (399640302), Cmp (399600302), Swap (399600314)
      *         3048, Cost (1151987),   Cmp (555994),    Swap (1193)
      *
-     *  {@link com.algs.algo.sort.ShellSortImpl}
+     *  {@link ShellSortImpl}
      *  10000: 42, Cost (417065),  Cmp (243995),  Swap (173070)
      *  20000: 56, Cost (930147),  Cmp (542920),  Swap (387227)
      *  40000: 64, Cost (2230658), Cmp (1285015), Swap (945643)
      *
-     * {@link com.algs.algo.sort.SelectionSortImpl} and {@link com.algs.algo.sort.InsertionSortImpl} are quadratic for random inputs
-     * {@link com.algs.algo.sort.ShellSortImpl} is sub quadratic for random inputs, it's worst case(3N+1 sequence) is N^3/2
+     * {@link SelectionSortImpl} and {@link InsertionSortImpl} are quadratic for random inputs
+     * {@link ShellSortImpl} is sub quadratic for random inputs, it's worst case(3N+1 sequence) is N^3/2
      */
     private void exec(Class<?>[] klasses) {
         Integer[] array = ArraysUtil.randomIntArray(10000);

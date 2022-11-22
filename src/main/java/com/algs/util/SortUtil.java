@@ -62,12 +62,12 @@ public class SortUtil<E extends Comparable<E>> {
     /**
      * Check if elements in the sorted array has been changed
      */
-    public static <E extends Comparable> boolean onlySorted(E[] originalArray, E[] sortedArray) {
+    public static <E extends Comparable<E>> boolean onlySorted(E[] originalArray, E[] sortedArray) {
         if (originalArray.length != sortedArray.length) {
             return false;
         }
-        Map<Comparable, Integer> valueMap = new HashMap<>();
-        for (Comparable value : originalArray) {
+        Map<Comparable<E>, Integer> valueMap = new HashMap<>();
+        for (Comparable<E> value : originalArray) {
             int count = 0;
             if (valueMap.containsKey(value)) {
                 count = valueMap.get(value);
@@ -79,7 +79,7 @@ public class SortUtil<E extends Comparable<E>> {
         if (!sorted) {
             return false;
         }
-        for (Comparable e : sortedArray) {
+        for (Comparable<E> e : sortedArray) {
             if (valueMap.containsKey(e)) {
                 Integer count = valueMap.get(e);
                 count--;

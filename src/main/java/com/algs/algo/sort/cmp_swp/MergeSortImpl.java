@@ -11,7 +11,7 @@ import java.util.Comparator;
  */
 public abstract class MergeSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
 
-    protected final E[] aux = (E[]) new Comparable[array.length >> 1];
+    protected final E[] aux = (E[]) new Comparable[array.length];
 
     public MergeSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

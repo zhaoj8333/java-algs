@@ -17,10 +17,12 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     protected int cost = 0;
     protected int swapCount = 0;
     protected int cmpCount = 0;
+    protected int arrayAcc = 0;
 
 
     public CompareAndSwapSortAlys(E[] array, Comparator<E> comparator) {
         ObjectUtil.requireNonNull(array);
+        arrayAcc = 0;
         this.array = array;
         this.comparator = comparator;
     }
@@ -56,4 +58,9 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     public int getCmpCount() {
         return cmpCount;
     }
+
+    public int getArrayAcc() {
+        return arrayAcc;
+    }
+
 }

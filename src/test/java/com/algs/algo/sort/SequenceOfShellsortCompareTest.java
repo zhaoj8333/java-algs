@@ -1,8 +1,8 @@
 package com.algs.algo.sort;
 
-import com.algs.algo.sort.shellsort.sequence.Geometric;
-import com.algs.algo.sort.shellsort.sequence.N3Plus1;
-import com.algs.algo.sort.shellsort.sequence.SedgeWick;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.Geometric;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.N3Plus1;
+import com.algs.algo.sort.cmp_swp.shellsort.sequence.SedgeWick;
 import com.algs.util.ArraysUtil;
 import com.graph.analysis.algo.sort.IncrementSequenceOfShellsortCompare;
 import org.junit.jupiter.api.Test;

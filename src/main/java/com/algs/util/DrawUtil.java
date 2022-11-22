@@ -25,16 +25,9 @@ package com.algs.util;
  *
  ******************************************************************************/
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.FileDialog;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
+import com.algs.datastructure.collection.queue.IQueue;
+
+import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,11 +37,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DirectColorModel;
@@ -93,6 +82,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static final Color DEFAULT_PEN_COLOR   = BLACK;
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
     private static Color penColor;
+    private static final Stroke DEFAULT_STROKE = new BasicStroke();
 
     public static final int DEFAULT_SIZE = 768;
     public static int width  = DEFAULT_SIZE;
@@ -147,7 +137,6 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
 
     // singleton pattern: client can't instantiate
     private DrawUtil() { }
-
 
     // static initializer
     static {
@@ -280,7 +269,6 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static double factorY(double h) { return h * height / Math.abs(ymax - ymin);  }
     private static double   userX(double x) { return xmin + x * (xmax - xmin) / width;    }
     private static double   userY(double y) { return ymax - y * (ymax - ymin) / height;   }
-
 
     /**
      * Clears the screen to the default color (white).
@@ -420,6 +408,33 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     public static void line(double x0, double y0, double x1, double y1) {
         offscreen.draw(new Line2D.Double(scaleX(x0), scaleY(y0), scaleX(x1), scaleY(y1)));
         draw();
+    }
+
+    public static void line(double x0, double y0, double x1, double y1, Stroke stroke) {
+        offscreen.setStroke(stroke);
+        offscreen.draw(new Line2D.Double(scaleX(x0), scaleY(y0), scaleX(x1), scaleY(y1)));
+        draw();
+        offscreen.setStroke(DEFAULT_STROKE);
+    }
+
+    public static void curve(IQueue<Point> points) {
+        if (points.isEmpty()) {
+            return;
+        }
+        Point head = points.deque();
+        Path2D.Double path = new Path2D.Double();
+        path.moveTo(head.x, head.y);
+        try {
+            while (!points.isEmpty()) {
+                Point first = points.deque();
+                Point second = points.deque();
+                Point third = points.deque();
+                System.out.println(first);
+                path.curveTo(first.x, first.y, second.y, second.y, third.x, third.y);
+            }
+        } catch (Exception ignored) {
+        }
+        offscreen.draw(path);
     }
 
     /**

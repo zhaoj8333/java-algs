@@ -106,6 +106,15 @@ public class ArraysUtil {
         return array;
     }
 
+    public static Character[] randomPrintableCharArray(int length) {
+        Character[] array = new Character[length];
+        Random r = new JVMRandom();
+        for (int i = 0; i < length; i++) {
+            array[i] = (char)(0X20 + r.nextInt(95));
+        }
+        return array;
+    }
+
     public static Integer[] randomArrayWith2Values(int length, int val1, int val2) {
         Integer[] array = new Integer[length];
         Random r = new JVMRandom();

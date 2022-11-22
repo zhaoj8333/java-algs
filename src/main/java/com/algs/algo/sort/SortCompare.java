@@ -1,5 +1,6 @@
-package com.algs.algo.sort.cmp_swp;
+package com.algs.algo.sort;
 
+import com.algs.algo.sort.cmp_swp.CompareAndSwapSort;
 import com.algs.analysis.StopWatchTask;
 import com.algs.util.ArraysUtil;
 import com.algs.util.SortUtil;

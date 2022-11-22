@@ -1,4 +1,4 @@
-package com.algs.algo.sort.cmp_swp;
+package com.algs.algo.sort;
 
 public class RadixSortImpl {
 }
