@@ -1,6 +1,7 @@
 package com.algs.algo.sort;
 
 import com.algs.algo.sort.cmp_swp.*;
+import com.algs.algo.sort.cmp_swp.merge.*;
 import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
 import com.algs.util.ArraysUtil;
 import org.junit.jupiter.api.Test;
@@ -15,10 +16,11 @@ class SortCompareTest {
 //                BubbleSortImpl.class,
 //                InsertionSortImpl.class,
 //                SentinelInsertionSortImpl.class
-//                ShellSortImpl.class,
-//                MergeSortImpl.class
+                ShellSortImpl.class,
                 MergeSortTopdownImpl.class,
                 MergeSortBottomupImpl.class,
+                MergeSortTopdownOptImpl.class,
+//                MergeSortBottomupOptImpl.class,
         };
 
         execRandomArray(klasses);
@@ -40,16 +42,18 @@ class SortCompareTest {
      *
      * {@link MergeSortImpl}: 101 ms
      *
-     * When 900000:
+     * When 900000 in {@link MergeSortImpl}:
      *  {@link MergeSortImpl} is twice faster than {@link ShellSortImpl} and {@link HeapSortImpl}
+     *  {@link MergeSortTopdownImpl}: 652 ms
+     *  {@link MergeSortBottomupImpl}: 654 ms
+     *  {@link MergeSortTopdownOptImpl}: 457 ms
+     *  {@link MergeSortBottomupOptImpl}: // TODO: 11/23/22  
      *
-     *  {@link MergeSortBottomupImpl} is slightly faster than {@link MergeSortTopdownImpl}, because
-     *  {@link MergeSortBottomupImpl} don't use recursion, other than that, they don't have differences
-     *  in number of compares and array access
+     *  {@link MergeSortBottomupImpl} is slightly faster than {@link MergeSortTopdownImpl}, it don't use recursion,
+     *  other than that, they don't have differences in number of compares and array access
      */
     private void execRandomArray(Class<?>[] klasses) {
-//        Integer[] array = ArraysUtil.randomIntArray(2000000);
-        Integer[] array = ArraysUtil.randomIntArray(39);
+        Integer[] array = ArraysUtil.randomIntArray(900000);
         System.out.println("Init done");
 
         execute(klasses, array);

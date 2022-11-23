@@ -1,4 +1,4 @@
-package com.algs.algo.sort.cmp_swp;
+package com.algs.algo.sort.cmp_swp.merge;
 
 import java.util.Comparator;
 
@@ -13,27 +13,27 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
         if (array.length == 1) {
             return;
         }
-        sort(0, array.length - 1);
-//        sort0(0, array.length);
+        sort0(0, array.length - 1);
+//        sort(0, array.length);
     }
 
     /**
      * sort array[]: [begin, end), begin <= index < end
      */
-    private void sort0(int begin, int end) {
+    protected void sort(int begin, int end) {
         if (end - begin < 2) {
             return;
         }
         int mid = (begin + end) >> 1;
-        sort0(begin, mid);
-        sort0(mid, end);
-        merge0(begin, mid, end);
+        sort(begin, mid);
+        sort(mid, end);
+        merge(begin, mid, end);
     }
 
     /**
      * merge: [begin, mid) and [mid, end)
      */
-    protected void merge0(int begin, int mid, int end) {
+    protected void merge(int begin, int mid, int end) {
         int li = 0, ri = mid, ai = begin;
         for (int i = li; i < mid - begin; i++) {
             aux[i] = array[begin + i];
@@ -51,17 +51,15 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
      * [0, array.length - 1]
      *
      * [begin, end]
-     *
-     * if the array is already sorted, merge can be skipped, so the compare time would be linear compare operations
      */
-    private void sort(int begin, int end) {
+    private void sort0(int begin, int end) {
         if (end <= begin) {
             return;
         }
         int mid = (end + begin) >> 1;
-        sort(begin, mid);
-        sort(mid + 1, end);
-//        merge(begin, mid, end);
+        sort0(begin, mid);
+        sort0(mid + 1, end);
+//        merge0(begin, mid, end);
         fastMerge(begin, mid, end);
     }
 
@@ -71,7 +69,7 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
      *          m             n
      *                    mid
      */
-    private void merge(int begin, int mid, int end) {
+    private void merge0(int begin, int mid, int end) {
         int m = begin, n = mid + 1;
         for (int i = begin; i <= end; i++) {
             aux[i] = array[i];

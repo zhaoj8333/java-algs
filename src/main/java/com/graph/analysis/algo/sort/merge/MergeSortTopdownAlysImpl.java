@@ -1,4 +1,4 @@
-package com.graph.analysis.algo.sort;
+package com.graph.analysis.algo.sort.merge;
 
 import com.algs.util.SortUtil;
 import org.junit.jupiter.api.Assertions;
@@ -72,6 +72,8 @@ public class MergeSortTopdownAlysImpl<E extends Comparable<E>> extends MergeSort
      * [0, array.length - 1]
      *
      * [begin, end]
+     * 
+     * add compareIndex(mid, mid + 1) > 0, may avoid call {@link #merge(int, int, int)}
      */
     private void sort(int begin, int end) {
         if (end <= begin) {

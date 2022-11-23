@@ -1,4 +1,4 @@
-package com.algs.algo.sort.cmp_swp;
+package com.algs.algo.sort.cmp_swp.merge;
 
 import java.util.Comparator;
 
@@ -20,6 +20,9 @@ public class MergeSortBottomupImpl<E extends Comparable<E>> extends MergeSortImp
     @Override
     public void sort() {
         int len = array.length;
+        if (len == 1) {
+            return;
+        }
         for (int sz = 1; sz < len; sz = sz + sz) {
             for (int begin = 0; begin < len; begin += sz + sz) {
                 int end = begin + sz + sz;

@@ -6,6 +6,8 @@ import com.algs.util.ArraysUtil;
 import com.algs.util.DrawUtil;
 import com.algs.util.FileUtil;
 import com.graph.GraphicAnalysis;
+import com.graph.analysis.algo.sort.merge.MergeSortBottomupAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortTopdownAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

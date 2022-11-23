@@ -1,4 +1,4 @@
-package com.graph.analysis.algo.sort;
+package com.graph.analysis.algo.sort.merge;
 
 import com.algs.util.SortUtil;
 import org.junit.jupiter.api.Assertions;
