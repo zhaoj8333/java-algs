@@ -8,10 +8,22 @@ package com.algs.algo.sort;
  * {@link com.algs.algo.sort.cmp_swp.BubbleSortImpl}
  * {@link com.algs.algo.sort.cmp_swp.SelectionSortImpl}
  * {@link com.algs.algo.sort.cmp_swp.InsertionSortImpl}
+ * {@link com.algs.algo.sort.cmp_swp.SentinelInsertionSortImpl}
+ *
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownOptImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupOptImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortSublinearSpaceImpl}
+ *
  * {@link com.algs.algo.sort.cmp_swp.quick.QuickSortImpl}
+ * {@link com.algs.algo.sort.cmp_swp.quick.QuickSortImpl0}
+ * {@link com.algs.algo.sort.cmp_swp.quick.QuickSort3wayImpl}
+ *
  * {@link com.algs.algo.sort.cmp_swp.shell.ShellSortImpl}
  * {@link com.algs.algo.sort.cmp_swp.HeapSortImpl}
+ *
  *
  * {@link com.algs.algo.sort.RadixSortImpl}
  * {@link com.algs.algo.sort.BucketSortImpl}
