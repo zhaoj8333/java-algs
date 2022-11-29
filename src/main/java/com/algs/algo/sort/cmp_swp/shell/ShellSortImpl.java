@@ -1,9 +1,9 @@
-package com.algs.algo.sort.cmp_swp.shellsort;
+package com.algs.algo.sort.cmp_swp.shell;
 
 import com.algs.algo.sort.cmp_swp.CompareAndSwapSort;
 import com.algs.algo.sort.cmp_swp.InsertionSortImpl;
-import com.algs.algo.sort.cmp_swp.shellsort.sequence.SedgeWick;
-import com.algs.algo.sort.cmp_swp.shellsort.sequence.SequenceGenerator;
+import com.algs.algo.sort.cmp_swp.shell.sequence.SedgeWick;
+import com.algs.algo.sort.cmp_swp.shell.sequence.SequenceGenerator;
 import com.algs.datastructure.collection.Iterator;
 
 import java.util.Comparator;

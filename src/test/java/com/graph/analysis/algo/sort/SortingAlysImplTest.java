@@ -2,8 +2,8 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.algo.sort.cmp_swp.InsertionSortImpl;
 import com.algs.algo.sort.cmp_swp.SelectionSortImpl;
-import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
-import com.algs.util.ArraysUtil;
+import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
+import com.algs.util.ArrayGenerator;
 import org.junit.jupiter.api.Test;
 
 class SortingAlysImplTest {
@@ -53,7 +53,7 @@ class SortingAlysImplTest {
      * {@link ShellSortImpl} is sub quadratic for random inputs, it's worst case(3N+1 sequence) is N^3/2
      */
     private void exec(Class<?>[] klasses) {
-        Integer[] array = ArraysUtil.randomIntArray(10000);
+        Integer[] array = ArrayGenerator.randomIntArray(10000);
         System.out.println("Init done");
 
         for (Class<?> klass : klasses) {

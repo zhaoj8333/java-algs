@@ -59,8 +59,8 @@ public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl
         int mid = (end + begin) >> 1;
         sort0(begin, mid);
         sort0(mid + 1, end);
-//        merge0(begin, mid, end);
-        fastMerge(begin, mid, end);
+        merge0(begin, mid, end);
+//        fastMerge(begin, mid, end);
     }
 
     /**

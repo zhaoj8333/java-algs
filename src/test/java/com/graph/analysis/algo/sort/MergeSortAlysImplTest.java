@@ -2,6 +2,7 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.ArrayGenerator;
 import com.algs.util.ArraysUtil;
 import com.algs.util.DrawUtil;
 import com.algs.util.FileUtil;
@@ -42,7 +43,7 @@ class MergeSortAlysImplTest {
         }
 
         for (int sz = 2; sz < x; sz++) {
-            Integer[] array = ArraysUtil.randomIntArray(sz);
+            Integer[] array = ArrayGenerator.randomIntArray(sz);
             GraphicAnalysis alys;
 
             DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);

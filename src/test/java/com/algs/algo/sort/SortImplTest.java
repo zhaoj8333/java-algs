@@ -1,13 +1,13 @@
 package com.algs.algo.sort;
 
 import com.algs.algo.sort.cmp_swp.*;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupOptImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownOptImpl;
-import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
+import com.algs.algo.sort.cmp_swp.quick.QuickSort3wayImpl;
+import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl;
+import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.util.ArrayGenerator;
 import com.algs.util.ArraysUtil;
 import com.algs.util.FileUtil;
 import com.algs.util.SortUtil;
@@ -35,8 +35,11 @@ public class SortImplTest {
 //                ShellSortImpl.class,
 //                MergeSortTopdownImpl.class,
 //                MergeSortBottomupImpl.class,
-                MergeSortTopdownOptImpl.class,
+//                MergeSortTopdownOptImpl.class,
 //                MergeSortBottomupOptImpl.class,
+                QuickSortImpl.class,
+                QuickSortImpl0.class,
+                QuickSort3wayImpl.class,
 
         };
         for (Class<?> klass : klasses) {
@@ -287,7 +290,7 @@ public class SortImplTest {
         Integer[] worst = new Integer[0];
         Integer[] best  = new Integer[0];
         for (int i = 0; i < 50000000; i++) {
-            Integer[] array = ArraysUtil.randomIntArray(30);
+            Integer[] array = ArrayGenerator.randomIntArray(30);
             CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copy(array));
             sort.sort();
             int cost = sort.getCost();

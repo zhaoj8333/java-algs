@@ -1,13 +1,14 @@
 package com.algs.util;
 
 import com.algs.datastructure.collection.ICollection;
-import org.apache.commons.lang.math.JVMRandom;
 
 import java.util.Objects;
 import java.util.Random;
 
 @SuppressWarnings("all")
-public class ArraysUtil {
+public final class ArraysUtil {
+
+    private static Random r = new Random();
 
     public static void fill(int[] array, int value) {
         for (int i = 0; i < array.length; i++) {
@@ -61,18 +62,28 @@ public class ArraysUtil {
         }
     }
 
-    public static <E> void swap(E[] array, int i, int j) {
-        E tmp = array[i];
+    public static void swap(Object[] array, int i, int j) {
+        Object tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+
+    public static void swap(char[] array, int i, int j) {
+        char tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
     }
 
     public static <E> void shuffle(E[] array) {
         int len = array.length;
-        Random r = new JVMRandom();
         for (int i = len; i > 0; i--) {
-            int random = r.nextInt(i);
-            swap(array, random, i);
+            swap(array, r.nextInt(i), i - 1);
+        }
+    }
+
+    public static void shuffle(char[] array) {
+        for (int i = array.length; i > 0; i--) {
+            swap(array, r.nextInt(i), i - 1);
         }
     }
 
@@ -80,53 +91,12 @@ public class ArraysUtil {
         System.out.println(toString(array));
     }
 
-    public static void display(Character[] array) {
+    public static void display(char[] array) {
         System.out.println(toString(array));
     }
 
     public static void display(ICollection<Character> list) {
         System.out.println(list.toString());
-    }
-
-    public static Comparable[] randomArray(int length) {
-        Comparable[] array = new Comparable[length];
-        Random r = new JVMRandom();
-        for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(length);
-        }
-        return array;
-    }
-
-    public static Integer[] randomIntArray(int length) {
-        Integer[] array = new Integer[length];
-        Random r = new JVMRandom();
-        for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(length) + 1;
-        }
-        return array;
-    }
-
-    public static Character[] randomPrintableCharArray(int length) {
-        Character[] array = new Character[length];
-        Random r = new JVMRandom();
-        for (int i = 0; i < length; i++) {
-            array[i] = (char)(0X20 + r.nextInt(95));
-        }
-        return array;
-    }
-
-    public static Integer[] randomArrayWith2Values(int length, int val1, int val2) {
-        Integer[] array = new Integer[length];
-        Random r = new JVMRandom();
-        for (int i = 0; i < length; i++) {
-            int m = r.nextInt(length);
-            if (m % 2 == 0) {
-                array[i] = val1;
-            } else {
-                array[i] = val2;
-            }
-        }
-        return array;
     }
 
     /**
@@ -177,7 +147,7 @@ public class ArraysUtil {
         return sb.toString();
     }
 
-    public static String toString(Character[] array) {
+    public static String toString(char[] array) {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (int i = 0; i < array.length; i++) {
@@ -202,4 +172,5 @@ public class ArraysUtil {
         sb.append("}");
         return sb.toString();
     }
+
 }

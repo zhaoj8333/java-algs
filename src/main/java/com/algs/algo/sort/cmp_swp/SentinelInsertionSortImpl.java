@@ -1,5 +1,7 @@
 package com.algs.algo.sort.cmp_swp;
 
+import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl;
+
 import java.util.Comparator;
 
 /**

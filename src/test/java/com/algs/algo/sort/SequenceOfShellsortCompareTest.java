@@ -1,9 +1,9 @@
 package com.algs.algo.sort;
 
-import com.algs.algo.sort.cmp_swp.shellsort.sequence.Geometric;
-import com.algs.algo.sort.cmp_swp.shellsort.sequence.N3Plus1;
-import com.algs.algo.sort.cmp_swp.shellsort.sequence.SedgeWick;
-import com.algs.util.ArraysUtil;
+import com.algs.algo.sort.cmp_swp.shell.sequence.Geometric;
+import com.algs.algo.sort.cmp_swp.shell.sequence.N3Plus1;
+import com.algs.algo.sort.cmp_swp.shell.sequence.SedgeWick;
+import com.algs.util.ArrayGenerator;
 import com.graph.analysis.algo.sort.IncrementSequenceOfShellsortCompare;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +27,7 @@ class SequenceOfShellsortCompareTest {
      *
      */
     private void exec(Class<?>[] klasses) {
-        Integer[] array = ArraysUtil.randomIntArray(900000);
+        Integer[] array = ArrayGenerator.randomIntArray(900000);
         System.out.println("Init done");
         for (Class<?> klass : klasses) {
             IncrementSequenceOfShellsortCompare<Integer> compare = new IncrementSequenceOfShellsortCompare<>(array, klass);
@@ -37,7 +37,7 @@ class SequenceOfShellsortCompareTest {
 
     @Test
     void findBestGeometricSequenceBase() {
-        Integer[] array = ArraysUtil.randomIntArray(100000);
+        Integer[] array = ArrayGenerator.randomIntArray(100000);
         System.out.println("Init done");
 
         int minCost = 0;

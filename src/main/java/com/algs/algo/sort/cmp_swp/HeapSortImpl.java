@@ -1,7 +1,8 @@
 package com.algs.algo.sort.cmp_swp;
 
 import com.algs.algo.sort.cmp_swp.merge.MergeSortImpl;
-import com.algs.algo.sort.cmp_swp.shellsort.ShellSortImpl;
+import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl;
+import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
 
 import java.util.Comparator;
 

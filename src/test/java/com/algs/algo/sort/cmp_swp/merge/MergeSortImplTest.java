@@ -1,19 +1,18 @@
 package com.algs.algo.sort.cmp_swp.merge;
 
 import com.algs.algo.sort.ISortable;
+import com.algs.util.ArrayGenerator;
 import com.algs.util.ArraysUtil;
 import com.algs.util.SortUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Comparator;
 
 class MergeSortImplTest {
 
     @Test
     void _2_2_1() {
 //        Character[] chars = getChars();
-        Character[] chars = ArraysUtil.randomPrintableCharArray(39);
+        Character[] chars = ArrayGenerator.randomPrintableCharArray(39);
         ArraysUtil.display(chars);
 
         Character[] copy = ArraysUtil.copy(chars);
@@ -198,7 +197,7 @@ class MergeSortImplTest {
      */
     @Test
     void _2_2_5() {
-        Character[] chars = ArraysUtil.randomPrintableCharArray(39);
+        Character[] chars = ArrayGenerator.randomPrintableCharArray(39);
         sort0(chars);
     }
 
@@ -214,7 +213,7 @@ class MergeSortImplTest {
      */
     @Test
     void _2_2_6() {
-        Character[] chars = ArraysUtil.randomPrintableCharArray(160);
+        Character[] chars = ArrayGenerator.randomPrintableCharArray(160);
         sort(chars);
         System.out.println("Topdown: " + accessCount);
     }
