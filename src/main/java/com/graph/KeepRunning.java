@@ -37,7 +37,6 @@ public class KeepRunning {
         try {
             robot = new Robot();// 创建Robot对象
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

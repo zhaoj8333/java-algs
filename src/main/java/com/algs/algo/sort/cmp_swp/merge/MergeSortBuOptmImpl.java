@@ -23,17 +23,16 @@ public class MergeSortBuOptmImpl<E extends Comparable<E>> extends MergeSortBuImp
      *      begin       end
      *    The reduce of array access and comparison are not significant, but can reduce the array copy in merge
      *
-     * 3. Copy once: can reduce the array access times to less than 4.5 * N * logN, compare times will
-     *    increase a little bit
+     * 3. // TODO: 11/30/22 Copy once
      */
     @Override
     public void sort() {
-        int sz = useInsertThreshold;
+        int sz = insertionSortThreshold;
         for (int begin = 0; begin < array.length; begin += sz) {
             int end = Math.min(array.length, begin + sz);
             insertionSort(array, begin, end);
         }
-        if (useInsertThreshold >= array.length) {
+        if (insertionSortThreshold >= array.length) {
             return;
         }
         for (; sz < array.length; sz = sz + sz) {

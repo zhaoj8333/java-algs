@@ -24,8 +24,8 @@ class SortCompareTest {
 //                SentinelInsertionSortImpl.class
 //                ShellSortImpl.class,
 //                MergeSortTdImpl.class,
-//                MergeSortTdOptmImpl.class,
-                MergeSortBuImpl.class,
+                MergeSortTdOptmImpl.class,
+//                MergeSortBuImpl.class,
                 MergeSortBuOptmImpl.class,
 //                QuickSortImpl.class,
 //                QuickSortImpl0.class,
@@ -66,7 +66,7 @@ class SortCompareTest {
      *
      *  {@link MergeSortBuImpl}: 990 ms
      *  {@link MergeSortBuOptmImpl}:
-     *      644 ms (@link {@link MergeSortImpl#useInsertThreshold} == 8)
+     *      644 ms (@link {@link MergeSortImpl#insertionSortThreshold} == 8)
      *
      *  {@link MergeSortBuImpl} is slightly faster than {@link MergeSortTdImpl}, it don't use recursion,
      *  other than that, they don't have differences in number of compares and array access

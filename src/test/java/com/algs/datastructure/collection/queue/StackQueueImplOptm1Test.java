@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StackQueueImplOpt1Test {
+class StackQueueImplOptm1Test {
 
     @Test
     void test() {
-        IQueue<Integer> q = new StackQueueImplOpt1<>();
+        IQueue<Integer> q = new StackQueueImplOptm1<>();
         Assertions.assertTrue(q.isEmpty());
         Assertions.assertEquals(0, q.size());
 

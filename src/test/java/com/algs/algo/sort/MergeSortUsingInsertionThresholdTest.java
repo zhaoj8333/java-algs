@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * The best @{@link MergeSortImpl#useInsertThreshold} might be 15, 16 ?
+ * The best @{@link MergeSortImpl#insertionSortThreshold} might be 15, 16 ?
  *
  * {@link MergeSortBuOptmImpl}: 16
  */
@@ -28,7 +28,7 @@ public class MergeSortUsingInsertionThresholdTest {
             StopWatchTask<Object> st = new StopWatchTask<>() {
                 @Override
                 protected Object profileTask() {
-                    sort.setUseInsertThreshold(threshold);
+                    sort.setInsertionSortThreshold(threshold);
                     long start = System.currentTimeMillis();
                     sort.sort();
                     long end = System.currentTimeMillis();

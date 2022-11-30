@@ -14,7 +14,7 @@ import java.util.Objects;
  * to implement {@link IQueue}, assure constant time of {@link IQueue#deque()}
  * // TODO: 10/4/22 {@link com.algs.datastructure.collection.queue.StackQueueImplOpt1Test}
  */
-public class StackQueueImplOpt1<E> implements IQueue<E> {
+public class StackQueueImplOptm1<E> implements IQueue<E> {
 
     private final IStack<E> h  = new ArrayStackImpl<>();
     private final IStack<E> t  = new LinkedListStackImpl<>();

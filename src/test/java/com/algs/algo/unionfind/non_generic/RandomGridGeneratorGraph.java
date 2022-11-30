@@ -4,8 +4,6 @@ import com.algs.util.Connection;
 import com.algs.util.DrawUtil;
 
 /**
- * // TODO: 10/14/22
- *
  * 1.5.19
  */
 public class RandomGridGeneratorGraph {

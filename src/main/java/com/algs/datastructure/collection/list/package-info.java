@@ -11,7 +11,6 @@ package com.algs.datastructure.collection.list;
  *
  * {@link com.algs.datastructure.collection.list.DoublyLinkedListImpl}
  *
- * // TODO: 10/2/22  
  * {@link com.algs.datastructure.collection.list.StaticLinkedList}
  *
  */

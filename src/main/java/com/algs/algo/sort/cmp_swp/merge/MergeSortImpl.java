@@ -19,14 +19,14 @@ public abstract class MergeSortImpl<E extends Comparable<E>> extends CompareAndS
         super(array, comparator);
     }
 
-    protected int useInsertThreshold = 8;
+    protected int insertionSortThreshold = 8;
 
     /**
-     * If the index range specified by {@link MergeSortImpl} is under {@link #useInsertThreshold},
+     * If the index range specified by {@link MergeSortImpl} is under {@link #insertionSortThreshold},
      * use {@link #insertionSort(E[], int, int)} instead of merge, this can reduce time by 10% ~ 15%
      */
-    public void setUseInsertThreshold(int useInsertThreshold) {
-        this.useInsertThreshold = useInsertThreshold;
+    public void setInsertionSortThreshold(int insertionSortThreshold) {
+        this.insertionSortThreshold = insertionSortThreshold;
     }
 
     protected void insertionSort(E[] array, int begin, int end) {

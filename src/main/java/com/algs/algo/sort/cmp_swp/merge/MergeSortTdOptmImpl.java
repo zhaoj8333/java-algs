@@ -10,34 +10,21 @@ public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImp
 
     @Override
     public void sort() {
-        if (array.length == 1) {
-            return;
-        }
-//        sort(0, array.length);
-//        sort1(0, array.length);
-        sort2();
-    }
-
-    private void sort2() {
-        // Optimization #3 - copy once only, Eliminate the copy to the auxiliary array on merge
         for (int i = 0; i < array.length; i++) {
             aux[i] = array[i];
         }
-        sort2(aux, array, 0, array.length - 1);
+        sort(aux, array, 0, array.length - 1);
     }
 
-    private void sort2(E[] array, E[] aux, int begin, int end) {
-//        if (end <= begin) {
-//            return;
-//        }
+    private void sort(E[] array, E[] aux, int begin, int end) {
         // Optimization #2 - Use InsertionSort for small arrays
-        if (end - begin < useInsertThreshold) {
+        if (end - begin < insertionSortThreshold) {
             insertionSort(aux, begin, end + 1);
             return;
         }
         int mid = (begin + end) >> 1;
-        sort2(aux, array, begin, mid);
-        sort2(aux, array, mid + 1, end);
+        sort(aux, array, begin, mid);
+        sort(aux, array, mid + 1, end);
         // Optimization #1 - Skip merge if the array is already in order
 //        if (compareEntry(array[mid], array[mid + 1]) <= 0) {
 //            return;
@@ -60,6 +47,7 @@ public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImp
         }
     }
 
+    /*
     private void sort1(int begin, int end) {
         if (end - begin < 2) {
             return;
@@ -76,13 +64,6 @@ public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImp
         }
     }
 
-    /**
-     *   begin    mid      end
-     *   0        3        6
-     *   0, 1, 2, 3, 4, 5
-     *
-     * if the array is already sorted, merge can be skipped, so the compare time would be linear compare operations
-     */
     protected void sort(int begin, int end) {
         if (end - begin < 2) {
             return;
@@ -122,5 +103,6 @@ public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImp
             }
         }
     }
+    */
 
 }
