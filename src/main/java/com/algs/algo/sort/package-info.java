@@ -11,10 +11,10 @@ package com.algs.algo.sort;
  * {@link com.algs.algo.sort.cmp_swp.SentinelInsertionSortImpl}
  *
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortImpl}
- * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownImpl}
- * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTopdownOptImpl}
- * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupImpl}
- * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBottomupOptImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTdImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTdOptmImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBuImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBuOptmImpl}
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortSublinearSpaceImpl}
  *
  * {@link com.algs.algo.sort.cmp_swp.quick.QuickSortImpl}

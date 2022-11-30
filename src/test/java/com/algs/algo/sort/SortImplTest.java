@@ -1,9 +1,10 @@
 package com.algs.algo.sort;
 
 import com.algs.algo.sort.cmp_swp.*;
-import com.algs.algo.sort.cmp_swp.quick.QuickSort3wayImpl;
-import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl;
-import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.cmp_swp.merge.MergeSortBuImpl;
+import com.algs.algo.sort.cmp_swp.merge.MergeSortBuOptmImpl;
+import com.algs.algo.sort.cmp_swp.merge.MergeSortTdImpl;
+import com.algs.algo.sort.cmp_swp.merge.MergeSortTdOptmImpl;
 import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
@@ -33,13 +34,14 @@ public class SortImplTest {
 //                InsertionSortImpl.class,
 //                SentinelInsertionSortImpl.class
 //                ShellSortImpl.class,
-//                MergeSortTopdownImpl.class,
-//                MergeSortBottomupImpl.class,
-//                MergeSortTopdownOptImpl.class,
-//                MergeSortBottomupOptImpl.class,
-                QuickSortImpl.class,
-                QuickSortImpl0.class,
-                QuickSort3wayImpl.class,
+//                MergeSortTdImpl.class,
+//                MergeSortBuImpl.class,
+//                MergeSortTdOptmImpl.class,
+                MergeSortBuOptmImpl.class,
+
+//                QuickSortImpl.class,
+//                QuickSortImpl0.class,
+//                QuickSort3wayImpl.class,
 
         };
         for (Class<?> klass : klasses) {

@@ -36,4 +36,9 @@ public class UFPerformanceCompare extends StopWatchTask {
         return "Void";
     }
 
+    @Override
+    protected void assertResult() {
+
+    }
+
 }

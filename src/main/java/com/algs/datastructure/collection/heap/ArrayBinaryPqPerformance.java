@@ -47,4 +47,9 @@ public class ArrayBinaryPqPerformance extends StopWatchTask {
         }
         return null;
     }
+
+    @Override
+    protected void assertResult() {
+
+    }
 }

@@ -2,9 +2,9 @@ package com.algs.algo.sort.cmp_swp.merge;
 
 import java.util.Comparator;
 
-public class MergeSortTopdownOptImpl<E extends Comparable<E>> extends MergeSortTopdownImpl<E> {
+public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImpl<E> {
 
-    public MergeSortTopdownOptImpl(E[] array, Comparator<E> comparator) {
+    public MergeSortTdOptmImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 
@@ -18,9 +18,6 @@ public class MergeSortTopdownOptImpl<E extends Comparable<E>> extends MergeSortT
         sort2();
     }
 
-    /**
-     * // TODO: 11/23/22  
-     */
     private void sort2() {
         // Optimization #3 - copy once only, Eliminate the copy to the auxiliary array on merge
         for (int i = 0; i < array.length; i++) {
@@ -30,14 +27,14 @@ public class MergeSortTopdownOptImpl<E extends Comparable<E>> extends MergeSortT
     }
 
     private void sort2(E[] array, E[] aux, int begin, int end) {
-        if (end <= begin) {
-            return;
-        }
-        // Optimization #2 - Use InsertionSort for small arrays
-//        if (end - begin <= useInsertThreshold) {
-//            insertionSort(aux, begin, end + 1);
+//        if (end <= begin) {
 //            return;
 //        }
+        // Optimization #2 - Use InsertionSort for small arrays
+        if (end - begin < useInsertThreshold) {
+            insertionSort(aux, begin, end + 1);
+            return;
+        }
         int mid = (begin + end) >> 1;
         sort2(aux, array, begin, mid);
         sort2(aux, array, mid + 1, end);
@@ -95,20 +92,6 @@ public class MergeSortTopdownOptImpl<E extends Comparable<E>> extends MergeSortT
         sort(mid, end);
         if (compareIndex(mid - 1, mid) > 0) {
             merge(begin, mid, end);
-        }
-    }
-
-    protected void merge(int begin, int mid, int end) {
-        int li = 0, ri = mid, ai = begin;
-        for (int i = li; i < mid - begin; i++) {
-            aux[i] = array[begin + i];
-        }
-        while (li < mid - begin) {
-            if (ri < end && compareEntry(aux[li], array[ri]) > 0) {
-                array[ai++] = array[ri++];
-            } else {
-                array[ai++] = aux[li++];
-            }
         }
     }
 

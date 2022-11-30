@@ -23,16 +23,17 @@ class SortCompareTest {
 //                InsertionSortImpl.class,
 //                SentinelInsertionSortImpl.class
 //                ShellSortImpl.class,
-//                MergeSortTopdownImpl.class,
-//                MergeSortBottomupImpl.class,
-//                MergeSortTopdownOptImpl.class,
-//                MergeSortBottomupOptImpl.class,
-                QuickSortImpl.class,
-                QuickSortImpl0.class,
-                QuickSort3wayImpl.class,
+//                MergeSortTdImpl.class,
+//                MergeSortTdOptmImpl.class,
+                MergeSortBuImpl.class,
+                MergeSortBuOptmImpl.class,
+//                QuickSortImpl.class,
+//                QuickSortImpl0.class,
+//                QuickSort3wayImpl.class,
         };
 
-        execRandomArray(klasses);
+        execRandomArray(klasses, 900000);
+//        execRandomArray(klasses, 18);
 //        execArrayWith2Value(klasses);
     }
 
@@ -49,28 +50,34 @@ class SortCompareTest {
      *  In theory, no one has been able to prove that {@link ShellSortImpl} is linearithmic for random data
      *  the asymptotic growth of the average-case performance of {@link ShellSortImpl} is higher
      *
-     * {@link MergeSortTopdownImpl}: 117 ms
+     * {@link MergeSortTdImpl}: 117 ms
+     *
      * {@link QuickSortImpl}: 140 ms
      * {@link QuickSortImpl0}: 125 ms
      * {@link QuickSort3wayImpl}: 159 ms
-     *
-     * When 900000 in {@link MergeSortImpl}:
+     */
+
+    /**
+     * 900000 in {@link MergeSortImpl}:
      *  {@link MergeSortImpl} is twice faster than {@link ShellSortImpl} and {@link HeapSortImpl}
-     *  {@link MergeSortTopdownImpl}: 652 ms
-     *  {@link MergeSortBottomupImpl}: 654 ms
-     *  {@link MergeSortTopdownOptImpl}: 457 ms
-     *  {@link MergeSortBottomupOptImpl}: // TODO: 11/23/22
      *
-     *  {@link MergeSortBottomupImpl} is slightly faster than {@link MergeSortTopdownImpl}, it don't use recursion,
+     *  {@link MergeSortTdImpl}: 652 ms
+     *  {@link MergeSortTdOptmImpl}: 457 ms, can be much faster than {@link MergeSortTdImpl}, even near half
+     *
+     *  {@link MergeSortBuImpl}: 990 ms
+     *  {@link MergeSortBuOptmImpl}:
+     *      644 ms (@link {@link MergeSortImpl#useInsertThreshold} == 8)
+     *
+     *  {@link MergeSortBuImpl} is slightly faster than {@link MergeSortTdImpl}, it don't use recursion,
      *  other than that, they don't have differences in number of compares and array access
      *
      * 900000:
      * {@link ShellSortImpl}: 1525 ms
-     * {@link MergeSortTopdownImpl}: 643 ms
+     * {@link MergeSortTdImpl}: 643 ms
      * {@link QuickSortImpl}: 400 ms
      */
-    private void execRandomArray(Class<?>[] klasses) {
-        Integer[] array = ArrayGenerator.randomIntArray(90000);
+    private void execRandomArray(Class<?>[] klasses, int size) {
+        Integer[] array = ArrayGenerator.randomIntArray(size);
         System.out.println("Init done");
 
         execute(klasses, array);

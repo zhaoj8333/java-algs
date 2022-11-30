@@ -2,11 +2,11 @@ package com.algs.algo.sort.cmp_swp.merge;
 
 import java.util.Comparator;
 
-public class MergeSortBottomupImpl<E extends Comparable<E>> extends MergeSortImpl<E> {
+public class MergeSortBuImpl<E extends Comparable<E>> extends MergeSortImpl<E> {
 
     protected final E[] aux = (E[]) new Comparable[array.length];
 
-    public MergeSortBottomupImpl(E[] array, Comparator<E> comparator) {
+    public MergeSortBuImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 
@@ -33,11 +33,11 @@ public class MergeSortBottomupImpl<E extends Comparable<E>> extends MergeSortImp
     }
 
     /**
-     * merge: [begin, end)
+     * merge:
      *  [begin, mid)
      *  [mid, end)
      */
-    private void merge(int begin, int mid, int end) {
+    protected void merge(int begin, int mid, int end) {
         int l = begin, r = mid;
         for (int i = begin; i < end; i++) {
             aux[i] = array[i];

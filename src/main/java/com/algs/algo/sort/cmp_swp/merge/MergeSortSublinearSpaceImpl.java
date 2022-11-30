@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * // TODO: 11/23/22  
  */
-public class MergeSortSublinearSpaceImpl<E extends Comparable<E>> extends MergeSortTopdownOptImpl<E> {
+public class MergeSortSublinearSpaceImpl<E extends Comparable<E>> extends MergeSortTdOptmImpl<E> {
 
     private int blockSize = 0;
     private final E[] aux;

@@ -15,6 +15,11 @@ public class ThreeSum extends StopWatchTask {
         return count();
     }
 
+    @Override
+    protected void assertResult() {
+
+    }
+
     public int count() {
         int len = array.length;
         int cnt = 0;

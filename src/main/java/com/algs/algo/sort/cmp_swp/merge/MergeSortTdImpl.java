@@ -2,9 +2,9 @@ package com.algs.algo.sort.cmp_swp.merge;
 
 import java.util.Comparator;
 
-public class MergeSortTopdownImpl<E extends Comparable<E>> extends MergeSortImpl<E> {
+public class MergeSortTdImpl<E extends Comparable<E>> extends MergeSortImpl<E> {
 
-    public MergeSortTopdownImpl(E[] array, Comparator<E> comparator) {
+    public MergeSortTdImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 

@@ -8,8 +8,8 @@ import java.util.Comparator;
  * Divide and Merge
  *
  * Comparison of:
- * {@link MergeSortTopdownImpl}
- * {@link MergeSortBottomupImpl}
+ * {@link MergeSortTdImpl}
+ * {@link MergeSortBuImpl}
  */
 public abstract class MergeSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
 
@@ -19,7 +19,7 @@ public abstract class MergeSortImpl<E extends Comparable<E>> extends CompareAndS
         super(array, comparator);
     }
 
-    protected int useInsertThreshold = 16;
+    protected int useInsertThreshold = 8;
 
     /**
      * If the index range specified by {@link MergeSortImpl} is under {@link #useInsertThreshold},

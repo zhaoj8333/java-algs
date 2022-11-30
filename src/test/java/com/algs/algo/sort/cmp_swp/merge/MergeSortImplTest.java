@@ -189,10 +189,10 @@ class MergeSortImplTest {
     }
 
     /**
-     * {@link MergeSortTopdownImpl}:
+     * {@link MergeSortTdImpl}:
      *  1 2 1 4 1 2 1 4 9 1 2 1 4 1 2 1 4 9 19 1 2 1 4 1 2 1 4 9 1 2 1 4 1 1 3 8 18 38
      *
-     * {@link MergeSortBottomupImpl}:
+     * {@link MergeSortBuImpl}:
      *  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 2 7 7 7 7 6 15 15 31 38
      */
     @Test

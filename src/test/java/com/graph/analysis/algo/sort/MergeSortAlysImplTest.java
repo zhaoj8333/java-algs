@@ -2,13 +2,12 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.ArrayGenerator;
-import com.algs.util.ArraysUtil;
-import com.algs.util.DrawUtil;
-import com.algs.util.FileUtil;
+import com.algs.util.*;
 import com.graph.GraphicAnalysis;
-import com.graph.analysis.algo.sort.merge.MergeSortBottomupAlysImpl;
-import com.graph.analysis.algo.sort.merge.MergeSortTopdownAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortBuAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortBuOptmAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortTdAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortTdOptmAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -40,26 +39,53 @@ class MergeSortAlysImplTest {
             DrawUtil.point(N, cost);
             cost = (int) (5 * N * Math.log(N));
             DrawUtil.point(N, cost);
+//            cost = (int) (4.5 * N * Math.log(N));
+//            DrawUtil.point(N, cost);
+            cost = (int) (4 * N * Math.log(N));
+            DrawUtil.point(N, cost);
         }
 
         for (int sz = 2; sz < x; sz++) {
             Integer[] array = ArrayGenerator.randomIntArray(sz);
-            GraphicAnalysis alys;
+//            compareTd(array, sz);
+            compareBu(array, sz);
+       }
+    }
 
-            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
-            alys = new MergeSortTopdownAlysImpl<>(ArraysUtil.copy(array), Integer::compare);
-            alys.analyze();
+    private static void compareTd(Integer[] array, int sz) {
+        DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
+        GraphicAnalysis alys;
+        alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Integer::compare);
+        alys.analyze();
 
-            alys = new MergeSortBottomupAlysImpl<>(ArraysUtil.copy(array), null);
-            DrawUtil.setPenColor(DrawUtil.CYAN);
-            alys.analyze();
-            if (sz == x - 1) {
-                DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
-                DrawUtil.textRight(570, 17500, "TopDown(acc)");
-                DrawUtil.setPenColor(DrawUtil.CYAN);
-                DrawUtil.textRight(570, 13500, "BottomUp(acc)");
-            }
-        }
+        DrawUtil.setPenColor(DrawUtil.ORANGE);
+        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Integer::compareTo);
+        alys.analyze();
+
+//        if (sz == x - 1) {
+//            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
+//            DrawUtil.textRight(570, 17500, "TopDown(acc)");
+//            DrawUtil.setPenColor(DrawUtil.ORANGE);
+//            DrawUtil.textRight(570, 13500, "TopDownOpt(acc)");
+//        }
+    }
+
+    private static void compareBu(Integer[] array, int sz) {
+        DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
+        GraphicAnalysis alys;
+        alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
+        alys.analyze();
+
+        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), null);
+        DrawUtil.setPenColor(DrawUtil.ORANGE);
+        alys.analyze();
+
+//        if (sz == x - 1) {
+//            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
+//            DrawUtil.textRight(570, 17500, "BottomUp(acc)");
+//            DrawUtil.setPenColor(DrawUtil.ORANGE);
+//            DrawUtil.textRight(570, 13500, "BottomUp(acc)");
+//        }
     }
 
     private static void coordinate() {
@@ -88,7 +114,32 @@ class MergeSortAlysImplTest {
     }
 
     @Test
-    void test() {
+    void testTd() {
+        Character[] array = getChars();
+
+        CompareAndSwapSortAlys<Character> alys;
+        alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+        alys.sort();
+        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+        alys.sort();
+    }
+
+    @Test
+    void testBu() {
+        Character[] array = getChars();
+        CompareAndSwapSortAlys<Character> alys;
+        Character[] copy = ArraysUtil.copy(array);
+        alys = new MergeSortBuAlysImpl<>(copy, Comparator.comparingInt(o -> o));
+        alys.sort();
+        Assertions.assertTrue(SortUtil.isSorted(copy));
+
+        copy = ArraysUtil.copy(array);
+        alys = new MergeSortBuOptmAlysImpl<>(copy, Comparator.comparingInt(o -> o));
+        alys.sort();
+        Assertions.assertTrue(SortUtil.isSorted(copy));
+    }
+
+    private Character[] getChars() {
         IList<Character> chars = FileUtil.readChars("data/tiny.txt");
         Assertions.assertNotNull(chars);
 
@@ -100,17 +151,7 @@ class MergeSortAlysImplTest {
         }
         ArraysUtil.display(array);
         Assertions.assertTrue(array.length > 1);
-
-        CompareAndSwapSortAlys<Character> alys = new MergeSortTopdownAlysImpl<>(
-                ArraysUtil.copy(array),
-                Comparator.comparingInt(o -> o)
-        );
-        alys.sort();
-        alys = new MergeSortBottomupAlysImpl<>(
-                ArraysUtil.copy(array),
-                Comparator.comparingInt(o -> o)
-        );
-        alys.sort();
+        return array;
     }
 
 }

@@ -44,4 +44,7 @@ public class DJPerformanceCompare<E> extends StopWatchTask<E> {
         return "Void";
     }
 
+    @Override
+    protected void assertResult() {
+    }
 }

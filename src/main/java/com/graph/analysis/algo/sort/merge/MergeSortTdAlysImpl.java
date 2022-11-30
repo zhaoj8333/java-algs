@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
-public class MergeSortTopdownAlysImpl<E extends Comparable<E>> extends MergeSortAlysImpl<E> {
+public class MergeSortTdAlysImpl<E extends Comparable<E>> extends MergeSortAlysImpl<E> {
 
-    public MergeSortTopdownAlysImpl(E[] array, Comparator<E> comparator) {
+    public MergeSortTdAlysImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 
@@ -44,7 +44,7 @@ public class MergeSortTopdownAlysImpl<E extends Comparable<E>> extends MergeSort
      * merge:
      *  [begin, mid) [mid, end)
      */
-    private void merge0(int begin, int mid, int end) {
+    protected void merge0(int begin, int mid, int end) {
         int li = 0, le = mid - begin;
         int ri = mid, re = end;
         int ai = begin;

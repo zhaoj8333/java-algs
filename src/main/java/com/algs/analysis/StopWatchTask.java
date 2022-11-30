@@ -155,7 +155,6 @@ public abstract class StopWatchTask<E> {
         return end - begin;
     }
 
-    protected void assertResult() {
-    }
+    protected abstract void assertResult();
 
 }

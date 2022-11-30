@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
-public class MergeSortBottomupAlysImpl<E extends Comparable<E>> extends MergeSortAlysImpl<E> {
+public class MergeSortBuAlysImpl<E extends Comparable<E>> extends MergeSortAlysImpl<E> {
 
     protected final E[] aux = (E[]) new Comparable[array.length];
 
-    public MergeSortBottomupAlysImpl(E[] array, Comparator<E> comparator) {
+    public MergeSortBuAlysImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 
@@ -26,7 +26,6 @@ public class MergeSortBottomupAlysImpl<E extends Comparable<E>> extends MergeSor
             return;
         }
         sort1();
-        Assertions.assertTrue(SortUtil.isSorted(array));
     }
 
     private void sort1() {
@@ -55,7 +54,7 @@ public class MergeSortBottomupAlysImpl<E extends Comparable<E>> extends MergeSor
      *                   - - - -                aux
      *                   l       r
      */
-    private void merge(int begin, int mid, int end) {
+    protected void merge(int begin, int mid, int end) {
         int li = 0, le = mid - begin;
         int ri = mid;
         int ai = begin;
@@ -64,8 +63,13 @@ public class MergeSortBottomupAlysImpl<E extends Comparable<E>> extends MergeSor
             arrayAcc += 2;
         }
         while (li < le) {
-            if (ri < end && compareEntry(array[ri], aux[li]) < 0) {
-                array[ai++] = array[ri++];
+            if (ri < end) {
+                if (compareEntry(array[ri], aux[li]) < 0) {
+                    array[ai++] = array[ri++];
+                } else {
+                    array[ai++] = aux[li++];
+                }
+                arrayAcc += 2;
             } else {
                 array[ai++] = aux[li++];
             }
