@@ -1,6 +1,10 @@
 package com.algs.algo.sort.cmp_swp.merge;
 
 import com.algs.algo.sort.ISortable;
+import com.algs.application.algo.sort.SortedQueueMerger;
+import com.algs.datastructure.collection.queue.ArrayQueueImpl;
+import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
 import com.algs.util.ArrayGenerator;
 import com.algs.util.ArraysUtil;
 import com.algs.util.SortUtil;
@@ -228,5 +232,23 @@ class MergeSortImplTest {
 
         ArraysUtil.display(chars);
         Assertions.assertTrue(SortUtil.isSorted(chars));
+    }
+
+    @Test
+    void _2_2_14() {
+        IQueue<Integer> q1 = new ArrayQueueImpl<>();
+        IQueue<Integer> q2 = new LinkedListQueueImpl<>();
+        for (int i = 1; i <= 10; i++) {
+            if (i % 2 == 0) {
+                q1.enque(i);
+            } else {
+                q2.enque(i);
+            }
+        }
+        SortedQueueMerger<Integer> merger = new SortedQueueMerger<>(q1, q2);
+        IQueue<Integer> q = merger.merge();
+        for (int i = 1; i <= 10; i++) {
+            Assertions.assertEquals(i, q.deque());
+        }
     }
 }
