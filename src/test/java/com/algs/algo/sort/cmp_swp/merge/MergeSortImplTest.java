@@ -223,11 +223,10 @@ class MergeSortImplTest {
         Character[] chars = getChars();
         ArraysUtil.display(chars);
 
-        ISortable<Character> sort = new MergeSortSublinearSpaceImpl<>(chars, (o1, o2) -> o2 - o1, 4);
+        ISortable<Character> sort = new MergeSortSubLinearAuxSpaceImpl<>(chars, Character::compareTo, 4);
         sort.sort();
 
         ArraysUtil.display(chars);
-
         Assertions.assertTrue(SortUtil.isSorted(chars));
     }
 }

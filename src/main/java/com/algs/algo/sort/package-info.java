@@ -15,7 +15,7 @@ package com.algs.algo.sort;
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortTdOptmImpl}
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBuImpl}
  * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortBuOptmImpl}
- * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortSublinearSpaceImpl}
+ * {@link com.algs.algo.sort.cmp_swp.merge.MergeSortSubLinearAuxSpaceImpl}
  *
  * {@link com.algs.algo.sort.cmp_swp.quick.QuickSortImpl}
  * {@link com.algs.algo.sort.cmp_swp.quick.QuickSortImpl0}
