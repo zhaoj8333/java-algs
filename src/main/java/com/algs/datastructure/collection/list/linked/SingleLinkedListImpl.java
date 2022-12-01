@@ -16,7 +16,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
     private final SingleLinkNode<E> head = new SingleLinkNode<>(null, null);
 
     /**
-     * prev -> newSinglyLinkNode -> next
+     * prev -> newSingleLinkNode -> next
      */
     @Override
     public void add(int index, E item) {
@@ -86,7 +86,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      * newHead
      *
      *  have to remember three sequential node: newHead, node, next(node.next)
-     *  in each iteration, get the node(firstSinglyLinkNode) and insert it to the newHead,
+     *  in each iteration, get the node(firstSingleLinkNode) and insert it to the newHead,
      *  keep node(first) point to the first node of the rest of previous linkedlist
      *
      *  but essentially, iterate reverse is {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
@@ -200,7 +200,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
         return Arrays.toString(toArray());
     }
 
-    private class SinglyLinkedListIterator implements Iterator<E> {
+    private class SingleLinkedListIterator implements Iterator<E> {
 
         private SingleLinkNode<E> node = head;
 
@@ -219,7 +219,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new SinglyLinkedListIterator();
+        return new SingleLinkedListIterator();
     }
 
     @Override

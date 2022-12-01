@@ -18,7 +18,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> enquedDoublyLinkNode(oldHead) <-> tail
+     * head <-> enquedDoubleLinkNode(oldHead) <-> tail
      */
     @Override
     public void enqueHead(E item) {
@@ -31,7 +31,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> dequedDoublyLinkNode <-> n2 <-> tail
+     * head <-> dequedDoubleLinkNode <-> n2 <-> tail
      */
     @Override
     public E dequeHead() {
@@ -44,7 +44,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> ... <-> n2 <-> enqueuedDoublyLinkNode <-> tail
+     * head <-> ... <-> n2 <-> enqueuedDoubleLinkNode <-> tail
      */
     @Override
     public void enqueTail(E item) {
@@ -57,7 +57,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> n1 <-> ... <-> prev <-> dequedDoublyLinkNode <-> tail
+     * head <-> n1 <-> ... <-> prev <-> dequedDoubleLinkNode <-> tail
      */
     @Override
     public E dequeTail() {

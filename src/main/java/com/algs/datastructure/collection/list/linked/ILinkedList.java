@@ -4,8 +4,8 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.node.LinkNode;
 
 /**
- * SinglyLinkedList: 单向链表
- * DoublyLinkedList: 双向链表
+ * SingleLinkedList: 单向链表
+ * DoubleLinkedList: 双向链表
  * MultiplyLinkedList:
  * CircularLinkedList: 循环链表
  * SentinelNodes: 哨兵节点

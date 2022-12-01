@@ -158,7 +158,7 @@ public class SingleLinkedListImpl0<E> implements ILinkedList<E> {
         return Arrays.toString(toArray());
     }
 
-    private class SinglyLinkedListIterator implements Iterator<E> {
+    private class SingleLinkedListIterator implements Iterator<E> {
 
         private SingleLinkNode<E> node = head;
 
@@ -177,7 +177,7 @@ public class SingleLinkedListImpl0<E> implements ILinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new SinglyLinkedListIterator();
+        return new SingleLinkedListIterator();
     }
 
     @Override

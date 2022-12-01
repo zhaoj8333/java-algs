@@ -22,7 +22,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     /**
-     * prev -> newDoublyLinkNode -> next
+     * prev -> newDoubleLinkNode -> next
      */
     @Override
     public void add(int index, E item) {
@@ -104,7 +104,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     /**
-     * head <->n0 <-> prev <-> removedDoublyLinkNode <-> next <-> n*
+     * head <->n0 <-> prev <-> removedDoubleLinkNode <-> next <-> n*
      */
     @Override
     public E remove(int index) {
@@ -129,7 +129,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
         return CollectionUtil.toArray(this);
     }
 
-    private class DoublyLinkedListIterator implements Iterator<E> {
+    private class DoubleLinkedListIterator implements Iterator<E> {
 
         private DoubleLinkNode<E> node = head.next;
 
@@ -148,7 +148,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new DoublyLinkedListIterator();
+        return new DoubleLinkedListIterator();
     }
 
     @Override

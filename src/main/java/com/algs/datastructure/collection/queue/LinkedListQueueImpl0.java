@@ -7,7 +7,7 @@ import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 /**
- * Implemented by DoublyLinkedList
+ * Implemented by DoubleLinkedList
  */
 @SuppressWarnings("unchecked")
 public class LinkedListQueueImpl0<E> implements IQueue<E> {
@@ -51,7 +51,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     /**
-     * head <-> DoublyLinkNode <-> (newInsertedDoublyLinkNode) <-> tail
+     * head <-> DoubleLinkNode <-> (newInsertedDoubleLinkNode) <-> tail
      */
     @Override
     public void enque(E item) {
@@ -64,14 +64,14 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     /**
-     * head <-> (newRemovedDoublyLinkNode) <-> DoublyLinkNode <-> tail
+     * head <-> (newRemovedDoubleLinkNode) <-> DoubleLinkNode <-> tail
      */
     @Override
     public E deque() {
         if (isEmpty()) {
             throw new RuntimeException("Already Empty");
         }
-        DoubleLinkNode<E> node = head.next;   // removed DoublyLinkNode
+        DoubleLinkNode<E> node = head.next;   // removed DoubleLinkNode
         E data = node.item;
         head.next = node.next;
         node.next.prev = head;
@@ -86,9 +86,9 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     @Override
     public void clear() {
-//        DoublyLinkNode<E> DoublyLinkNode = head.next;
-//        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.data)) {
-//            DoublyLinkNode = null;
+//        DoubleLinkNode<E> DoubleLinkNode = head.next;
+//        while (Objects.nonNull(DoubleLinkNode) && Objects.nonNull(DoubleLinkNode.data)) {
+//            DoubleLinkNode = null;
 //        }
 //        size = 0;
         // OR

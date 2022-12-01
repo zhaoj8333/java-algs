@@ -7,7 +7,7 @@ import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 /**
- * Implemented by DoublyLinkedList
+ * Implemented by DoubleLinkedList
  */
 @SuppressWarnings("unchecked")
 public class LinkedListStequeImpl<E> implements ISteque<E> {
@@ -58,7 +58,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     }
 
     /**
-     * head <-> n1 <-> n2 <-> ... <-> oldTail <-> enqueuedDoublyLinkNode
+     * head <-> n1 <-> n2 <-> ... <-> oldTail <-> enqueuedDoubleLinkNode
      */
     @Override
     public void enque(E item) {
@@ -74,8 +74,8 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     }
 
     /**
-     * head(dequedDoublyLinkNode) <-> null
-     * head(dequedDoublyLinkNode) <-> n1 <-> n2 <-> ... <-> tail
+     * head(dequedDoubleLinkNode) <-> null
+     * head(dequedDoubleLinkNode) <-> n1 <-> n2 <-> ... <-> tail
      */
     @Override
     public E deque() {
@@ -102,7 +102,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public void clear() {
-//        DoublyLinkNode<E> node = head.next;
+//        DoubleLinkNode<E> node = head.next;
 //        while (Objects.nonNull(node) && Objects.nonNull(node.data)) {
 //            node = null;
 //        }
