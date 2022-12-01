@@ -1,5 +1,8 @@
 package com.algs.utils.file;
 
+/**
+ * All the Constant File Path is under resources/data
+ */
 public class FilePath {
 
     public static String ABABLZW_TXT = "data/ababLZW.txt";
