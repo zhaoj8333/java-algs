@@ -5,6 +5,7 @@ import com.algs.application.algo.sort.SortedQueueMerger;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
+import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayGenerator;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.array.ArraySortUtil;
@@ -92,7 +93,7 @@ class MergeSortImplTest {
                 array[k] = aux[j++];
             } else if (j > hi) {    // right half is done
                 array[k] = aux[i++];
-            } else if (ArraySortUtil.less(aux[j], aux[i])) { // operate with the smaller one
+            } else if (CompareUtil.less(aux[j], aux[i])) { // operate with the smaller one
                 array[k] = aux[j++];
             } else {
                 array[k] = aux[i++];

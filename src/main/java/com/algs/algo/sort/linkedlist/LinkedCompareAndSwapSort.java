@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public abstract class LinkedCompareAndSwapSort<E extends Comparable<E>> implements ISortable<E> {
 
-    private final ILinkedList<E> linkedList;
+    protected final ILinkedList<E> linkedList;
     private final Comparator<E> comparator;
 
     public LinkedCompareAndSwapSort(ILinkedList<E> linkedList) {

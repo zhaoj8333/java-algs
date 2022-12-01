@@ -6,7 +6,7 @@ import jdk.jfr.Label;
 import java.util.Comparator;
 
 @Label("Very Slow")
-public class DequeueSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class DequeueSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public DequeueSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

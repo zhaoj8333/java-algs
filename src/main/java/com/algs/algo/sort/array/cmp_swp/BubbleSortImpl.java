@@ -2,7 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import java.util.Comparator;
 
-public class BubbleSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class BubbleSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public BubbleSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

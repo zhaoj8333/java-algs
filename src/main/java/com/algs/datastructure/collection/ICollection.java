@@ -44,10 +44,7 @@ public interface ICollection<E> extends Iterable<E> {
 //    Collection<E> unionsect(Collection<E> b);
 //    Collection<E> diff(Collection<E> b);
 
-    /**
-     *
-     */
-//    Collection<E> copy();
+//    ICollection<E> copy();
 //    Collection<E> replace(int startIndex, int endIndex, E oldVal, E newVal);
 
 

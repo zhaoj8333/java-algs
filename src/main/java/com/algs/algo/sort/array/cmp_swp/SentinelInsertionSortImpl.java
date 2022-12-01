@@ -16,7 +16,7 @@ import java.util.Comparator;
  *
  * Time Complexity: O(N) ~ O(N^2) Stable
  */
-public class SentinelInsertionSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class SentinelInsertionSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public SentinelInsertionSortImpl(E[] array) {
         this(array, null);

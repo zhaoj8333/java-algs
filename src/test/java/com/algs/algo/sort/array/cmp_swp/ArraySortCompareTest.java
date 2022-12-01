@@ -1,10 +1,6 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.array.cmp_swp;
 
-import com.algs.algo.sort.array.SortCompare;
-import com.algs.algo.sort.array.cmp_swp.HeapSortImpl;
-import com.algs.algo.sort.array.cmp_swp.InsertionSortImpl;
-import com.algs.algo.sort.array.cmp_swp.SelectionSortImpl;
-import com.algs.algo.sort.array.cmp_swp.SentinelInsertionSortImpl;
+import com.algs.algo.sort.array.ArraySortCompare;
 import com.algs.algo.sort.array.cmp_swp.merge.*;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
@@ -13,7 +9,7 @@ import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.utils.array.ArrayGenerator;
 import org.junit.jupiter.api.Test;
 
-class SortCompareTest {
+class ArraySortCompareTest {
 
     @Test
     void test() {
@@ -100,7 +96,7 @@ class SortCompareTest {
 
     private void execute(Class<?>[] klasses, Integer[] array) {
         for (Class<?> klass : klasses) {
-            SortCompare<Integer> sortCmp = new SortCompare<>(array, klass);
+            ArraySortCompare<Integer> sortCmp = new ArraySortCompare<>(array, klass);
             sortCmp.exec(true);
         }
     }

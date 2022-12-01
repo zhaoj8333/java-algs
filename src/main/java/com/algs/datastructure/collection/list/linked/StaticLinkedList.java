@@ -79,4 +79,9 @@ public class StaticLinkedList<E> implements ILinkedList<E> {
     public LinkNode<E> node(int i) {
         return null;
     }
+
+    @Override
+    public ILinkedList<E> copy() {
+        return null;
+    }
 }

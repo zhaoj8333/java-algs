@@ -1,5 +1,7 @@
 package com.algs.utils.array;
 
+import com.algs.utils.CompareUtil;
+
 import java.awt.*;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,32 +16,26 @@ public class ArraySortUtil<E extends Comparable<E>> {
     public static final Color COMPARE_BASE_COLOR = Color.BLUE;
     public static final Color SELECTED_COLOR = Color.BLUE;
 
-    public static <E extends Comparable<E>> boolean less(E a, E b) {
-        return a.compareTo(b) < 0;
-    }
-
-    public static <E extends Comparable<E>> boolean more(E a, E b) {
-        return a.compareTo(b) > 0;
-    }
-
-    public static <E extends Comparable<E>> void swap(Comparable<E>[] array, int i, int j) {
-        Comparable<E> tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
-    }
-
     public static <E extends Comparable<E>> boolean isAsc(E[] array) {
+        return isAsc(array, null);
+    }
+
+    public static <E extends Comparable<E>> boolean isDesc(E[] array) {
+        return isDesc(array, null);
+    }
+
+    public static <E extends Comparable<E>> boolean isAsc(E[] array, Comparator<E> comparator) {
         for (int i = 1; i < array.length; i++) {
-            if (less(array[i], array[i - 1])) {
+            if (CompareUtil.less(array[i], array[i - 1], comparator)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static <E extends Comparable<E>> boolean isDesc(E[] array) {
+    public static <E extends Comparable<E>> boolean isDesc(E[] array, Comparator<E> comparator) {
         for (int i = 1; i < array.length; i++) {
-            if (more(array[i], array[i - 1])) {
+            if (CompareUtil.more(array[i], array[i - 1], comparator)) {
                 return false;
             }
         }
@@ -47,16 +43,17 @@ public class ArraySortUtil<E extends Comparable<E>> {
     }
 
     public static <E extends Comparable<E>> boolean isSorted(E[] array) {
-        return isAsc(array) || isDesc(array);
+        return isSorted(array, null);
     }
 
     public static <E extends Comparable<E>> boolean isSorted(E[] array, Comparator<E> comparator) {
-        for (int i = 1; i < array.length; i++) {
-            if (comparator.compare(array[i], array[i - 1]) < 0) {
-                return false;
-            }
-        }
-        return true;
+        return isAsc(array, comparator) || isDesc(array, comparator);
+    }
+
+    public static <E extends Comparable<E>> void swap(Comparable<E>[] array, int i, int j) {
+        Comparable<E> tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
     }
 
     /**

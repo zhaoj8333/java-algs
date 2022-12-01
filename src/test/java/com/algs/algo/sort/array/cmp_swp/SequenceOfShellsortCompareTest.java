@@ -1,4 +1,4 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.Geometric;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.N3Plus1;

@@ -1,12 +1,13 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.array.cmp_swp;
 
+import com.algs.algo.sort.ISortable;
 import com.algs.algo.sort.array.cmp_swp.*;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
-import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayGenerator;
 import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
@@ -17,11 +18,11 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 
-public class SortImplTest {
+public class ArraySortImplTest {
 
     @Test
     void test() {
-        IList<Character> chars = FileUtil.readChars("data/tiny.txt");
+        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
         Assertions.assertNotNull(chars);
 
         Class<?>[] klasses = new Class<?>[] {

@@ -1,4 +1,4 @@
-package com.algs.algo.sort;
+package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl;

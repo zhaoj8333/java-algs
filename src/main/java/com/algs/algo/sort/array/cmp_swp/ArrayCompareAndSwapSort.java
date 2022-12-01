@@ -9,15 +9,19 @@ import java.util.Objects;
 /**
  * Comparison and swap based sorting
  */
-public abstract class CompareAndSwapSort<E extends Comparable<E>> implements ISortable<E> {
+public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implements ISortable<E> {
 
-    public E[] array;
+    protected E[] array;
     protected Comparator<E> comparator;
 
-    public CompareAndSwapSort(E[] array, Comparator<E> comparator) {
+    public ArrayCompareAndSwapSort(E[] array, Comparator<E> comparator) {
         ObjectUtil.requireNonNull(array);
         this.array = array;
         this.comparator = comparator;
+    }
+
+    public E[] getArray() {
+        return array;
     }
 
     protected int compareEntry(E a, E b) {

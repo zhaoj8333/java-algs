@@ -1,6 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
-import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
+import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 import com.algs.utils.RandomUtil;
 
 import java.util.Comparator;
@@ -8,7 +8,7 @@ import java.util.Comparator;
 /**
  * {@link #partition(int, int)}
  */
-public class QuickSortImpl0<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public QuickSortImpl0(E[] array, Comparator<E> comparator) {
         super(array, comparator);

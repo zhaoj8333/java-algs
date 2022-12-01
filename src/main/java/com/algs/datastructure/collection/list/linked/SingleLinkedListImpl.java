@@ -162,6 +162,16 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
         return node;
     }
 
+    @Override
+    public ILinkedList<E> copy() {
+        SingleLinkedListImpl<E> list = new SingleLinkedListImpl<E>();
+        Iterator<E> itr = iterator();
+        while (itr.hasNext()) {
+            list.add(itr.next());
+        }
+        return list;
+    }
+
     /**
      * prev -> node -> next
      */

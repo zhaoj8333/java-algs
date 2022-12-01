@@ -2,9 +2,9 @@ package com.algs.algo.sort.linkedlist;
 
 import com.algs.datastructure.collection.list.linked.ILinkedList;
 
-public class SingleLinkedListSort<E extends Comparable<E>> extends LinkedCompareAndSwapSort<E> {
+public class SingleLinkedListSortImpl<E extends Comparable<E>> extends LinkedCompareAndSwapSort<E> {
 
-    public SingleLinkedListSort(ILinkedList<E> linkedList) {
+    public SingleLinkedListSortImpl(ILinkedList<E> linkedList) {
         super(linkedList);
     }
 

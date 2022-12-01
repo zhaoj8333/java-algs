@@ -1,5 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
+import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
@@ -52,12 +53,12 @@ class QuickSortImplTest {
             // find array[i] greater than entry
             do {
                 i++;
-            } while (i <= end && ArraySortUtil.less(array[i], pivot));
+            } while (i <= end && CompareUtil.less(array[i], pivot));
 
             // find array[j] smaller than entry
             do {
                 j--;
-            } while (j > begin && ArraySortUtil.more(array[j], pivot));
+            } while (j > begin && CompareUtil.more(array[j], pivot));
 
             if (i >= j) {
                 break;

@@ -2,7 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import java.util.Comparator;
 
-public class SelectionSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class SelectionSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public SelectionSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

@@ -38,4 +38,6 @@ public interface ILinkedList<E> extends IList<E> {
 
     LinkNode<E> node(int i);
 
+    ILinkedList<E> copy();
+
 }

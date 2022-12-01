@@ -1,11 +1,11 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
-import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
+import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 import com.algs.utils.RandomUtil;
 
 import java.util.Comparator;
 
-public class QuickSort3wayImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class QuickSort3wayImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public QuickSort3wayImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

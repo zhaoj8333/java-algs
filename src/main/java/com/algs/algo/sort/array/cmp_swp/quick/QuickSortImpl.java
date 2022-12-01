@@ -1,6 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
-import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
+import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 
 import java.util.Comparator;
 
@@ -8,7 +8,7 @@ import java.util.Comparator;
  * Essential of {@link QuickSortImpl}:
  *  Make every element as the pivot element, when every element becomes pivot, the array is sorted
  */
-public class QuickSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class QuickSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public QuickSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);

@@ -16,7 +16,7 @@ import java.util.Comparator;
  *      {@link MergeSortImpl},
  *      {@link ShellSortImpl}
  */
-public class HeapSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class HeapSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     private int heapSize;
 

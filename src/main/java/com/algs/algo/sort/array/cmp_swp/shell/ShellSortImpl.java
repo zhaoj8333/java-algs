@@ -1,6 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.shell;
 
-import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
+import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 import com.algs.algo.sort.array.cmp_swp.InsertionSortImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SedgeWick;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
@@ -13,7 +13,7 @@ import java.util.Comparator;
  *
  * {@link ShellSortImpl}: reduce the number of Inversion, is improved version of {@link InsertionSortImpl}
  */
-public class ShellSortImpl<E extends Comparable<E>> extends CompareAndSwapSort<E> {
+public class ShellSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     private final SequenceGenerator sg;
 

@@ -1,20 +1,19 @@
-package com.algs.algo.sort.array;
+package com.algs.algo.sort.linkedlist;
 
-import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
 import com.algs.analysis.StopWatchTask;
-import com.algs.utils.array.ArraysUtil;
-import com.algs.utils.array.ArraySortUtil;
+import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.utils.list.LinkedListSortUtil;
 import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 
-public class SortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
+public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
 
-    private CompareAndSwapSort<Integer> sort;
+    private LinkedCompareAndSwapSort<Integer> sort;
 
-    public SortCompare(Integer[] array, Class<?> sortKlass) {
+    public LinkedListSortCompare(ILinkedList<Integer> list, Class<?> sortKlass) {
         Constructor<?> constructor = null;
         Comparator<Integer> cmp = Comparator.comparingInt(a -> a);
         try {
@@ -23,7 +22,7 @@ public class SortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
             e.printStackTrace();
         }
         try {
-            sort = (CompareAndSwapSort<Integer>) constructor.newInstance(ArraysUtil.copy(array), cmp);
+            sort = (LinkedCompareAndSwapSort<Integer>) constructor.newInstance(list.copy(), cmp);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
@@ -32,12 +31,12 @@ public class SortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
     @Override
     protected Object profileTask() {
         sort.sort();
-        return sort.array.length;
+        return sort.linkedList.size();
     }
 
     @Override
     protected void assertResult() {
-        Assertions.assertTrue(ArraySortUtil.isSorted(sort.array));
+        Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.linkedList));
     }
 
 }

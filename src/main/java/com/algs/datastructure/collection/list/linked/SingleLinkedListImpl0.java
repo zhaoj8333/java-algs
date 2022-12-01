@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.SingleLinkNode;
+import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
 
@@ -80,6 +81,16 @@ public class SingleLinkedListImpl0<E> implements ILinkedList<E> {
     }
 
     @Override
+    public ILinkedList<E> copy() {
+        SingleLinkedListImpl0<E> list = new SingleLinkedListImpl0<E>();
+        Iterator<E> itr = iterator();
+        while (itr.hasNext()) {
+            list.add(itr.next());
+        }
+        return list;
+    }
+
+    @Override
     public boolean contains(E item) {
         return indexOf(item) > DefaultValues.ELEMENT_NOT_FOUND;
     }
@@ -113,13 +124,7 @@ public class SingleLinkedListImpl0<E> implements ILinkedList<E> {
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        SingleLinkNode<E> node = head;
-        for (int i = 0; i < size; i++) {
-            array[i] = node.item;
-            node = node.next;
-        }
-        return array;
+        return CollectionUtil.toArray(this);
     }
 
     @Override

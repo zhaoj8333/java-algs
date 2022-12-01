@@ -1,8 +1,10 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.DoubleLinkNode;
+import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
 
@@ -124,14 +126,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        DoubleLinkNode<E> node = head.next;
-        int index = 0;
-        while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
-            array[index++] = node.item;
-            node = node.next;
-        }
-        return array;
+        return CollectionUtil.toArray(this);
     }
 
     private class DoublyLinkedListIterator implements Iterator<E> {
@@ -164,6 +159,16 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
     @Override
     public final void reverse() {
         throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    @Override
+    public DoubleLinkedListImpl<E> copy() {
+        DoubleLinkedListImpl<E> list = new DoubleLinkedListImpl<>();
+        Iterator<E> itr = iterator();
+        while (itr.hasNext()) {
+            list.add(itr.next());
+        }
+        return list;
     }
 
 }
