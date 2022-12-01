@@ -2,8 +2,8 @@ package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.SingleLinkNode;
-import com.algs.util.CollectionUtil;
-import com.algs.util.ObjectUtil;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 

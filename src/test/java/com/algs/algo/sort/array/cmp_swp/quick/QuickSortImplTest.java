@@ -1,7 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
-import com.algs.util.ArraysUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +28,7 @@ class QuickSortImplTest {
         ArraysUtil.display(array);
         sort(array, 0, array.length - 1);
         ArraysUtil.display(array);
-        Assertions.assertTrue(SortUtil.isSorted(array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     /**
@@ -52,19 +52,19 @@ class QuickSortImplTest {
             // find array[i] greater than entry
             do {
                 i++;
-            } while (i <= end && SortUtil.less(array[i], pivot));
+            } while (i <= end && ArraySortUtil.less(array[i], pivot));
 
             // find array[j] smaller than entry
             do {
                 j--;
-            } while (j > begin && SortUtil.more(array[j], pivot));
+            } while (j > begin && ArraySortUtil.more(array[j], pivot));
 
             if (i >= j) {
                 break;
             }
-            SortUtil.swap(array, i, j);
+            ArraySortUtil.swap(array, i, j);
         }
-        SortUtil.swap(array, begin, j);
+        ArraySortUtil.swap(array, begin, j);
 
         System.out.print(pivot + ":  ");
         ArraysUtil.display(array);

@@ -1,6 +1,6 @@
 package com.graph.analysis.algo.sort.merge;
 
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
@@ -37,7 +37,7 @@ public class MergeSortTdOptmAlysImpl<E extends Comparable<E>> extends MergeSortT
 //        sort1(0, array.length - 1);
         sort2(aux, array, 0, array.length - 1);
 
-        Assertions.assertTrue(SortUtil.isSorted(array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     private void sort2(E[] array, E[] aux, int begin, int end) {

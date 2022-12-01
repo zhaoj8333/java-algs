@@ -10,7 +10,7 @@ import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
-import com.algs.util.ArrayGenerator;
+import com.algs.utils.array.ArrayGenerator;
 import org.junit.jupiter.api.Test;
 
 class SortCompareTest {

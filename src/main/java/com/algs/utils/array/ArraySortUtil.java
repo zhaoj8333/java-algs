@@ -1,11 +1,11 @@
-package com.algs.util;
+package com.algs.utils.array;
 
 import java.awt.*;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SortUtil<E extends Comparable<E>> {
+public class ArraySortUtil<E extends Comparable<E>> {
 
     public static final Color SORTED_COLOR = Color.LIGHT_GRAY;
     public static final Color UNSORTED_COLOR = Color.BLACK;

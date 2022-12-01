@@ -1,6 +1,6 @@
 package com.graph.analysis.algo.sort.merge;
 
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArraySortUtil;
 import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
 import org.junit.jupiter.api.Assertions;
@@ -47,7 +47,7 @@ public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends Compare
     @Override
     public void analyze() {
         sort();
-        Assertions.assertTrue(SortUtil.isSorted(array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
     }

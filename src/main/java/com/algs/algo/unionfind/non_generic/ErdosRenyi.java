@@ -3,7 +3,7 @@ package com.algs.algo.unionfind.non_generic;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
-import com.algs.util.Connection;
+import com.algs.utils.Connection;
 
 import java.util.Random;
 

@@ -1,7 +1,6 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ArraysUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -4,8 +4,8 @@ import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedListStackImpl;
-import com.algs.util.CollectionUtil;
-import com.algs.util.ObjectUtil;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 

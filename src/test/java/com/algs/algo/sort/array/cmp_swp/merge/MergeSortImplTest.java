@@ -5,9 +5,9 @@ import com.algs.application.algo.sort.SortedQueueMerger;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
-import com.algs.util.ArrayGenerator;
-import com.algs.util.ArraysUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,7 @@ class MergeSortImplTest {
         Character[] copy = ArraysUtil.copy(chars);
         sort(chars);
 
-        Assertions.assertTrue(SortUtil.onlySorted(copy, chars));
+        Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));
         ArraysUtil.display(chars);
     }
 
@@ -92,7 +92,7 @@ class MergeSortImplTest {
                 array[k] = aux[j++];
             } else if (j > hi) {    // right half is done
                 array[k] = aux[i++];
-            } else if (SortUtil.less(aux[j], aux[i])) { // operate with the smaller one
+            } else if (ArraySortUtil.less(aux[j], aux[i])) { // operate with the smaller one
                 array[k] = aux[j++];
             } else {
                 array[k] = aux[i++];
@@ -120,7 +120,7 @@ class MergeSortImplTest {
         Character[] copy = ArraysUtil.copy(chars);
         sort0(chars);
 
-        Assertions.assertTrue(SortUtil.onlySorted(copy, chars));
+        Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));
         ArraysUtil.display(chars);
     }
 
@@ -231,7 +231,7 @@ class MergeSortImplTest {
         sort.sort();
 
         ArraysUtil.display(chars);
-        Assertions.assertTrue(SortUtil.isSorted(chars));
+        Assertions.assertTrue(ArraySortUtil.isSorted(chars));
     }
 
     @Test

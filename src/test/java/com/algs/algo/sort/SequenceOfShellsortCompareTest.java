@@ -3,7 +3,7 @@ package com.algs.algo.sort;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.Geometric;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.N3Plus1;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SedgeWick;
-import com.algs.util.ArrayGenerator;
+import com.algs.utils.array.ArrayGenerator;
 import com.graph.analysis.algo.sort.IncrementSequenceOfShellsortCompare;
 import org.junit.jupiter.api.Test;
 

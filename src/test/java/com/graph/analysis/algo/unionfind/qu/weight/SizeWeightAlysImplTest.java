@@ -1,8 +1,8 @@
 package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.FileUtil;
-import com.algs.util.Connection;
+import com.algs.utils.file.FileUtil;
+import com.algs.utils.Connection;
 import com.graph.GraphicAnalysis;
 import org.junit.jupiter.api.Test;
 

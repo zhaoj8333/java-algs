@@ -1,7 +1,7 @@
 package com.algs.algo.unionfind.non_generic;
 
-import com.algs.util.Connection;
-import com.algs.util.DrawUtil;
+import com.algs.utils.Connection;
+import com.algs.utils.DrawUtil;
 
 /**
  * 1.5.19

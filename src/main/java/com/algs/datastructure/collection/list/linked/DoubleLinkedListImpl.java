@@ -3,8 +3,8 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.DoubleLinkNode;
-import com.algs.util.ObjectUtil;
-import com.algs.util.RangeUtil;
+import com.algs.utils.ObjectUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 

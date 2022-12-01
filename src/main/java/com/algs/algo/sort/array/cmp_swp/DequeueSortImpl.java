@@ -1,6 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp;
 
-import com.algs.util.ArraysUtil;
+import com.algs.utils.array.ArraysUtil;
 import jdk.jfr.Label;
 
 import java.util.Comparator;

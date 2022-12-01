@@ -3,9 +3,9 @@ package com.algs.algo.sort;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl;
 import com.algs.analysis.StopWatchTask;
-import com.algs.util.ArrayGenerator;
-import com.algs.util.ArraysUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +37,7 @@ public class MergeSortUsingInsertionThresholdTest {
 
                 @Override
                 protected void assertResult() {
-                    Assertions.assertTrue(SortUtil.isSorted(copy));
+                    Assertions.assertTrue(ArraySortUtil.isSorted(copy));
                 }
             };
             st.exec(true);

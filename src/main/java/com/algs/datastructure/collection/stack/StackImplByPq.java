@@ -3,8 +3,8 @@ package com.algs.datastructure.collection.stack;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ArraysUtil;
-import com.algs.util.CollectionUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.CollectionUtil;
 
 import java.util.Comparator;
 import java.util.Objects;

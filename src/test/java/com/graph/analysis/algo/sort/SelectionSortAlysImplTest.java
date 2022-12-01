@@ -2,8 +2,8 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
-import com.algs.util.ArrayGenerator;
-import com.algs.util.FileUtil;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;

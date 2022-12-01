@@ -1,8 +1,8 @@
 package com.graph.analysis.algo.sort;
 
 import com.algs.analysis.StopWatchTask;
-import com.algs.util.ArraysUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.Constructor;
@@ -36,6 +36,6 @@ public class SortAlysCompare<E extends Comparable<E>> extends StopWatchTask<E> {
 
     @Override
     protected void assertResult() {
-        Assertions.assertTrue(SortUtil.isSorted(sort.array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(sort.array));
     }
 }

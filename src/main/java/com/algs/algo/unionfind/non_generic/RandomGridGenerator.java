@@ -3,7 +3,7 @@ package com.algs.algo.unionfind.non_generic;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.datastructure.collection.bag.IBag;
 import com.algs.datastructure.collection.bag.RandomArrayBagImpl;
-import com.algs.util.Connection;
+import com.algs.utils.Connection;
 
 import java.util.Random;
 

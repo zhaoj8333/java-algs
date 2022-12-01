@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils;
 
 class DrawUtilTest {
 

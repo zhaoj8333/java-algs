@@ -1,14 +1,10 @@
 package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ObjectUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.module.InvalidModuleDescriptorException;
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CircularLinkedListDequeImplTest {
 

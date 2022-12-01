@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.util.ObjectUtil;
+import com.algs.utils.ObjectUtil;
 
 /**
  * read/write logic are the same as {@link ArrayQueueImpl}

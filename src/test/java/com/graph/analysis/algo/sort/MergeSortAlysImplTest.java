@@ -2,7 +2,11 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.*;
+import com.algs.utils.*;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraySortUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.sort.merge.MergeSortBuAlysImpl;
 import com.graph.analysis.algo.sort.merge.MergeSortBuOptmAlysImpl;
@@ -131,12 +135,12 @@ class MergeSortAlysImplTest {
         Character[] copy = ArraysUtil.copy(array);
         alys = new MergeSortBuAlysImpl<>(copy, Comparator.comparingInt(o -> o));
         alys.sort();
-        Assertions.assertTrue(SortUtil.isSorted(copy));
+        Assertions.assertTrue(ArraySortUtil.isSorted(copy));
 
         copy = ArraysUtil.copy(array);
         alys = new MergeSortBuOptmAlysImpl<>(copy, Comparator.comparingInt(o -> o));
         alys.sort();
-        Assertions.assertTrue(SortUtil.isSorted(copy));
+        Assertions.assertTrue(ArraySortUtil.isSorted(copy));
     }
 
     private Character[] getChars() {

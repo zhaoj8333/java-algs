@@ -5,7 +5,7 @@ import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
-import com.algs.util.Connection;
+import com.algs.utils.Connection;
 
 import java.util.Random;
 

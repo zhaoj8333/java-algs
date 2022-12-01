@@ -1,7 +1,8 @@
-package com.algs.util;
+package com.algs.utils.file;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.utils.Connection;
 
 import java.io.*;
 import java.net.URL;

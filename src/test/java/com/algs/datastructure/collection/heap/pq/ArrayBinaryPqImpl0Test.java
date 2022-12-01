@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.heap.pq;
 import com.algs.application.datastructure.collection.heap.HeapCheck;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.FileUtil;
+import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

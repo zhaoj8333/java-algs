@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.stack;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.util.ArraysUtil;
+import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

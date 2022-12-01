@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils;
 /******************************************************************************
  *  Compilation:  javac DrawUtil.java
  *  Execution:    java DrawUtil

@@ -1,9 +1,8 @@
-package com.algs.util;
+package com.algs.utils;
 
+import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 class ArraysUtilTest {
 

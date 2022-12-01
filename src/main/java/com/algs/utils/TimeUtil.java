@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

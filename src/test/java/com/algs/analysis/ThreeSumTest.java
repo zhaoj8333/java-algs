@@ -1,8 +1,8 @@
 package com.algs.analysis;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.CollectionUtil;
-import com.algs.util.FileUtil;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Test;
 
 class ThreeSumTest {

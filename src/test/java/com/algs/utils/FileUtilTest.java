@@ -1,6 +1,7 @@
-package com.algs.util;
+package com.algs.utils;
 
 import com.algs.datastructure.collection.list.IList;
+import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Test;
 
 class FileUtilTest {

@@ -5,10 +5,10 @@ import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.ArrayGenerator;
-import com.algs.util.ArraysUtil;
-import com.algs.util.FileUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FileUtil;
+import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
 import com.graph.analysis.algo.sort.ShellSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
@@ -74,8 +74,8 @@ public class SortImplTest {
         assert sort != null;
         sort.sort();
         ArraysUtil.display(array);
-        Assertions.assertTrue(SortUtil.isSorted(array, cmp));
-        Assertions.assertTrue(SortUtil.onlySorted(original, array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array, cmp));
+        Assertions.assertTrue(ArraySortUtil.onlySorted(original, array));
     }
 
     private Character[] getChars() {
@@ -97,7 +97,7 @@ public class SortImplTest {
 //        insertionSortAndPrintTrack(chars);
 //        selectionSortAndPrintTrack(chars);
         shellSortAndPrintTrack(chars);
-        Assertions.assertTrue(SortUtil.isSorted(chars));
+        Assertions.assertTrue(ArraySortUtil.isSorted(chars));
 
     }
 
@@ -231,7 +231,7 @@ public class SortImplTest {
     void _2_1_10() {
         Character[] array = getChars();
         hSortedOnSelectionSort(array);
-        Assertions.assertTrue(SortUtil.isSorted(array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     /**
@@ -271,7 +271,7 @@ public class SortImplTest {
             array[i] = (Character) characters[i];
         }
 
-        Assertions.assertTrue(SortUtil.isSorted(array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     /**

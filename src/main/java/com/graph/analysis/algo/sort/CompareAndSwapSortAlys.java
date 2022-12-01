@@ -1,7 +1,7 @@
 package com.graph.analysis.algo.sort;
 
 import com.algs.algo.sort.ISortable;
-import com.algs.util.ObjectUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Comparator;
 import java.util.Objects;

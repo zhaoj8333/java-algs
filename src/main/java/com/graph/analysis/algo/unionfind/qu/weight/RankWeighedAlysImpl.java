@@ -3,8 +3,8 @@ package com.graph.analysis.algo.unionfind.qu.weight;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.util.Connection;
-import com.algs.util.DrawUtil;
+import com.algs.utils.Connection;
+import com.algs.utils.DrawUtil;
 import com.graph.analysis.algo.unionfind.IUnionFindAlys;
 
 import java.util.Objects;

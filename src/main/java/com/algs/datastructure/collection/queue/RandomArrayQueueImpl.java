@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.util.ArraysUtil;
+import com.algs.utils.array.ArraysUtil;
 
 import java.util.Random;
 

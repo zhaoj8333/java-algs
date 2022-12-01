@@ -2,8 +2,8 @@ package com.algs.algo.unionfind.non_generic.qf;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
-import com.algs.util.ArraysUtil;
-import com.algs.util.RangeUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 

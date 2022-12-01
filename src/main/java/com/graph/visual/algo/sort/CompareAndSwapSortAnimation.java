@@ -2,8 +2,8 @@ package com.graph.visual.algo.sort;
 
 import com.algs.DefaultValues;
 import com.algs.algo.sort.ISortable;
-import com.algs.util.DrawUtil;
-import com.algs.util.ObjectUtil;
+import com.algs.utils.DrawUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.awt.*;
 import java.util.Comparator;

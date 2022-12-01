@@ -2,7 +2,7 @@ package com.algs.algo.unionfind.non_generic.qu.weighed;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.util.ArraysUtil;
+import com.algs.utils.array.ArraysUtil;
 
 import java.util.Objects;
 

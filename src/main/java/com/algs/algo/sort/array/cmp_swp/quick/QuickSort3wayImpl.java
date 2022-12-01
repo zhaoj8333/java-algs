@@ -1,7 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
 import com.algs.algo.sort.array.cmp_swp.CompareAndSwapSort;
-import com.algs.util.RandomUtil;
+import com.algs.utils.RandomUtil;
 
 import java.util.Comparator;
 

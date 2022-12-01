@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils;
 
 import java.util.Random;
 

@@ -31,4 +31,11 @@ public abstract class LinkedCompareAndSwapSort<E extends Comparable<E>> implemen
     protected void swap() {
 
     }
+
+    protected abstract void bubbleSort();
+    protected abstract void selectionSort();
+    protected abstract void insertionSort();
+    protected abstract void mergeSort();
+    protected abstract void quickSort();
+
 }

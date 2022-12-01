@@ -3,7 +3,7 @@ package com.graph.analysis.algo.sort;
 import com.algs.algo.sort.array.cmp_swp.InsertionSortImpl;
 import com.algs.algo.sort.array.cmp_swp.SelectionSortImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
-import com.algs.util.ArrayGenerator;
+import com.algs.utils.array.ArrayGenerator;
 import org.junit.jupiter.api.Test;
 
 class SortingAlysImplTest {

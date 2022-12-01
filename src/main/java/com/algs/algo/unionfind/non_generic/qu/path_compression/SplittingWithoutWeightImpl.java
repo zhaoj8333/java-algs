@@ -1,7 +1,7 @@
 package com.algs.algo.unionfind.non_generic.qu.path_compression;
 
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.util.RangeUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 

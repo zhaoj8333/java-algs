@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils;
 
 public class Connection<E> {
     public E a;

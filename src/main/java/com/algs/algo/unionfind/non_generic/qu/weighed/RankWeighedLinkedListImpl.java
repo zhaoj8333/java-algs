@@ -4,7 +4,7 @@ import com.algs.algo.unionfind.non_generic.IDynamicUnionFind;
 import com.algs.datastructure.collection.list.linked.ILinkedList;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
 import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl0;
-import com.algs.util.RangeUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 

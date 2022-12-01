@@ -3,9 +3,9 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.SingleLinkNode;
-import com.algs.util.CollectionUtil;
-import com.algs.util.ObjectUtil;
-import com.algs.util.RangeUtil;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.ObjectUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Arrays;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.algs.algo.unionfind.generic;
 
-import com.algs.util.ObjectUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 

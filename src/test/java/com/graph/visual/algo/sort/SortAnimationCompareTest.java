@@ -1,7 +1,7 @@
 package com.graph.visual.algo.sort;
 
-import com.algs.util.ArrayGenerator;
-import com.algs.util.ArraysUtil;
+import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraysUtil;
 
 class SortAnimationCompareTest {
 

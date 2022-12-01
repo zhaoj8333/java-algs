@@ -1,4 +1,4 @@
-package com.algs.util;
+package com.algs.utils.array;
 
 import com.algs.datastructure.collection.ICollection;
 

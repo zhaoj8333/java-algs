@@ -6,7 +6,7 @@ import com.algs.datastructure.collection.queue.LinkedListQueueImpl0;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedListStackImpl;
-import com.algs.util.ObjectUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 

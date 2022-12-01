@@ -3,8 +3,8 @@ package com.graph.analysis.algo.sort;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.Geometric;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
 import com.algs.analysis.StopWatchTask;
-import com.algs.util.ArraysUtil;
-import com.algs.util.SortUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -41,7 +41,7 @@ public class IncrementSequenceOfShellsortCompare<E extends Comparable<E>> extend
 
     @Override
     protected void assertResult() {
-        Assertions.assertTrue(SortUtil.isSorted(is.array));
+        Assertions.assertTrue(ArraySortUtil.isSorted(is.array));
     }
 
     public int getCost() {

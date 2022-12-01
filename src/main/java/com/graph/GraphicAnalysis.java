@@ -1,6 +1,6 @@
 package com.graph;
 
-import com.algs.util.DrawUtil;
+import com.algs.utils.DrawUtil;
 
 import java.awt.*;
 

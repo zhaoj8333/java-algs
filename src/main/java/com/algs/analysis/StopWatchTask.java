@@ -1,8 +1,7 @@
 package com.algs.analysis;
 
-import com.algs.util.TimeUtil;
+import com.algs.utils.TimeUtil;
 
-import javax.management.MBeanRegistration;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
