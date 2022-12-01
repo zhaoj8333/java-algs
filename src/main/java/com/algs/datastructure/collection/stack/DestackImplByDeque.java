@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.DoublyLinkNode;
+import com.algs.datastructure.collection.node.DoubleLinkNode;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
@@ -19,8 +19,8 @@ public class DestackImplByDeque<E> implements ICollection<E> {
     private int leftSize;
     private int rightSize;
 
-    private DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
-    private DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
+    private DoubleLinkNode<E> head = new DoubleLinkNode<>(null, null, null);
+    private DoubleLinkNode<E> tail = new DoubleLinkNode<>(null, null, null);
 
     @Override
     public int size() {
@@ -53,8 +53,8 @@ public class DestackImplByDeque<E> implements ICollection<E> {
      */
     public void pushLeft(E item) {
         ObjectUtil.requireNonNull(item);
-        DoublyLinkNode<E> oldFirst = head.next;
-        DoublyLinkNode<E> newNode = new DoublyLinkNode<>(item, head, oldFirst);
+        DoubleLinkNode<E> oldFirst = head.next;
+        DoubleLinkNode<E> newNode = new DoubleLinkNode<>(item, head, oldFirst);
         head.next = newNode;
         if (Objects.nonNull(oldFirst)) {
             oldFirst.prev = newNode;
@@ -67,7 +67,7 @@ public class DestackImplByDeque<E> implements ICollection<E> {
      */
     public E popLeft() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = head.next;
+        DoubleLinkNode<E> node = head.next;
         head.next = node.next;
         node.next.prev = head;
         leftSize--;
@@ -83,8 +83,8 @@ public class DestackImplByDeque<E> implements ICollection<E> {
      */
     public void pushRight(E item) {
         Objects.requireNonNull(item);
-        DoublyLinkNode<E> oldLast = tail.prev;
-        DoublyLinkNode<E> newNode = new DoublyLinkNode<>(item, oldLast, tail);
+        DoubleLinkNode<E> oldLast = tail.prev;
+        DoubleLinkNode<E> newNode = new DoubleLinkNode<>(item, oldLast, tail);
         tail.prev = newNode;
         if (Objects.nonNull(oldLast)) {
             oldLast.next = newNode;
@@ -97,7 +97,7 @@ public class DestackImplByDeque<E> implements ICollection<E> {
      */
     public E popRight() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = tail.prev;
+        DoubleLinkNode<E> node = tail.prev;
         node.prev.next = tail;
         tail.prev = node.prev;
         return node.item;
@@ -123,12 +123,12 @@ public class DestackImplByDeque<E> implements ICollection<E> {
      */
     public E[] toArray() {
         E[] array = (E[]) new Object[size() + 1];
-        DoublyLinkNode<E> left = head.next;
+        DoubleLinkNode<E> left = head.next;
         for (int i = 0; i < leftSize; i++) {
             array[i] = left.item;
             left = left.next;
         }
-        DoublyLinkNode<E> right = tail.prev;
+        DoubleLinkNode<E> right = tail.prev;
         for (int i = size(); i > leftSize; i--) {
             array[i] = right.item;
             right = right.prev;
@@ -143,8 +143,8 @@ public class DestackImplByDeque<E> implements ICollection<E> {
 
     private class DestackIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> left = (DoublyLinkNode<E>) head.next;
-        private DoublyLinkNode<E> right = (DoublyLinkNode<E>) tail.prev;
+        private DoubleLinkNode<E> left = (DoubleLinkNode<E>) head.next;
+        private DoubleLinkNode<E> right = (DoubleLinkNode<E>) tail.prev;
 
         @Override
         public boolean hasNext() {

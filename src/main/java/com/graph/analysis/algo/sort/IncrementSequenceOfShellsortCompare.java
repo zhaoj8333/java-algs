@@ -1,7 +1,7 @@
 package com.graph.analysis.algo.sort;
 
-import com.algs.algo.sort.cmp_swp.shell.sequence.Geometric;
-import com.algs.algo.sort.cmp_swp.shell.sequence.SequenceGenerator;
+import com.algs.algo.sort.array.cmp_swp.shell.sequence.Geometric;
+import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
 import com.algs.analysis.StopWatchTask;
 import com.algs.util.ArraysUtil;
 import com.algs.util.SortUtil;

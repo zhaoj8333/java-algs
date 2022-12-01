@@ -1,7 +1,7 @@
 package com.algs.application.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +27,8 @@ class StackGenerabilityTest {
         int[] push = new int[] {1, 2, 3, 4, 5};
         int[] popp = new int[] {4, 5, 3, 2, 1};
 
-        IList<Integer> pushed = new SinglyLinkedListImpl<>();
-        IList<Integer> popped = new SinglyLinkedListImpl<>();
+        IList<Integer> pushed = new SingleLinkedListImpl<>();
+        IList<Integer> popped = new SingleLinkedListImpl<>();
         for (int value : push) {
             pushed.add(value);
         }
@@ -39,7 +39,7 @@ class StackGenerabilityTest {
         boolean outputPossible = sg.validateStackSequence(pushed, popped);
         Assertions.assertTrue(outputPossible);
 
-        popped = new SinglyLinkedListImpl<>();
+        popped = new SingleLinkedListImpl<>();
         popped.add(4);
         popped.add(3);
         popped.add(5);

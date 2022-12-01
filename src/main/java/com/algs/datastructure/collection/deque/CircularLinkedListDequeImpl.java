@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
-import com.algs.datastructure.collection.DoublyLinkNode;
+import com.algs.datastructure.collection.node.DoubleLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -9,8 +9,8 @@ import java.util.Objects;
 public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
 
     private int size;
-    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
-    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
+    private final DoubleLinkNode<E> head = new DoubleLinkNode<>(null, null, null);
+    private final DoubleLinkNode<E> tail = new DoubleLinkNode<>(null, null, null);
 
     public CircularLinkedListDequeImpl() {
         head.next = tail;
@@ -20,8 +20,8 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     }
 
     public boolean hasCircle() {
-        DoublyLinkNode<E> slow = head.next;
-        DoublyLinkNode<E> fast = head.next.next;
+        DoubleLinkNode<E> slow = head.next;
+        DoubleLinkNode<E> fast = head.next.next;
         while (Objects.nonNull(slow) && Objects.nonNull(fast)) {
             if (Objects.equals(slow, fast)) {
                 return true;
@@ -44,7 +44,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
 
     @Override
     public boolean contains(E item) {
-        DoublyLinkNode<E> node = head;
+        DoubleLinkNode<E> node = head;
         for (int i = 0; i < size; i++) {
             if (Objects.equals(item, node.item)) {
                 return true;
@@ -57,8 +57,8 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public void enqueHead(E item) {
         ObjectUtil.requireNonNull(item);
-        DoublyLinkNode<E> first = head.next;
-        head.next = new DoublyLinkNode<>(item, head, first);
+        DoubleLinkNode<E> first = head.next;
+        head.next = new DoubleLinkNode<>(item, head, first);
         first.prev = head.next;
         size++;
     }
@@ -66,8 +66,8 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> first = head.next;
-        DoublyLinkNode<E> second = head.next.next;
+        DoubleLinkNode<E> first = head.next;
+        DoubleLinkNode<E> second = head.next.next;
         E item = first.item;
         head.next = first.next;
         second.prev = head;
@@ -83,11 +83,11 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public void enqueTail(E item) {
         ObjectUtil.requireNonNull(item);
-        DoublyLinkNode<E> node = head;
+        DoubleLinkNode<E> node = head;
         for (int i = 0; i < size; i++) {
             node = node.next;
         }
-        node.next = new DoublyLinkNode<>(item, node, tail);
+        node.next = new DoubleLinkNode<>(item, node, tail);
         tail.prev = node.next;
         size++;
     }
@@ -100,7 +100,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = tail.prev;
+        DoubleLinkNode<E> node = tail.prev;
         node.prev.next = tail;
         tail.prev = node.prev;
         size--;
@@ -144,7 +144,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> node = head.next;
+        DoubleLinkNode<E> node = head.next;
         for (int i = 0; i < size; i++) {
             array[i] = node.item;
             node = node.next;
@@ -154,7 +154,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
 
     private class CircularLinkedListDequeIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
+        private DoubleLinkNode<E> node = (DoubleLinkNode<E>) head.next;
 
         @Override
         public boolean hasNext() {

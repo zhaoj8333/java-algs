@@ -1,14 +1,15 @@
 package com.algs.algo.sort;
 
-import com.algs.algo.sort.cmp_swp.HeapSortImpl;
-import com.algs.algo.sort.cmp_swp.InsertionSortImpl;
-import com.algs.algo.sort.cmp_swp.SelectionSortImpl;
-import com.algs.algo.sort.cmp_swp.SentinelInsertionSortImpl;
-import com.algs.algo.sort.cmp_swp.merge.*;
-import com.algs.algo.sort.cmp_swp.quick.QuickSort3wayImpl;
-import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl;
-import com.algs.algo.sort.cmp_swp.quick.QuickSortImpl0;
-import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
+import com.algs.algo.sort.array.SortCompare;
+import com.algs.algo.sort.array.cmp_swp.HeapSortImpl;
+import com.algs.algo.sort.array.cmp_swp.InsertionSortImpl;
+import com.algs.algo.sort.array.cmp_swp.SelectionSortImpl;
+import com.algs.algo.sort.array.cmp_swp.SentinelInsertionSortImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.*;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.util.ArrayGenerator;
 import org.junit.jupiter.api.Test;
 

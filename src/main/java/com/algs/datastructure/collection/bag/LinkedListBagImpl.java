@@ -1,14 +1,14 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.SinglyLinkNode;
+import com.algs.datastructure.collection.node.SingleLinkNode;
 
 import java.util.Objects;
 
 public class LinkedListBagImpl<E> implements IBag<E> {
 
     private int size;
-    private SinglyLinkNode<E> head;
+    private SingleLinkNode<E> head;
 
     @Override
     public void add(E item) {
@@ -17,7 +17,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     }
 
     private void linkHead(E item) {
-        head = new SinglyLinkNode<>(item, head);
+        head = new SingleLinkNode<>(item, head);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     @Override
     public int numberOf(E item) {
         int number = 0;
-        SinglyLinkNode<E> node = head;
+        SingleLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(item, node.item)) {
                 number ++;
@@ -48,8 +48,8 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         return Objects.nonNull(node(item));
     }
 
-    private SinglyLinkNode<E> node(E item) {
-        SinglyLinkNode<E> node = head;
+    private SingleLinkNode<E> node(E item) {
+        SingleLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -72,12 +72,12 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         if (isEmpty()) {
             throw new RuntimeException("Already Empty");
         }
-        SinglyLinkNode<E> node = node(item);
+        SingleLinkNode<E> node = node(item);
         if (Objects.isNull(node)) {
             return null;
         }
         E data = node.item;
-        SinglyLinkNode<E> oldhead = head;
+        SingleLinkNode<E> oldhead = head;
         head = head.next;
         node.item = oldhead.item;
         size --;
@@ -93,7 +93,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        SinglyLinkNode<E> node = head;
+        SingleLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = (E) node.item;
@@ -105,7 +105,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        SinglyLinkNode<E> node = head;
+        SingleLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             sb.append("(").append(node.item.toString()).append(") -> ");
             node = node.next;
@@ -115,7 +115,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
 
     private class LinkedListBagIterator<E> implements Iterator<E> {
 
-        private SinglyLinkNode<E> node = (SinglyLinkNode<E>) head;
+        private SingleLinkNode<E> node = (SingleLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

@@ -1,7 +1,7 @@
 package com.graph.analysis.algo.sort;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
 import com.algs.util.ArrayGenerator;
 import com.algs.util.FileUtil;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ class SelectionSortAlysImplTest {
     public static void main(String[] args) {
 //        testFile();
 
-        IList<Comparable[]> list = new SinglyLinkedListImpl<>();
+        IList<Comparable[]> list = new SingleLinkedListImpl<>();
         for (int i = 10; i < 90000; i *= 10) {
             list.add(ArrayGenerator.randomArray(i));
         }

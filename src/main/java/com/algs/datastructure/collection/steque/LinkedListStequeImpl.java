@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.steque;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.DoublyLinkNode;
+import com.algs.datastructure.collection.node.DoubleLinkNode;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -13,8 +13,8 @@ import java.util.Objects;
 public class LinkedListStequeImpl<E> implements ISteque<E> {
 
     private int size;
-    private DoublyLinkNode<E> head;
-    private DoublyLinkNode<E> tail;
+    private DoubleLinkNode<E> head;
+    private DoubleLinkNode<E> tail;
 
     @Override
     public boolean isEmpty() {
@@ -26,11 +26,11 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private DoublyLinkNode<E> node(E item) {
+    private DoubleLinkNode<E> node(E item) {
         if (Objects.isNull(item)) {
             return null;
         }
-        DoublyLinkNode<E> node = head;
+        DoubleLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -51,8 +51,8 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public void enqueFirst(E item) {
         ObjectUtil.requireNonNull(item);
-        DoublyLinkNode<E> oldHead = head;
-        head = new DoublyLinkNode<>(item, null, oldHead);
+        DoubleLinkNode<E> oldHead = head;
+        head = new DoubleLinkNode<>(item, null, oldHead);
         oldHead.prev = head;
         size++;
     }
@@ -63,7 +63,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
-        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, tail, null);
+        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, tail, null);
         if (Objects.nonNull(tail)) {
             tail.next = node;
         } else {
@@ -80,8 +80,8 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public E deque() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = head;
-        DoublyLinkNode<E> next = node.next;
+        DoubleLinkNode<E> node = head;
+        DoubleLinkNode<E> next = node.next;
         if (Objects.nonNull(next)) {
             next.prev = null;
         } else {
@@ -116,7 +116,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> node = head;
+        DoubleLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = node.item;
@@ -127,7 +127,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
 
     private class LinkedListQueueIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
+        private DoubleLinkNode<E> node = (DoubleLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

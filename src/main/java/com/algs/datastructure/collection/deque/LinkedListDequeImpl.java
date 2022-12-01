@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
-import com.algs.datastructure.collection.DoublyLinkNode;
+import com.algs.datastructure.collection.node.DoubleLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.util.ObjectUtil;
 
@@ -9,8 +9,8 @@ import java.util.Objects;
 public class LinkedListDequeImpl<E> implements IDeque<E> {
 
     private int size;
-    private DoublyLinkNode<E> head;
-    private DoublyLinkNode<E> tail;
+    private DoubleLinkNode<E> head;
+    private DoubleLinkNode<E> tail;
 
     /**
      * enquedHead(newHead) <-> head <-> n1 <-> ... tail
@@ -18,13 +18,13 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
      */
     @Override
     public void enqueHead(E item) {
-        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, null, head);
+        DoubleLinkNode<E> DoubleLinkNode = new DoubleLinkNode<>(item, null, head);
         if (Objects.nonNull(head)) {
-            head.prev = DoublyLinkNode;
+            head.prev = DoubleLinkNode;
         } else {
-            tail = DoublyLinkNode;
+            tail = DoubleLinkNode;
         }
-        head = DoublyLinkNode;
+        head = DoubleLinkNode;
         size++;
     }
 
@@ -34,8 +34,8 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = head;
-        DoublyLinkNode<E> next = node.next;
+        DoubleLinkNode<E> node = head;
+        DoubleLinkNode<E> next = node.next;
         if (Objects.nonNull(next)) {
             next.prev = null;
         }
@@ -50,7 +50,7 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
      */
     @Override
     public void enqueTail(E item) {
-        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, tail, null);
+        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, tail, null);
         if (Objects.nonNull(tail)) {
             tail.next = node;
         } else {
@@ -67,8 +67,8 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoublyLinkNode<E> node = tail;
-        DoublyLinkNode<E> prev = tail.prev;
+        DoubleLinkNode<E> node = tail;
+        DoubleLinkNode<E> prev = tail.prev;
         if (Objects.nonNull(prev)) {
             prev.next = null;
         }
@@ -117,8 +117,8 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private DoublyLinkNode<E> node(E item) {
-        DoublyLinkNode<E> node = head;
+    private DoubleLinkNode<E> node(E item) {
+        DoubleLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -138,7 +138,7 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoublyLinkNode<E> node = head;
+        DoubleLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = node.item;
@@ -149,7 +149,7 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
 
     private class LinkedListDequeIterator<E> implements Iterator<E> {
 
-        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
+        private DoubleLinkNode<E> node = (DoubleLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

@@ -2,7 +2,7 @@ package com.algs.algo.unionfind.non_generic;
 
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
 import com.algs.util.Connection;
 
 import java.util.Random;
@@ -11,7 +11,7 @@ public class ErdosRenyi {
 
     public Object[] generate(int n) {
         Random r = new Random();
-        IList<Connection<Integer>> conns = new SinglyLinkedListImpl<>();
+        IList<Connection<Integer>> conns = new SingleLinkedListImpl<>();
         IUnionFind uf = new HalvingImpl();
         while (uf.count() > 1) {
             int p = r.nextInt(n);

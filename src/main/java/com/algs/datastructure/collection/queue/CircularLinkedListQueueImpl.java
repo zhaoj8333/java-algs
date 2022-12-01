@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.SinglyLinkNode;
+import com.algs.datastructure.collection.node.SingleLinkNode;
 import com.algs.util.ObjectUtil;
 
 import java.util.Objects;
@@ -9,8 +9,8 @@ import java.util.Objects;
 public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
 
     private int size;
-    private SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
-    private SinglyLinkNode<E> tail = new SinglyLinkNode<>(null, null);
+    private SingleLinkNode<E> head = new SingleLinkNode<>(null, null);
+    private SingleLinkNode<E> tail = new SingleLinkNode<>(null, null);
 
     public CircularLinkedListQueueImpl() {
         head.next = tail;
@@ -26,8 +26,8 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
         if (Objects.isNull(head) || Objects.isNull(head.next)) {
             return false;
         }
-        SinglyLinkNode<E> slow = head.next;
-        SinglyLinkNode<E> fast = head.next.next;
+        SingleLinkNode<E> slow = head.next;
+        SingleLinkNode<E> fast = head.next.next;
         while (Objects.nonNull(fast) && Objects.nonNull(fast.next)) {
             slow = slow.next;
             fast = fast.next.next;
@@ -45,11 +45,11 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
      */
     private void linkLast(E item) {
         ObjectUtil.requireNonNull(item);
-        SinglyLinkNode<E> node = head;
+        SingleLinkNode<E> node = head;
         for (int i = 0; i < size; i++) {
             node = node.next;
         }
-        tail.next = node.next = new SinglyLinkNode<>(item, head);
+        tail.next = node.next = new SingleLinkNode<>(item, head);
         size++;
     }
 
@@ -94,7 +94,7 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
 
     @Override
     public boolean contains(E item) {
-        SinglyLinkNode<E> node = head;
+        SingleLinkNode<E> node = head;
         for (int i = 0; i < size; i++) {
             if (Objects.equals(item, node.item)) {
                 return true;
@@ -113,7 +113,7 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        SinglyLinkNode<E> node = head.next;
+        SingleLinkNode<E> node = head.next;
         for (int i = 0; i < size; i++) {
             array[i] = node.item;
             node = node.next;
@@ -123,7 +123,7 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
 
     private class CircularLinkedListQueueIterator<E> implements Iterator<E> {
 
-        private SinglyLinkNode<E> node = (SinglyLinkNode<E>) head.next;
+        private SingleLinkNode<E> node = (SingleLinkNode<E>) head.next;
         private int index = 0;
 
         @Override

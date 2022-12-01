@@ -1,11 +1,8 @@
 package com.algs.algo.sort;
 
-import com.algs.algo.sort.cmp_swp.*;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortBuImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortBuOptmImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortTdImpl;
-import com.algs.algo.sort.cmp_swp.merge.MergeSortTdOptmImpl;
-import com.algs.algo.sort.cmp_swp.shell.ShellSortImpl;
+import com.algs.algo.sort.array.cmp_swp.*;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
+import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.util.ArrayGenerator;

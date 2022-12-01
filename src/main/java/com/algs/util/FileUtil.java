@@ -1,7 +1,7 @@
 package com.algs.util;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
 
 import java.io.*;
 import java.net.URL;
@@ -12,7 +12,7 @@ public class FileUtil {
     public static IList<Connection<Integer>> readPairs(String fileName) {
         File file = getFile(fileName);
         if (file == null) return null;
-        IList<Connection<Integer>> pairs = new SinglyLinkedListImpl<>();
+        IList<Connection<Integer>> pairs = new SingleLinkedListImpl<>();
         if (file.isFile() && file.exists()) {
             InputStreamReader isr = null;
             LineNumberReader lnr = null;
@@ -39,7 +39,7 @@ public class FileUtil {
     public static IList<Integer> readInts(String fileName) {
         File file = getFile(fileName);
         if (file == null) return null;
-        IList<Integer> ints = new SinglyLinkedListImpl<>();
+        IList<Integer> ints = new SingleLinkedListImpl<>();
         if (file.isFile() && file.exists()) {
             InputStreamReader isr = null;
             LineNumberReader lnr = null;
@@ -62,7 +62,7 @@ public class FileUtil {
     public static IList<Character> readChars(String fileName) {
         File file = getFile(fileName);
         if (file == null) return null;
-        IList<Character> chars = new SinglyLinkedListImpl<>();
+        IList<Character> chars = new SingleLinkedListImpl<>();
         if (file.isFile() && file.exists()) {
             InputStreamReader isr = null;
             try {

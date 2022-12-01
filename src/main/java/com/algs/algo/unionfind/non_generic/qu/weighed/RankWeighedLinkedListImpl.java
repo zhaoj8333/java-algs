@@ -1,9 +1,9 @@
 package com.algs.algo.unionfind.non_generic.qu.weighed;
 
 import com.algs.algo.unionfind.non_generic.IDynamicUnionFind;
-import com.algs.datastructure.collection.list.ILinkedList;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl;
-import com.algs.datastructure.collection.list.SinglyLinkedListImpl0;
+import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl0;
 import com.algs.util.RangeUtil;
 
 import java.util.Objects;
@@ -15,8 +15,8 @@ public class RankWeighedLinkedListImpl implements IDynamicUnionFind {
     protected int count;
 
     public RankWeighedLinkedListImpl() {
-        id = new SinglyLinkedListImpl<>();
-        rank = new SinglyLinkedListImpl0<>();
+        id = new SingleLinkedListImpl<>();
+        rank = new SingleLinkedListImpl0<>();
     }
 
     @Override
