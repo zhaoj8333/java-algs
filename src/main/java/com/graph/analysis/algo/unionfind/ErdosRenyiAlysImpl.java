@@ -2,7 +2,7 @@ package com.graph.analysis.algo.unionfind;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.utils.Connection;
@@ -20,7 +20,7 @@ public class ErdosRenyiAlysImpl implements GraphicAnalysis {
     private final int size;
     private final IList<Connection<Integer>> conns;
     private final IQueue<IUnionFindAlys> q;
-    private final IList<Result> results = new SingleLinkedListImpl<>();
+    private final IList<Result> results = new SinglyLinkedListImpl<>();
 
     private static class Result {
         public String name;

@@ -3,6 +3,7 @@ package com.algs.algo.sort;
 /**
  * {@link com.algs.algo.sort.ISortable}
  *
+ * array compare and swap:
  * {@link com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort}
  *
  * {@link com.algs.algo.sort.array.cmp_swp.BubbleSortImpl}
@@ -24,9 +25,14 @@ package com.algs.algo.sort;
  * {@link com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl}
  * {@link com.algs.algo.sort.array.cmp_swp.HeapSortImpl}
  *
- *
+ * other:
  * {@link com.algs.algo.sort.array.RadixSortImpl}
  * {@link com.algs.algo.sort.array.BucketSortImpl}
  * {@link com.algs.algo.sort.array.CountingSortImpl}
+ *
+ * linked list compare and swap:
+ * {@link com.algs.algo.sort.linkedlist.LinkedCompareAndSwapSort}
+ *
+ * {@link com.algs.algo.sort.linkedlist.SinglyLinkedListSortImpl}
  *
  */

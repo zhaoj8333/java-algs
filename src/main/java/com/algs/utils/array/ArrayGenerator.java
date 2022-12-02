@@ -6,7 +6,7 @@ public final class ArrayGenerator {
 
     public enum ARRAY_TYPE {
         RANDOM,
-        SINGLE_VALUE,
+        Singly_VALUE,
         DUAL_VALUE_RANDOM,
         TERNARY_VALUE_RANDOM,
         DUAL_VALUE_ASCEND,

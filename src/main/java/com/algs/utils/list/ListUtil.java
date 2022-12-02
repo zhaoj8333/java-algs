@@ -1,23 +1,23 @@
 package com.algs.utils.list;
 
-import com.algs.datastructure.collection.list.linked.DoubleLinkedListImpl;
-import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.DoublyLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.array.ArrayGenerator;
 
 public class ListUtil {
 
-    public static SingleLinkedListImpl<Integer> randomSingleLinkedList(int len) {
+    public static SinglyLinkedListImpl<Integer> randomSinglyLinkedList(int len) {
         Integer[] array = ArrayGenerator.randomIntArray(len);
-        SingleLinkedListImpl<Integer> list = new SingleLinkedListImpl<>();
+        SinglyLinkedListImpl<Integer> list = new SinglyLinkedListImpl<>();
         for (Integer integer : array) {
             list.add(integer);
         }
         return list;
     }
 
-    public static DoubleLinkedListImpl<Integer> randomDoubleLinkedList(int len) {
+    public static DoublyLinkedListImpl<Integer> randomDoublyLinkedList(int len) {
         Integer[] array = ArrayGenerator.randomIntArray(len);
-        DoubleLinkedListImpl<Integer> list = new DoubleLinkedListImpl<>();
+        DoublyLinkedListImpl<Integer> list = new DoublyLinkedListImpl<>();
         for (Integer integer : array) {
             list.add(integer);
         }

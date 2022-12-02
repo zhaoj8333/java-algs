@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
-import com.algs.datastructure.collection.node.DoubleLinkNode;
+import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
 
@@ -9,8 +9,8 @@ import java.util.Objects;
 public class LinkedListDequeImpl0<E> implements IDeque<E> {
 
     private int size;
-    private final DoubleLinkNode<E> head = new DoubleLinkNode<>(null, null, null);
-    private final DoubleLinkNode<E> tail = new DoubleLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
     public LinkedListDequeImpl0() {
         head.next = tail;
@@ -18,25 +18,25 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> enquedDoubleLinkNode(oldHead) <-> tail
+     * head <-> enquedDoublyLinkNode(oldHead) <-> tail
      */
     @Override
     public void enqueHead(E item) {
         ObjectUtil.requireNonNull(item);
-        DoubleLinkNode<E> next = head.next;
-        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, head, next);
+        DoublyLinkNode<E> next = head.next;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, head, next);
         head.next = node;
         next.prev = node;
         size++;
     }
 
     /**
-     * head <-> dequedDoubleLinkNode <-> n2 <-> tail
+     * head <-> dequedDoublyLinkNode <-> n2 <-> tail
      */
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoubleLinkNode<E> node = head.next;
+        DoublyLinkNode<E> node = head.next;
         node.next.prev = head;
         head.next = node.next;
         size--;
@@ -44,25 +44,25 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> ... <-> n2 <-> enqueuedDoubleLinkNode <-> tail
+     * head <-> ... <-> n2 <-> enqueuedDoublyLinkNode <-> tail
      */
     @Override
     public void enqueTail(E item) {
         ObjectUtil.requireNonNull(item);
-        DoubleLinkNode<E> prev = tail.prev;
-        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, prev, tail);
+        DoublyLinkNode<E> prev = tail.prev;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, prev, tail);
         prev.next = node;
         tail.prev = node;
         size++;
     }
 
     /**
-     * head <-> n1 <-> ... <-> prev <-> dequedDoubleLinkNode <-> tail
+     * head <-> n1 <-> ... <-> prev <-> dequedDoublyLinkNode <-> tail
      */
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoubleLinkNode<E> node = tail.prev;
+        DoublyLinkNode<E> node = tail.prev;
         node.prev.next = tail;
         tail.prev = node.prev;
         size--;
@@ -109,8 +109,8 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private DoubleLinkNode<E> node(E item) {
-        DoubleLinkNode<E> node = head.next;
+    private DoublyLinkNode<E> node(E item) {
+        DoublyLinkNode<E> node = head.next;
         while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -130,7 +130,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoubleLinkNode<E> node = head.next;
+        DoublyLinkNode<E> node = head.next;
         int index = 0;
         while (Objects.nonNull(node) && Objects.nonNull(node.next)) {
             array[index++] = node.item;
@@ -141,7 +141,7 @@ public class LinkedListDequeImpl0<E> implements IDeque<E> {
 
     private class LinkedListQueueIterator<E> implements Iterator<E> {
 
-        private DoubleLinkNode<E> node = (DoubleLinkNode<E>) head.next;
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
 
         @Override
         public boolean hasNext() {

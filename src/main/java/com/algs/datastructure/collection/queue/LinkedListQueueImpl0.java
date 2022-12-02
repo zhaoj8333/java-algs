@@ -1,20 +1,20 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.node.DoubleLinkNode;
+import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
 /**
- * Implemented by DoubleLinkedList
+ * Implemented by DoublyLinkedList
  */
 @SuppressWarnings("unchecked")
 public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     private int size;
-    private final DoubleLinkNode<E> head = new DoubleLinkNode<>(null, null, null);
-    private final DoubleLinkNode<E> tail = new DoubleLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
     public LinkedListQueueImpl0() {
         head.next = tail;
@@ -31,11 +31,11 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
         return Objects.nonNull(node(item));
     }
 
-    private DoubleLinkNode<E> node(E item) {
+    private DoublyLinkNode<E> node(E item) {
         if (Objects.isNull(item)) {
             return null;
         }
-        DoubleLinkNode<E> node = head;
+        DoublyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -51,27 +51,27 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     }
 
     /**
-     * head <-> DoubleLinkNode <-> (newInsertedDoubleLinkNode) <-> tail
+     * head <-> DoublyLinkNode <-> (newInsertedDoublyLinkNode) <-> tail
      */
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
-        DoubleLinkNode<E> prev = tail.prev;
-        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, prev, tail);
+        DoublyLinkNode<E> prev = tail.prev;
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, prev, tail);
         prev.next = node;
         tail.prev = node;
         size++;
     }
 
     /**
-     * head <-> (newRemovedDoubleLinkNode) <-> DoubleLinkNode <-> tail
+     * head <-> (newRemovedDoublyLinkNode) <-> DoublyLinkNode <-> tail
      */
     @Override
     public E deque() {
         if (isEmpty()) {
             throw new RuntimeException("Already Empty");
         }
-        DoubleLinkNode<E> node = head.next;   // removed DoubleLinkNode
+        DoublyLinkNode<E> node = head.next;   // removed DoublyLinkNode
         E data = node.item;
         head.next = node.next;
         node.next.prev = head;
@@ -86,9 +86,9 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     @Override
     public void clear() {
-//        DoubleLinkNode<E> DoubleLinkNode = head.next;
-//        while (Objects.nonNull(DoubleLinkNode) && Objects.nonNull(DoubleLinkNode.data)) {
-//            DoubleLinkNode = null;
+//        DoublyLinkNode<E> DoublyLinkNode = head.next;
+//        while (Objects.nonNull(DoublyLinkNode) && Objects.nonNull(DoublyLinkNode.data)) {
+//            DoublyLinkNode = null;
 //        }
 //        size = 0;
         // OR
@@ -104,7 +104,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoubleLinkNode<E> node = head.next;
+        DoublyLinkNode<E> node = head.next;
         int index = 0;
         while (Objects.nonNull(node) && Objects.nonNull(node.item)) {
             array[index++] = node.item;
@@ -115,7 +115,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     private class LinkedListQueueIterator0<E> implements Iterator<E> {
 
-        private DoubleLinkNode<E> next = (DoubleLinkNode<E>) head.next;
+        private DoublyLinkNode<E> next = (DoublyLinkNode<E>) head.next;
 
         @Override
         public boolean hasNext() {

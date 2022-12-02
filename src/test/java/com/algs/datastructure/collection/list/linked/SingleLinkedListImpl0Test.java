@@ -2,15 +2,15 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.linked.ILinkedList;
-import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl0;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl0;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class SingleLinkedListImpl0Test {
+class SinglyLinkedListImpl0Test {
 
     @Test
     void test() {
-        ILinkedList<Integer> sll = new SingleLinkedListImpl0<>();
+        ILinkedList<Integer> sll = new SinglyLinkedListImpl0<>();
         Assertions.assertTrue(sll.isEmpty());
         Assertions.assertEquals(0, sll.size());
         sll.add(1);

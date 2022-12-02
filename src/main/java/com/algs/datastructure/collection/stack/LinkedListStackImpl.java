@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.SingleLinkNode;
+import com.algs.datastructure.collection.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
 public class LinkedListStackImpl<E> implements IStack<E> {
 
     private int size;
-    private SingleLinkNode<E> top;
+    private SinglyLinkNode<E> top;
 
     /**
      * newTop -> oldTop -> n1 -> ... -> n
@@ -18,7 +18,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     @Override
     public void push(E item) {
         ObjectUtil.requireNonNull(item);
-        top = new SingleLinkNode<>(item, top);
+        top = new SinglyLinkNode<>(item, top);
         size++;
     }
 
@@ -28,7 +28,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     @Override
     public E pop() {
         ObjectUtil.requireNonEmpty(this);
-        SingleLinkNode<E> node = top;
+        SinglyLinkNode<E> node = top;
         top = node.next;
         size--;
         return node.item;
@@ -54,8 +54,8 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         return Objects.nonNull(node(item));
     }
 
-    private SingleLinkNode<E> node(E item) {
-        SingleLinkNode<E> node = top;
+    private SinglyLinkNode<E> node(E item) {
+        SinglyLinkNode<E> node = top;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -68,7 +68,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        SingleLinkNode<E> node = top;
+        SinglyLinkNode<E> node = top;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = node.item;
@@ -90,11 +90,11 @@ public class LinkedListStackImpl<E> implements IStack<E> {
 
     private class LinkedListStackIterator<E> implements Iterator<E> {
 
-        private SingleLinkNode<E> newTop;
+        private SinglyLinkNode<E> newTop;
 
         public LinkedListStackIterator() {
             if (Objects.nonNull(top)) {
-                newTop = new SingleLinkNode(top.item, top.next);
+                newTop = new SinglyLinkNode(top.item, top.next);
             }
         }
 
@@ -118,26 +118,26 @@ public class LinkedListStackImpl<E> implements IStack<E> {
 
     private class LinkedListStackReverseIterator0<E> implements Iterator<E> {
 
-        private SingleLinkNode<E> newTop;
+        private SinglyLinkNode<E> newTop;
 
         public LinkedListStackReverseIterator0() {
-            SingleLinkNode<E> oldTop = (SingleLinkNode<E>) top;
+            SinglyLinkNode<E> oldTop = (SinglyLinkNode<E>) top;
             newTop = reverse(oldTop);
         }
 
         /**
          * node -> n1 -> n2 ... -> n*
          */
-        private SingleLinkNode<E> reverse(SingleLinkNode<E> first) {
+        private SinglyLinkNode<E> reverse(SinglyLinkNode<E> first) {
             if (Objects.isNull(first)) {
                 return null;
             }
-            SingleLinkNode<E> node = new SingleLinkNode<>(first.item, first.next);
-            SingleLinkNode<E> newTop = null;
+            SinglyLinkNode<E> node = new SinglyLinkNode<>(first.item, first.next);
+            SinglyLinkNode<E> newTop = null;
             while (Objects.nonNull(node)) {
-                SingleLinkNode<E> tmp = null;
+                SinglyLinkNode<E> tmp = null;
                 if (Objects.nonNull(node.next)) {
-                    tmp = new SingleLinkNode<>(node.next.item, node.next.next);
+                    tmp = new SinglyLinkNode<>(node.next.item, node.next.next);
                 }
                 node.next = newTop;
                 newTop = node;

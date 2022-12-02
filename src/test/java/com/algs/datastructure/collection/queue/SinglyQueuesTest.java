@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.queue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class SingleQueuesTest {
+public class SinglyQueuesTest {
 
     IQueue<Integer> arrayQ = new ArrayQueueImpl<>(10);
     IQueue<Integer> llQ = new LinkedListQueueImpl<>();

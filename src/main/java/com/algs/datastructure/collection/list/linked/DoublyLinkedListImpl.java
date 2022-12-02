@@ -3,34 +3,38 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.DoubleLinkNode;
+import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 
-public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
+public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
 
     private int size;
-    private final DoubleLinkNode<E> head = new DoubleLinkNode<>(null, null, null);
-    private final DoubleLinkNode<E> tail = new DoubleLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
-    public DoubleLinkedListImpl() {
+    public DoublyLinkedListImpl() {
         head.next = tail;
         tail.prev = head;
     }
 
     /**
-     * prev -> newDoubleLinkNode -> next
+     * prev -> newDoublyLinkNode -> next
      */
     @Override
     public void add(int index, E item) {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(index, 0, size);
-        DoubleLinkNode<E> prev = node(index - 1);
-        DoubleLinkNode<E> next = prev.next;
-        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, prev, next);
+        DoublyLinkNode<E> prev = tail.prev;
+        DoublyLinkNode<E> next = tail;
+        if (index != size) {
+            prev = node(index - 1);
+            next = prev.next;
+        }
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, prev, next);
         prev.next = node;
         next.prev = node;
         size++;
@@ -43,14 +47,14 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public E get(int index) {
-        DoubleLinkNode<E> node = node(index);
+        DoublyLinkNode<E> node = node(index);
         return Objects.isNull(node) ? null : node.item;
     }
 
     @Override
     public E set(int index, E item) {
         E oldVal = null;
-        DoubleLinkNode<E> node = node(index);
+        DoublyLinkNode<E> node = node(index);
         if (Objects.nonNull(node)) {
             oldVal = node.item;
             node.item = item;
@@ -60,21 +64,12 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public int indexOf(E item) {
-        DoubleLinkNode<E> node = head.next;
-        if (Objects.isNull(item)) {
-            for (int i = 0; i < size; i++) {
-                if (Objects.isNull(node)) {
-                    return i;
-                }
-                node = node.next;
+        DoublyLinkNode<E> node = head.next;
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(node.item, item)) {
+                return i;
             }
-        } else {
-            for (int i = 0; i < size; i++) {
-                if (Objects.equals(node.item, item)) {
-                    return i;
-                }
-                node = node.next;
-            }
+            node = node.next;
         }
         return DefaultValues.ELEMENT_NOT_FOUND;
     }
@@ -91,30 +86,59 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public boolean contains(E item) {
-        return indexOf(item) == DefaultValues.ELEMENT_NOT_FOUND;
+        return indexOf(item) > DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
-    public DoubleLinkNode<E> node(int index) {
-        DoubleLinkNode<E> node = head;
-        for (int i = -1; i < index; i++) {
-            node = node.next;
+    public DoublyLinkNode<E> node(int index) {
+        DoublyLinkNode<E> node;
+        if (index < size >> 1) {
+            node = head;
+            for (int i = -1; i < index; i++) {
+                node = node.next;
+            }
+        } else {
+            node = tail;
+            for (int i = size; i > index; i--) {
+                node = node.prev;
+            }
         }
         return node;
     }
 
     /**
-     * head <->n0 <-> prev <-> removedDoubleLinkNode <-> next <-> n*
+     * head <->n0 <-> prev <-> removedDoublyLinkNode <-> next <-> n*
      */
     @Override
     public E remove(int index) {
-        DoubleLinkNode<E> prev = node(index - 1);
-        DoubleLinkNode<E> node = prev.next;
-        DoubleLinkNode<E> next = node.next;
+        DoublyLinkNode<E> prev = node(index - 1);
+        DoublyLinkNode<E> node = prev.next;
+        DoublyLinkNode<E> next = node.next;
         prev.next = next;
         next.prev = prev;
         size--;
         return node.item;
+    }
+
+    @Override
+    public final E remove(E item) {
+        ObjectUtil.requireNonEmpty(this);
+        DoublyLinkNode<E> node = head.next;
+        while (Objects.nonNull(node)) {
+            if (Objects.equals(node.item, item)) {
+                break;
+            }
+            node = node.next;
+        }
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        DoublyLinkNode<E> prev = node.prev;
+        DoublyLinkNode<E> next = node.next;
+        prev.next = next;
+        next.prev = prev;
+        size--;
+        return item;
     }
 
     @Override
@@ -129,9 +153,9 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
         return CollectionUtil.toArray(this);
     }
 
-    private class DoubleLinkedListIterator implements Iterator<E> {
+    private class DoublyLinkedListIterator implements Iterator<E> {
 
-        private DoubleLinkNode<E> node = head.next;
+        private DoublyLinkNode<E> node = head.next;
 
         @Override
         public boolean hasNext() {
@@ -148,12 +172,7 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new DoubleLinkedListIterator();
-    }
-
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
+        return new DoublyLinkedListIterator();
     }
 
     @Override
@@ -162,8 +181,8 @@ public class DoubleLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public DoubleLinkedListImpl<E> copy() {
-        DoubleLinkedListImpl<E> list = new DoubleLinkedListImpl<>();
+    public DoublyLinkedListImpl<E> copy() {
+        DoublyLinkedListImpl<E> list = new DoublyLinkedListImpl<>();
         Iterator<E> itr = iterator();
         while (itr.hasNext()) {
             list.add(itr.next());

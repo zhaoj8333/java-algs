@@ -113,7 +113,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     private static BufferedImage offscreenImage, onscreenImage;
     private static Graphics2D offscreen, onscreen;
 
-    // singleton for callbacks: avoids generation of extra .class files
+    // Singlyton for callbacks: avoids generation of extra .class files
     private static final DrawUtil std = new DrawUtil();
 
     // the frame for drawing to the screen
@@ -135,7 +135,7 @@ public final class DrawUtil implements ActionListener, MouseListener, MouseMotio
     // used to control the frame rate
     private static long nextDraw = -1;
 
-    // singleton pattern: client can't instantiate
+    // Singlyton pattern: client can't instantiate
     private DrawUtil() { }
 
     // static initializer

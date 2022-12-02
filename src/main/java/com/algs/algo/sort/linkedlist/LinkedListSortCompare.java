@@ -17,7 +17,7 @@ public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTas
         Constructor<?> constructor = null;
         Comparator<Integer> cmp = Comparator.comparingInt(a -> a);
         try {
-            constructor = sortKlass.getConstructor(Comparable[].class, Comparator.class);
+            constructor = sortKlass.getConstructor(ILinkedList.class, Comparator.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -31,12 +31,12 @@ public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTas
     @Override
     protected Object profileTask() {
         sort.sort();
-        return sort.linkedList.size();
+        return sort.getLinkedList().size();
     }
 
     @Override
     protected void assertResult() {
-        Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.linkedList));
+        Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.getLinkedList()));
     }
 
 }

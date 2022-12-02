@@ -20,7 +20,7 @@ class ErdosRenyiTest {
     }
 
     /**
-     * In order to get one single component, the numbers of pair needed is ~1/2 n * logN
+     * In order to get one Singly component, the numbers of pair needed is ~1/2 n * logN
      */
     @Test
     void _1_5_21() {

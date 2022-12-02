@@ -5,11 +5,11 @@ import com.algs.datastructure.collection.list.IList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class DoubleLinkedListImplTest {
+class DoublyLinkedListImplTest {
 
     @Test
     void test() {
-        IList<Integer> dll = new DoubleLinkedListImpl<>();
+        IList<Integer> dll = new DoublyLinkedListImpl<>();
         Assertions.assertEquals(0, dll.size());
         Assertions.assertTrue(dll.isEmpty());
 
@@ -37,9 +37,11 @@ class DoubleLinkedListImplTest {
         array = dll.toArray();
         Assertions.assertEquals(20, array[1]);
         Integer[] ints = new Integer[] {5, 20, 6, 2, 3, 4};
+        // 5 20 6 2 3 4
         Assertions.assertArrayEquals(ints, array);
 
         dll.remove(3);
+        // 5 20 6 3 4
         array = dll.toArray();
         Assertions.assertEquals(5, array[0]);
         Assertions.assertEquals(6, array[2]);
@@ -50,6 +52,7 @@ class DoubleLinkedListImplTest {
         Assertions.assertEquals(0, dll.indexOf(5));
         Assertions.assertEquals(2, dll.indexOf(6));
 
+        // 5 20 6 3 4
         dll.set(1, 20);
         Assertions.assertEquals(20, dll.get(1));
         array = dll.toArray();
@@ -57,6 +60,7 @@ class DoubleLinkedListImplTest {
 
         dll.remove(1);
 
+        // 5 6 3 4
 //        Integer[] ints = new Integer[] {5, 20, 6, 2, 3, 4};
 //        ints = new Integer[] {5, 6, 3, 4};
         array = dll.toArray();
@@ -71,6 +75,10 @@ class DoubleLinkedListImplTest {
             Integer node = itr.next();
             System.out.println(node);
         }
+
+        dll.remove(Integer.valueOf(6));
+        Assertions.assertEquals(3, dll.size());
+        Assertions.assertFalse(dll.contains(6));
 
         dll.clear();
         Assertions.assertTrue(dll.isEmpty());

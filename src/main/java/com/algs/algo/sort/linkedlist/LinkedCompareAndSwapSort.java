@@ -20,6 +20,10 @@ public abstract class LinkedCompareAndSwapSort<E extends Comparable<E>> implemen
         this.comparator = comparator;
     }
 
+    public ILinkedList<E> getLinkedList() {
+        return linkedList;
+    }
+
     protected int compareIndex(int i, int j) {
         return compareEntry(linkedList.node(i).getValue(), linkedList.node(j).getValue());
     }

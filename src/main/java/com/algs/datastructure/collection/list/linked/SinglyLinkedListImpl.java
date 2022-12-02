@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.SingleLinkNode;
+import com.algs.datastructure.collection.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
@@ -10,20 +10,20 @@ import com.algs.utils.RangeUtil;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SingleLinkedListImpl<E> implements ILinkedList<E> {
+public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
 
     private int size;
-    private final SingleLinkNode<E> head = new SingleLinkNode<>(null, null);
+    private final SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
 
     /**
-     * prev -> newSingleLinkNode -> next
+     * prev -> newSinglyLinkNode -> next
      */
     @Override
     public void add(int index, E item) {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(index, 0, size);
-        SingleLinkNode<E> prev = node(index - 1);
-        prev.next = new SingleLinkNode<>(item, prev.next);
+        SinglyLinkNode<E> prev = node(index - 1);
+        prev.next = new SinglyLinkNode<>(item, prev.next);
         size++;
     }
 
@@ -34,14 +34,14 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public E get(int index) {
-        SingleLinkNode<E> node = node(index);
+        SinglyLinkNode<E> node = node(index);
         return Objects.isNull(node) ? null : node.item;
     }
 
     @Override
     public E set(int index, E item) {
         E oldVal = null;
-        SingleLinkNode<E> node = node(index);
+        SinglyLinkNode<E> node = node(index);
         if (Objects.nonNull(node)) {
             oldVal = node.item;
             node.item = item;
@@ -51,7 +51,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public int indexOf(E item) {
-        SingleLinkNode<E> node = head.next;
+        SinglyLinkNode<E> node = head.next;
         if (Objects.isNull(item)) {
             for (int i = 0; i < size; i++) {
                 if (Objects.isNull(node)) {
@@ -86,7 +86,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      * newHead
      *
      *  have to remember three sequential node: newHead, node, next(node.next)
-     *  in each iteration, get the node(firstSingleLinkNode) and insert it to the newHead,
+     *  in each iteration, get the node(firstSinglyLinkNode) and insert it to the newHead,
      *  keep node(first) point to the first node of the rest of previous linkedlist
      *
      *  but essentially, iterate reverse is {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
@@ -94,11 +94,11 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      * @param node oldHead
      * @return newHead
      */
-    private SingleLinkNode<E> reverse0(SingleLinkNode<E> node) {
-        SingleLinkNode<E> first = node;
-        SingleLinkNode<E> newHead = null;
+    private SinglyLinkNode<E> reverse0(SinglyLinkNode<E> node) {
+        SinglyLinkNode<E> first = node;
+        SinglyLinkNode<E> newHead = null;
         while (Objects.nonNull(first)) {
-            SingleLinkNode<E> second = first.next;
+            SinglyLinkNode<E> second = first.next;
             first.next = newHead;
             newHead = first;
             first = second;
@@ -111,12 +111,12 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      * n1 -> n2 -> n3 .... -> n*
      *
      * equals to {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
-     * Side effect： use brand new {@link SingleLinkNode} to replace old {@link SingleLinkNode}
+     * Side effect： use brand new {@link SinglyLinkNode} to replace old {@link SinglyLinkNode}
      */
-    private SingleLinkNode<E> reverse0x(SingleLinkNode<E> node) {
-        SingleLinkNode<E> newHead = null;
+    private SinglyLinkNode<E> reverse0x(SinglyLinkNode<E> node) {
+        SinglyLinkNode<E> newHead = null;
         while (Objects.nonNull(node)) {
-            newHead = new SingleLinkNode<>(node.item, newHead);
+            newHead = new SinglyLinkNode<>(node.item, newHead);
             node = node.next;
         }
         return newHead;
@@ -127,12 +127,12 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      *      --------------------------------
      * null <- n1 <- n2 <- n3 .... n9 <- n10
      */
-    private SingleLinkNode<E> reverse(SingleLinkNode<E> node) {
+    private SinglyLinkNode<E> reverse(SinglyLinkNode<E> node) {
         if (Objects.isNull(node) || Objects.isNull(node.next)) {
             return node;
         }
-        SingleLinkNode<E> newHead = reverse(node.next);
-        SingleLinkNode<E> next = node.next;
+        SinglyLinkNode<E> newHead = reverse(node.next);
+        SinglyLinkNode<E> next = node.next;
         next.next = node;
         node.next = null;
         return newHead;
@@ -150,12 +150,12 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public boolean contains(E item) {
-        return indexOf(item) == DefaultValues.ELEMENT_NOT_FOUND;
+        return indexOf(item) > DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
-    public SingleLinkNode<E> node(int index) {
-        SingleLinkNode<E> node = head;
+    public SinglyLinkNode<E> node(int index) {
+        SinglyLinkNode<E> node = head;
         for (int i = -1; i < index; i++) {
             node = node.next;
         }
@@ -164,7 +164,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public ILinkedList<E> copy() {
-        SingleLinkedListImpl<E> list = new SingleLinkedListImpl<E>();
+        SinglyLinkedListImpl<E> list = new SinglyLinkedListImpl<E>();
         Iterator<E> itr = iterator();
         while (itr.hasNext()) {
             list.add(itr.next());
@@ -177,11 +177,16 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
      */
     @Override
     public E remove(int index) {
-        SingleLinkNode<E> prev = node(index - 1);
-        SingleLinkNode<E> node = prev.next;
+        SinglyLinkNode<E> prev = node(index - 1);
+        SinglyLinkNode<E> node = prev.next;
         prev.next = node.next;
         size--;
         return node.item;
+    }
+
+    @Override
+    public final E remove(E item) {
+        throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
@@ -200,9 +205,9 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
         return Arrays.toString(toArray());
     }
 
-    private class SingleLinkedListIterator implements Iterator<E> {
+    private class SinglyLinkedListIterator implements Iterator<E> {
 
-        private SingleLinkNode<E> node = head;
+        private SinglyLinkNode<E> node = head;
 
         @Override
         public boolean hasNext() {
@@ -219,12 +224,7 @@ public class SingleLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new SingleLinkedListIterator();
-    }
-
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
+        return new SinglyLinkedListIterator();
     }
 
 }

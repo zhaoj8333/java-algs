@@ -2,15 +2,15 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class SingleLinkedListImplTest {
+class SinglyLinkedListImplTest {
 
     @Test
     void test() {
-        IList<Integer> sll = new SingleLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
         Assertions.assertEquals(0, sll.size());
         Assertions.assertTrue(sll.isEmpty());
 
@@ -90,7 +90,7 @@ class SingleLinkedListImplTest {
 
     @Test
     void set() {
-        IList<Integer> sll = new SingleLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
 
         sll.add(1);
         sll.add(2);
@@ -136,7 +136,7 @@ class SingleLinkedListImplTest {
 
     @Test
     void reverse() {
-        IList<Integer> sll = new SingleLinkedListImpl<>();
+        IList<Integer> sll = new SinglyLinkedListImpl<>();
         Integer[] integers = new Integer[10];
         for (int i = 0; i < 10; i++) {
             sll.add(i * 100);

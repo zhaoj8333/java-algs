@@ -2,12 +2,12 @@ package com.algs.datastructure.collection.node;
 
 import java.util.Objects;
 
-public class SingleLinkNode<E> implements LinkNode<E> {
+public class SinglyLinkNode<E> implements LinkNode<E> {
 
     public E item;
-    public SingleLinkNode<E> next;
+    public SinglyLinkNode<E> next;
 
-    public SingleLinkNode(E item, SingleLinkNode<E> next) {
+    public SinglyLinkNode(E item, SinglyLinkNode<E> next) {
         this.item = item;
         this.next = next;
     }
@@ -16,7 +16,7 @@ public class SingleLinkNode<E> implements LinkNode<E> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SingleLinkNode<?> that = (SingleLinkNode<?>) o;
+        SinglyLinkNode<?> that = (SinglyLinkNode<?>) o;
         if (item == null) return false;
         if (that.item == null) return false;
         return Objects.equals(item, that.item) &&

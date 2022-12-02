@@ -4,7 +4,7 @@ import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.linked.SingleLinkedListImpl;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.Connection;
 
 import java.util.Random;
@@ -16,7 +16,7 @@ public class DJPerformanceCompare<E> extends StopWatchTask<E> {
 
     public DJPerformanceCompare(IDisjointSet<E> uf, IDeque<E> q) {
         this.uf = uf;
-        pairs = new SingleLinkedListImpl<>();
+        pairs = new SinglyLinkedListImpl<>();
         Random r = new Random();
         while (!q.isEmpty()) {
             E v1 = q.deque();

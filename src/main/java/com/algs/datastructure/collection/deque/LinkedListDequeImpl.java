@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.deque;
 
-import com.algs.datastructure.collection.node.DoubleLinkNode;
+import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
 
@@ -9,22 +9,22 @@ import java.util.Objects;
 public class LinkedListDequeImpl<E> implements IDeque<E> {
 
     private int size;
-    private DoubleLinkNode<E> head;
-    private DoubleLinkNode<E> tail;
+    private DoublyLinkNode<E> head;
+    private DoublyLinkNode<E> tail;
 
     /**
      * enquedHead(newHead) <-> head <-> n1 <-> ... tail
-     * [enqueuedDoubleLinkNode (newTail)] <-> null
+     * [enqueuedDoublyLinkNode (newTail)] <-> null
      */
     @Override
     public void enqueHead(E item) {
-        DoubleLinkNode<E> DoubleLinkNode = new DoubleLinkNode<>(item, null, head);
+        DoublyLinkNode<E> DoublyLinkNode = new DoublyLinkNode<>(item, null, head);
         if (Objects.nonNull(head)) {
-            head.prev = DoubleLinkNode;
+            head.prev = DoublyLinkNode;
         } else {
-            tail = DoubleLinkNode;
+            tail = DoublyLinkNode;
         }
-        head = DoubleLinkNode;
+        head = DoublyLinkNode;
         size++;
     }
 
@@ -34,8 +34,8 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeHead() {
         ObjectUtil.requireNonEmpty(this);
-        DoubleLinkNode<E> node = head;
-        DoubleLinkNode<E> next = node.next;
+        DoublyLinkNode<E> node = head;
+        DoublyLinkNode<E> next = node.next;
         if (Objects.nonNull(next)) {
             next.prev = null;
         }
@@ -45,12 +45,12 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> n1 <-> n2 <-> ... <-> tail <-> enqueuedDoubleLinkNode (newTail)
-     * null [enqueuedDoubleLinkNode (newTail)]
+     * head <-> n1 <-> n2 <-> ... <-> tail <-> enqueuedDoublyLinkNode (newTail)
+     * null [enqueuedDoublyLinkNode (newTail)]
      */
     @Override
     public void enqueTail(E item) {
-        DoubleLinkNode<E> node = new DoubleLinkNode<>(item, tail, null);
+        DoublyLinkNode<E> node = new DoublyLinkNode<>(item, tail, null);
         if (Objects.nonNull(tail)) {
             tail.next = node;
         } else {
@@ -61,14 +61,14 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     }
 
     /**
-     * head <-> n1 <-> ... <-> prev <-> tail(dequeuedDoubleLinkNode (newTail))
-     * null [enqueuedDoubleLinkNode (newTail)]
+     * head <-> n1 <-> ... <-> prev <-> tail(dequeuedDoublyLinkNode (newTail))
+     * null [enqueuedDoublyLinkNode (newTail)]
      */
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        DoubleLinkNode<E> node = tail;
-        DoubleLinkNode<E> prev = tail.prev;
+        DoublyLinkNode<E> node = tail;
+        DoublyLinkNode<E> prev = tail.prev;
         if (Objects.nonNull(prev)) {
             prev.next = null;
         }
@@ -117,8 +117,8 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
         return Objects.nonNull(node(item));
     }
 
-    private DoubleLinkNode<E> node(E item) {
-        DoubleLinkNode<E> node = head;
+    private DoublyLinkNode<E> node(E item) {
+        DoublyLinkNode<E> node = head;
         while (Objects.nonNull(node)) {
             if (Objects.equals(node.item, item)) {
                 return node;
@@ -138,7 +138,7 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
     @Override
     public E[] toArray() {
         E[] array = (E[]) new Object[size];
-        DoubleLinkNode<E> node = head;
+        DoublyLinkNode<E> node = head;
         int index = 0;
         while (Objects.nonNull(node)) {
             array[index++] = node.item;
@@ -149,7 +149,7 @@ public class LinkedListDequeImpl<E> implements IDeque<E> {
 
     private class LinkedListDequeIterator<E> implements Iterator<E> {
 
-        private DoubleLinkNode<E> node = (DoubleLinkNode<E>) head;
+        private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
 
         @Override
         public boolean hasNext() {

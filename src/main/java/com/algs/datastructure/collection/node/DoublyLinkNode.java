@@ -1,12 +1,12 @@
 package com.algs.datastructure.collection.node;
 
-public class DoubleLinkNode<E> implements LinkNode<E> {
+public class DoublyLinkNode<E> implements LinkNode<E> {
 
     public E item;
-    public DoubleLinkNode<E> prev;
-    public DoubleLinkNode<E> next;
+    public DoublyLinkNode<E> prev;
+    public DoublyLinkNode<E> next;
 
-    public DoubleLinkNode(E item, DoubleLinkNode<E> prev, DoubleLinkNode<E> next) {
+    public DoublyLinkNode(E item, DoublyLinkNode<E> prev, DoublyLinkNode<E> next) {
         this.item = item;
         this.prev = prev;
         this.next = next;
