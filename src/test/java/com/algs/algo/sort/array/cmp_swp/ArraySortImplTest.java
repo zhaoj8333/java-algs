@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 
-public class ArraySortImplTest {
+class ArraySortImplTest {
 
     @Test
     void test() {

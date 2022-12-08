@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  *
  * {@link MergeSortBuOptmImpl}: 16
  */
-public class MergeSortUsingInsertionThresholdTest {
+class MergeSortUsingInsertionThresholdTest {
 
     @Test
     void test() {

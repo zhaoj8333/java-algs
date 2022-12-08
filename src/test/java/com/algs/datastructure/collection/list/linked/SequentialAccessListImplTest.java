@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-public class SequentialAccessListImplTest extends ImplFunctionalityTest {
+class SequentialAccessListImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
             DoublyLinkedListImpl.class,

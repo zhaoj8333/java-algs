@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class QueueImplTest extends ImplFunctionalityTest {
+class QueueImplTest extends ImplFunctionalityTest {
 
     protected final Class<?>[] targetClasses = new Class[]{
             ArrayDequeImpl.class,

@@ -1,13 +1,24 @@
-package com.algs.algo.unionfind.non_generic.qu.weighed;
+package com.algs.algo.unionfind;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.non_generic.IDynamicUnionFind;
+import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedLinkedListImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-class RankWeighedLinkedListImplTest {
+class QuickUnionImplTest extends ImplFunctionalityTest {
 
-    @Test
-    void test() {
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
+    }
+
+    @Override
+    protected void testEach(Object obj) {
         IDynamicUnionFind uf = new RankWeighedLinkedListImpl();
         Assertions.assertEquals(0, uf.count());
 
@@ -33,22 +44,9 @@ class RankWeighedLinkedListImplTest {
         Assertions.assertTrue(uf.connected(4, 1));
         Assertions.assertTrue(uf.connected(4, 2));
         Assertions.assertEquals(7, uf.count());
-
     }
 
-    @Test
-    void count() {
-    }
-
-    @Test
-    void union() {
-    }
-
-    @Test
-    void find() {
-    }
-
-    @Test
-    void connected() {
+    @Override
+    public void test() {
     }
 }

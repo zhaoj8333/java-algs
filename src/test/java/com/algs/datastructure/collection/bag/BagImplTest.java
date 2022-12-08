@@ -5,7 +5,7 @@ import com.algs.datastructure.collection.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class BagImplTest extends ImplFunctionalityTest {
+class BagImplTest extends ImplFunctionalityTest {
 
     @SuppressWarnings("unchecked")
     protected Class<IBag>[] targetClasses = (Class<IBag>[]) new Class<?>[] {

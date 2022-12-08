@@ -1,9 +1,10 @@
-package com.algs.algo.unionfind.non_generic;
+package com.algs.algo.unionfind;
 
 import com.algs.DefaultValues;
+import com.algs.ImplFunctionalityTest;
+import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl0;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingWithoutWeightImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingWithoutWeightImpl;
@@ -17,40 +18,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class NonGenericImplTest {
+class UnionFindImplTest extends ImplFunctionalityTest {
 
     @Test
-    void testPathSplitting() {
-        IUnionFind qu = new SplittingWithoutWeightImpl();
-
-        qu.union(0, 1);
-        qu.union(1, 2);
-        qu.union(2, 3);
-        qu.union(3, 4);
-        qu.union(4, 5);
-
-        qu.find(0);
-        qu.find(2);
-
-    }
-
-    @Test
-    void testPathHalving() {
-        IUnionFind qu = new HalvingWithoutWeightImpl();
-
-        qu.union(0, 1);
-        qu.union(1, 2);
-        qu.union(2, 3);
-        qu.union(3, 4);
-        qu.union(4, 5);
-
-        qu.find(0);
-        qu.find(2);
-
-    }
-
-    @Test
-    void test() {
+    @Override
+    public void test() {
         IQueue<IUnionFind> ufs = new ArrayQueueImpl<>();
 //        ufs.enque(new QuickUnionImpl());
 //        ufs.enque(new QuPathCompressImpl());
@@ -63,66 +35,32 @@ class NonGenericImplTest {
 //        ufs.enque(new WeighedQuickFindImpl());
 
         while (!ufs.isEmpty()) {
-            IUnionFind next = ufs.deque();
+            IUnionFind uf = ufs.deque();
             try {
-                commonFunctionality(next);
+                Assertions.assertEquals(DefaultValues.DEFAULT_CAPACITY, uf.count());
+                Assertions.assertEquals(0, uf.find(0));
+                Assertions.assertEquals(3, uf.find(3));
+
+                uf.union(1, 2);
+                Assertions.assertTrue(uf.connected(1, 2));
+                Assertions.assertEquals(9, uf.count());
+//        Assertions.assertEquals(2, uf.find(2));
+
+                uf.union(4, 5);
+                Assertions.assertTrue(uf.connected(4, 5));
+                Assertions.assertEquals(8, uf.count());
+
+                uf.union(2, 4);
+                Assertions.assertTrue(uf.connected(1, 5));
+                Assertions.assertTrue(uf.connected(2, 5));
+                Assertions.assertTrue(uf.connected(4, 1));
+                Assertions.assertTrue(uf.connected(4, 2));
+                Assertions.assertEquals(7, uf.count());
             } catch (Throwable t) {
-                System.out.println(next.getClass().getName());
+                System.out.println(uf.getClass().getName());
                 t.printStackTrace();
             }
         }
-    }
-
-    void commonFunctionality(IUnionFind uf) {
-        Assertions.assertEquals(DefaultValues.DEFAULT_CAPACITY, uf.count());
-        Assertions.assertEquals(0, uf.find(0));
-        Assertions.assertEquals(3, uf.find(3));
-
-        uf.union(1, 2);
-        Assertions.assertTrue(uf.connected(1, 2));
-        Assertions.assertEquals(9, uf.count());
-//        Assertions.assertEquals(2, uf.find(2));
-
-        uf.union(4, 5);
-        Assertions.assertTrue(uf.connected(4, 5));
-        Assertions.assertEquals(8, uf.count());
-
-        uf.union(2, 4);
-        Assertions.assertTrue(uf.connected(1, 5));
-        Assertions.assertTrue(uf.connected(2, 5));
-        Assertions.assertTrue(uf.connected(4, 1));
-        Assertions.assertTrue(uf.connected(4, 2));
-        Assertions.assertEquals(7, uf.count());
-
-    }
-
-    @Test
-    void find() {
-        IUnionFind uf = new FullCompressImpl0();
-        Assertions.assertEquals(0, uf.find(0));
-        Assertions.assertEquals(2, uf.find(2));
-        Assertions.assertEquals(4, uf.find(4));
-        Assertions.assertEquals(8, uf.find(8));
-
-        uf.union(0, 2);
-        int i0 = uf.find(0);
-        int i2 = uf.find(2);
-        Assertions.assertEquals(i0, i2);
-        Assertions.assertTrue(uf.connected(0, 2));
-
-        uf.union(4, 5);
-        int i4 = uf.find(4);
-        int i5 = uf.find(5);
-        Assertions.assertEquals(i4, i5);
-        Assertions.assertTrue(uf.connected(4, 5));
-
-        uf.union(0, 4);
-        int a = uf.find(0);
-        int b = uf.find(4);
-
-        Assertions.assertTrue(uf.connected(0, 4));
-        Assertions.assertTrue(uf.connected(2, 5));
-
     }
 
     @Test
@@ -172,15 +110,49 @@ class NonGenericImplTest {
         System.out.println(Arrays.toString(uf.getIds()));
     }
 
-    @Test
-    void count() {
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
     }
 
-    @Test
-    void union() {
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
     }
 
-    @Test
-    void connected() {
+    @Override
+    protected void testEach(Object obj) {
+
+
+        testPathSplitting();
+        testPathHalving();
+    }
+
+    void testPathSplitting() {
+        IUnionFind qu = new SplittingWithoutWeightImpl();
+
+        qu.union(0, 1);
+        qu.union(1, 2);
+        qu.union(2, 3);
+        qu.union(3, 4);
+        qu.union(4, 5);
+
+        qu.find(0);
+        qu.find(2);
+
+    }
+
+    void testPathHalving() {
+        IUnionFind qu = new HalvingWithoutWeightImpl();
+
+        qu.union(0, 1);
+        qu.union(1, 2);
+        qu.union(2, 3);
+        qu.union(3, 4);
+        qu.union(4, 5);
+
+        qu.find(0);
+        qu.find(2);
+
     }
 }

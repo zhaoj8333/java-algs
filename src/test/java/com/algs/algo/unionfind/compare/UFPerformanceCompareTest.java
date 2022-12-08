@@ -1,6 +1,8 @@
-package com.algs.algo.unionfind.non_generic.qu;
+package com.algs.algo.unionfind.compare;
 
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
+import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
+import com.algs.algo.unionfind.non_generic.qu.UFPerformanceCompare;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl0;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingImpl;

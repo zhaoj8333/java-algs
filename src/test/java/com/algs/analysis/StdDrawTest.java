@@ -5,7 +5,7 @@ import com.algs.utils.DrawUtil;
 import java.util.Arrays;
 import java.util.Random;
 
-public class StdDrawTest {
+class StdDrawTest {
 
     public static void main(String[] args) throws InterruptedException {
 //        DrawUtil.point(200, 200);

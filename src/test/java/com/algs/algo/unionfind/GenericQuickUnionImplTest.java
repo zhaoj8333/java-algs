@@ -1,13 +1,13 @@
-package com.algs.algo.unionfind.generic.qu;
+package com.algs.algo.unionfind;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.generic.IDisjointSet;
 import com.algs.algo.unionfind.generic.Village;
+import com.algs.algo.unionfind.generic.qu.WeighedPathHalvingImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-class GenericImplTest {
+class GenericQuickUnionImplTest extends ImplFunctionalityTest {
 
-    @Test
     void testVillage() {
         IDisjointSet<Village> uf = new WeighedPathHalvingImpl<>(100);
         Village village1 = new Village("name" + 1, "location: " + 1);
@@ -23,7 +23,6 @@ class GenericImplTest {
 
     }
 
-    @Test
     void testInt() {
         IDisjointSet<Integer> uf = new WeighedPathHalvingImpl<>();
         for (int i = 0; i < 10; i++) {
@@ -56,19 +55,24 @@ class GenericImplTest {
 
     }
 
-    @Test
-    void count() {
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
     }
 
-    @Test
-    void union() {
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
     }
 
-    @Test
-    void find() {
+    @Override
+    protected void testEach(Object obj) {
+        testInt();
+        testVillage();
     }
 
-    @Test
-    void connected() {
+    @Override
+    public void test() {
+
     }
 }

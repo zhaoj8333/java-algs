@@ -1,5 +1,7 @@
-package com.algs.algo.unionfind.non_generic;
+package com.algs.algo.unionfind;
 
+import com.algs.algo.unionfind.non_generic.ErdosRenyi;
+import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import org.junit.jupiter.api.Test;
@@ -36,25 +38,5 @@ class ErdosRenyiTest {
             System.out.println("1/2NlnN: " + n * Math.log(n) * 0.5);
             System.out.println();
         }
-    }
-
-    @Test
-    void count() {
-    }
-
-    @Test
-    void union() {
-    }
-
-    @Test
-    void find() {
-    }
-
-    @Test
-    void connected() {
-    }
-
-    @Test
-    void getIds() {
     }
 }

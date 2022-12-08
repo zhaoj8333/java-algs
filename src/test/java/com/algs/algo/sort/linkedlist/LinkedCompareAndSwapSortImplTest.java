@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-public class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
+class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     protected final Class<?>[] targetClasses = new Class<?>[] {
             SinglyLinkedListSortImpl.class,

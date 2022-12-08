@@ -1,12 +1,13 @@
-package com.algs.algo.unionfind.non_generic;
+package com.algs.algo.unionfind;
 
+import com.algs.algo.unionfind.non_generic.RandomGridGenerator;
 import com.algs.utils.Connection;
 import com.algs.utils.DrawUtil;
 
 /**
  * 1.5.19
  */
-public class RandomGridGeneratorGraph {
+class RandomGridGeneratorGraph {
 
     public static void main(String[] args) throws InterruptedException {
         Object[] conns = RandomGridGenerator.get(7);

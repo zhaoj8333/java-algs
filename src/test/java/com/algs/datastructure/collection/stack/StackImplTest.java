@@ -8,7 +8,7 @@ import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class StackImplTest extends ImplFunctionalityTest {
+class StackImplTest extends ImplFunctionalityTest {
 
     protected final Class<?>[] targetClasses = new Class[]{
             ArrayStackImpl.class,

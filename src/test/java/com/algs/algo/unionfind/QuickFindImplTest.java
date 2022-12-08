@@ -1,5 +1,6 @@
-package com.algs.algo.unionfind.non_generic.qf;
+package com.algs.algo.unionfind;
 
+import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
