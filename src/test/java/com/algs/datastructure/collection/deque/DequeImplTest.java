@@ -1,15 +1,31 @@
 package com.algs.datastructure.collection.deque;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ArrayDequeImplTest {
+class DequeImplTest extends ImplFunctionalityTest {
 
-    @Test
-    void test() {
+    protected Class<?>[] targetClasses = new Class<?>[] {
+        ArrayDequeImpl.class,
+            CircularLinkedListDequeImpl.class,
+            LinkedListDequeImpl.class,
+            LinkedListDequeImpl0.class,
+    };
+
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
+    }
+
+    @Override
+    protected void testEach(Object obj) {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         for (int i = 0; i < 3; i++) {
@@ -31,10 +47,14 @@ class ArrayDequeImplTest {
 
         Integer d2 = q.dequeTail();
         Assertions.assertEquals(2, d2);
-
     }
 
     @Test
+    @Override
+    public void test() {
+        test(targetClasses);
+    }
+
     void enqueueHead() {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         q.enque(-1);
@@ -49,15 +69,6 @@ class ArrayDequeImplTest {
 
     }
 
-    @Test
-    void dequeueHead() {
-    }
-
-    @Test
-    void enqueueTail() {
-    }
-
-    @Test
     void dequeueTail() {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         q.enque(-1);
@@ -80,15 +91,6 @@ class ArrayDequeImplTest {
         Assertions.assertTrue(q.isEmpty());
     }
 
-    @Test
-    void peekHead() {
-    }
-
-    @Test
-    void peekTail() {
-    }
-
-    @Test
     void enqueue() {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         for (int i = 0; i < 10; i++) {
@@ -102,7 +104,6 @@ class ArrayDequeImplTest {
         Assertions.assertThrows(RuntimeException.class, null);
     }
 
-    @Test
     void dequeue() {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         for (int i = 0; i < 10; i++) {
@@ -129,39 +130,6 @@ class ArrayDequeImplTest {
 
     }
 
-    @Test
-    void peek() {
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
-    void isEmpty() {
-    }
-
-    @Test
-    void contains() {
-    }
-
-    @Test
-    void add() {
-    }
-
-    @Test
-    void remove() {
-    }
-
-    @Test
-    void clear() {
-    }
-
-    @Test
-    void toArray() {
-    }
-
-    @Test
     void iterate() {
         IDeque<Integer> q = new ArrayDequeImpl<>();
         for (int i = 0; i < 10; i++) {
@@ -173,4 +141,5 @@ class ArrayDequeImplTest {
             System.out.println(next);
         }
     }
+
 }

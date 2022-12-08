@@ -1,22 +1,91 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iterator;
-import org.junit.jupiter.api.AfterEach;
+import com.algs.datastructure.collection.deque.ArrayDequeImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ArrayQueueImplTest {
+import java.util.Arrays;
 
-    @BeforeEach
-    void setUp() {
+public class QueueImplTest extends ImplFunctionalityTest {
+
+    protected final Class<?>[] targetClasses = new Class[]{
+            ArrayDequeImpl.class,
+            CircularLinkedListQueueImpl.class,
+            LinkedListQueueImpl.class,
+            LinkedListQueueImpl0.class,
+            QueueImplByPq.class,
+            StackQueueImpl.class,
+            StackQueueImplOptm1.class
+    };
+
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
     }
 
-    @AfterEach
-    void tearDown() {
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
     }
 
-    @Test
+    @Override
+    protected void testEach(Object obj) {
+        enqueue();
+        dequeue();
+        isEmpty();
+        contains();
+        size();
+        clear();
+        toArray();
+        iterate();
+    }
+
+    void circularLinedList() {
+
+        IQueue<Integer> q = new CircularLinkedListQueueImpl<>();
+        Assertions.assertTrue(q.isEmpty());
+
+        q.enque(1);
+        Assertions.assertEquals(1, q.size());
+        q.enque(2);
+        q.enque(3);
+        q.enque(4);
+
+//        Assertions.assertEquals(4, q.get(3));
+//        Assertions.assertTrue(q.contains(4));
+
+        /*
+         *  1 2 3 4
+         */
+        Object[] integers = q.toArray();
+        System.out.println(Arrays.toString(integers));
+
+        Integer deque = q.deque();
+        Assertions.assertEquals(1, deque);
+        deque = q.deque();
+        Assertions.assertEquals(2, deque);
+        deque = q.deque();
+        Assertions.assertEquals(3, deque);
+        deque = q.deque();
+        Assertions.assertEquals(4, deque);
+
+        Assertions.assertTrue(q.isEmpty());
+
+        q.enque(1);
+        q.enque(2);
+        q.enque(3);
+        q.enque(4);
+
+        Iterator<Integer> itr = q.iterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.print(next + " ");
+        }
+        System.out.println();
+    }
+
     void enqueue() {
         IQueue<Integer> q = new ArrayQueueImpl<>(10);
         for (int i = 1; i <= 7; i++) {
@@ -44,7 +113,6 @@ class ArrayQueueImplTest {
         Assertions.assertArrayEquals(ints, array);
     }
 
-    @Test
     void dequeue() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
@@ -57,7 +125,6 @@ class ArrayQueueImplTest {
         Assertions.assertEquals(6, q.size());
     }
 
-    @Test
     void isEmpty() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
@@ -69,7 +136,6 @@ class ArrayQueueImplTest {
         Assertions.assertFalse(q.isEmpty());
     }
 
-    @Test
     void contains() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         for (int i = 1; i <= 7; i++) {
@@ -81,7 +147,6 @@ class ArrayQueueImplTest {
     }
 
 
-    @Test
     void size() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
@@ -93,11 +158,6 @@ class ArrayQueueImplTest {
         Assertions.assertFalse(q.isEmpty());
     }
 
-    @Test
-    void peek() {
-    }
-
-    @Test
     void clear() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
@@ -110,7 +170,6 @@ class ArrayQueueImplTest {
         Assertions.assertNull(q.deque());
     }
 
-    @Test
     void toArray() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         Assertions.assertTrue(q.isEmpty());
@@ -124,7 +183,6 @@ class ArrayQueueImplTest {
         Assertions.assertEquals(q.size(), integers.length);
     }
 
-    @Test
     void iterate() {
         IQueue<Integer> q = new ArrayQueueImpl<>(7);
         for (int i = 1; i <= 7; i++) {
@@ -136,5 +194,11 @@ class ArrayQueueImplTest {
             System.out.println(next);
         }
 
+    }
+
+    @Test
+    @Override
+    public void test() {
+        test(targetClasses);
     }
 }

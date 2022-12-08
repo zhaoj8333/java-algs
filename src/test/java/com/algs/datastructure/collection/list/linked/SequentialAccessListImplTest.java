@@ -6,6 +6,8 @@ import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+
 public class SequentialAccessListImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
@@ -13,6 +15,23 @@ public class SequentialAccessListImplTest extends ImplFunctionalityTest {
             SinglyLinkedListImpl.class,
             SinglyLinkedListImpl0.class,
     };
+
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        Object instance = null;
+        try {
+            Constructor<?> constructor = targetClass.getConstructor();
+            instance = constructor.newInstance();
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        return instance;
+    }
 
     @Test
     @Override

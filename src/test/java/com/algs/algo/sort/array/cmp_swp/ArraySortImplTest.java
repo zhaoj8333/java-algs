@@ -1,15 +1,14 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.algo.sort.ISortable;
-import com.algs.algo.sort.array.cmp_swp.*;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
 import com.graph.analysis.algo.sort.ShellSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
@@ -276,7 +275,7 @@ public class ArraySortImplTest {
     }
 
     /**
-     * find best / worst cases of {@link ShellSortImpl}
+     * find best / worst cases of {@link com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl}
      *
      * max:452
      * worst: {25, 30, 18, 2, 26, 30, 10, 6, 13, 25, 1, 11, 23, 19, 28, 11, 15, 9, 26, 7, 7, 24, 28, 2, 12, 15, 27, 28, 8, 12}

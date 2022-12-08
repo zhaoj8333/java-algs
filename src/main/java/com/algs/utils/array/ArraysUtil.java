@@ -128,6 +128,66 @@ public final class ArraysUtil {
         return target;
     }
 
+    public static Character[] toChars(Object[] array) {
+        boolean b = array[0] instanceof Character;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Character");
+        }
+        Character[] chars = new Character[array.length];
+        for (int i = 0; i < array.length; i++) {
+            chars[i] = (Character) array[i];
+        }
+        return chars;
+    }
+
+    public static Integer[] toIntegers(Object[] array) {
+        boolean b = array[0] instanceof Integer;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Integer");
+        }
+        Integer[] ints = new Integer[array.length];
+        for (int i = 0; i < array.length; i++) {
+            ints[i] = (Integer) array[i];
+        }
+        return ints;
+    }
+
+    public static Long[] toLongs(Object[] array) {
+        boolean b = array[0] instanceof Long;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Long");
+        }
+        Long[] longs = new Long[array.length];
+        for (int i = 0; i < array.length; i++) {
+            longs[i] = (Long) array[i];
+        }
+        return longs;
+    }
+
+    public static Float[] toFloats(Object[] array) {
+        boolean b = array[0] instanceof Integer;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Float");
+        }
+        Float[] floats = new Float[array.length];
+        for (int i = 0; i < array.length; i++) {
+            floats[i] = (Float) array[i];
+        }
+        return floats;
+    }
+
+    public static Double[] toDoubles(Object[] array) {
+        boolean b = array[0] instanceof Integer;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Double");
+        }
+        Double[] doubles = new Double[array.length];
+        for (int i = 0; i < array.length; i++) {
+            doubles[i] = (Double) array[i];
+        }
+        return doubles;
+    }
+
     public static Integer[] copy(Integer[] array) {
         Integer[] target = new Integer[array.length];
         System.arraycopy(array, 0, target, 0, array.length);

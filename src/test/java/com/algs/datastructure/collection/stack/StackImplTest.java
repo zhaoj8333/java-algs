@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.stack;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
@@ -7,10 +8,27 @@ import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ArrayStackImplTest {
+public class StackImplTest extends ImplFunctionalityTest {
 
-    @Test
-    void test() {
+    protected final Class<?>[] targetClasses = new Class[]{
+            ArrayStackImpl.class,
+            DestackImplByDeque.class,
+            LinkedListStackImpl.class,
+            StackImplByPq.class
+    };
+
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
+    }
+
+    @Override
+    protected void testEach(Object obj) {
         IStack<Integer> s = new ArrayStackImpl<>();
         Assertions.assertTrue(s.isEmpty());
 //        s.pop();
@@ -41,76 +59,6 @@ class ArrayStackImplTest {
 
 //        s.pop();
 //        Assertions.assertThrows(RuntimeException.class, null);
-    }
-
-    @Test
-    void testUnmodifiableIterator() {
-        IStack<Integer> s = new ArrayStackImpl<>();
-        for (int i = 10; i > 0; i--) {
-            s.push(i);
-        }
-        Iterator<Integer> itr = s.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-
-    }
-
-    @Test
-    void push() {
-        IStack<Integer> s = new ArrayStackImpl<>();
-        for (int i = 0; i < 18; i++) {
-            s.push(i);
-        }
-    }
-
-    @Test
-    void pop() {
-    }
-
-    @Test
-    void top() {
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
-    void isEmpty() {
-    }
-
-    @Test
-    void contains() {
-    }
-
-    @Test
-    void add() {
-    }
-
-    @Test
-    void remove() {
-    }
-
-    @Test
-    void clear() {
-    }
-
-    @Test
-    void toArray() {
-    }
-
-    @Test
-    void iterator() {
-        IStack<Integer> s = new ArrayStackImpl<>();
-        for (int i = 0; i < 8; i++) {
-            s.push(i);
-        }
-        Iterator<Integer> itr = s.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-
     }
 
     @Test
@@ -161,5 +109,24 @@ class ArrayStackImplTest {
             q.enque(s.pop());
         }
         System.out.println(q);
+
+    }
+
+    @Test
+    void testUnmodifiableIterator() {
+        IStack<Integer> s = new ArrayStackImpl<>();
+        for (int i = 10; i > 0; i--) {
+            s.push(i);
+        }
+        Iterator<Integer> itr = s.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+    }
+
+    @Test
+    @Override
+    public void test() {
+        test(targetClasses);
     }
 }

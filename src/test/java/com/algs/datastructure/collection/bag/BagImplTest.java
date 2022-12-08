@@ -13,6 +13,16 @@ public class BagImplTest extends ImplFunctionalityTest {
             LinkedListBagImpl.class,
     };
 
+    @Override
+    protected Class<?>[] constructArgsType() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        return null;
+    }
+
     protected void testEach(Object obj) {
         IBag<Integer> bag = (IBag<Integer>) obj;
         Assertions.assertTrue(bag.isEmpty());
