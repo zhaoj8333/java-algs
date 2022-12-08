@@ -1,5 +1,7 @@
 package com.algs.utils.array;
 
+import com.algs.utils.RandomUtil;
+
 import java.util.Random;
 
 public final class ArrayGenerator {
@@ -30,8 +32,26 @@ public final class ArrayGenerator {
     public static Integer[] randomIntArray(int length) {
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(length) + 1;
+            array[i] = r.nextInt(length);
         }
+        return array;
+    }
+
+    public static Integer randomNumberLessThan(int max) {
+        while (true) {
+            int number = r.nextInt(max);
+            if (number < max) {
+                return number;
+            }
+        }
+    }
+
+    public static Integer[] randomUniqueArray(int length) {
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = i;
+        }
+        RandomUtil.shuffle(array);
         return array;
     }
 

@@ -5,13 +5,13 @@ package com.algs.utils.file;
  */
 public class FilePath {
 
-    public static String ABABLZW_TXT = "data/ababLZW.txt";
+    public static String ABAB_LZW_TXT = "data/ababLZW.txt";
     public static String BROWNIAN_TXT = "data/brownian.txt";
     public static String TINY_ST_TXT = "data/tinyST.txt";
     public static String TINY_CG_TXT = "data/tinyCG.txt";
     public static String KW1260_TXT = "data/kw1260.txt";
     public static String TINY_BATCH_TXT = "data/tinyBatch.txt";
-    public static String ABRALZW_TXT = "data/abraLZW.txt";
+    public static String ABRA_LZW_TXT = "data/abraLZW.txt";
     public static String ROUTES_TXT = "data/routes.txt";
     public static String TOBE_TXT = "data/tobe.txt";
     public static String TINY_FN_TXT = "data/tinyFN.txt";
@@ -29,10 +29,10 @@ public class FilePath {
     public static String DIFFUSION_TXT = "data/diffusion.txt";
     public static String TINY_DAG_TXT = "data/tinyDAG.txt";
     public static String MOVIES_TXT = "data/movies.txt";
-    public static String MOBYDICK_TXT = "data/mobydick.txt";
+    public static String MOBY_DICK_TXT = "data/mobydick.txt";
     public static String TINY_PQ_TXT = "data/tinyPQ.txt";
     public static String WORDS3_TXT = "data/words3.txt";
-    public static String JOBSPC_TXT = "data/jobsPC.txt";
+    public static String JOBS_PC_TXT = "data/jobsPC.txt";
     public static String UPC_CSV = "data/csv/UPC.csv";
     public static String IP_CSV = "data/csv/ip.csv";
     public static String DJIA_CSV = "data/csv/DJIA.csv";

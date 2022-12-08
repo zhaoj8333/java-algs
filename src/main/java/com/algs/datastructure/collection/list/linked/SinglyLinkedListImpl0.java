@@ -10,7 +10,7 @@ import com.algs.utils.RangeUtil;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
+public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
 
     private int size;
     private SinglyLinkNode<E> head;
@@ -81,7 +81,7 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
     }
 
     @Override
-    public ILinkedList<E> copy() {
+    public ISequentialAccessList<E> copy() {
         SinglyLinkedListImpl0<E> list = new SinglyLinkedListImpl0<E>();
         Iterator<E> itr = iterator();
         while (itr.hasNext()) {
@@ -112,6 +112,7 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
         SinglyLinkNode<E> node = prev.next;
         E item = node.item;
         node.item = null;
+        prev.next = node.next;
         size--;
         return item;
     }
@@ -154,6 +155,25 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
     }
 
     @Override
+    public final E remove(E item) {
+        ObjectUtil.requireNonNull(item);
+        SinglyLinkNode<E> prev = null;
+        SinglyLinkNode<E> node = head;
+        while (Objects.nonNull(node)) {
+            if (Objects.equals(item, node.item)) {
+                break;
+            }
+            prev = node;
+            node = node.next;
+        }
+        E ret = node.item;
+        node.item = null;
+        prev.next = node.next;
+        size--;
+        return ret;
+    }
+
+    @Override
     public String toString() {
         return Arrays.toString(toArray());
     }
@@ -178,11 +198,6 @@ public class SinglyLinkedListImpl0<E> implements ILinkedList<E> {
     @Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator();
-    }
-
-    @Override
-    public final E remove(E item) {
-        throw new UnsupportedOperationException("Unsupported Operation");
     }
 
 }

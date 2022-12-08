@@ -252,4 +252,15 @@ class MergeSortImplTest {
             Assertions.assertEquals(i, q.deque());
         }
     }
+
+    @Test
+    void _2_2_19() {
+        Integer[] array = new Integer[] {3, 0, 2, 1, 4};  // 4
+        array = ArrayGenerator.randomUniqueArray(4);
+        int expected = ArraysUtil.countInversionByBruteForce(array);
+        ArraysUtil.display(array);
+        int count = ArraysUtil.countInversion(array);
+        System.out.println(count);
+        Assertions.assertEquals(expected, count);
+    }
 }

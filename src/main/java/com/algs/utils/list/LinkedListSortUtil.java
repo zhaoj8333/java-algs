@@ -1,7 +1,7 @@
 package com.algs.utils.list;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.utils.CompareUtil;
 
 import java.util.Comparator;
@@ -10,15 +10,15 @@ import java.util.Map;
 
 public class LinkedListSortUtil<E extends Comparable<E>> {
 
-    public static <E extends Comparable<E>> boolean isAsc(ILinkedList<E> list) {
+    public static <E extends Comparable<E>> boolean isAsc(ISequentialAccessList<E> list) {
         return isAsc(list, null);
     }
 
-    public static <E extends Comparable<E>> boolean isDesc(ILinkedList<E> list) {
+    public static <E extends Comparable<E>> boolean isDesc(ISequentialAccessList<E> list) {
         return isDesc(list, null);
     }
 
-    public static <E extends Comparable<E>> boolean isAsc(ILinkedList<E> list, Comparator<E> comparator) {
+    public static <E extends Comparable<E>> boolean isAsc(ISequentialAccessList<E> list, Comparator<E> comparator) {
         if (list.size() == 0 || list.size() == 1) {
             return true;
         }
@@ -35,7 +35,7 @@ public class LinkedListSortUtil<E extends Comparable<E>> {
         return true;
     }
 
-    public static <E extends Comparable<E>> boolean isDesc(ILinkedList<E> list, Comparator<E> comparator) {
+    public static <E extends Comparable<E>> boolean isDesc(ISequentialAccessList<E> list, Comparator<E> comparator) {
         if (list.size() == 0 || list.size() == 1) {
             return true;
         }
@@ -52,18 +52,18 @@ public class LinkedListSortUtil<E extends Comparable<E>> {
         return true;
     }
 
-    public static <E extends Comparable<E>> boolean isSorted(ILinkedList<E> list) {
+    public static <E extends Comparable<E>> boolean isSorted(ISequentialAccessList<E> list) {
         return isSorted(list, null);
     }
 
-    public static <E extends Comparable<E>> boolean isSorted(ILinkedList<E> list, Comparator<E> comparator) {
+    public static <E extends Comparable<E>> boolean isSorted(ISequentialAccessList<E> list, Comparator<E> comparator) {
         return isAsc(list, comparator) || isDesc(list, comparator);
     }
 
     /**
      * Check if elements in the sorted array has been changed
      */
-    public static <E extends Comparable<E>> boolean onlySorted(ILinkedList<E> originalList, ILinkedList<E> sortedList) {
+    public static <E extends Comparable<E>> boolean onlySorted(ISequentialAccessList<E> originalList, ISequentialAccessList<E> sortedList) {
         if (originalList.size() != sortedList.size()) {
             return false;
         }

@@ -5,7 +5,7 @@ package com.algs.datastructure.collection.list;
  *
  * {@link com.algs.datastructure.collection.list.IList}
  *
- * {@link com.algs.datastructure.collection.list.linked.ILinkedList}
+ * {@link com.algs.datastructure.collection.list.linked.ISequentialAccessList}
  * {@link com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl}
  * {@link com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl0}
  *

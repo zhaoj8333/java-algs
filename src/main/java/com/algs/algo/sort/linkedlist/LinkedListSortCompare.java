@@ -1,7 +1,7 @@
 package com.algs.algo.sort.linkedlist;
 
 import com.algs.analysis.StopWatchTask;
-import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.utils.list.LinkedListSortUtil;
 import org.junit.jupiter.api.Assertions;
 
@@ -13,11 +13,11 @@ public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTas
 
     private LinkedCompareAndSwapSort<Integer> sort;
 
-    public LinkedListSortCompare(ILinkedList<Integer> list, Class<?> sortKlass) {
+    public LinkedListSortCompare(ISequentialAccessList<Integer> list, Class<?> sortKlass) {
         Constructor<?> constructor = null;
         Comparator<Integer> cmp = Comparator.comparingInt(a -> a);
         try {
-            constructor = sortKlass.getConstructor(ILinkedList.class, Comparator.class);
+            constructor = sortKlass.getConstructor(ISequentialAccessList.class, Comparator.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

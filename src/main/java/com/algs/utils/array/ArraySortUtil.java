@@ -56,6 +56,13 @@ public class ArraySortUtil<E extends Comparable<E>> {
         array[j] = tmp;
     }
 
+    @Deprecated(forRemoval = true)
+    public static void xorSwap(int[] array, int i, int j) {
+        array[i] = array[i] ^ array[j];
+        array[j] = array[i] ^ array[j];
+        array[i] = array[i] ^ array[j];
+    }
+
     /**
      * Check if elements in the sorted array has been changed
      */

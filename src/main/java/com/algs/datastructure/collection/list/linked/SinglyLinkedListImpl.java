@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.bag.LinkedListBagImpl;
 import com.algs.datastructure.collection.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
@@ -10,7 +11,7 @@ import com.algs.utils.RangeUtil;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
+public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
 
     private int size;
     private final SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
@@ -73,12 +74,11 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     @Override
     public void reverse() {
 //        head.next = reverse(head.next);
-//        head.next = reverse0x(head.next);
         head.next = reverse0(head.next);
     }
 
     /**
-     *  head
+     *  node
      *   |   next
      *  \/   \|/
      *  n1 -> n2 -> n3 .... -> n*
@@ -89,37 +89,20 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
      *  in each iteration, get the node(firstSinglyLinkNode) and insert it to the newHead,
      *  keep node(first) point to the first node of the rest of previous linkedlist
      *
-     *  but essentially, iterate reverse is {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
+     *  Essentially, iterate reverse is {@link LinkedListBagImpl#linkHead(Object)}
      *
      * @param node oldHead
      * @return newHead
      */
     private SinglyLinkNode<E> reverse0(SinglyLinkNode<E> node) {
-        SinglyLinkNode<E> first = node;
-        SinglyLinkNode<E> newHead = null;
-        while (Objects.nonNull(first)) {
-            SinglyLinkNode<E> second = first.next;
-            first.next = newHead;
-            newHead = first;
-            first = second;
-        }
-        return newHead;
-    }
-
-    /**
-     *
-     * n1 -> n2 -> n3 .... -> n*
-     *
-     * equals to {@link com.algs.datastructure.collection.bag.LinkedListBagImpl#linkHead(Object)}
-     * Side effect： use brand new {@link SinglyLinkNode} to replace old {@link SinglyLinkNode}
-     */
-    private SinglyLinkNode<E> reverse0x(SinglyLinkNode<E> node) {
-        SinglyLinkNode<E> newHead = null;
+        SinglyLinkNode<E> prev = null;
         while (Objects.nonNull(node)) {
-            newHead = new SinglyLinkNode<>(node.item, newHead);
-            node = node.next;
+            SinglyLinkNode<E> next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
         }
-        return newHead;
+        return prev;
     }
 
     /**
@@ -163,7 +146,7 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
     }
 
     @Override
-    public ILinkedList<E> copy() {
+    public ISequentialAccessList<E> copy() {
         SinglyLinkedListImpl<E> list = new SinglyLinkedListImpl<E>();
         Iterator<E> itr = iterator();
         while (itr.hasNext()) {
@@ -186,7 +169,21 @@ public class SinglyLinkedListImpl<E> implements ILinkedList<E> {
 
     @Override
     public final E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
+        ObjectUtil.requireNonNull(item);
+        SinglyLinkNode<E> prev = head;
+        SinglyLinkNode<E> node = prev.next;
+        while (Objects.nonNull(node)) {
+            if (Objects.equals(item, node.item)) {
+                break;
+            }
+            prev = node;
+            node = node.next;
+        }
+        E ret = node.item;
+        node.item = null;
+        prev.next = node.next;
+        size--;
+        return ret;
     }
 
     @Override

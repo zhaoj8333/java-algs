@@ -1,10 +1,10 @@
 package com.algs.algo.sort.linkedlist;
 
-import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 
 public class SinglyLinkedListSortImpl<E extends Comparable<E>> extends LinkedCompareAndSwapSort<E> {
 
-    public SinglyLinkedListSortImpl(ILinkedList<E> linkedList) {
+    public SinglyLinkedListSortImpl(ISequentialAccessList<E> linkedList) {
         super(linkedList);
     }
 

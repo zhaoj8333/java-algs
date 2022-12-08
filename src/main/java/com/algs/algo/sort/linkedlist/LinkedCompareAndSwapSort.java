@@ -1,26 +1,26 @@
 package com.algs.algo.sort.linkedlist;
 
 import com.algs.algo.sort.ISortable;
-import com.algs.datastructure.collection.list.linked.ILinkedList;
+import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 
 import java.util.Comparator;
 import java.util.Objects;
 
 public abstract class LinkedCompareAndSwapSort<E extends Comparable<E>> implements ISortable<E> {
 
-    protected final ILinkedList<E> linkedList;
+    protected final ISequentialAccessList<E> linkedList;
     private final Comparator<E> comparator;
 
-    public LinkedCompareAndSwapSort(ILinkedList<E> linkedList) {
+    public LinkedCompareAndSwapSort(ISequentialAccessList<E> linkedList) {
         this(linkedList, null);
     }
 
-    public LinkedCompareAndSwapSort(ILinkedList<E> linkedList, Comparator<E> comparator) {
+    public LinkedCompareAndSwapSort(ISequentialAccessList<E> linkedList, Comparator<E> comparator) {
         this.linkedList = linkedList;
         this.comparator = comparator;
     }
 
-    public ILinkedList<E> getLinkedList() {
+    public ISequentialAccessList<E> getLinkedList() {
         return linkedList;
     }
 

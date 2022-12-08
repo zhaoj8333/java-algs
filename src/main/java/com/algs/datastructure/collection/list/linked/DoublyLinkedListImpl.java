@@ -1,7 +1,6 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.utils.CollectionUtil;
@@ -10,11 +9,11 @@ import com.algs.utils.RangeUtil;
 
 import java.util.Objects;
 
-public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
+public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
 
     private int size;
-    private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
-    private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
+    private DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
+    private DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
     public DoublyLinkedListImpl() {
         head.next = tail;
@@ -116,8 +115,10 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
         DoublyLinkNode<E> next = node.next;
         prev.next = next;
         next.prev = prev;
+        E item = node.item;
+        node.item = null;
         size--;
-        return node.item;
+        return item;
     }
 
     @Override
@@ -175,9 +176,25 @@ public class DoublyLinkedListImpl<E> implements ILinkedList<E> {
         return new DoublyLinkedListIterator();
     }
 
+    /**
+     * head <-> 7 <-> 6 <-> 5 <-> 4 <-> 3 <-> tail
+     */
     @Override
     public final void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
+        DoublyLinkNode<E> oldHead = head;
+        DoublyLinkNode<E> prev = head;
+        DoublyLinkNode<E> node = prev.next;
+        while (Objects.nonNull(node)) {
+            DoublyLinkNode<E> next = node.next;
+            node.next = prev;
+            node.prev = next;
+            prev = node;
+            node = next;
+        }
+        head = prev;
+        tail = oldHead;
+        tail.prev = oldHead.next;
+        tail.next = null;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         size++;
     }
 
-    private void linkHead(E item) {
+    public void linkHead(E item) {
         head = new SinglyLinkNode<>(item, head);
     }
 

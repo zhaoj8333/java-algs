@@ -1,9 +1,11 @@
-package com.algs.datastructure.collection.list.linked;
+package com.algs.datastructure.collection.list.array;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.LinkNode;
 
-public class StaticLinkedList<E> implements ISequentialAccessList<E> {
+/**
+ *
+ */
+public class ArrayListImpl<E> implements RandomAccessList<E> {
 
     @Override
     public void add(int index, E item) {
@@ -72,16 +74,6 @@ public class StaticLinkedList<E> implements ISequentialAccessList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
-    }
-
-    @Override
-    public LinkNode<E> node(int i) {
-        return null;
-    }
-
-    @Override
-    public ISequentialAccessList<E> copy() {
         return null;
     }
 }

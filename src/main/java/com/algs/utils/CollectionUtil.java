@@ -18,16 +18,16 @@ public class CollectionUtil<E> {
     public static <E> String toString(ICollection<E> collection) {
         Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
-        sb.append("[");
+        sb.append('{');
         int index = 0;
         while (itr.hasNext()) {
             index++;
             sb.append(itr.next());
             if (index < collection.size()) {
-                sb.append(", ");
+                sb.append(',').append(' ');
             }
         }
-        sb.append("]");
+        sb.append('}');
         return sb.toString();
     }
 

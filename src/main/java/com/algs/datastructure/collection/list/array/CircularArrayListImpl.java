@@ -1,15 +1,14 @@
 package com.algs.datastructure.collection.list.array;
 
-import java.io.Serializable;
-import java.util.AbstractList;
+import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.list.IList;
+
 import java.util.Collection;
-import java.util.List;
-import java.util.RandomAccess;
 
 /**
  *
  */
-public class CircularArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable {
+public class CircularArrayListImpl<E> implements IList<E>, RandomAccessList<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
 
@@ -23,11 +22,11 @@ public class CircularArrayList<E> extends AbstractList<E> implements List<E>, Ra
 
     private int firstIndex;
 
-    public CircularArrayList() {
+    public CircularArrayListImpl() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
-    public CircularArrayList(Collection<? extends E> c) {
+    public CircularArrayListImpl(Collection<? extends E> c) {
     }
 
     @Override
@@ -39,9 +38,7 @@ public class CircularArrayList<E> extends AbstractList<E> implements List<E>, Ra
         return null;
     }
 
-    public boolean add(E e) {
-
-        return false;
+    public void add(E e) {
     }
 
     public void add(int index, E e) {
@@ -50,6 +47,26 @@ public class CircularArrayList<E> extends AbstractList<E> implements List<E>, Ra
 
     public E remove(int index) {
         return null;
+    }
+
+    @Override
+    public E remove(E item) {
+        return null;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public E[] toArray() {
+        return null;
+    }
+
+    @Override
+    public void reverse() {
+
     }
 
     @Override
@@ -67,5 +84,10 @@ public class CircularArrayList<E> extends AbstractList<E> implements List<E>, Ra
 
     public int indexOf(Object o) {
         return 0;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }
