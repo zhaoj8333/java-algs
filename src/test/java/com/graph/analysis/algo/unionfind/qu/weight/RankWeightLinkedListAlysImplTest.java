@@ -1,10 +1,9 @@
 package com.graph.analysis.algo.unionfind.qu.weight;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.file.FileUtil;
 import com.algs.utils.Connection;
+import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
-import org.junit.jupiter.api.Test;
 
 class RankWeightLinkedListAlysImplTest {
 
@@ -17,51 +16,4 @@ class RankWeightLinkedListAlysImplTest {
 
     }
 
-    @Test
-    void count() {
-    }
-
-    @Test
-    void union() {
-    }
-
-    @Test
-    void find() {
-    }
-
-    @Test
-    void connected() {
-    }
-
-    @Test
-    void newSite() {
-    }
-
-    @Test
-    void getIds() {
-    }
-
-    @Test
-    void notConnectedThenUnion() {
-    }
-
-    @Test
-    void plot() {
-    }
-
-    @Test
-    void testFind() {
-    }
-
-    @Test
-    void testUnion() {
-    }
-
-    @Test
-    void testConnected() {
-    }
-
-    @Test
-    void analyze() {
-    }
 }

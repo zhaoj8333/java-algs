@@ -3,7 +3,7 @@ package com.graph.analysis.algo.sort;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.*;
-import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FileUtil;
@@ -50,7 +50,7 @@ class MergeSortAlysImplTest {
         }
 
         for (int sz = 2; sz < x; sz++) {
-            Integer[] array = ArrayGenerator.randomIntArray(sz);
+            Integer[] array = ArrayBuilder.randomIntArray(sz);
 //            compareTd(array, sz);
             compareBu(array, sz);
        }

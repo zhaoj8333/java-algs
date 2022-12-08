@@ -3,7 +3,7 @@ package com.algs.algo.sort.array.cmp_swp;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl;
 import com.algs.analysis.StopWatchTask;
-import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +18,7 @@ class MergeSortUsingInsertionThresholdTest {
 
     @Test
     void test() {
-        Integer[] array = ArrayGenerator.randomIntArray(900000);
+        Integer[] array = ArrayBuilder.randomIntArray(900000);
 
         for (int i = 2; i < 64; i++) {
             Integer[] copy = ArraysUtil.copy(array);

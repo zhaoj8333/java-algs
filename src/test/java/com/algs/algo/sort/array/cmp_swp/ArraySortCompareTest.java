@@ -6,7 +6,7 @@ import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
-import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArrayBuilder;
 import org.junit.jupiter.api.Test;
 
 class ArraySortCompareTest {
@@ -74,7 +74,7 @@ class ArraySortCompareTest {
      * {@link QuickSortImpl}: 400 ms
      */
     private void execRandomArray(Class<?>[] klasses, int size) {
-        Integer[] array = ArrayGenerator.randomIntArray(size);
+        Integer[] array = ArrayBuilder.randomIntArray(size);
         System.out.println("Init done");
 
         execute(klasses, array);
@@ -87,7 +87,7 @@ class ArraySortCompareTest {
      * {@link InsertionSortImpl}: 3.7 s
      */
     private void execArrayWith2Value(Class<?>[] klasses) {
-        Integer[] array = ArrayGenerator.randomArrayWith2Values(90000, 2, 4);
+        Integer[] array = ArrayBuilder.randomArrayWith2Values(90000, 2, 4);
         System.out.println("Init done");
 
 //        execute(klasses);

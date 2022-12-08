@@ -16,7 +16,7 @@ package com.algs.utils;
  * {@link com.algs.utils.CompareUtil}
  *
  * array:
- * {@link com.algs.utils.array.ArrayGenerator}
+ * {@link com.algs.utils.array.ArrayBuilder}
  * {@link com.algs.utils.array.ArraysUtil}
  * {@link com.algs.utils.array.ArraySortUtil}
  *

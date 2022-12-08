@@ -4,7 +4,7 @@ import com.algs.algo.sort.ISortable;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
@@ -289,7 +289,7 @@ class ArraySortImplTest {
         Integer[] worst = new Integer[0];
         Integer[] best  = new Integer[0];
         for (int i = 0; i < 50000000; i++) {
-            Integer[] array = ArrayGenerator.randomIntArray(30);
+            Integer[] array = ArrayBuilder.randomIntArray(30);
             CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copy(array));
             sort.sort();
             int cost = sort.getCost();

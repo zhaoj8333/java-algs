@@ -12,14 +12,6 @@ import org.junit.jupiter.api.Test;
 class DJPerformanceCompareTest {
 
     @Test
-    void beforeExec() {
-    }
-
-    @Test
-    void afterExec() {
-    }
-
-    @Test
     void test() {
         int max = 500000;
         for (int size = 200000; size < max; size *= 2) {
@@ -42,13 +34,5 @@ class DJPerformanceCompareTest {
 
     @Test
     void renderStopWatchProfile() {
-    }
-
-    @Test
-    void exec() {
-    }
-
-    @Test
-    void profileTask() {
     }
 }

@@ -4,7 +4,7 @@ import com.algs.utils.RandomUtil;
 
 import java.util.Random;
 
-public final class ArrayGenerator {
+public final class ArrayBuilder {
 
     public enum ARRAY_TYPE {
         RANDOM,

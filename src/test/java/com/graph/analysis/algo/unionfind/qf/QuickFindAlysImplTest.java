@@ -1,10 +1,9 @@
 package com.graph.analysis.algo.unionfind.qf;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.file.FileUtil;
 import com.algs.utils.Connection;
+import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
-import org.junit.jupiter.api.Test;
 
 class QuickFindAlysImplTest {
 
@@ -17,43 +16,4 @@ class QuickFindAlysImplTest {
 
     }
 
-    @Test
-    void count() {
-    }
-
-    @Test
-    void union() {
-    }
-
-    @Test
-    void find() {
-    }
-
-    @Test
-    void connected() {
-    }
-
-    @Test
-    void getIds() {
-    }
-
-    @Test
-    void testFind() {
-    }
-
-    @Test
-    void testUnion() {
-    }
-
-    @Test
-    void testConnected() {
-    }
-
-    @Test
-    void plot() {
-    }
-
-    @Test
-    void analysis() {
-    }
 }

@@ -4,7 +4,6 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.Connection;
 import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
-import org.junit.jupiter.api.Test;
 
 class ErdosRenyiAlysImplTest {
 
@@ -16,31 +15,4 @@ class ErdosRenyiAlysImplTest {
         ga.analyze();
     }
 
-    @Test
-    void generate() {
-    }
-
-    @Test
-    void count() {
-    }
-
-    @Test
-    void testCount() {
-    }
-
-    @Test
-    void plot() {
-    }
-
-    @Test
-    void testCount1() {
-    }
-
-    @Test
-    void testAllUnderSameSize() {
-    }
-
-    @Test
-    void analyze() {
-    }
 }

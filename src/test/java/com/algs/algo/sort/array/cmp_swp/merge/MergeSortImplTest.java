@@ -6,7 +6,7 @@ import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
 import com.algs.utils.CompareUtil;
-import com.algs.utils.array.ArrayGenerator;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +17,7 @@ class MergeSortImplTest {
     @Test
     void _2_2_1() {
 //        Character[] chars = getChars();
-        Character[] chars = ArrayGenerator.randomPrintableCharArray(39);
+        Character[] chars = ArrayBuilder.randomPrintableCharArray(39);
         ArraysUtil.display(chars);
 
         Character[] copy = ArraysUtil.copy(chars);
@@ -202,7 +202,7 @@ class MergeSortImplTest {
      */
     @Test
     void _2_2_5() {
-        Character[] chars = ArrayGenerator.randomPrintableCharArray(39);
+        Character[] chars = ArrayBuilder.randomPrintableCharArray(39);
         sort0(chars);
     }
 
@@ -218,7 +218,7 @@ class MergeSortImplTest {
      */
     @Test
     void _2_2_6() {
-        Character[] chars = ArrayGenerator.randomPrintableCharArray(160);
+        Character[] chars = ArrayBuilder.randomPrintableCharArray(160);
         sort(chars);
         System.out.println("Topdown: " + accessCount);
     }
@@ -256,7 +256,7 @@ class MergeSortImplTest {
     @Test
     void _2_2_19() {
         Integer[] array = new Integer[] {3, 0, 2, 1, 4};  // 4
-        array = ArrayGenerator.randomUniqueArray(4);
+        array = ArrayBuilder.randomUniqueArray(4);
         int expected = ArraysUtil.countInversionByBruteForce(array);
         ArraysUtil.display(array);
         int count = ArraysUtil.countInversion(array);
