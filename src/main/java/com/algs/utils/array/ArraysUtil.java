@@ -3,6 +3,7 @@ package com.algs.utils.array;
 import com.algs.application.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.CompareUtil;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -120,6 +121,15 @@ public final class ArraysUtil {
         return target;
     }
 
+    /**
+     * copy array
+     */
+    public static <E extends Comparable<E>> E[] copy(E[] array) {
+        E[] target = (E[]) new Comparable[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
     public static <E, T> T[] copyAndConvert(E[] array) {
         T[] target = (T[]) new Object[array.length];
         for (int i = 0; i < array.length; i++) {
@@ -129,6 +139,8 @@ public final class ArraysUtil {
     }
 
     public static Character[] toChars(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
         boolean b = array[0] instanceof Character;
         if (!b) {
             throw new ClassCastException("Unable to convert to Character");
@@ -141,6 +153,8 @@ public final class ArraysUtil {
     }
 
     public static Integer[] toIntegers(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
         boolean b = array[0] instanceof Integer;
         if (!b) {
             throw new ClassCastException("Unable to convert to Integer");
@@ -153,6 +167,8 @@ public final class ArraysUtil {
     }
 
     public static Long[] toLongs(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
         boolean b = array[0] instanceof Long;
         if (!b) {
             throw new ClassCastException("Unable to convert to Long");
@@ -165,6 +181,8 @@ public final class ArraysUtil {
     }
 
     public static Float[] toFloats(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
         boolean b = array[0] instanceof Integer;
         if (!b) {
             throw new ClassCastException("Unable to convert to Float");
@@ -177,6 +195,8 @@ public final class ArraysUtil {
     }
 
     public static Double[] toDoubles(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
         boolean b = array[0] instanceof Integer;
         if (!b) {
             throw new ClassCastException("Unable to convert to Double");
@@ -245,27 +265,26 @@ public final class ArraysUtil {
         return sb.toString();
     }
 
-    public static <E extends Comparable<E>> int countInversion(E[] array) {
-        E[] copy = ArraysUtil.copy(array);
-        return countInversion(copy, null);
+    public static <E extends Comparable<E>> long countInversion(E[] array) {
+        return countInversion(array, null);
     }
 
-    public static int countInversion(Integer[] array) {
+    public static long countInversion(Integer[] array) {
         Integer[] copy = ArraysUtil.copy(array);
         return countInversion(copy, null);
     }
 
-    public static <E extends Comparable<E>> int countInversion(E[] array, Comparator<E> comparator) {
+    public static <E extends Comparable<E>> long countInversion(E[] array, Comparator<E> comparator) {
         ArrayInversionCounter<E> counter = new ArrayInversionCounter<>(array, comparator);
         return counter.count();
     }
 
-    public static <E extends Comparable<E>> int countInversionByBruteForce(E[] array) {
+    public static <E extends Comparable<E>> long countInversionByBruteForce(E[] array) {
         return countInversionByBruteForce(array, null);
     }
 
-    public static <E extends Comparable<E>> int countInversionByBruteForce(E[] array, Comparator<E> comparator) {
-        int count = 0;
+    public static <E extends Comparable<E>> long countInversionByBruteForce(E[] array, Comparator<E> comparator) {
+        long count = 0;
         for (int left = 0; left < array.length; left++) {
             for (int right = left + 1; right < array.length; right++) {
                 if (CompareUtil.more(array[left], array[right], comparator)) {

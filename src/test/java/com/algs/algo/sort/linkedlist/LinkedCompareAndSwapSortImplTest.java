@@ -1,7 +1,7 @@
 package com.algs.algo.sort.linkedlist;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
@@ -17,15 +17,10 @@ class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
             SinglyLinkedListSortImpl.class,
     };
 
-    @Override
-    protected Class<?>[] constructArgsType() {
-        return null;
-    }
-
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(ISequentialAccessList.class);
+            Constructor<?> constructor = targetClass.getConstructor(SinglyLinkedListImpl.class);
             instance = constructor.newInstance(FileUtil.readChars(FilePath.TINY_TXT));
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
@@ -43,14 +38,15 @@ class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
     protected void testEach(Object obj) {
         LinkedCompareAndSwapSort<Character> sortObj = (LinkedCompareAndSwapSort<Character>) obj;
 
-        Object[] array = sortObj.linkedList.toArray();
+        Object[] array = sortObj.list.toArray();
         Character[] originalArray = ArraysUtil.toChars(array);
 
         ArraysUtil.display(originalArray);
 
-        sortObj.sort();
+//        sortObj.sort();
+        sortObj.selectionSort();
 
-        Character[] sortedArray = ArraysUtil.toChars(sortObj.linkedList.toArray());
+        Character[] sortedArray = ArraysUtil.toChars(sortObj.list.toArray());
         ArraysUtil.display(sortedArray);
 
         Assertions.assertTrue(ArraySortUtil.isSorted(sortedArray, null));

@@ -2,8 +2,6 @@ package com.algs;
 
 public abstract class ImplFunctionalityTest implements IJunitTestable {
 
-    protected abstract Class<?>[] constructArgsType();
-
     protected abstract Object construct(Class<?> targetClass);
 
     protected abstract void testEach(Object obj);
@@ -15,5 +13,4 @@ public abstract class ImplFunctionalityTest implements IJunitTestable {
             testEach(targetObject);
         }
     }
-
 }

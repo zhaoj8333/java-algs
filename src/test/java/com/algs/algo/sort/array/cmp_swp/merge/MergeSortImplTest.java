@@ -256,10 +256,10 @@ class MergeSortImplTest {
     @Test
     void _2_2_19() {
         Integer[] array = new Integer[] {3, 0, 2, 1, 4};  // 4
-        array = ArrayBuilder.randomUniqueArray(4);
-        int expected = ArraysUtil.countInversionByBruteForce(array);
+        array = ArrayBuilder.randomUniqueArray(40);
+        long expected = ArraysUtil.countInversionByBruteForce(array);
         ArraysUtil.display(array);
-        int count = ArraysUtil.countInversion(array);
+        long count = ArraysUtil.countInversion(array);
         System.out.println(count);
         Assertions.assertEquals(expected, count);
     }

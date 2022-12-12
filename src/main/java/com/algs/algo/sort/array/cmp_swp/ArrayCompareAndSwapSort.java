@@ -2,6 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.algo.sort.ISortable;
 import com.algs.utils.ObjectUtil;
+import jdk.jshell.spi.ExecutionControl;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -36,6 +37,15 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
         E tmp = array[j];
         array[j] = array[i];
         array[i] = tmp;
+    }
+
+    @Override
+    public void sort() {
+        try {
+            throw new ExecutionControl.NotImplementedException("Please override this method");
+        } catch (ExecutionControl.NotImplementedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

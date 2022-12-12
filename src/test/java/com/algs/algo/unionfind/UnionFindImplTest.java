@@ -111,11 +111,6 @@ class UnionFindImplTest extends ImplFunctionalityTest {
     }
 
     @Override
-    protected Class<?>[] constructArgsType() {
-        return new Class[0];
-    }
-
-    @Override
     protected Object construct(Class<?> targetClass) {
         return null;
     }

@@ -7,6 +7,8 @@ public interface ISequentialAccessList<E> extends IList<E> {
 
     LinkNode<E> node(int i);
 
+//    void set(int i, LinkNode<E> node);
+
     ISequentialAccessList<E> copy();
 
 }

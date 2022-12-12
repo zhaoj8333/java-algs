@@ -1,11 +1,11 @@
 package com.graph.analysis.algo.sort;
 
-import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.*;
+import com.algs.utils.DrawUtil;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.sort.merge.MergeSortBuAlysImpl;
@@ -51,7 +51,7 @@ class MergeSortAlysImplTest {
 
         for (int sz = 2; sz < x; sz++) {
             Integer[] array = ArrayBuilder.randomIntArray(sz);
-//            compareTd(array, sz);
+            compareTd(array, sz);
             compareBu(array, sz);
        }
     }
@@ -62,9 +62,9 @@ class MergeSortAlysImplTest {
         alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Integer::compare);
         alys.analyze();
 
-        DrawUtil.setPenColor(DrawUtil.ORANGE);
-        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Integer::compareTo);
-        alys.analyze();
+//        DrawUtil.setPenColor(DrawUtil.ORANGE);
+//        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Integer::compareTo);
+//        alys.analyze();
 
 //        if (sz == x - 1) {
 //            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
@@ -75,14 +75,14 @@ class MergeSortAlysImplTest {
     }
 
     private static void compareBu(Integer[] array, int sz) {
-        DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
+        DrawUtil.setPenColor(DrawUtil.BOOK_LIGHT_BLUE);
         GraphicAnalysis alys;
         alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
         alys.analyze();
 
-        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), null);
-        DrawUtil.setPenColor(DrawUtil.ORANGE);
-        alys.analyze();
+//        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), null);
+//        DrawUtil.setPenColor(DrawUtil.ORANGE);
+//        alys.analyze();
 
 //        if (sz == x - 1) {
 //            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
@@ -144,15 +144,9 @@ class MergeSortAlysImplTest {
     }
 
     private Character[] getChars() {
-        IList<Character> chars = FileUtil.readChars("data/tiny.txt");
-        Assertions.assertNotNull(chars);
-
-        Character[] array = new Character[chars.size()];
-        Iterator<Character> itr = chars.iterator();
-        int index = 0;
-        while (itr.hasNext()) {
-            array[index++] = itr.next();
-        }
+        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
+        assert chars != null;
+        Character[] array = ArraysUtil.toChars(chars.toArray());
         ArraysUtil.display(array);
         Assertions.assertTrue(array.length > 1);
         return array;

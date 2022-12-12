@@ -20,9 +20,9 @@ class ArraySortCompareTest {
 //                InsertionSortImpl.class,
 //                SentinelInsertionSortImpl.class
 //                ShellSortImpl.class,
-//                MergeSortTdImpl.class,
+                MergeSortTdImpl.class,
                 MergeSortTdOptmImpl.class,
-//                MergeSortBuImpl.class,
+                MergeSortBuImpl.class,
                 MergeSortBuOptmImpl.class,
 //                QuickSortImpl.class,
 //                QuickSortImpl0.class,

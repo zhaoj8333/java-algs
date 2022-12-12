@@ -29,6 +29,12 @@ public final class ObjectUtil<E> {
         }
     }
 
+    public static <E> void requireNonEmpty(E[] array) {
+        if (array.length == 0) {
+            throw new RuntimeException("Array should be non empty");
+        }
+    }
+
     public static String getGetterMethodName(Field field) {
         String fieldName = field.getName();
         char[] chars = fieldName.toCharArray();

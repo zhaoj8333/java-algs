@@ -1,8 +1,10 @@
 package com.algs.algo.sort.array.cmp_swp;
 
-import com.algs.algo.sort.ISortable;
+import com.algs.ImplFunctionalityTest;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdOptmImpl;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
@@ -17,65 +19,60 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 
-class ArraySortImplTest {
+class ArraySortImplTest extends ImplFunctionalityTest {
 
-    @Test
-    void test() {
-        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
-        Assertions.assertNotNull(chars);
+    protected Class<?>[] targetClasses = new Class<?>[] {
+//            SelectionSortImpl.class,
+//            HeapSortImpl.class,
+//            BubbleSortImpl.class,
+//            InsertionSortImpl.class,
+//            SentinelInsertionSortImpl.class,
+//            ShellSortImpl.class,
+            MergeSortTdImpl.class,
+            MergeSortBuImpl.class,
+            MergeSortTdOptmImpl.class,
+            MergeSortBuOptmImpl.class,
 
-        Class<?>[] klasses = new Class<?>[] {
-//                SelectionSortImpl.class,
-//                HeapSortImpl.class,
-//                BubbleSortImpl.class,
-//                InsertionSortImpl.class,
-//                SentinelInsertionSortImpl.class
-//                ShellSortImpl.class,
-//                MergeSortTdImpl.class,
-//                MergeSortBuImpl.class,
-//                MergeSortTdOptmImpl.class,
-                MergeSortBuOptmImpl.class,
+//            QuickSortImpl.class,
+//            QuickSortImpl0.class,
+//            QuickSort3wayImpl.class,
+    };
 
-//                QuickSortImpl.class,
-//                QuickSortImpl0.class,
-//                QuickSort3wayImpl.class,
+    private Character[] array;
 
-        };
-        for (Class<?> klass : klasses) {
-            System.out.println(klass.getSimpleName());
-            functioning(klass, chars);
-            System.out.println("---------------------------------");
-        }
+    @Override
+    public void testEach(Object obj) {
+        ArrayCompareAndSwapSort<Character> sortObj = (ArrayCompareAndSwapSort<Character>) obj;
+
+        ArraysUtil.display(array);
+
+        sortObj.sort();
+
+        Assertions.assertTrue(ArraySortUtil.isSorted(sortObj.getArray(), null));
+        Assertions.assertTrue(ArraySortUtil.onlySorted(array, sortObj.getArray()));
     }
 
-    private void functioning(Class<?> sortKlass, IList<Character> characters) {
-        int index = 0;
-        Character[] array = new Character[characters.size()];
-        Iterator<Character> itr = characters.iterator();
-        while (itr.hasNext()) {
-            array[index++] = itr.next();
-        }
-        ArraysUtil.display(array);
-        Character[] original = ArraysUtil.copy(array);
-
-        Assertions.assertTrue(array.length > 1);
-
-        Constructor<?> constructor;
-        ISortable<Character> sort = null;
-        Comparator<Character> cmp = null;
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        Object instance = null;
         try {
-            constructor = sortKlass.getConstructor(Comparable[].class, Comparator.class);
-//            Comparator<Character> cmp = Comparator.comparingInt(a -> a);
-            cmp = Comparator.comparingInt(a -> a);
-            sort = (ISortable<Character>) constructor.newInstance(array, cmp);
+            Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
+            Character[] testedData = ArraysUtil.copy(array);
+            instance = constructor.newInstance(testedData,null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        assert sort != null;
-        sort.sort();
-        ArraysUtil.display(array);
-        Assertions.assertTrue(ArraySortUtil.isSorted(array, cmp));
-        Assertions.assertTrue(ArraySortUtil.onlySorted(original, array));
+        return instance;
+    }
+
+    @Test
+    @Override
+    public void test() {
+        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
+        Assertions.assertNotNull(chars);
+        array = ArraysUtil.toChars(chars.toArray());
+
+        test(targetClasses);
     }
 
     private Character[] getChars() {
@@ -258,20 +255,6 @@ class ArraySortImplTest {
             }
             h /= 3;
         }
-    }
-
-    @Test
-    void _2_1_14() {
-        IList<Character> chars = FileUtil.readChars("data/gnome/genomeTiny.txt");
-        assert chars != null;
-        ArraysUtil.display(chars);
-        Object[] characters = chars.toArray();
-        Character[] array = new Character[characters.length];
-        for (int i = 0; i < characters.length; i++) {
-            array[i] = (Character) characters[i];
-        }
-
-        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     /**

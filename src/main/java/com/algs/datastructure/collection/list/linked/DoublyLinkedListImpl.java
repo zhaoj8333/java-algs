@@ -1,6 +1,7 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.DoublyLinkNode;
 import com.algs.utils.CollectionUtil;
@@ -19,6 +20,20 @@ public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
         head.next = tail;
         tail.prev = head;
     }
+
+    public DoublyLinkedListImpl(E[] array) {
+        for (E item : array) {
+            add(item);
+        }
+    }
+
+    public DoublyLinkedListImpl(ICollection<E> collection) {
+        Iterator<E> itr = collection.iterator();
+        if (itr.hasNext()) {
+            add(itr.next());
+        }
+    }
+
 
     /**
      * prev -> newDoublyLinkNode -> next

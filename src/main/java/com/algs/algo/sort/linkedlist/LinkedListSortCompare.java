@@ -31,12 +31,12 @@ public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTas
     @Override
     protected Object profileTask() {
         sort.sort();
-        return sort.getLinkedList().size();
+        return sort.getList().size();
     }
 
     @Override
     protected void assertResult() {
-        Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.getLinkedList()));
+        Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.getList()));
     }
 
 }

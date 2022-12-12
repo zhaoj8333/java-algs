@@ -1,20 +1,41 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.bag.LinkedListBagImpl;
+import com.algs.datastructure.collection.node.LinkNode;
 import com.algs.datastructure.collection.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
+import com.algs.utils.array.ArraysUtil;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
 
     private int size;
-    private final SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
+    private SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
+
+    public SinglyLinkedListImpl() {}
+
+    public SinglyLinkedListImpl(E[] array) {
+        for (E item : array) {
+            add(item);
+        }
+    }
+
+    public SinglyLinkedListImpl(ICollection<E> collection) {
+        Iterator<E> itr = collection.iterator();
+        if (itr.hasNext()) {
+            add(itr.next());
+        }
+    }
+
+    public void setHead(LinkNode<E> node) {
+        head = (SinglyLinkNode<E>) node;
+    }
 
     /**
      * prev -> newSinglyLinkNode -> next
@@ -199,7 +220,7 @@ public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
 
     @Override
     public String toString() {
-        return Arrays.toString(toArray());
+        return ArraysUtil.toString(toArray());
     }
 
     private class SinglyLinkedListIterator implements Iterator<E> {

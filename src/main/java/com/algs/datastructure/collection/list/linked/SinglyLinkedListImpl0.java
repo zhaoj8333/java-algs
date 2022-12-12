@@ -1,6 +1,7 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
@@ -14,6 +15,22 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
 
     private int size;
     private SinglyLinkNode<E> head;
+
+    public SinglyLinkedListImpl0() {
+    }
+
+    public SinglyLinkedListImpl0(E[] array) {
+        for (E item : array) {
+            add(item);
+        }
+    }
+
+    public SinglyLinkedListImpl0(ICollection<E> collection) {
+        Iterator<E> itr = collection.iterator();
+        if (itr.hasNext()) {
+            add(itr.next());
+        }
+    }
 
     @Override
     public void add(E item) {
