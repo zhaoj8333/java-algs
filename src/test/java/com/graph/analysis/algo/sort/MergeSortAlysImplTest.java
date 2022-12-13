@@ -8,10 +8,7 @@ import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import com.graph.GraphicAnalysis;
-import com.graph.analysis.algo.sort.merge.MergeSortBuAlysImpl;
-import com.graph.analysis.algo.sort.merge.MergeSortBuOptmAlysImpl;
-import com.graph.analysis.algo.sort.merge.MergeSortTdAlysImpl;
-import com.graph.analysis.algo.sort.merge.MergeSortTdOptmAlysImpl;
+import com.graph.analysis.algo.sort.merge.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -80,9 +77,9 @@ class MergeSortAlysImplTest {
         alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
         alys.analyze();
 
-//        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), null);
-//        DrawUtil.setPenColor(DrawUtil.ORANGE);
-//        alys.analyze();
+        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), null);
+        DrawUtil.setPenColor(DrawUtil.ORANGE);
+        alys.analyze();
 
 //        if (sz == x - 1) {
 //            DrawUtil.setPenColor(DrawUtil.BOOK_BLUE);
@@ -121,7 +118,7 @@ class MergeSortAlysImplTest {
     void testTd() {
         Character[] array = getChars();
 
-        CompareAndSwapSortAlys<Character> alys;
+        MergeSortAlysImpl<Character> alys;
         alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
         alys.sort();
         alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
@@ -131,8 +128,8 @@ class MergeSortAlysImplTest {
     @Test
     void testBu() {
         Character[] array = getChars();
-        CompareAndSwapSortAlys<Character> alys;
         Character[] copy = ArraysUtil.copy(array);
+        CompareAndSwapSortAlys<Character> alys;
         alys = new MergeSortBuAlysImpl<>(copy, Comparator.comparingInt(o -> o));
         alys.sort();
         Assertions.assertTrue(ArraySortUtil.isSorted(copy));

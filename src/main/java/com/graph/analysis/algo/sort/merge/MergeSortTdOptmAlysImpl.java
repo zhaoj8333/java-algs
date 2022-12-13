@@ -66,8 +66,10 @@ public class MergeSortTdOptmAlysImpl<E extends Comparable<E>> extends MergeSortT
         int i = begin, j = mid + 1;
         for (int k = begin; k <= end; k++) {
             if (i > mid) {
+                rightSubarrayLength++;
                 aux[k] = array[j++];
             } else if (j > end) {
+                leftSubarrayLength++;
                 aux[k] = array[i++];
             } else if (compareEntry(array[i], array[j]) > 0) {
                 arrayAcc += 2;

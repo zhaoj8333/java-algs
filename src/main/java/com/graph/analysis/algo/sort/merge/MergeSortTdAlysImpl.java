@@ -59,8 +59,10 @@ public class MergeSortTdAlysImpl<E extends Comparable<E>> extends MergeSortAlysI
             } else {
                 array[ai++] = aux0[li++];
                 arrayAcc += 2;
+                leftSubarrayLength++;
             }
         }
+        rightSubarrayLength += re - ri;
     }
 
     private final E[] aux1 = (E[]) new Comparable[array.length];

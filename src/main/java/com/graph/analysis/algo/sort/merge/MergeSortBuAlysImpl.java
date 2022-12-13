@@ -69,9 +69,11 @@ public class MergeSortBuAlysImpl<E extends Comparable<E>> extends MergeSortAlysI
                 arrayAcc += 2;
             } else {
                 array[ai++] = aux[li++];
+                leftSubarrayLength++;
             }
             arrayAcc += 2;
         }
+        rightSubarrayLength += end - ri;
     }
 
     private void merge0(int begin, int mid, int end) {

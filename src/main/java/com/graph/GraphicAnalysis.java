@@ -18,6 +18,11 @@ public interface GraphicAnalysis {
         DrawUtil.point(i, cost);
     }
 
+    default void plot(int i, int cost, Color color) {
+        DrawUtil.setPenColor(color);
+        DrawUtil.point(i, cost);
+    }
+
     default void plot(int i, int cost, int totalCost, Color totalColor, Color avgColor) {
         double avg = (totalCost * 1.0) / i;
         DrawUtil.setPenColor(totalColor);
