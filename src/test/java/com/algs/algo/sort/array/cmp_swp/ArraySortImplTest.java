@@ -1,10 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuImpl;
-import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
-import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
-import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdOptmImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.*;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
@@ -28,10 +25,11 @@ class ArraySortImplTest extends ImplFunctionalityTest {
 //            InsertionSortImpl.class,
 //            SentinelInsertionSortImpl.class,
 //            ShellSortImpl.class,
-            MergeSortTdImpl.class,
-            MergeSortBuImpl.class,
-            MergeSortTdOptmImpl.class,
-            MergeSortBuOptmImpl.class,
+//            MergeSortTdImpl.class,
+//            MergeSortBuImpl.class,
+//            MergeSortTdOptmImpl.class,
+//            MergeSortBuOptmImpl.class,
+            MultiWayMergeSortImpl.class,
 
 //            QuickSortImpl.class,
 //            QuickSortImpl0.class,

@@ -72,4 +72,5 @@ class QuickSortImplTest {
 
         return j;
     }
+
 }

@@ -1,19 +1,31 @@
 package com.algs.algo.sort.array.cmp_swp;
 
-import com.algs.algo.sort.array.ArraySortCompare;
+import com.algs.ImplPerformanceTest;
 import com.algs.algo.sort.array.cmp_swp.merge.*;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
+import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
+import com.algs.utils.array.ArraySortUtil;
+import com.algs.utils.array.ArraysUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ArraySortCompareTest {
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Comparator;
 
-    @Test
-    void test() {
-        Class<?>[] klasses = new Class<?>[] {
+class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
+
+    private static final Integer[] testArray;
+
+    static {
+        testArray = ArrayBuilder.randomIntArray(900000);
+    }
+
+    private Class<?>[] targetClasses = new Class<?>[] {
 //                SelectionSortImpl.class,
 //                HeapSortImpl.class,
 //                BubbleSortImpl.class,
@@ -29,9 +41,52 @@ class ArraySortCompareTest {
 //                QuickSort3wayImpl.class,
         };
 
-        execRandomArray(klasses, 900000);
+
+//        execRandomArray(klasses, 900000);
 //        execRandomArray(klasses, 18);
 //        execArrayWith2Value(klasses);
+
+    @Test
+    @Override
+    public void compare() {
+        compare(targetClasses);
+    }
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        Constructor<?> constructor = null;
+        Comparator<Integer> cmp = Comparator.comparingInt(a -> a);
+        try {
+            constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        ArrayCompareAndSwapSort<Integer> sort = null;
+        try {
+            Integer[] copy = ArraysUtil.copy(testArray);
+            sort = (ArrayCompareAndSwapSort<Integer>) constructor.newInstance(copy, cmp);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return sort;
+    }
+
+    @Override
+    protected void execEach(Object obj) {
+        ArrayCompareAndSwapSort<Integer> sort = (ArrayCompareAndSwapSort) obj;
+        StopWatchTask<Object> sw = new StopWatchTask<>() {
+            @Override
+            protected Object profileTask() {
+                sort.sort();
+                return null;
+            }
+
+            @Override
+            protected void assertResult() {
+                Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
+            }
+        };
+        sw.exec(true);
     }
 
     /**
@@ -73,32 +128,11 @@ class ArraySortCompareTest {
      * {@link MergeSortTdImpl}: 643 ms
      * {@link QuickSortImpl}: 400 ms
      */
-    private void execRandomArray(Class<?>[] klasses, int size) {
-        Integer[] array = ArrayBuilder.randomIntArray(size);
-        System.out.println("Init done");
-
-        execute(klasses, array);
-
-    }
 
     /**
      * 90000:
      * {@link SelectionSortImpl}: 15.2 s
      * {@link InsertionSortImpl}: 3.7 s
      */
-    private void execArrayWith2Value(Class<?>[] klasses) {
-        Integer[] array = ArrayBuilder.randomArrayWith2Values(90000, 2, 4);
-        System.out.println("Init done");
-
-//        execute(klasses);
-        execute(klasses, array);
-    }
-
-    private void execute(Class<?>[] klasses, Integer[] array) {
-        for (Class<?> klass : klasses) {
-            ArraySortCompare<Integer> sortCmp = new ArraySortCompare<>(array, klass);
-            sortCmp.exec(true);
-        }
-    }
 
 }

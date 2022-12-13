@@ -63,4 +63,7 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         return arrayAcc;
     }
 
+    public E[] getArray() {
+        return array;
+    }
 }

@@ -4,12 +4,13 @@ import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 
 import java.util.Comparator;
 
+// TODO: 12/13/22  
 public class MultiWayMergeSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
-    private int way = 2;
+    private final int way;
 
     public MultiWayMergeSortImpl(E[] array, Comparator<E> comparator) {
-        super(array, comparator);
+        this(array, comparator, 2);
     }
 
     public MultiWayMergeSortImpl(E[] array, Comparator<E> comparator, int way) {
@@ -17,4 +18,15 @@ public class MultiWayMergeSortImpl<E extends Comparable<E>> extends ArrayCompare
         this.way = way;
     }
 
+    @Override
+    public void sort() {
+        if (array.length == 1) {
+            return;
+        }
+        sort0();
+    }
+
+    private void sort0() {
+
+    }
 }

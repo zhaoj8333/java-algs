@@ -19,6 +19,8 @@ class MergeSortUsingInsertionThresholdTest {
     @Test
     void test() {
         Integer[] array = ArrayBuilder.randomIntArray(900000);
+        long min = Long.MAX_VALUE;
+        int theThreshold = 0;
 
         for (int i = 2; i < 64; i++) {
             Integer[] copy = ArraysUtil.copy(array);
@@ -40,8 +42,13 @@ class MergeSortUsingInsertionThresholdTest {
                     Assertions.assertTrue(ArraySortUtil.isSorted(copy));
                 }
             };
-            st.exec(true);
+            long dur = st.exec(false);
+            if (dur < min) {
+                min = dur;
+                theThreshold = i;
+            }
         }
+        System.out.println(Thread.currentThread().getName() + ", min time: " + min + ", threshold: " + theThreshold);
     }
 
 }
