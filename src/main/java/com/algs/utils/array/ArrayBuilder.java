@@ -24,7 +24,7 @@ public final class ArrayBuilder {
     public static Comparable[] randomArray(int length) {
         Comparable[] array = new Comparable[length];
         for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(length);
+            array[i] = r.nextInt(Integer.MAX_VALUE);
         }
         return array;
     }
@@ -32,7 +32,7 @@ public final class ArrayBuilder {
     public static Integer[] randomIntArray(int length) {
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(length);
+            array[i] = r.nextInt(Integer.MAX_VALUE);
         }
         return array;
     }

@@ -1,7 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.algo.sort.array.cmp_swp.merge.*;
+import com.algs.algo.sort.array.cmp_swp.merge.NaturalMergeSortImpl;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 
-class ArraySortImplTest extends ImplFunctionalityTest {
+class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
 //            SelectionSortImpl.class,
@@ -29,7 +29,8 @@ class ArraySortImplTest extends ImplFunctionalityTest {
 //            MergeSortBuImpl.class,
 //            MergeSortTdOptmImpl.class,
 //            MergeSortBuOptmImpl.class,
-            MultiWayMergeSortImpl.class,
+//            MultiWayMergeSortImpl.class,
+            NaturalMergeSortImpl.class
 
 //            QuickSortImpl.class,
 //            QuickSortImpl0.class,
@@ -56,7 +57,7 @@ class ArraySortImplTest extends ImplFunctionalityTest {
         try {
             Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
             Character[] testedData = ArraysUtil.copy(array);
-            instance = constructor.newInstance(testedData,null);
+            instance = constructor.newInstance(testedData, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
