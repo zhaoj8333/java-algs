@@ -132,4 +132,41 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      * {@link InsertionSortImpl}: 3.7 s
      */
 
+    /**
+     * The best @{@link MergeSortImpl#insertionSortThreshold} might be 15, 16 ?
+     */
+    @Test
+    void getThresholdOfMergeSort() {
+        Integer[] array = ArrayBuilder.randomIntArray(900000);
+        long min = Long.MAX_VALUE;
+        int theThreshold = 0;
+
+        for (int i = 2; i < 64; i++) {
+            Integer[] copy = ArraysUtil.copy(array);
+//            MergeSortImpl<Integer> sort = new MergeSortTdOptmImpl<>(copy, Integer::compareTo);
+            MergeSortImpl<Integer> sort = new MergeSortBuOptmImpl<>(copy, Integer::compareTo);
+            int threshold = i;
+            StopWatchTask<Object> st = new StopWatchTask<>() {
+                @Override
+                protected Object profileTask() {
+                    sort.setInsertionSortThreshold(threshold);
+                    long start = System.currentTimeMillis();
+                    sort.sort();
+                    long end = System.currentTimeMillis();
+                    return end - start;
+                }
+
+                @Override
+                protected void assertResult() {
+                    Assertions.assertTrue(ArraySortUtil.isSorted(copy));
+                }
+            };
+            long dur = st.exec(false);
+            if (dur < min) {
+                min = dur;
+                theThreshold = i;
+            }
+        }
+        System.out.println(Thread.currentThread().getName() + ", min time: " + min + ", threshold: " + theThreshold);
+    }
 }
