@@ -1,14 +1,12 @@
 package com.graph.analysis.algo.sort.merge;
 
-import com.algs.utils.DrawUtil;
 import com.algs.utils.array.ArraySortUtil;
-import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
-public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> implements GraphicAnalysis {
+public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 
     protected E[] aux = (E[]) new Comparable[array.length];
 
@@ -19,6 +17,8 @@ public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends Compare
 
     public MergeSortAlysImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
+        leftSubarrayLength = 0;
+        rightSubarrayLength = 0;
     }
 
     public void setUseInsertThreshold(int useInsertThreshold) {
@@ -54,6 +54,6 @@ public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends Compare
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
-        plot(array.length, leftSubarrayLength + rightSubarrayLength, DrawUtil.GREEN);
+        plot(array.length, leftSubarrayLength + rightSubarrayLength);
     }
 }

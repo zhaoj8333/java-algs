@@ -15,10 +15,8 @@ public class MergeSortTdAlysImpl<E extends Comparable<E>> extends MergeSortAlysI
 
     @Override
     public void sort() {
-
         sort0(0, array.length);
 //        sort1(0, array.length - 1);
-
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 

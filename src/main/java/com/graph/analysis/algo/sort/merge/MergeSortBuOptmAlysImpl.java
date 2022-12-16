@@ -1,5 +1,8 @@
 package com.graph.analysis.algo.sort.merge;
 
+import com.algs.utils.array.ArraySortUtil;
+import org.junit.jupiter.api.Assertions;
+
 import java.util.Comparator;
 
 public class MergeSortBuOptmAlysImpl<E extends Comparable<E>> extends MergeSortBuAlysImpl<E> {
@@ -16,6 +19,7 @@ public class MergeSortBuOptmAlysImpl<E extends Comparable<E>> extends MergeSortB
             insertionSort(array, begin, end);
         }
         if (useInsertThreshold >= array.length) {
+            Assertions.assertTrue(ArraySortUtil.isSorted(array));
             return;
         }
         for (; sz < array.length; sz <<= 1) {
@@ -28,6 +32,7 @@ public class MergeSortBuOptmAlysImpl<E extends Comparable<E>> extends MergeSortB
                 }
             }
         }
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
 }

@@ -2,6 +2,9 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.algo.sort.ISortable;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.array.ArraySortUtil;
+import com.graph.GraphicAnalysis;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -9,7 +12,7 @@ import java.util.Objects;
 /**
  * Comparison and swap based sorting
  */
-public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements ISortable<E> {
+public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements ISortable<E>, GraphicAnalysis {
 
     protected E[] array;
     protected Comparator<E> comparator;
@@ -19,9 +22,11 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     protected int cmpCount = 0;
     protected int arrayAcc = 0;
 
-
     public CompareAndSwapSortAlys(E[] array, Comparator<E> comparator) {
         ObjectUtil.requireNonNull(array);
+        cost = 0;
+        swapCount = 0;
+        cmpCount = 0;
         arrayAcc = 0;
         this.array = array;
         this.comparator = comparator;
@@ -65,5 +70,14 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
 
     public E[] getArray() {
         return array;
+    }
+
+    @Override
+    public void analyze() {
+        sort();
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
+        plot(array.length, arrayAcc);
+        plot(array.length, cmpCount);
+//        plot(array.length, leftSubarrayLength + rightSubarrayLength, DrawUtil.GREEN);
     }
 }

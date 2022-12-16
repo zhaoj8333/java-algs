@@ -32,11 +32,9 @@ public class MergeSortTdOptmAlysImpl<E extends Comparable<E>> extends MergeSortT
             aux[i] = array[i];
             arrayAcc += 2;
         }
-
 //        sort0(0, array.length);
 //        sort1(0, array.length - 1);
         sort2(aux, array, 0, array.length - 1);
-
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
