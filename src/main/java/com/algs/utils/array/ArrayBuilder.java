@@ -8,7 +8,7 @@ public final class ArrayBuilder {
 
     public enum ARRAY_TYPE {
         RANDOM,
-        Singly_VALUE,
+        SINGLE_VALUE,
         DUAL_VALUE_RANDOM,
         TERNARY_VALUE_RANDOM,
         DUAL_VALUE_ASCEND,
@@ -32,7 +32,7 @@ public final class ArrayBuilder {
     public static Integer[] randomIntArray(int length) {
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
-            array[i] = r.nextInt(Integer.MAX_VALUE);
+            array[i] = r.nextInt(Integer.MAX_VALUE) - (Integer.MAX_VALUE >> 1);
         }
         return array;
     }
@@ -59,6 +59,40 @@ public final class ArrayBuilder {
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
             array[i] = r.nextInt(max - min) + min;
+        }
+        return array;
+    }
+
+    public static Short[] randomShortArray(int length) {
+        Short[] array = new Short[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (short) ((r.nextInt(Short.MAX_VALUE) >> 16) - (Short.MAX_VALUE >> 1));
+        }
+        return array;
+    }
+
+    public static Short randomShortLessThan(short max) {
+        while (true) {
+            short number = (short) (r.nextInt(max) >> 16);
+            if (number < max) {
+                return number;
+            }
+        }
+    }
+
+    public static Short[] randomUniqueShortArray(int length) {
+        Short[] array = new Short[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (short) (i >> 16);
+        }
+        RandomUtil.shuffle(array);
+        return array;
+    }
+
+    public static Short[] randomShortsBetween(int length, short min, short max) {
+        Short[] array = new Short[length];
+        for (short i = 0; i < length; i++) {
+            array[i] = (short) ((r.nextInt(max - min) >> 16) + min);
         }
         return array;
     }

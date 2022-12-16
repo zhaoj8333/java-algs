@@ -226,6 +226,12 @@ public final class ArraysUtil {
         return target;
     }
 
+    public static Short[] copy(Short[] array) {
+        Short[] target = new Short[array.length];
+        System.arraycopy(array, 0, target, 0, array.length);
+        return target;
+    }
+
     public static String toString(int[] array) {
         StringBuilder sb = new StringBuilder();
         sb.append("{");

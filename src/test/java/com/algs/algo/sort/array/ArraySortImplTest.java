@@ -1,11 +1,9 @@
 package com.algs.algo.sort.array;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.list.IList;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
-import com.algs.utils.file.FilePath;
-import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,20 +16,20 @@ class ArraySortImplTest extends ImplFunctionalityTest {
         CountingSortImpl.class
     };
 
-    private Integer[] testArray;
+    private Integer[] testIntArray;
 
     @Override
     public void testEach(Object obj) {
         ArraySort<Integer> sortObj = (ArraySort) obj;
 
-        ArraysUtil.display(testArray);
+        ArraysUtil.display(testIntArray);
 
         sortObj.sort();
 
         Integer[] sortedArray = sortObj.getArray();
         ArraysUtil.display(sortedArray);
         Assertions.assertTrue(ArraySortUtil.isSorted(sortedArray, null));
-        Assertions.assertTrue(ArraySortUtil.onlySorted(testArray, sortedArray));
+        Assertions.assertTrue(ArraySortUtil.onlySorted(testIntArray, sortedArray));
     }
 
     @Override
@@ -39,7 +37,7 @@ class ArraySortImplTest extends ImplFunctionalityTest {
         Object instance = null;
         try {
             Constructor<?> constructor = targetClass.getConstructor(Integer[].class, Comparator.class);
-            Integer[] data = ArraysUtil.copy(testArray);
+            Integer[] data = ArraysUtil.copy(testIntArray);
             instance = constructor.newInstance(data, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
@@ -50,9 +48,11 @@ class ArraySortImplTest extends ImplFunctionalityTest {
     @Test
     @Override
     public void test() {
-        IList<Integer> list = FileUtil.readInts(FilePath.TINY_T_TXT);
-        Assertions.assertNotNull(list);
-        testArray = ArraysUtil.toIntegers(list.toArray());
+//        IList<Integer> list = FileUtil.readInts(FilePath.TINY_T_TXT);
+//        Assertions.assertNotNull(list);
+//        testArray = ArraysUtil.toIntegers(list.toArray());
+//        testArray = ArrayBuilder.randomIntArrayBetween(10, -20, 20);
+        testIntArray = ArrayBuilder.randomIntArrayBetween(10, -100, 100);
 
         test(targetClasses);
     }

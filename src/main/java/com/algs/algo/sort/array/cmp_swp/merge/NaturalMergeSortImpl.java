@@ -14,29 +14,31 @@ public class NaturalMergeSortImpl<E extends Comparable<E>> extends MergeSortBuIm
         if (len < 2) {
             return;
         }
-
+        // merge: [li, le) [ri, re)
         int li = 0, le = 0, ri = 0, re = 0;
         while (true) {
-            le = findSortedArray(li);
-            if (le == array.length - 1) {
+            le = findSortedIndex(li);
+            if (li == 0 && le == array.length) {
                 return;
             }
-            ri = le + 1;
-            re = findSortedArray(ri);
-            merge(li, ri, re + 1);
-            li = re == array.length - 1 ? 0 : re + 1;
+            ri = le;
+            re = findSortedIndex(ri);
+            merge(li, le, re);
+            li = re == array.length ? 0 : re;
         }
     }
 
     /**
-     * {a, b, c, d, e}
+     * {7, 9, 6, 2, 4, 0, 3, 6, 8}
+     *
+     * [li,le)
      */
-    private int findSortedArray(int start) {
+    private int findSortedIndex(int start) {
         for (int i = start + 1; i < array.length; i++) {
-            if (compareIndex(start, i) > 0) {
-                return i - 1;
+            if (compareIndex(i - 1, i) > 0) {
+                return i;
             }
         }
-        return array.length - 1;
+        return array.length;
     }
 }

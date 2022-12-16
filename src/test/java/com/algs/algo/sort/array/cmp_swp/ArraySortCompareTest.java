@@ -26,25 +26,22 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     }
 
     private Class<?>[] targetClasses = new Class<?>[] {
-//                SelectionSortImpl.class,
-//                HeapSortImpl.class,
-//                BubbleSortImpl.class,
-//                InsertionSortImpl.class,
-//                SentinelInsertionSortImpl.class
-//                ShellSortImpl.class,
-                MergeSortTdImpl.class,
-                MergeSortTdOptmImpl.class,
-                MergeSortBuImpl.class,
-                MergeSortBuOptmImpl.class,
-//                QuickSortImpl.class,
-//                QuickSortImpl0.class,
-//                QuickSort3wayImpl.class,
-        };
+//            SelectionSortImpl.class,
+//            HeapSortImpl.class,
+//            BubbleSortImpl.class,
+//            InsertionSortImpl.class,
+//            SentinelInsertionSortImpl.class
+//            ShellSortImpl.class,
+            MergeSortTdImpl.class,
+//            MergeSortTdOptmImpl.class,
+            MergeSortBuImpl.class,
+//            MergeSortBuOptmImpl.class,
+            NaturalMergeSortImpl.class,
+//            QuickSortImpl.class,
+//            QuickSortImpl0.class,
+//            QuickSort3wayImpl.class,
+    };
 
-
-//        execRandomArray(klasses, 900000);
-//        execRandomArray(klasses, 18);
-//        execArrayWith2Value(klasses);
 
     @Test
     @Override
@@ -117,8 +114,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      *  {@link MergeSortTdOptmImpl}: 457 ms, can be much faster than {@link MergeSortTdImpl}, even near half
      *
      *  {@link MergeSortBuImpl}: 990 ms
-     *  {@link MergeSortBuOptmImpl}:
-     *      644 ms (@link {@link MergeSortImpl#insertionSortThreshold} == 8)
+     *  {@link MergeSortBuOptmImpl}: 644 ms (@link {@link MergeSortImpl#insertionSortThreshold} == 8)
+     *  {@link NaturalMergeSortImpl}: almost same as {@link MergeSortBuImpl}
      *
      *  {@link MergeSortBuImpl} is slightly faster than {@link MergeSortTdImpl}, it don't use recursion,
      *  other than that, they don't have differences in number of compares and array access
