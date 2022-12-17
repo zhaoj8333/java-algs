@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class SelectionSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 
+    public SelectionSortAlysImpl(E[] array) {
+        this(array, null);
+    }
+
     public SelectionSortAlysImpl(E[] data, Comparator<E> comparator) {
         super(data, comparator);
     }

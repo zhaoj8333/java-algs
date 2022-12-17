@@ -72,3 +72,4 @@ buildNumber.properties
 .settings
 .metadata
 src/main/resources/data/*
+src/main/resources/images/*

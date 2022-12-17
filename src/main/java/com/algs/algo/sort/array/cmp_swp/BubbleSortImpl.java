@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class BubbleSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
+    public BubbleSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public BubbleSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

@@ -6,6 +6,10 @@ public class MergeSortBuImpl<E extends Comparable<E>> extends MergeSortImpl<E> {
 
     protected final E[] aux = (E[]) new Comparable[array.length];
 
+    public MergeSortBuImpl(E[] array) {
+        this(array, null);
+    }
+
     public MergeSortBuImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

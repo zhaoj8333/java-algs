@@ -26,6 +26,10 @@ public class ShellSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapS
         this(array, comparator, new SedgeWick());
     }
 
+    public ShellSortImpl(E[] array) {
+        this(array, null);
+    }
+
     @Override
     public void sort() {
         Iterator<Integer> itr = this.sg.getIterator(array.length);

@@ -7,7 +7,8 @@ import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import com.graph.analysis.algo.sort.merge.*;
+import com.graph.analysis.algo.sort.merge.MergeSortBuOptmAlysImpl;
+import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,9 +27,14 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
     }
 
     private final Class<?>[] compareGroupClasses = new Class<?>[] {
+//            SelectionSortAlysImpl.class,
+//            InsertionSortAlysImpl.class,
+//            ShellSortAlysImpl.class,
 //            MergeSortTdAlysImpl.class,
-            MergeSortBuAlysImpl.class,
-            NaturalMergeSortBuAlysImpl.class,
+//            MergeSortBuAlysImpl.class,
+            MergeSortBuOptmAlysImpl.class,
+//            NaturalMergeSortBuAlysImpl.class,
+            QuickSortAlysImpl.class,
     };
 
     @Override
@@ -53,12 +59,6 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
     protected void execEachByOffset(Object obj) {
         CompareAndSwapSortAlys<Integer> sortAlys = (CompareAndSwapSortAlys<Integer>) obj;
         sortAlys.analyze();
-//        if (sz == x - 1) {
-//            DrawUtil.setPenColor(colors.deque());
-//            DrawUtil.textRight(570, 17500, "TopDown(acc)");
-//            DrawUtil.setPenColor(colors.deque());
-//            DrawUtil.textRight(570, 13500, "TopDownOpt(acc)");
-//        }
     }
 
     public static void main(String[] args) {
@@ -79,6 +79,12 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
             DrawUtil.point(N, cost);
             cost = (int) (4 * N * Math.log(N));
             DrawUtil.point(N, cost);
+            cost = (int) (3 * N * Math.log(N));
+            DrawUtil.point(N, cost);
+            cost = (int) (2 * N * Math.log(N));
+            DrawUtil.point(N, cost);
+            cost = (int) (N * Math.log(N));
+            DrawUtil.point(N, cost);
         }
     }
 
@@ -87,19 +93,22 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
         Character[] array = getChars();
         CompareAndSwapSortAlys<Character> alys;
 
-        alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-        alys.sort();
+//        alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+//        alys.sort();
+//
+//        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+//        alys.sort();
+//
+//        alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+//        alys.sort();
+//
+//        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+//        alys.sort();
+//
+//        alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
+//        alys.sort();
 
-        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-        alys.sort();
-
-        alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-        alys.sort();
-
-        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-        alys.sort();
-
-        alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
+        alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
         alys.sort();
     }
 
@@ -107,7 +116,7 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
         IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
         assert chars != null;
         Character[] array = ArraysUtil.toChars(chars.toArray());
-        ArraysUtil.display(array);
+
         Assertions.assertTrue(array.length > 1);
         return array;
     }

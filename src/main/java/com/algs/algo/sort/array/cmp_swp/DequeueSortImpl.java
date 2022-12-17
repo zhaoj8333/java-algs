@@ -8,6 +8,10 @@ import java.util.Comparator;
 @Label("Very Slow")
 public class DequeueSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
+    public DequeueSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public DequeueSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

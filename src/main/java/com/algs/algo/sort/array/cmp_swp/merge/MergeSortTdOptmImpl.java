@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImpl<E> {
 
+    public MergeSortTdOptmImpl(E[] array) {
+        this(array, null);
+    }
+
     public MergeSortTdOptmImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

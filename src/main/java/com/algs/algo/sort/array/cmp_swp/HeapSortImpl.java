@@ -20,6 +20,10 @@ public class HeapSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSo
 
     private int heapSize;
 
+    public HeapSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public HeapSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
         heapSize = array.length;

@@ -7,6 +7,10 @@ import java.util.Comparator;
  */
 public class SelectionSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
+    public SelectionSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public SelectionSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

@@ -9,6 +9,10 @@ public class MergeSortBuAlysImpl<E extends Comparable<E>> extends MergeSortAlysI
 
     protected final E[] aux = (E[]) new Comparable[array.length];
 
+    public MergeSortBuAlysImpl(E[] array) {
+        this(array, null);
+    }
+
     public MergeSortBuAlysImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

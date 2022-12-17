@@ -7,6 +7,10 @@ import java.util.Comparator;
 
 public class MergeSortTdOptmAlysImpl<E extends Comparable<E>> extends MergeSortTdAlysImpl<E> {
 
+    public MergeSortTdOptmAlysImpl(E[] array) {
+        this(array, null);
+    }
+
     public MergeSortTdOptmAlysImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

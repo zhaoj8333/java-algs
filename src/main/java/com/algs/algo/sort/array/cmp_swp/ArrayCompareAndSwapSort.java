@@ -15,6 +15,10 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
     protected E[] array;
     protected Comparator<E> comparator;
 
+    public ArrayCompareAndSwapSort(E[] array) {
+        this.array = array;
+    }
+
     public ArrayCompareAndSwapSort(E[] array, Comparator<E> comparator) {
         ObjectUtil.requireNonNull(array);
         this.array = array;

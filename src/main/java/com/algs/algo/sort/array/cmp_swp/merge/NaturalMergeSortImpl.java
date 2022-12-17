@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class NaturalMergeSortImpl<E extends Comparable<E>> extends MergeSortBuImpl<E> {
 
+    public NaturalMergeSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public NaturalMergeSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

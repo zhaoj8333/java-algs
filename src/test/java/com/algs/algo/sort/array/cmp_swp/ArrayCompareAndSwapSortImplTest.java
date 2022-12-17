@@ -1,7 +1,11 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.algo.sort.array.cmp_swp.merge.NaturalMergeSortImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.*;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
@@ -19,22 +23,21 @@ import java.util.Comparator;
 class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-//            SelectionSortImpl.class,
-//            HeapSortImpl.class,
-//            BubbleSortImpl.class,
-//            InsertionSortImpl.class,
-//            SentinelInsertionSortImpl.class,
-//            ShellSortImpl.class,
-//            MergeSortTdImpl.class,
-//            MergeSortBuImpl.class,
-//            MergeSortTdOptmImpl.class,
-//            MergeSortBuOptmImpl.class,
+            SelectionSortImpl.class,
+            HeapSortImpl.class,
+            BubbleSortImpl.class,
+            InsertionSortImpl.class,
+            SentinelInsertionSortImpl.class,
+            ShellSortImpl.class,
+            MergeSortTdImpl.class,
+            MergeSortBuImpl.class,
+            MergeSortTdOptmImpl.class,
+            MergeSortBuOptmImpl.class,
 //            MultiWayMergeSortImpl.class,
-            NaturalMergeSortImpl.class
-
-//            QuickSortImpl.class,
-//            QuickSortImpl0.class,
-//            QuickSort3wayImpl.class,
+            NaturalMergeSortImpl.class,
+            QuickSortImpl.class,
+            QuickSortImpl0.class,
+            QuickSort3wayImpl.class,
     };
 
     private Character[] array;

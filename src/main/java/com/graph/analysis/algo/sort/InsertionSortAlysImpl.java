@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class InsertionSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 
+    public InsertionSortAlysImpl(E[] array) {
+        this(array, null);
+    }
+
     public InsertionSortAlysImpl(E[] data, Comparator<E> comparator) {
         super(data, comparator);
     }
@@ -15,8 +19,8 @@ public class InsertionSortAlysImpl<E extends Comparable<E>> extends CompareAndSw
             cost++;
             return;
         }
-//        sort0(len);
-        sort2(len);
+        sort0(len);
+//        sort2(len);
     }
 
     private void sort2(int len) {

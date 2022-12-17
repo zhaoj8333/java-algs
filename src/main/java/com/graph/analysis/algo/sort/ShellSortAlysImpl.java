@@ -10,12 +10,16 @@ public class ShellSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
 
     private final SequenceGenerator sg;
 
-    public ShellSortAlysImpl(E[] data) {
-        this(data, null, new SedgeWick());
+    public ShellSortAlysImpl(E[] array) {
+        this(array, null, new SedgeWick());
     }
 
-    public ShellSortAlysImpl(E[] data, Comparator<E> comparator, SequenceGenerator sg) {
-        super(data, comparator);
+    public ShellSortAlysImpl(E[] array, Comparator<E> comparator) {
+        this(array, comparator, new SedgeWick());
+    }
+
+    public ShellSortAlysImpl(E[] array, Comparator<E> comparator, SequenceGenerator sg) {
+        super(array, comparator);
         this.sg = sg;
     }
 

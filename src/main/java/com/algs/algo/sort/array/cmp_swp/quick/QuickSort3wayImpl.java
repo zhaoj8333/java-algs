@@ -7,6 +7,10 @@ import java.util.Comparator;
 
 public class QuickSort3wayImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
+    public QuickSort3wayImpl(E[] array) {
+        this(array, null);
+    }
+
     public QuickSort3wayImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }

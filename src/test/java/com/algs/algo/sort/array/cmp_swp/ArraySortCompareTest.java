@@ -32,14 +32,14 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            InsertionSortImpl.class,
 //            SentinelInsertionSortImpl.class
 //            ShellSortImpl.class,
-            MergeSortTdImpl.class,
+//            MergeSortTdImpl.class,
 //            MergeSortTdOptmImpl.class,
-            MergeSortBuImpl.class,
+//            MergeSortBuImpl.class,
 //            MergeSortBuOptmImpl.class,
             NaturalMergeSortImpl.class,
-//            QuickSortImpl.class,
-//            QuickSortImpl0.class,
-//            QuickSort3wayImpl.class,
+            QuickSortImpl.class,
+            QuickSortImpl0.class,
+            QuickSort3wayImpl.class,
     };
 
 

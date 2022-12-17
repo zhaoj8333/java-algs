@@ -22,6 +22,10 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     protected int cmpCount = 0;
     protected int arrayAcc = 0;
 
+    public CompareAndSwapSortAlys(E[] array) {
+        this(array, null);
+    }
+
     public CompareAndSwapSortAlys(E[] array, Comparator<E> comparator) {
         ObjectUtil.requireNonNull(array);
         cost = 0;
@@ -78,6 +82,5 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
-//        plot(array.length, leftSubarrayLength + rightSubarrayLength, DrawUtil.GREEN);
     }
 }

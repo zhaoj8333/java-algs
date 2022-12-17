@@ -15,6 +15,10 @@ public abstract class MergeSortImpl<E extends Comparable<E>> extends ArrayCompar
 
     protected final E[] aux = (E[]) new Comparable[array.length];
 
+    public MergeSortImpl(E[] array) {
+        this(array, null);
+    }
+
     public MergeSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
