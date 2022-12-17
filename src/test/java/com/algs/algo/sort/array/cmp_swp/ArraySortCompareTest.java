@@ -22,7 +22,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     private static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(900000);
+//        testArray = ArrayBuilder.randomIntArray(900000);
+        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 1000);
     }
 
     private Class<?>[] targetClasses = new Class<?>[] {
@@ -124,7 +125,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      * {@link ShellSortImpl}: 1351 ms
      * {@link MergeSortTdImpl}: 718 ms
      * {@link QuickSortImpl0}: 711 ms
-     * {@link QuickSort3wayImpl}: 673
+     * {@link QuickSort3wayImpl}: 673, but this can hugely improve performance when there are k numbers
      */
 
     /**

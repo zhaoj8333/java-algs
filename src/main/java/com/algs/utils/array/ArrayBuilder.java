@@ -118,4 +118,16 @@ public final class ArrayBuilder {
         return array;
     }
 
+    public static Integer[] randomArrayWithSeveralValues(int length, int num) {
+        Integer[] array = new Integer[length];
+        Integer[] values = new Integer[num];
+        for (int i = 0; i < num; i++) {
+            values[i] = r.nextInt(Integer.MAX_VALUE);
+        }
+        for (int i = 0; i < length; i++) {
+            array[i] = values[r.nextInt(num)];
+        }
+        return array;
+    }
+
 }
