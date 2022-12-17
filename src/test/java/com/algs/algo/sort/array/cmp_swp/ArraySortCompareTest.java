@@ -31,13 +31,13 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            BubbleSortImpl.class,
 //            InsertionSortImpl.class,
 //            SentinelInsertionSortImpl.class
-//            ShellSortImpl.class,
-//            MergeSortTdImpl.class,
+            ShellSortImpl.class,
+            MergeSortTdImpl.class,
 //            MergeSortTdOptmImpl.class,
 //            MergeSortBuImpl.class,
 //            MergeSortBuOptmImpl.class,
-            NaturalMergeSortImpl.class,
-            QuickSortImpl.class,
+//            NaturalMergeSortImpl.class,
+//            QuickSortImpl.class,
             QuickSortImpl0.class,
             QuickSort3wayImpl.class,
     };
@@ -121,9 +121,10 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      *  other than that, they don't have differences in number of compares and array access
      *
      * 900000:
-     * {@link ShellSortImpl}: 1525 ms
-     * {@link MergeSortTdImpl}: 643 ms
-     * {@link QuickSortImpl}: 400 ms
+     * {@link ShellSortImpl}: 1351 ms
+     * {@link MergeSortTdImpl}: 718 ms
+     * {@link QuickSortImpl0}: 711 ms
+     * {@link QuickSort3wayImpl}: 673
      */
 
     /**

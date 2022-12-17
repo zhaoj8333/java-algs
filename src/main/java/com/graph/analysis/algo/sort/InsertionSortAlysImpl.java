@@ -1,5 +1,8 @@
 package com.graph.analysis.algo.sort;
 
+import com.algs.utils.array.ArraySortUtil;
+import org.junit.jupiter.api.Assertions;
+
 import java.util.Comparator;
 
 public class InsertionSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
@@ -21,6 +24,7 @@ public class InsertionSortAlysImpl<E extends Comparable<E>> extends CompareAndSw
         }
         sort0(len);
 //        sort2(len);
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     private void sort2(int len) {

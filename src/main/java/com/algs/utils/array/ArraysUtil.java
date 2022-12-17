@@ -209,30 +209,35 @@ public final class ArraysUtil {
     }
 
     public static Integer[] copy(Integer[] array) {
+        ObjectUtil.requireNonNull(array);
         Integer[] target = new Integer[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
     public static int[] copy(int[] array) {
+        ObjectUtil.requireNonNull(array);
         int[] target = new int[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
     public static Character[] copy(Character[] array) {
+        ObjectUtil.requireNonNull(array);
         Character[] target = new Character[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
     public static Short[] copy(Short[] array) {
+        ObjectUtil.requireNonNull(array);
         Short[] target = new Short[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
     public static String toString(int[] array) {
+        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (int i = 0; i < array.length; i++) {
@@ -246,6 +251,7 @@ public final class ArraysUtil {
     }
 
     public static String toString(char[] array) {
+        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (int i = 0; i < array.length; i++) {
@@ -259,6 +265,7 @@ public final class ArraysUtil {
     }
 
     public static String toString(Object[] array) {
+        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (int i = 0; i < array.length; i++) {

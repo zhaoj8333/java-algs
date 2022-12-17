@@ -6,6 +6,7 @@ import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
+import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
@@ -22,22 +23,12 @@ import java.util.Comparator;
 
 class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
-    protected Class<?>[] targetClasses = new Class<?>[] {
-            SelectionSortImpl.class,
-            HeapSortImpl.class,
+    protected Class<?>[] targetClasses = new Class<?>[]{
             BubbleSortImpl.class,
-            InsertionSortImpl.class,
-            SentinelInsertionSortImpl.class,
-            ShellSortImpl.class,
-            MergeSortTdImpl.class,
-            MergeSortBuImpl.class,
-            MergeSortTdOptmImpl.class,
-            MergeSortBuOptmImpl.class,
-//            MultiWayMergeSortImpl.class,
-            NaturalMergeSortImpl.class,
-            QuickSortImpl.class,
-            QuickSortImpl0.class,
-            QuickSort3wayImpl.class,
+            SelectionSortImpl.class, HeapSortImpl.class,
+            InsertionSortImpl.class, SentinelInsertionSortImpl.class, ShellSortImpl.class,
+            MergeSortTdImpl.class, MergeSortBuImpl.class, MergeSortTdOptmImpl.class, MergeSortBuOptmImpl.class, NaturalMergeSortImpl.class, // MultiWayMergeSortImpl.class,
+            QuickSortImpl.class, QuickSortImpl0.class, QuickSort3wayImpl.class,
     };
 
     private Character[] array;
@@ -235,10 +226,10 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     /**
      * {@link InsertionSortImpl} is faster than {@link SelectionSortImpl} for h-sorting because h decrease, the array become partially sorted
-     *
+     * <p>
      * {@link #insertionSortAndPrintTrack(Character[])} get less comparisons(N^2/4) in partially sorted arrays
-     *  than {@link #hSortedOnSelectionSort(Character[])}, which is (N^2/2)
-     *
+     * than {@link #hSortedOnSelectionSort(Character[])}, which is (N^2/2)
+     * <p>
      * When h-sorting, using {@link #hSortedOnSelectionSort(Character[])} is same as the standard {@link SelectionSortImpl} implementation,
      * which is unnecessary
      */
@@ -261,7 +252,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     /**
      * find best / worst cases of {@link com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl}
-     *
+     * <p>
      * max:452
      * worst: {25, 30, 18, 2, 26, 30, 10, 6, 13, 25, 1, 11, 23, 19, 28, 11, 15, 9, 26, 7, 7, 24, 28, 2, 12, 15, 27, 28, 8, 12}
      * min:192
@@ -272,7 +263,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         int max = 0;
         int min = Integer.MAX_VALUE;
         Integer[] worst = new Integer[0];
-        Integer[] best  = new Integer[0];
+        Integer[] best = new Integer[0];
         for (int i = 0; i < 50000000; i++) {
             Integer[] array = ArrayBuilder.randomIntArray(30);
             CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copy(array));
@@ -296,4 +287,42 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     }
 
+    Character[] chars = getChars();
+    int count = 1000000;
+
+    /**
+     * For small arrays, {@link InsertionSortImpl} is faster than {@link QuickSortImpl}
+     */
+    @Test
+    void quickSortAndInsertionSortForSmallArrays() {
+        StopWatchTask<Object> insertion = new StopWatchTask<>() {
+            @Override
+            protected Object profileTask() {
+                for (int i = 0; i < count; i++) {
+                    ArrayCompareAndSwapSort<Character> insertion = new InsertionSortImpl<>(ArraysUtil.copy(chars));
+                    insertion.sort();
+                }
+                return "InsertionSortImpl";
+            }
+
+            @Override
+            protected void assertResult() { }
+        };
+        insertion.exec(true);
+
+        StopWatchTask<Object> quick = new StopWatchTask<>() {
+            @Override
+            protected Object profileTask() {
+                for (int i = 0; i < count; i++) {
+                    ArrayCompareAndSwapSort<Character> insertion = new QuickSortImpl0<>(ArraysUtil.copy(chars));
+                    insertion.sort();
+                }
+                return "QuickSortImpl0";
+            }
+
+            @Override
+            protected void assertResult() { }
+        };
+        quick.exec(true);
+    }
 }

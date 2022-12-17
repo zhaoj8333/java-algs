@@ -28,7 +28,11 @@ public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwap
      * [begin, end)
      */
     public void sort(int begin, int end) {
-        if (end - begin < 2) {
+//        if (end - begin < 2) {
+//            return;
+//        }
+        if (end <= begin + insertionSortThreshold) {
+            insertionSort(array, begin, end);
             return;
         }
         int mid = partition(begin, end);
@@ -43,13 +47,8 @@ public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwap
         E entry = array[begin];
         int i = begin, j = end;
         while (true) {
-            do {
-                ++i;
-            } while (i < end && compareEntry(array[i], entry) < 0);
-
-            do {
-                --j;
-            } while (j > begin && compareEntry(array[j], entry) > 0);
+            while (++i < end && compareEntry(array[i], entry) < 0);
+            while (--j > begin && compareEntry(array[j], entry) > 0);
             if (i >= j) {
                 break;
             }

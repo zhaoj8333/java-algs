@@ -1,7 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
 import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
-import com.algs.utils.RandomUtil;
 
 import java.util.Comparator;
 
@@ -17,7 +16,7 @@ public class QuickSort3wayImpl<E extends Comparable<E>> extends ArrayCompareAndS
 
     @Override
     public void sort() {
-        RandomUtil.shuffle(array);
+        // RandomUtil.shuffle(array);
         sort(0, array.length - 1);
     }
 

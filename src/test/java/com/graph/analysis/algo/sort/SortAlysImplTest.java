@@ -7,7 +7,7 @@ import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import com.graph.analysis.algo.sort.merge.MergeSortTdAlysImpl;
+import com.graph.analysis.algo.sort.quick.QuickSort3wayAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,11 +30,12 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 //            SelectionSortAlysImpl.class,
 //            InsertionSortAlysImpl.class,
 //            ShellSortAlysImpl.class,
-            MergeSortTdAlysImpl.class,
+//            MergeSortTdAlysImpl.class,
 //            MergeSortBuAlysImpl.class,
 //            MergeSortBuOptmAlysImpl.class,
 //            NaturalMergeSortBuAlysImpl.class,
             QuickSortAlysImpl.class,
+            QuickSort3wayAlysImpl.class,
     };
 
     @Override
@@ -108,7 +109,10 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 //        alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
 //        alys.sort();
 
-        alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
+//        alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
+//        alys.sort();
+
+        alys = new QuickSort3wayAlysImpl<>(ArraysUtil.copy(array));
         alys.sort();
     }
 

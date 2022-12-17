@@ -23,26 +23,4 @@ public abstract class MergeSortImpl<E extends Comparable<E>> extends ArrayCompar
         super(array, comparator);
     }
 
-    protected int insertionSortThreshold = 8;
-
-    /**
-     * If the index range specified by {@link MergeSortImpl} is under {@link #insertionSortThreshold},
-     * use {@link #insertionSort(E[], int, int)} instead of merge, this can reduce time by 10% ~ 15%
-     */
-    public void setInsertionSortThreshold(int insertionSortThreshold) {
-        this.insertionSortThreshold = insertionSortThreshold;
-    }
-
-    protected void insertionSort(E[] array, int begin, int end) {
-        for (int i = begin + 1; i < end; i++) {
-            int index = i;
-            E tmp = array[index];
-            while (index > begin && compareEntry(tmp, array[index - 1]) < 0) {
-                array[index] = array[index - 1];
-                index--;
-            }
-            array[index] = tmp;
-        }
-    }
-
 }

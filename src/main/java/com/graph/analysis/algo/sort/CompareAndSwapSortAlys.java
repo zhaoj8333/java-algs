@@ -34,6 +34,7 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         arrayAcc = 0;
         this.array = array;
         this.comparator = comparator;
+//        System.out.println("Testing: " + this.getClass().getName());
     }
 
     protected int compareEntry(E a, E b) {

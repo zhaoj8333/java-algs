@@ -3,6 +3,8 @@ package com.graph.analysis.algo.sort;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SedgeWick;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.utils.array.ArraySortUtil;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
@@ -31,6 +33,8 @@ public class ShellSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
             return;
         }
         sort0(len);
+
+        Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     private void sort0(int len) {
