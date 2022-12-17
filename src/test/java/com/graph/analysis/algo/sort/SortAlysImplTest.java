@@ -7,7 +7,7 @@ import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import com.graph.analysis.algo.sort.merge.MergeSortBuOptmAlysImpl;
+import com.graph.analysis.algo.sort.merge.MergeSortTdAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,9 +30,9 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 //            SelectionSortAlysImpl.class,
 //            InsertionSortAlysImpl.class,
 //            ShellSortAlysImpl.class,
-//            MergeSortTdAlysImpl.class,
+            MergeSortTdAlysImpl.class,
 //            MergeSortBuAlysImpl.class,
-            MergeSortBuOptmAlysImpl.class,
+//            MergeSortBuOptmAlysImpl.class,
 //            NaturalMergeSortBuAlysImpl.class,
             QuickSortAlysImpl.class,
     };

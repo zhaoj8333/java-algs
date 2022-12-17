@@ -82,5 +82,6 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
+        plot(array.length, swapCount);
     }
 }

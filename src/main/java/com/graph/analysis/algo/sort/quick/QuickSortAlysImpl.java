@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
+/**
+ * The average {@link CompareAndSwapSortAlys#arrayAcc} Which is fewer than 2*NlogN
+ * is far fewer than {@link com.graph.analysis.algo.sort.merge.MergeSortTdAlysImpl}, which is between 5*NlogN ~ 6*NlogN
+ */
 public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 
     public QuickSortAlysImpl(E[] array) {
