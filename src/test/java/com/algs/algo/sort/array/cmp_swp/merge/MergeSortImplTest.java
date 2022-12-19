@@ -18,13 +18,13 @@ class MergeSortImplTest {
     void _2_2_1() {
 //        Character[] chars = getChars();
         Character[] chars = ArrayBuilder.randomPrintableCharArray(39);
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
 
         Character[] copy = ArraysUtil.copy(chars);
         sort(chars);
 
         Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
     }
 
     /**
@@ -116,13 +116,13 @@ class MergeSortImplTest {
     @Test
     void _2_2_3() {
         Character[] chars = getChars();
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
 
         Character[] copy = ArraysUtil.copy(chars);
         sort0(chars);
 
         Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
     }
 
     /**
@@ -226,12 +226,12 @@ class MergeSortImplTest {
     @Test
     void _2_2_12() {
         Character[] chars = getChars();
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
 
-        ISortable<Character> sort = new MergeSortSubLinearAuxSpaceImpl<>(chars, Character::compareTo, 4);
+        ISortable<Character> sort = new MergeSortLinearSpaceImpl<>(chars, Character::compareTo, 4);
         sort.sort();
 
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
         Assertions.assertTrue(ArraySortUtil.isSorted(chars));
     }
 
@@ -258,7 +258,7 @@ class MergeSortImplTest {
         Integer[] array = new Integer[] {3, 0, 2, 1, 4};  // 4
         array = ArrayBuilder.randomUniqueArray(40);
         long expected = ArraysUtil.countInversionByBruteForce(array);
-        ArraysUtil.display(array);
+        ArraysUtil.println(array);
         long count = ArraysUtil.countInversion(array);
         System.out.println(count);
         Assertions.assertEquals(expected, count);

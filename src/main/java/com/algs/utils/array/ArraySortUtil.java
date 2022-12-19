@@ -2,19 +2,11 @@ package com.algs.utils.array;
 
 import com.algs.utils.CompareUtil;
 
-import java.awt.*;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ArraySortUtil<E extends Comparable<E>> {
-
-    public static final Color SORTED_COLOR = Color.LIGHT_GRAY;
-    public static final Color UNSORTED_COLOR = Color.BLACK;
-    public static final Color COMPARED_COLOR = Color.CYAN;
-    public static final Color CHECKING_COLOR = Color.YELLOW;
-    public static final Color COMPARE_BASE_COLOR = Color.BLUE;
-    public static final Color SELECTED_COLOR = Color.BLUE;
 
     public static <E extends Comparable<E>> boolean isAsc(E[] array) {
         return isAsc(array, null);

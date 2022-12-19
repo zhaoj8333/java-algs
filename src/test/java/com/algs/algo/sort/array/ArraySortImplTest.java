@@ -22,12 +22,12 @@ class ArraySortImplTest extends ImplFunctionalityTest {
     public void testEach(Object obj) {
         ArraySort<Integer> sortObj = (ArraySort) obj;
 
-        ArraysUtil.display(testIntArray);
+        ArraysUtil.println(testIntArray);
 
         sortObj.sort();
 
         Integer[] sortedArray = sortObj.getArray();
-        ArraysUtil.display(sortedArray);
+        ArraysUtil.println(sortedArray);
         Assertions.assertTrue(ArraySortUtil.isSorted(sortedArray, null));
         Assertions.assertTrue(ArraySortUtil.onlySorted(testIntArray, sortedArray));
     }

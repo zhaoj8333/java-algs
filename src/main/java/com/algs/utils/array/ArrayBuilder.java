@@ -105,24 +105,11 @@ public final class ArrayBuilder {
         return array;
     }
 
-    public static Integer[] randomArrayWith2Values(int length, int val1, int val2) {
-        Integer[] array = new Integer[length];
-        for (int i = 0; i < length; i++) {
-            int m = r.nextInt(length);
-            if (m % 2 == 0) {
-                array[i] = val1;
-            } else {
-                array[i] = val2;
-            }
-        }
-        return array;
-    }
-
     public static Integer[] randomArrayWithSeveralValues(int length, int num) {
         Integer[] array = new Integer[length];
         Integer[] values = new Integer[num];
         for (int i = 0; i < num; i++) {
-            values[i] = r.nextInt(Integer.MAX_VALUE);
+            values[i] = r.nextInt(Math.min(num * 10, Integer.MAX_VALUE));
         }
         for (int i = 0; i < length; i++) {
             array[i] = values[r.nextInt(num)];

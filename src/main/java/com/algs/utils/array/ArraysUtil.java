@@ -100,15 +100,15 @@ public final class ArraysUtil {
         }
     }
 
-    public static <E> void display(E[] array) {
+    public static <E> void println(E[] array) {
         System.out.println(toString(array));
     }
 
-    public static void display(char[] array) {
+    public static void println(char[] array) {
         System.out.println(toString(array));
     }
 
-    public static void display(ICollection<Character> list) {
+    public static void println(ICollection<Character> list) {
         System.out.println(list.toString());
     }
 

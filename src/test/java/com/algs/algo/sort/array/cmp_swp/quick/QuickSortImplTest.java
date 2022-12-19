@@ -1,17 +1,26 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
+import com.algs.algo.sort.ISortable;
+import com.algs.analysis.StopWatchTask;
 import com.algs.utils.CompareUtil;
-import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
+import com.algs.utils.array.ArraysUtil;
+import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
+import com.graph.analysis.algo.sort.quick.MaximumSwapOfLargestElement;
+import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class QuickSortImplTest {
 
     private final Character[] array = new Character[] {'E', 'A', 'S', 'Y', 'Q', 'U', 'E', 'S', 'T', 'I', 'O', 'N'};
+    private final Integer[] worstCase = new Integer[] {11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//    private final Integer[] worstCase = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
 
     /**
      * E:  {E, A, S, Y, Q, U, E, S, T, I, O, N}
+     *
      * E:  {E, A, E, Y, Q, U, S, S, T, I, O, N}
      * E:  {A, E, E, Y, Q, U, S, S, T, I, O, N}
      * Y:  {A, E, E, N, Q, U, S, S, T, I, O, Y}
@@ -25,10 +34,11 @@ class QuickSortImplTest {
      */
     @Test
     void _2_3_1() {
-//        ArraysUtil.shuffle(array);
-        ArraysUtil.display(array);
+        ArraysUtil.println(array);
+
         sort(array, 0, array.length - 1);
-        ArraysUtil.display(array);
+
+        ArraysUtil.println(array);
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
@@ -68,9 +78,151 @@ class QuickSortImplTest {
         ArraySortUtil.swap(array, begin, j);
 
         System.out.print(pivot + ":  ");
-        ArraysUtil.display(array);
+        ArraysUtil.println(array);
 
         return j;
+    }
+
+    /**
+     * Look like the maximum number of swap of biggest element is floor(N/2)
+     * Scenario:
+     * {2, 10, 4, 1, 7, 5, 3, 9, 6, 8}
+     */
+    @Test
+    void _2_3_3() {
+        int retry = 5000000;
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < retry; i++) {
+            ArraysUtil.shuffle(worstCase);
+            Integer[] copy = ArraysUtil.copy(worstCase);
+            MaximumSwapOfLargestElement<Integer> msle = new MaximumSwapOfLargestElement<>(copy, false);
+            int swap = msle.get();
+            if (swap > max) {
+                max = swap;
+                if (max == 5) {
+                    ArraysUtil.println(worstCase);
+                }
+//                if (max == 8) {
+//                    ArraysUtil.display(worstCase);
+//                }
+            }
+        }
+        System.out.println(max);
+    }
+
+    /**
+     * After swap: [1, 11], index: [1, 4]
+     * After swap: [4, 11], index: [4, 6]
+     * After swap: [6, 11], index: [6, 8]
+     * After swap: [8, 11], index: [8, 9]
+     */
+    @Test
+    void testMostSwapScenario() {
+        Integer[] array = new Integer[]{2, 11, 5, 3, 1, 7, 4, 9, 6, 8, 10};
+        MaximumSwapOfLargestElement<Integer> msle = new MaximumSwapOfLargestElement<>(array, true);
+        int i = msle.get();
+        System.out.println(i);
+    }
+
+    /**
+     * {6, 5, 4, 1, 2, 3, 9, 11, 10, 7, 8}
+     * {6, 4, 5, 2, 1, 3, 9, 11, 10, 8, 7}
+     * {6, 4, 5, 2, 1, 3, 9, 11, 10, 7, 8}
+     * {6, 4, 5, 1, 2, 3, 9, 11, 10, 8, 7}
+     * {6, 4, 5, 1, 2, 3, 9, 11, 10, 7, 8}
+     * swapCount: 32
+     */
+    @Test
+    void _2_3_4() {
+        testMostCmp();
+    }
+
+    private void testMostCmp() {
+        int retry = 6000000;
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < retry; i++) {
+            ArraysUtil.shuffle(worstCase);
+            Integer[] copy = ArraysUtil.copy(worstCase);
+            CompareAndSwapSortAlys<Integer> sort = new QuickSortAlysImpl<>(copy);
+            sort.sort();
+            if (sort.getSwapCount() > max) {
+                max = sort.getSwapCount();
+                ArraysUtil.println(worstCase);
+                System.out.println("swapCount: " + max);
+            }
+        }
+    }
+
+    @Test
+    void _2_3_5() {
+        Integer[] array = ArrayBuilder.randomArrayWithSeveralValues(100000, 2);
+
+        Integer[] copy = ArraysUtil.copy(array);
+        Integer[] finalCopy = copy;
+        StopWatchTask<Object> sw = new StopWatchTask<>() {
+            @Override
+            protected Object profileTask() {
+                ISortable<Integer> sort = new QuickSortImpl0<>(finalCopy);
+                sort.sort();
+                return QuickSortImpl0.class.getName();
+            }
+
+            @Override
+            protected void assertResult() {
+            }
+        };
+        sw.exec(true);
+
+        Integer[] copy1 = ArraysUtil.copy(array);
+        sw = new StopWatchTask<>() {
+            @Override
+            protected Object profileTask() {
+                ISortable<Integer> sort = new QuickSort3wayImpl<>(copy1);
+                sort.sort();
+                return QuickSort3wayImpl.class.getName();
+            }
+
+            @Override
+            protected void assertResult() {
+            }
+        };
+        sw.exec(true);
+    }
+
+    @Test
+    void _2_3_7() {
+        for (int size = 10000; size < 1000000; size *= 2) {
+            Integer[] integers = ArrayBuilder.randomUniqueArray(size);
+            QuickSortAlysImpl<Integer> sort = new QuickSortAlysImpl<>(integers);
+            sort.sort();
+            int[] subarraySize = sort.getSubarraySize();
+            System.out.println("size: " + size + ", subsize 0: " + subarraySize[0] + ", subsize 1: " + subarraySize[1] + ", subsize 2: " + subarraySize[2] + ", subsize 3: " + subarraySize[3]);
+        }
+    }
+
+    /**
+     * size: 10000, cmp: 121034
+     * size: 20000, cmp: 262058
+     * size: 40000, cmp: 564106
+     * size: 80000, cmp: 1208202
+     * size: 160000, cmp: 2576394
+     * size: 320000, cmp: 5472778
+     * size: 640000, cmp: 11585546
+     *
+     * N * log N
+     */
+    @Test
+    void _2_3_8() {
+        for (int size = 10000; size < 1000000; size *= 2) {
+            Integer[] integers = ArrayBuilder.randomArrayWithSeveralValues(size, 1);
+            QuickSortAlysImpl<Integer> sort = new QuickSortAlysImpl<>(integers);
+            sort.sort();
+            int cmp = sort.getCmpCount();
+            System.out.println("size: " + size + ", cmp: " + cmp);
+        }
+
     }
 
 }

@@ -47,7 +47,7 @@ public class QuickSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapS
             while (begin < end) {
                 // use < to ensure the pivot will be in the middle when all or part of the elements are the same
                 // if <=, all the elements <= pivot entry won't change
-                if (compareEntry(pivotEntry, array[end]) < 0) {
+                if (compareEntry(pivotEntry, array[end]) < 0) {     // not <= 0
                     end--;
                 } else {
                     array[begin++] = array[end];

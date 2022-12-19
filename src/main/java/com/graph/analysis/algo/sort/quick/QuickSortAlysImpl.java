@@ -20,6 +20,27 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
         super(array, comparator);
     }
 
+    private int size0Array = 0;     // 1/3 of array.length
+    private int size1Array = 0;     // 1/3 of array.length
+    private int size2Array = 0;     // 1/6 of array.length
+    private int size3Array = 0;     // 1/10 of array.length
+
+    public int[] getSubarraySize() {
+        return new int[] {size0Array, size1Array, size2Array, size3Array};
+    }
+
+    private void checkSubarraySize(int size) {
+        if (size == 0) {
+            size0Array++;
+        } else if (size == 1) {
+            size1Array++;
+        } else if (size == 2) {
+            size2Array++;
+        } else if (size == 3) {
+            size3Array++;
+        }
+    }
+
     @Override
     public void sort() {
         int len = array.length;
@@ -38,6 +59,10 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
             return;
         }
         int mid = pivot(start, end);
+
+        checkSubarraySize(mid - start);
+        checkSubarraySize(end - mid - 1);
+
         sort0(start, mid);
         sort0(mid + 1, end);
     }
@@ -54,8 +79,8 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
 
         int i = start, j = end;
         while (i < j) {
-            while (++i < end && compareEntry(pivot, array[i]) < 0);
-            while (start < --j && compareEntry(pivot, array[j]) > 0);
+            while (++i < end && compareEntry(pivot, array[i]) < 0);     // don't use <= 0
+            while (start < --j && compareEntry(pivot, array[j]) > 0);   // don't use <= 0
             if (i >= j) {
                 break;
             }

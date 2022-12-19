@@ -37,7 +37,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
     public void testEach(Object obj) {
         ArrayCompareAndSwapSort<Character> sortObj = (ArrayCompareAndSwapSort<Character>) obj;
 
-        ArraysUtil.display(array);
+        ArraysUtil.println(array);
 
         sortObj.sort();
 

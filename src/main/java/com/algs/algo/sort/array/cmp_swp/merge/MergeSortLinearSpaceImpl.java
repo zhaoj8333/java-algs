@@ -2,12 +2,12 @@ package com.algs.algo.sort.array.cmp_swp.merge;
 
 import java.util.Comparator;
 
-public class MergeSortSubLinearAuxSpaceImpl<E extends Comparable<E>> extends MergeSortTdOptmImpl<E> {
+public class MergeSortLinearSpaceImpl<E extends Comparable<E>> extends MergeSortTdOptmImpl<E> {
 
     private int blockSize;
     private final E[] auxSpace;
 
-    public MergeSortSubLinearAuxSpaceImpl(E[] array, Comparator<E> comparator, int blockSize) {
+    public MergeSortLinearSpaceImpl(E[] array, Comparator<E> comparator, int blockSize) {
         super(array, comparator);
         if (blockSize < 1) {
             throw new RuntimeException("block size should greater than 1");

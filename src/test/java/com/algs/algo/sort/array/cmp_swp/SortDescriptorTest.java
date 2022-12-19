@@ -17,13 +17,13 @@ class SortDescriptorTest {
 
         IList<Character> list = FileUtil.readChars(FilePath.TINY_TXT);
         Object[] chars = CollectionUtil.toArray(list);
-        ArraysUtil.display(chars);
+        ArraysUtil.println(chars);
         Character[] array = ArraysUtil.toChars(chars);
 
         SortDescriptor<Character> cssd = new SortDescriptor<>(array, null);
         int[] describe = cssd.describe();
 
-        ArraysUtil.display(array);
+        ArraysUtil.println(array);
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
 
 

@@ -41,13 +41,13 @@ class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         Object[] array = sortObj.list.toArray();
         Character[] originalArray = ArraysUtil.toChars(array);
 
-        ArraysUtil.display(originalArray);
+        ArraysUtil.println(originalArray);
 
 //        sortObj.sort();
         sortObj.selectionSort();
 
         Character[] sortedArray = ArraysUtil.toChars(sortObj.list.toArray());
-        ArraysUtil.display(sortedArray);
+        ArraysUtil.println(sortedArray);
 
         Assertions.assertTrue(ArraySortUtil.isSorted(sortedArray, null));
         Assertions.assertTrue(ArraySortUtil.onlySorted(originalArray, sortedArray));

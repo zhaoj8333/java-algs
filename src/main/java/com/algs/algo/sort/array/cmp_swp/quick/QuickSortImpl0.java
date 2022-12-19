@@ -42,12 +42,16 @@ public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwap
 
     /**
      * [begin, mid), mid, [mid + 1, end)
+     *
+     * If the first element is always the pivot and all elements are distinct,
+     * the maximum number of swap times of the largest element is floor(N/2)
+     * https://stackoverflow.com/questions/43263249/number-of-largest-element-exchanges-for-quicksort
      */
     private int partition(int begin, int end) {
         E entry = array[begin];
         int i = begin, j = end;
         while (true) {
-            while (++i < end && compareEntry(array[i], entry) < 0);
+            while (++i < end && compareEntry(array[i], entry) < 0);     // not <= 0
             while (--j > begin && compareEntry(array[j], entry) > 0);
             if (i >= j) {
                 break;

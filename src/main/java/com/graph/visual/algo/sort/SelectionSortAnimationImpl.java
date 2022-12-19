@@ -1,7 +1,8 @@
 package com.graph.visual.algo.sort;
 
 import com.algs.utils.DrawUtil;
-import com.algs.utils.array.ArraySortUtil;
+
+import java.awt.*;
 
 public class SelectionSortAnimationImpl<E extends Comparable<E>> extends CompareAndSwapSortAnimation<E> {
 
@@ -11,7 +12,7 @@ public class SelectionSortAnimationImpl<E extends Comparable<E>> extends Compare
 
     protected void beforeCompare() {
         pause(pauseMilliSecond / 5);
-        DrawUtil.setPenColor(ArraySortUtil.COMPARE_BASE_COLOR);
+        DrawUtil.setPenColor(Color.BLUE);
         drawEntry(baseIndex);
         DrawUtil.setPenColor();
     }
@@ -23,7 +24,7 @@ public class SelectionSortAnimationImpl<E extends Comparable<E>> extends Compare
 
     @Override
     protected void afterSwap() {
-        DrawUtil.setPenColor(ArraySortUtil.SORTED_COLOR);
+        DrawUtil.setPenColor(Color.LIGHT_GRAY);
         drawEntry(baseIndex);
         DrawUtil.setPenColor();
     }

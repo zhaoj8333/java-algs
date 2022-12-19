@@ -23,7 +23,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 
     static {
 //        testArray = ArrayBuilder.randomIntArray(900000);
-        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 1000);
+        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
     private Class<?>[] targetClasses = new Class<?>[] {
