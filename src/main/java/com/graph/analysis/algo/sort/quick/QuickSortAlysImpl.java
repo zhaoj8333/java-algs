@@ -1,5 +1,6 @@
 package com.graph.analysis.algo.sort.quick;
 
+import com.algs.algo.sort.array.cmp_swp.quick.NoSentinelQuickSortImpl;
 import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
 import org.junit.jupiter.api.Assertions;
@@ -45,6 +46,7 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
     public void sort() {
         int len = array.length;
         if (len < 2) {
+            testCount ++;
             return;
         }
         sort0(0, len);
@@ -56,12 +58,13 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
      */
     private void sort0(int start, int end) {
         if (end - start < 2) {
+            testCount ++;
             return;
         }
         int mid = pivot(start, end);
 
-        checkSubarraySize(mid - start);
-        checkSubarraySize(end - mid - 1);
+//        checkSubarraySize(mid - start);
+//        checkSubarraySize(end - mid - 1);
 
         sort0(start, mid);
         sort0(mid + 1, end);
@@ -70,25 +73,48 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
     /**
      * [4, 5, 1, 0, 9, 12, 3, 6)
      *     i                     j
+     *
+     * in {@link com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0}, test count is quite high,
+     * if we can reduce it, it will boost the performance,
+     * see {@link NoSentinelQuickSortImpl}
+     * {@link NoSentinelQuickSortAlysImpl}
      */
-    private int pivot(int start, int end) {
-        E pivot = array[start];
+    private int pivot(int begin, int end) {
+        E pivot = array[begin];
 
         cost++;
         arrayAcc++;
 
-        int i = start, j = end;
+        int i = begin, j = end;
         while (i < j) {
-            while (++i < end && compareEntry(pivot, array[i]) < 0);     // don't use <= 0
-            while (start < --j && compareEntry(pivot, array[j]) > 0);   // don't use <= 0
+            testCount ++;
+            // don't use <= 0
+            while (++i < end && compareEntry(pivot, array[i]) < 0) {
+                testCount++;
+            }
+            if (i >= end) {
+                testCount++;
+            }
+            // don't use <= 0
+            while (begin < --j && compareEntry(pivot, array[j]) > 0) {
+                testCount++;
+            }
+            if (begin >= j) {
+                testCount++;
+            }
             if (i >= j) {
+                testCount += 1;
                 break;
             }
+            if (compareEntry(pivot, array[i]) >= 0) {
+                testCount++;
+            }
+            if (compareEntry(pivot, array[j]) <= 0) {
+                testCount++;
+            }
             swap(i, j);
-            swapCount++;
         }
-        swap(start, j);
-        swapCount++;
+        swap(begin, j);
         return j;
     }
 }

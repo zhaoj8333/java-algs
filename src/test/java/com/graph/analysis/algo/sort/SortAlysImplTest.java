@@ -7,10 +7,11 @@ import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
+import com.graph.analysis.algo.sort.merge.*;
+import com.graph.analysis.algo.sort.quick.NoSentinelQuickSortAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSort3wayAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
@@ -35,7 +36,8 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 //            MergeSortBuOptmAlysImpl.class,
 //            NaturalMergeSortBuAlysImpl.class,
             QuickSortAlysImpl.class,
-            QuickSort3wayAlysImpl.class,
+//            QuickSort3wayAlysImpl.class,
+            NoSentinelQuickSortAlysImpl.class,
     };
 
     @Override
@@ -64,7 +66,8 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 
     public static void main(String[] args) {
         SortAlysImplTest<Integer> test = new SortAlysImplTest<>();
-        // test.assureFunctionality();
+        Assertions.assertTrue(test.assureFunctionality());
+
         test.drawCoordinate();
         DrawUtil.setPenRadius(0.003);
         test.drawReferenceLine();
@@ -74,7 +77,9 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
     @Override
     public void drawReferenceLine() {
         for (int N = 0; N < n; N += 1) {
-            int cost = (int) (6 * N * Math.log(N));
+            int cost = (int) (7 * N * Math.log(N));
+            DrawUtil.point(N, cost);
+            cost = (int) (6 * N * Math.log(N));
             DrawUtil.point(N, cost);
             cost = (int) (5 * N * Math.log(N));
             DrawUtil.point(N, cost);
@@ -89,31 +94,44 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
         }
     }
 
-    @Test
-    void assureFunctionality() {
+    private boolean assureFunctionality() {
         Character[] array = getChars();
         CompareAndSwapSortAlys<Character> alys;
 
-//        alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-//        alys.sort();
-//
-//        alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-//        alys.sort();
-//
-//        alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-//        alys.sort();
-//
-//        alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
-//        alys.sort();
-//
-//        alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
-//        alys.sort();
+        try {
+            alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys.sort();
 
-//        alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
-//        alys.sort();
+            alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys.sort();
 
-        alys = new QuickSort3wayAlysImpl<>(ArraysUtil.copy(array));
-        alys.sort();
+            alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys.sort();
+
+            alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys.sort();
+
+            alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
+            alys.sort();
+
+            alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
+            alys.sort();
+
+            alys = new QuickSort3wayAlysImpl<>(ArraysUtil.copy(array));
+            alys.sort();
+
+            alys = new NoSentinelQuickSortAlysImpl<>(ArraysUtil.copy(array));
+            alys.sort();
+
+            return true;
+        } catch (Exception e) {
+            try {
+                throw new Exception(e.getMessage());
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return false;
+        }
     }
 
     private Character[] getChars() {

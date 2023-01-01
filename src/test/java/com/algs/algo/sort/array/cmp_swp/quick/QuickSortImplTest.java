@@ -281,7 +281,7 @@ class QuickSortImplTest {
 
     @Test
     void _2_3_17() {
-        SentinelQuickSortImpl<Integer> sort = new SentinelQuickSortImpl<>(FileUtil.readIntsAsArray(FilePath.INT_1K));
+        NoSentinelQuickSortImpl<Integer> sort = new NoSentinelQuickSortImpl<>(FileUtil.readIntsAsArray(FilePath.INT_1K));
         sort.sort();
         Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
         System.out.println(sort);

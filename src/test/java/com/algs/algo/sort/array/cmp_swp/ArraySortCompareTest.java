@@ -5,7 +5,7 @@ import com.algs.algo.sort.array.cmp_swp.merge.*;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
-import com.algs.algo.sort.array.cmp_swp.quick.SentinelQuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.NoSentinelQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
@@ -41,8 +41,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            NaturalMergeSortImpl.class,
 //            QuickSortImpl.class,
             QuickSortImpl0.class,
-            QuickSort3wayImpl.class,
-            SentinelQuickSortImpl.class,
+//            QuickSort3wayImpl.class,
+            NoSentinelQuickSortImpl.class,
     };
 
     @Test

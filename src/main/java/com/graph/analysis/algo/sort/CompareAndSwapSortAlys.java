@@ -21,6 +21,7 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     protected int swapCount = 0;
     protected int cmpCount = 0;
     protected int arrayAcc = 0;
+    protected int testCount = 0;
 
     public CompareAndSwapSortAlys(E[] array) {
         this(array, null);
@@ -32,14 +33,15 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         swapCount = 0;
         cmpCount = 0;
         arrayAcc = 0;
+        testCount = 0;
         this.array = array;
         this.comparator = comparator;
-//        System.out.println("Testing: " + this.getClass().getName());
     }
 
     protected int compareEntry(E a, E b) {
         cmpCount++;
         cost++;
+        testCount += 1;
 
         return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
     }
@@ -55,6 +57,8 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         E tmp = array[j];
         array[j] = array[i];
         array[i] = tmp;
+
+        arrayAcc += 3;
     }
 
     public int getCost() {
@@ -73,6 +77,10 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         return arrayAcc;
     }
 
+    public int getTestCount() {
+        return testCount;
+    }
+
     public E[] getArray() {
         return array;
     }
@@ -84,5 +92,6 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
         plot(array.length, swapCount);
+        plot(array.length, testCount);
     }
 }

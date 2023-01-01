@@ -4,18 +4,24 @@ import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 
 import java.util.Comparator;
 
-public class SentinelQuickSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
+/**
+ * Faster than {@link QuickSortImpl0} ?
+ */
+public class NoSentinelQuickSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
-    public SentinelQuickSortImpl(E[] array) {
+    public NoSentinelQuickSortImpl(E[] array) {
         this(array, null);
     }
 
-    public SentinelQuickSortImpl(E[] array, Comparator<E> comparator) {
+    public NoSentinelQuickSortImpl(E[] array, Comparator<E> comparator) {
         super(array, comparator);
     }
 
     @Override
     public void sort() {
+        if (array.length == 0) {
+            return;
+        }
         int maxIndex = 0;
         for (int i = 1; i < array.length; i++) {
             if (compareIndex(maxIndex, i) < 0) {
