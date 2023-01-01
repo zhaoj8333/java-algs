@@ -2,6 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
 import com.algs.algo.sort.ISortable;
+import com.algs.algo.sort.array.cmp_swp.quick.KMedianQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.analysis.StopWatchTask;
@@ -30,7 +31,9 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 //            QuickSortImpl.class,
             QuickSortImpl0.class,
 //            QuickSort3wayImpl.class,
-//            SentinelQuickSortImpl.class,
+//            NoSentinelQuickSortImpl.class,
+            KMedianQuickSortImpl.class
+
     };
 
     private Character[] array;

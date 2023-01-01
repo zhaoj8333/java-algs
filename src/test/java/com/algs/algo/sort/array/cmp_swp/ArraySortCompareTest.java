@@ -2,10 +2,10 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplPerformanceTest;
 import com.algs.algo.sort.array.cmp_swp.merge.*;
+import com.algs.algo.sort.array.cmp_swp.quick.KMedianQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
-import com.algs.algo.sort.array.cmp_swp.quick.NoSentinelQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
@@ -20,14 +20,14 @@ import java.util.Comparator;
 
 class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 
-    private static final Integer[] testArray;
+    protected static final Integer[] testArray;
 
     static {
         testArray = ArrayBuilder.randomIntArray(900000);
 //        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
-    private Class<?>[] targetClasses = new Class<?>[] {
+    private final Class<?>[] targetClasses = new Class<?>[] {
 //            SelectionSortImpl.class,
 //            HeapSortImpl.class,
 //            BubbleSortImpl.class,
@@ -42,7 +42,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            QuickSortImpl.class,
             QuickSortImpl0.class,
 //            QuickSort3wayImpl.class,
-            NoSentinelQuickSortImpl.class,
+//            NoSentinelQuickSortImpl.class,
+            KMedianQuickSortImpl.class,
     };
 
     @Test

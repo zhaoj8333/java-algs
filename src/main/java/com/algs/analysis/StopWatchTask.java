@@ -23,7 +23,7 @@ public abstract class StopWatchTask<E> {
         }
         Class<? extends StopWatchTask> klass = this.getClass();
         profile.append('\n');
-        profile.append("class:").append(klass.getName());
+        profile.append("class:").append(shorterName(klass.getName()));
         profile.append('\n');
         profile.append("parameters:");
         Field[] fields = klass.getDeclaredFields();
@@ -36,10 +36,10 @@ public abstract class StopWatchTask<E> {
                     continue;
                 }
                 if (value.getClass().isArray()) {
-                    String s = value.getClass().toString();
+                    String s = shorterName(value.getClass().toString());
                     profile.append("[").append(s).append("], ");
                 } else {
-                    String s = String.valueOf(value);
+                    String s = shorterName(String.valueOf(value));
                     if (s.length() > 200) {
                         profile.append("...").append(", ");
                     } else {
@@ -51,6 +51,13 @@ public abstract class StopWatchTask<E> {
             }
         }
         profile.append('\n');
+    }
+
+    protected String shorterName(String name) {
+        if (name.length() > 10) {
+            name = name.substring(name.lastIndexOf('.') + 1);
+        }
+        return name;
     }
 
     protected void afterExec() {

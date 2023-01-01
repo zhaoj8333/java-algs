@@ -61,7 +61,7 @@ public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwap
      * 				j i
      * P O R E E L A M S X T
      */
-    private int partition(int begin, int end) {
+    protected int partition(int begin, int end) {
         E entry = array[begin];
         int i = begin, j = end;
         while (true) {
