@@ -1,13 +1,12 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.algo.sort.array.cmp_swp.merge.*;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
+import com.algs.algo.sort.ISortable;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
-import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.utils.Student;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
@@ -24,11 +23,14 @@ import java.util.Comparator;
 class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[]{
-            BubbleSortImpl.class,
-            SelectionSortImpl.class, HeapSortImpl.class,
-            InsertionSortImpl.class, SentinelInsertionSortImpl.class, ShellSortImpl.class,
-            MergeSortTdImpl.class, MergeSortBuImpl.class, MergeSortTdOptmImpl.class, MergeSortBuOptmImpl.class, NaturalMergeSortImpl.class, // MultiWayMergeSortImpl.class,
-            QuickSortImpl.class, QuickSortImpl0.class, QuickSort3wayImpl.class,
+//            BubbleSortImpl.class,
+//            SelectionSortImpl.class, HeapSortImpl.class,
+//            InsertionSortImpl.class, SentinelInsertionSortImpl.class, ShellSortImpl.class,
+//            MergeSortTdImpl.class, MergeSortBuImpl.class, MergeSortTdOptmImpl.class, MergeSortBuOptmImpl.class, NaturalMergeSortImpl.class, // MultiWayMergeSortImpl.class,
+//            QuickSortImpl.class,
+            QuickSortImpl0.class,
+//            QuickSort3wayImpl.class,
+//            SentinelQuickSortImpl.class,
     };
 
     private Character[] array;
@@ -70,7 +72,6 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
     private Character[] getChars() {
         String str = "EASYSORTQUESTION";
-        System.out.println(str);
         Character[] chars = new Character[str.length()];
         for (int i = 0; i < str.length(); i++) {
             chars[i] = str.charAt(i);
@@ -325,4 +326,23 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         };
         quick.exec(true);
     }
+
+    @Test
+    void unstability() {
+        Student[] students = new Student[6];
+        students[0] = new Student("a", 1);
+        students[1] = new Student("b", 1);
+        students[2] = new Student("c", 1);
+        students[3] = new Student("d", 1);
+        students[4] = new Student("e", 1);
+        students[5] = new Student("f", 1);
+        ArraysUtil.println(students);
+
+        ISortable<Student> sort = new QuickSortImpl0<>(students);
+        sort.sort();
+        ArraysUtil.println(students);
+
+
+    }
+
 }

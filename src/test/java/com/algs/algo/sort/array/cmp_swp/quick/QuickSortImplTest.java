@@ -6,7 +6,10 @@ import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FilePath;
+import com.algs.utils.file.FileUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
+import com.graph.analysis.algo.sort.quick.BestCaseOfQuickSortGenerator;
 import com.graph.analysis.algo.sort.quick.MaximumSwapOfLargestElement;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
@@ -17,6 +20,7 @@ class QuickSortImplTest {
     private final Character[] array = new Character[] {'E', 'A', 'S', 'Y', 'Q', 'U', 'E', 'S', 'T', 'I', 'O', 'N'};
     private final Integer[] worstCase = new Integer[] {11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 //    private final Integer[] worstCase = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+    private final Character[] duplicatedCase = new Character[] {'B', 'A', 'B', 'A', 'B', 'A', 'B', 'A', 'C', 'A', 'D', 'A', 'B', 'R', 'A'};
 
     /**
      * E:  {E, A, S, Y, Q, U, E, S, T, I, O, N}
@@ -223,6 +227,64 @@ class QuickSortImplTest {
             System.out.println("size: " + size + ", cmp: " + cmp);
         }
 
+    }
+
+    @Test
+    void _2_3_12() {
+        ArraysUtil.println(duplicatedCase);
+        System.out.println();
+
+        sort0(duplicatedCase);
+
+        Assertions.assertTrue(ArraySortUtil.isSorted(duplicatedCase));
+        System.out.println();
+        ArraysUtil.println(duplicatedCase);
+    }
+
+    private void sort0(Character[] array) {
+        sort0(array, 0, array.length - 1);
+    }
+
+    /**
+     *  [------|-------------|-----]
+     * begin  lo  <   i  =  gt < end
+     */
+    private void sort0(Character[] array, int begin, int end) {
+        if (end - begin < 1) {
+            return;
+        }
+        int lo = begin, i = begin + 1, gt = end;
+        Character pivot = array[begin];
+        while (i <= gt) {
+            int cmp = CompareUtil.compare(pivot, array[i]);
+            if (cmp > 0) {
+                ArraySortUtil.swap(array, i++, lo++);
+            } else if (cmp < 0) {
+                ArraySortUtil.swap(array, i, gt--);
+            } else {
+                i++;
+            }
+        }
+
+        System.out.print(pivot + ": ");
+        ArraysUtil.println(array);
+
+        sort0(array, begin, lo);
+        sort0(array, gt + 1, end);
+    }
+
+    @Test
+    void _2_3_16() {
+        Character[] chars = BestCaseOfQuickSortGenerator.getChars(20);
+        ArraysUtil.println(chars);
+    }
+
+    @Test
+    void _2_3_17() {
+        SentinelQuickSortImpl<Integer> sort = new SentinelQuickSortImpl<>(FileUtil.readIntsAsArray(FilePath.INT_1K));
+        sort.sort();
+        Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
+        System.out.println(sort);
     }
 
 }

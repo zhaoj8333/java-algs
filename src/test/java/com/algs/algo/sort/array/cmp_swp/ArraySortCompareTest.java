@@ -5,6 +5,7 @@ import com.algs.algo.sort.array.cmp_swp.merge.*;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.array.cmp_swp.quick.SentinelQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
@@ -22,8 +23,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     private static final Integer[] testArray;
 
     static {
-//        testArray = ArrayBuilder.randomIntArray(900000);
-        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
+        testArray = ArrayBuilder.randomIntArray(900000);
+//        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
     private Class<?>[] targetClasses = new Class<?>[] {
@@ -32,8 +33,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            BubbleSortImpl.class,
 //            InsertionSortImpl.class,
 //            SentinelInsertionSortImpl.class
-            ShellSortImpl.class,
-            MergeSortTdImpl.class,
+//            ShellSortImpl.class,
+//            MergeSortTdImpl.class,
 //            MergeSortTdOptmImpl.class,
 //            MergeSortBuImpl.class,
 //            MergeSortBuOptmImpl.class,
@@ -41,8 +42,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            QuickSortImpl.class,
             QuickSortImpl0.class,
             QuickSort3wayImpl.class,
+            SentinelQuickSortImpl.class,
     };
-
 
     @Test
     @Override
@@ -171,4 +172,5 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
         }
         System.out.println(Thread.currentThread().getName() + ", min time: " + min + ", threshold: " + theThreshold);
     }
+
 }

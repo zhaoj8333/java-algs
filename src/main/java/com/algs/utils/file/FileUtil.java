@@ -2,6 +2,7 @@ package com.algs.utils.file;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
+import com.algs.utils.CollectionUtil;
 import com.algs.utils.Connection;
 
 import java.io.*;
@@ -35,6 +36,52 @@ public class FileUtil {
             }
         }
         return pairs;
+    }
+
+    public static IList<Byte> readBytes(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Byte> bytes = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                int len;
+                while ((len = isr.read()) != -1) {
+                    if (!Objects.equals(len, 32) && !Objects.equals(len, 10)) {
+                        bytes.add((byte) len);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return bytes;
+    }
+
+    public static IList<Short> readShorts(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Short> shorts = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                int len;
+                while ((len = isr.read()) != -1) {
+                    if (!Objects.equals(len, 32) && !Objects.equals(len, 10)) {
+                        shorts.add((short) len);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return shorts;
     }
 
     public static IList<Integer> readInts(String fileName) {
@@ -83,6 +130,103 @@ public class FileUtil {
         return chars;
     }
 
+    public static IList<Long> readLongs(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Long> longs = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            LineNumberReader lnr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                lnr = new LineNumberReader(isr);
+                String line;
+                while ((line = lnr.readLine()) != null) {
+                    longs.add(Long.valueOf(line.trim()));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, lnr);
+            }
+        }
+        return longs;
+    }
+
+    public static IList<Float> readFloats(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Float> floats = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                int len;
+                while ((len = isr.read()) != -1) {
+                    if (!Objects.equals(len, 32) && !Objects.equals(len, 10)) {
+                        floats.add((float) len);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return floats;
+    }
+
+    public static IList<Double> readDoubles(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<Double> doubles = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                int len;
+                while ((len = isr.read()) != -1) {
+                    if (!Objects.equals(len, 32) && !Objects.equals(len, 10)) {
+                        doubles.add((double) len);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return doubles;
+    }
+
+    public static Byte[] readBytesAsArray(String fileName) {
+        return CollectionUtil.toByteArray(readBytes(fileName));
+    }
+
+    public static Short[] readShortsAsArray(String fileName) {
+        return CollectionUtil.toShortArray(readShorts(fileName));
+    }
+
+    public static Float[] readFloatsAsArray(String fileName) {
+        return CollectionUtil.toFloatArray(readFloats(fileName));
+    }
+
+    public static Long[] readLongsAsArray(String fileName) {
+        return CollectionUtil.toLongArray(readLongs(fileName));
+    }
+
+    public static Double[] readDoublesAsArray(String fileName) {
+        return CollectionUtil.toDoubleArray(readDoubles(fileName));
+    }
+
+    public static Integer[] readIntsAsArray(String fileName) {
+        return CollectionUtil.toIntegerArray(readInts(fileName));
+    }
+
+    public static Character[] readCharsAsArray(String fileName) {
+        return CollectionUtil.toCharArray(readChars(fileName));
+    }
+
     private static void close(InputStreamReader isr, LineNumberReader lnr) {
         try {
             if (isr != null) {
@@ -108,6 +252,5 @@ public class FileUtil {
         }
         return new File(resource.getFile());
     }
-
 
 }

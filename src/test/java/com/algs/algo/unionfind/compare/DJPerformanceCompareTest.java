@@ -2,7 +2,7 @@ package com.algs.algo.unionfind.compare;
 
 import com.algs.algo.unionfind.generic.DJPerformanceCompare;
 import com.algs.algo.unionfind.generic.IDisjointSet;
-import com.algs.algo.unionfind.generic.Village;
+import com.algs.utils.Village;
 import com.algs.algo.unionfind.generic.qu.WeighedPathHalvingImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.deque.IDeque;

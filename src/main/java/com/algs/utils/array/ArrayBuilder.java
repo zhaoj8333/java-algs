@@ -117,4 +117,17 @@ public final class ArrayBuilder {
         return array;
     }
 
+    public static Integer[] ascIntArray(int size) {
+        return ascIntArray(0, size);
+    }
+
+    public static Integer[] ascIntArray(int from, int to) {
+        int size = to - from;
+        Integer[] array = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = i + from;
+        }
+        return array;
+    }
+
 }
