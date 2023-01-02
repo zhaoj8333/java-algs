@@ -26,8 +26,19 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
     private int size2Array = 0;     // 1/6 of array.length
     private int size3Array = 0;     // 1/10 of array.length
 
+    private int recursiveCalls = 0;
+    private int recursiveDepth = 0;
+
     public int[] getSubarraySize() {
         return new int[] {size0Array, size1Array, size2Array, size3Array};
+    }
+
+    public int getRecursiveCalls() {
+        return recursiveCalls;
+    }
+
+    public int getRecursiveDepth() {
+        return recursiveDepth;
     }
 
     private void checkSubarraySize(int size) {
@@ -49,14 +60,16 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
             testCount ++;
             return;
         }
-        sort0(0, len);
+        sort0(0, len, 0);
         Assertions.assertTrue(ArraySortUtil.isSorted(array));
     }
 
     /**
      * [start, end)
      */
-    private void sort0(int start, int end) {
+    private void sort0(int start, int end, int depth) {
+        recursiveCalls++;
+        recursiveDepth += depth;
         if (end - start < 2) {
             testCount ++;
             return;
@@ -66,8 +79,9 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
 //        checkSubarraySize(mid - start);
 //        checkSubarraySize(end - mid - 1);
 
-        sort0(start, mid);
-        sort0(mid + 1, end);
+        int newDepth = depth + 1;
+        sort0(start, mid, newDepth);
+        sort0(mid + 1, end, newDepth);
     }
 
     /**

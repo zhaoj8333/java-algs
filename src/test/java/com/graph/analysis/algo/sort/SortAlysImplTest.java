@@ -12,6 +12,7 @@ import com.graph.analysis.algo.sort.quick.NoSentinelQuickSortAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSort3wayAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
@@ -141,6 +142,20 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 
         Assertions.assertTrue(array.length > 1);
         return array;
+    }
+
+    @Test
+    void _2_3_28() {
+        for (int i = 4; i <= 8; i++) {
+            double pow = Math.pow(8, i);
+            Integer[] array = ArrayBuilder.randomUniqueArray((int) pow);
+
+            QuickSortAlysImpl<Integer> sortAlys = new QuickSortAlysImpl<Integer>(array);
+            sortAlys.sort();
+            int recursiveCalls = sortAlys.getRecursiveCalls();
+            int recursiveDepth = sortAlys.getRecursiveDepth();
+            System.out.println("size: " + pow + ", average recursive depth: " + (recursiveDepth / recursiveCalls));
+        }
     }
 
 }

@@ -2,7 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplPerformanceTest;
 import com.algs.algo.sort.array.cmp_swp.merge.*;
-import com.algs.algo.sort.array.cmp_swp.quick.KMedianQuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.NonRecursiveQuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
@@ -23,7 +23,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     protected static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(900000);
+        testArray = ArrayBuilder.randomIntArray(1100000);
 //        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
@@ -43,7 +43,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
             QuickSortImpl0.class,
 //            QuickSort3wayImpl.class,
 //            NoSentinelQuickSortImpl.class,
-            KMedianQuickSortImpl.class,
+//            KMedianQuickSortImpl.class,
+            NonRecursiveQuickSortImpl.class,
     };
 
     @Test
@@ -127,6 +128,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      * {@link ShellSortImpl}: 1351 ms
      * {@link MergeSortTdImpl}: 718 ms
      * {@link QuickSortImpl0}: 711 ms
+     * {@link NonRecursiveQuickSortImpl}: 461 ms, looks like {@link NonRecursiveQuickSortImpl} is faster
      * {@link QuickSort3wayImpl}: 673, but this can hugely improve performance when there are k numbers
      */
 
