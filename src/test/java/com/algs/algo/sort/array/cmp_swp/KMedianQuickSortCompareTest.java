@@ -65,6 +65,11 @@ class KMedianQuickSortCompareTest<E extends Comparable<E>> extends ArraySortComp
             }
 
             @Override
+            protected void assertInput() {
+                Assertions.assertFalse(ArraySortUtil.isSorted(sort.getArray()));
+            }
+
+            @Override
             protected void assertResult() {
                 Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
             }

@@ -311,6 +311,11 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
             }
 
             @Override
+            protected void assertInput() {
+
+            }
+
+            @Override
             protected void assertResult() { }
         };
         insertion.exec(true);
@@ -323,6 +328,11 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
                     insertion.sort();
                 }
                 return "QuickSortImpl0";
+            }
+
+            @Override
+            protected void assertInput() {
+
             }
 
             @Override

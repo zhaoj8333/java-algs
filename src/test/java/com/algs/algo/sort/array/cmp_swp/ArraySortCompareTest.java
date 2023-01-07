@@ -2,10 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplPerformanceTest;
 import com.algs.algo.sort.array.cmp_swp.merge.*;
-import com.algs.algo.sort.array.cmp_swp.quick.NonRecursiveQuickSortImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.array.cmp_swp.quick.*;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
@@ -23,7 +20,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     protected static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(1100000);
+        testArray = ArrayBuilder.randomIntArray(90000);
 //        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
@@ -41,10 +38,11 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            NaturalMergeSortImpl.class,
 //            QuickSortImpl.class,
             QuickSortImpl0.class,
+            QuickSortIgnoreSmallArrayImpl0.class,
 //            QuickSort3wayImpl.class,
 //            NoSentinelQuickSortImpl.class,
 //            KMedianQuickSortImpl.class,
-            NonRecursiveQuickSortImpl.class,
+//            NonRecursiveQuickSortImpl.class,
     };
 
     @Test
@@ -83,6 +81,11 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
             }
 
             @Override
+            protected void assertInput() {
+                Assertions.assertFalse(ArraySortUtil.isSorted(sort.getArray()));
+            }
+
+            @Override
             protected void assertResult() {
                 Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
             }
@@ -118,7 +121,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      *  {@link MergeSortTdOptmImpl}: 457 ms, can be much faster than {@link MergeSortTdImpl}, even near half
      *
      *  {@link MergeSortBuImpl}: 990 ms
-     *  {@link MergeSortBuOptmImpl}: 644 ms (@link {@link MergeSortImpl#insertionSortThreshold} == 8)
+     *  {@link MergeSortBuOptmImpl}: 644 ms (@link {@link MergeSortImpl#insertionCutoff} == 8)
      *  {@link NaturalMergeSortImpl}: almost same as {@link MergeSortBuImpl}
      *
      *  {@link MergeSortBuImpl} is slightly faster than {@link MergeSortTdImpl}, it don't use recursion,
@@ -128,7 +131,8 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      * {@link ShellSortImpl}: 1351 ms
      * {@link MergeSortTdImpl}: 718 ms
      * {@link QuickSortImpl0}: 711 ms
-     * {@link NonRecursiveQuickSortImpl}: 461 ms, looks like {@link NonRecursiveQuickSortImpl} is faster
+     * {@link NonRecursiveQuickSortImpl}: 461 ms, {@link NonRecursiveQuickSortImpl} is faster,
+     *  the height of recursive tree is low, but the recursive calls is very large
      * {@link QuickSort3wayImpl}: 673, but this can hugely improve performance when there are k numbers
      */
 
@@ -139,7 +143,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      */
 
     /**
-     * The best @{@link MergeSortImpl#insertionSortThreshold} might be 15, 16 ?
+     * The best @{@link MergeSortImpl#insertionCutoff} might be 15, 16 ?
      */
     @Test
     void getThresholdOfMergeSort() {
@@ -155,11 +159,16 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
             StopWatchTask<Object> st = new StopWatchTask<>() {
                 @Override
                 protected Object profileTask() {
-                    sort.setInsertionSortThreshold(threshold);
+                    sort.setInsertionCutoff(threshold);
                     long start = System.currentTimeMillis();
                     sort.sort();
                     long end = System.currentTimeMillis();
                     return end - start;
+                }
+
+                @Override
+                protected void assertInput() {
+                    Assertions.assertFalse(ArraySortUtil.isSorted(copy));
                 }
 
                 @Override

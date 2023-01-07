@@ -144,6 +144,7 @@ public abstract class StopWatchTask<E> {
     protected abstract Object profileTask();
 
     public long exec(boolean print) {
+        assertInput();
         if (print) {
             beforeExec();
         }
@@ -160,6 +161,8 @@ public abstract class StopWatchTask<E> {
         }
         return end - begin;
     }
+
+    protected abstract void assertInput();
 
     protected abstract void assertResult();
 

@@ -59,6 +59,11 @@ class SequenceOfShellSortCompareTest<E extends Comparable<E>> extends ImplPerfor
             }
 
             @Override
+            protected void assertInput() {
+                Assertions.assertFalse(ArraySortUtil.isSorted(sort.getArray()));
+            }
+
+            @Override
             protected void assertResult() {
                 Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
             }

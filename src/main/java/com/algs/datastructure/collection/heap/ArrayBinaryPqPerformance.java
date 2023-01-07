@@ -22,6 +22,11 @@ public class ArrayBinaryPqPerformance extends StopWatchTask {
         return _37();
     }
 
+    @Override
+    protected void assertInput() {
+
+    }
+
     private Object _37() {
         int count = 0;
         for (int i = 0; i < size; i++) {

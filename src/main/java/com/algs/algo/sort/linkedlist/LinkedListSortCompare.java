@@ -35,6 +35,11 @@ public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTas
     }
 
     @Override
+    protected void assertInput() {
+
+    }
+
+    @Override
     protected void assertResult() {
         Assertions.assertTrue(LinkedListSortUtil.isSorted(sort.getList()));
     }

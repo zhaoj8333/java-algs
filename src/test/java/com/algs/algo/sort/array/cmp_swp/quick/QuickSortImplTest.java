@@ -174,6 +174,11 @@ class QuickSortImplTest {
             }
 
             @Override
+            protected void assertInput() {
+
+            }
+
+            @Override
             protected void assertResult() {
             }
         };
@@ -189,20 +194,50 @@ class QuickSortImplTest {
             }
 
             @Override
+            protected void assertInput() {
+
+            }
+
+            @Override
             protected void assertResult() {
             }
         };
         sw.exec(true);
     }
 
+    /**
+     * The smaller subarray, the more, so switch to insertion sort for small arrays is very necessary
+     *
+     * total size: 100000
+     * number of 0 sized subarray is 33367
+     * number of 1 sized subarray is 33317
+     * number of 2 sized subarray is 16591
+     * number of 3 sized subarray is 9999
+     * number of 4 sized subarray is 6687
+     * number of 5 sized subarray is 4766
+     * number of 6 sized subarray is 3593
+     * number of 7 sized subarray is 2844
+     * number of 8 sized subarray is 2205
+     * number of 9 sized subarray is 1765
+     * number of 10 sized subarray is 1604
+     * number of 11 sized subarray is 1268
+     * number of 12 sized subarray is 1037
+     * number of 13 sized subarray is 955
+     * number of 14 sized subarray is 843
+     * number of 15 sized subarray is 732
+     */
     @Test
     void _2_3_7() {
-        for (int size = 10000; size < 1000000; size *= 2) {
+        for (int size = 100000; size < 200000; size *= 2) {
             Integer[] integers = ArrayBuilder.randomUniqueArray(size);
             QuickSortAlysImpl<Integer> sort = new QuickSortAlysImpl<>(integers);
             sort.sort();
-            int[] subarraySize = sort.getSubarraySize();
-            System.out.println("size: " + size + ", subsize 0: " + subarraySize[0] + ", subsize 1: " + subarraySize[1] + ", subsize 2: " + subarraySize[2] + ", subsize 3: " + subarraySize[3]);
+            System.out.println("total size: " + size);
+            int[] subarraySizes = sort.getSubarraySizes();
+            for (int i = 0; i < subarraySizes.length; i++) {
+                System.out.println("number of " + i + " sized subarray is " + subarraySizes[i]);
+            }
+            System.out.println();
         }
     }
 

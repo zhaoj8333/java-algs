@@ -27,13 +27,13 @@ public class QuickSortImpl0<E extends Comparable<E>> extends ArrayCompareAndSwap
      * [begin, end)
      */
     public void sort(int begin, int end) {
-        if (end - begin < 2) {
-            return;
-        }
-//        if (end <= begin + insertionSortThreshold) {
-//            insertionSort(array, begin, end);
+//        if (end - begin < 2) {
 //            return;
 //        }
+        if (end <= begin + insertionCutoff) {
+            insertionSort(array, begin, end);
+            return;
+        }
         int mid = partition(begin, end);
         sort(begin, mid);
         sort(mid + 1, end);

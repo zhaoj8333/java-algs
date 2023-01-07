@@ -22,6 +22,9 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
     protected int cmpCount = 0;
     protected int arrayAcc = 0;
     protected int testCount = 0;
+    protected int insertionCalls = 0;
+
+    protected int insertionCutoff = 8;
 
     public CompareAndSwapSortAlys(E[] array) {
         this(array, null);
@@ -36,6 +39,43 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         testCount = 0;
         this.array = array;
         this.comparator = comparator;
+    }
+
+    protected void insertionSort(E[] array) {
+        insertionSort(array, 0, array.length);
+    }
+
+    protected void insertionSort(E[] array, int begin, int end) {
+        insertionCalls++;
+        for (int i = begin + 1; i < end; i++) {
+            testCount++;
+            int index = i;
+            E tmp = array[index];
+            arrayAcc++;
+            while (true) {
+                testCount++;
+                if (index <= begin) {
+                    break;
+                }
+                int cmp = compareEntry(tmp, array[index - 1]);
+                arrayAcc++;
+                testCount++;
+                if (cmp < 0) {
+                    array[index] = array[index - 1];
+                    arrayAcc += 2;
+                    index--;
+                } else {
+                    break;
+                }
+            }
+//            while (index > begin && compareEntry(tmp, array[index - 1]) < 0) {
+//                array[index] = array[index - 1];
+//                arrayAcc += 2;
+//                index--;
+//            }
+            array[index] = tmp;
+            arrayAcc++;
+        }
     }
 
     protected int compareEntry(E a, E b) {
@@ -92,6 +132,7 @@ public abstract class CompareAndSwapSortAlys<E extends Comparable<E>> implements
         plot(array.length, arrayAcc);
         plot(array.length, cmpCount);
         plot(array.length, swapCount);
-        plot(array.length, testCount);
+//        plot(array.length, testCount);
+//        plot(array.length, insertionCalls);
     }
 }

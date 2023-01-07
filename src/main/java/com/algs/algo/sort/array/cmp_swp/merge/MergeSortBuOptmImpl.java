@@ -31,12 +31,12 @@ public class MergeSortBuOptmImpl<E extends Comparable<E>> extends MergeSortBuImp
      */
     @Override
     public void sort() {
-        int sz = insertionSortThreshold;
+        int sz = insertionCutoff;
         for (int begin = 0; begin < array.length; begin += sz) {
             int end = Math.min(array.length, begin + sz);
             insertionSort(array, begin, end);
         }
-        if (insertionSortThreshold >= array.length) {
+        if (insertionCutoff >= array.length) {
             return;
         }
         for (; sz < array.length; sz = sz + sz) {

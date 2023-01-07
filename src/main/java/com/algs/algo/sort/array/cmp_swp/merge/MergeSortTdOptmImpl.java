@@ -22,7 +22,7 @@ public class MergeSortTdOptmImpl<E extends Comparable<E>> extends MergeSortTdImp
 
     private void sort(E[] array, E[] aux, int begin, int end) {
         // Optimization #2 - Use InsertionSort for small arrays
-        if (end - begin < insertionSortThreshold) {
+        if (end - begin < insertionCutoff) {
             insertionSort(aux, begin, end + 1);
             return;
         }

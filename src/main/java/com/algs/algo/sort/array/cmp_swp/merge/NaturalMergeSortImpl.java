@@ -19,7 +19,7 @@ public class NaturalMergeSortImpl<E extends Comparable<E>> extends MergeSortBuIm
             return;
         }
         // merge: [li, le) [ri, re)
-        int li = 0, le = 0, ri = 0, re = 0;
+        int li = 0, le, ri, re;
         while (true) {
             le = findSortedIndex(li);
             if (li == 0 && le == array.length) {

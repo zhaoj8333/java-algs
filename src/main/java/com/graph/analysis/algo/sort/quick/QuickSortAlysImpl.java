@@ -21,17 +21,8 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
         super(array, comparator);
     }
 
-    private int size0Array = 0;     // 1/3 of array.length
-    private int size1Array = 0;     // 1/3 of array.length
-    private int size2Array = 0;     // 1/6 of array.length
-    private int size3Array = 0;     // 1/10 of array.length
-
-    private int recursiveCalls = 0;
-    private int recursiveDepth = 0;
-
-    public int[] getSubarraySize() {
-        return new int[] {size0Array, size1Array, size2Array, size3Array};
-    }
+    protected int recursiveCalls = 0;
+    protected int recursiveDepth = 0;
 
     public int getRecursiveCalls() {
         return recursiveCalls;
@@ -41,23 +32,30 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
         return recursiveDepth;
     }
 
-    private void checkSubarraySize(int size) {
-        if (size == 0) {
-            size0Array++;
-        } else if (size == 1) {
-            size1Array++;
-        } else if (size == 2) {
-            size2Array++;
-        } else if (size == 3) {
-            size3Array++;
+    protected int maxSubarraySize = 200;
+
+    public void setMaxSubarraySize(int maxSubarraySize) {
+        this.maxSubarraySize = maxSubarraySize;
+        this.subarraySizes = new int[maxSubarraySize];
+    }
+
+    protected int[] subarraySizes = new int[maxSubarraySize];
+
+    public int[] getSubarraySizes() {
+        return subarraySizes;
+    }
+
+    protected void checkSubarraySize(int size) {
+        if (size < maxSubarraySize) {
+            subarraySizes[size]++;
         }
     }
 
     @Override
     public void sort() {
         int len = array.length;
+        testCount ++;
         if (len < 2) {
-            testCount ++;
             return;
         }
         sort0(0, len, 0);
@@ -67,20 +65,25 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
     /**
      * [start, end)
      */
-    private void sort0(int start, int end, int depth) {
+    protected void sort0(int begin, int end, int depth) {
         recursiveCalls++;
         recursiveDepth += depth;
-        if (end - start < 2) {
-            testCount ++;
+//        if (end - start < 2) {
+//            testCount ++;
+//            return;
+//        }
+        testCount ++;
+        if (end <= begin + insertionCutoff) {
+            insertionSort(array, begin, end);
             return;
         }
-        int mid = pivot(start, end);
+        int mid = pivot(begin, end);
 
-//        checkSubarraySize(mid - start);
-//        checkSubarraySize(end - mid - 1);
+        checkSubarraySize(mid - begin);
+        checkSubarraySize(end - mid - 1);
 
         int newDepth = depth + 1;
-        sort0(start, mid, newDepth);
+        sort0(begin, mid, newDepth);
         sort0(mid + 1, end, newDepth);
     }
 
@@ -93,7 +96,7 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
      * see {@link NoSentinelQuickSortImpl}
      * {@link NoSentinelQuickSortAlysImpl}
      */
-    private int pivot(int begin, int end) {
+    protected int pivot(int begin, int end) {
         E pivot = array[begin];
 
         cost++;
@@ -103,14 +106,14 @@ public class QuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSo
         while (i < j) {
             testCount ++;
             // don't use <= 0
-            while (++i < end && compareEntry(pivot, array[i]) < 0) {
+            while (++i < end && compareEntry(pivot, array[i]) > 0) {
                 testCount++;
             }
             if (i >= end) {
                 testCount++;
             }
             // don't use <= 0
-            while (begin < --j && compareEntry(pivot, array[j]) > 0) {
+            while (begin < --j && compareEntry(pivot, array[j]) < 0) {
                 testCount++;
             }
             if (begin >= j) {

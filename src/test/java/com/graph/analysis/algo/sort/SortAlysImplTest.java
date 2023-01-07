@@ -11,6 +11,7 @@ import com.graph.analysis.algo.sort.merge.*;
 import com.graph.analysis.algo.sort.quick.NoSentinelQuickSortAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSort3wayAlysImpl;
 import com.graph.analysis.algo.sort.quick.QuickSortAlysImpl;
+import com.graph.analysis.algo.sort.quick.QuickSortIgnoreSmallArrayAlysImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,8 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 //            NaturalMergeSortBuAlysImpl.class,
             QuickSortAlysImpl.class,
 //            QuickSort3wayAlysImpl.class,
-            NoSentinelQuickSortAlysImpl.class,
+//            NoSentinelQuickSortAlysImpl.class,
+            QuickSortIgnoreSmallArrayAlysImpl.class,
     };
 
     @Override
@@ -114,7 +116,7 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
 
             alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
             alys.sort();
-
+//
             alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
             alys.sort();
 
@@ -122,6 +124,9 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
             alys.sort();
 
             alys = new NoSentinelQuickSortAlysImpl<>(ArraysUtil.copy(array));
+            alys.sort();
+
+            alys = new QuickSortIgnoreSmallArrayAlysImpl<>(ArraysUtil.copy(array));
             alys.sort();
 
             return true;

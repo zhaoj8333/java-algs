@@ -16,6 +16,11 @@ public class ThreeSum extends StopWatchTask {
     }
 
     @Override
+    protected void assertInput() {
+
+    }
+
+    @Override
     protected void assertResult() {
 
     }

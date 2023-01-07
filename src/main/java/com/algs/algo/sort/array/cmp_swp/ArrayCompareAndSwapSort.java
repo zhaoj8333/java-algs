@@ -43,14 +43,18 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
         array[i] = tmp;
     }
 
-    protected int insertionSortThreshold = 8;
+    protected int insertionCutoff = 8;
 
     /**
-     * If the index range specified by {@link com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl} is under {@link #insertionSortThreshold},
+     * If the index range specified by {@link com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl} is under {@link #insertionCutoff},
      * use {@link #insertionSort(E[], int, int)} instead of merge, this can reduce time by 10% ~ 15%
      */
-    public void setInsertionSortThreshold(int insertionSortThreshold) {
-        this.insertionSortThreshold = insertionSortThreshold;
+    public void setInsertionCutoff(int insertionCutoff) {
+        this.insertionCutoff = insertionCutoff;
+    }
+
+    protected void insertionSort(E[] array) {
+        insertionSort(array, 0, array.length);
     }
 
     protected void insertionSort(E[] array, int begin, int end) {
