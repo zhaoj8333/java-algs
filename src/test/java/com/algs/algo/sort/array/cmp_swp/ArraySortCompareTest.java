@@ -20,10 +20,13 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     protected static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(90000);
+        testArray = ArrayBuilder.randomIntArray(900000);
 //        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
+    /**
+     * {@link QuickSortRandomSelectImpl0} is better than {@link QuickSortRandomizeArrayImpl0}
+     */
     private final Class<?>[] targetClasses = new Class<?>[] {
 //            SelectionSortImpl.class,
 //            HeapSortImpl.class,
@@ -37,12 +40,15 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            MergeSortBuOptmImpl.class,
 //            NaturalMergeSortImpl.class,
 //            QuickSortImpl.class,
-            QuickSortImpl0.class,
-            QuickSortIgnoreSmallArrayImpl0.class,
+//            QuickSortImpl0.class,
+//            QuickSortIgnoreSmallArrayImpl0.class,
 //            QuickSort3wayImpl.class,
 //            NoSentinelQuickSortImpl.class,
 //            KMedianQuickSortImpl.class,
 //            NonRecursiveQuickSortImpl.class,
+
+            QuickSortRandomSelectImpl0.class,
+            QuickSortRandomizeArrayImpl0.class,
     };
 
     @Test
@@ -147,11 +153,11 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      */
     @Test
     void getThresholdOfMergeSort() {
-        Integer[] array = ArrayBuilder.randomIntArray(900000);
+        Integer[] array = ArrayBuilder.randomIntArray(100000);
         long min = Long.MAX_VALUE;
         int theThreshold = 0;
 
-        for (int i = 2; i < 64; i++) {
+        for (int i = 1024 * 128 / 32; i < 1024 * 1024 * 3; i *= 2) {
             Integer[] copy = ArraysUtil.copy(array);
 //            MergeSortImpl<Integer> sort = new MergeSortTdOptmImpl<>(copy, Integer::compareTo);
             MergeSortImpl<Integer> sort = new MergeSortBuOptmImpl<>(copy, Integer::compareTo);
@@ -181,6 +187,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
                 min = dur;
                 theThreshold = i;
             }
+            System.out.println(i + ", dur: " + dur);
         }
         System.out.println(Thread.currentThread().getName() + ", min time: " + min + ", threshold: " + theThreshold);
     }

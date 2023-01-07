@@ -1,6 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp.quick;
 
 import com.algs.algo.sort.ISortable;
+import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayBuilder;
@@ -320,6 +321,20 @@ class QuickSortImplTest {
         sort.sort();
         Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
         System.out.println(sort);
+    }
+
+    @Test
+    void _2_3_29() {
+        ArrayCompareAndSwapSort<Integer> sort = new QuickSortRandomizeArrayImpl0<>(FileUtil.readIntsAsArray(FilePath.INT_8));
+        sort.sort();
+        Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
+        System.out.println(sort);
+
+        sort = new QuickSortRandomSelectImpl0<>(FileUtil.readIntsAsArray(FilePath.INT_8));
+        sort.sort();
+        Assertions.assertTrue(ArraySortUtil.isSorted(sort.getArray()));
+        System.out.println(sort);
+
     }
 
 }
