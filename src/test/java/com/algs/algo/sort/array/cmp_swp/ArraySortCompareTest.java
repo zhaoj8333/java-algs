@@ -47,8 +47,9 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            KMedianQuickSortImpl.class,
 //            NonRecursiveQuickSortImpl.class,
 
-            QuickSortRandomSelectImpl0.class,
-            QuickSortRandomizeArrayImpl0.class,
+//            QuickSortRandomSelectImpl0.class,
+//            QuickSortRandomizeArrayImpl0.class,
+//            QuickSampleSortImpl.class
     };
 
     @Test

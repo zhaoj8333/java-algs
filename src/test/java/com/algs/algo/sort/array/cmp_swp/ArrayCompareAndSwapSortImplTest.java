@@ -2,7 +2,7 @@ package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplFunctionalityTest;
 import com.algs.algo.sort.ISortable;
-import com.algs.algo.sort.array.cmp_swp.quick.NonRecursiveQuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortFast3wayImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
 import com.algs.analysis.StopWatchTask;
@@ -29,11 +29,13 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 //            InsertionSortImpl.class, SentinelInsertionSortImpl.class, ShellSortImpl.class,
 //            MergeSortTdImpl.class, MergeSortBuImpl.class, MergeSortTdOptmImpl.class, MergeSortBuOptmImpl.class, NaturalMergeSortImpl.class, // MultiWayMergeSortImpl.class,
 //            QuickSortImpl.class,
-            QuickSortImpl0.class,
+//            QuickSortImpl0.class,
 //            QuickSort3wayImpl.class,
 //            NoSentinelQuickSortImpl.class,
 //            KMedianQuickSortImpl.class,
-            NonRecursiveQuickSortImpl.class,
+//            NonRecursiveQuickSortImpl.class,
+//            QuickSampleSortImpl.class,
+            QuickSortFast3wayImpl.class,
 
     };
 

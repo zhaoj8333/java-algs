@@ -13,7 +13,7 @@ import java.util.Comparator;
 class ArraySortImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-        CountingSortImpl.class
+//        CountingSortImpl.class
     };
 
     private Integer[] testIntArray;
