@@ -2,18 +2,21 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.list.IList;
+import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-class SequentialAccessListImplTest extends ImplFunctionalityTest {
+class ListImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
             DoublyLinkedListImpl.class,
             SinglyLinkedListImpl.class,
             SinglyLinkedListImpl0.class,
+            ResizableArrayImpl.class,
     };
 
     @Override
@@ -35,7 +38,7 @@ class SequentialAccessListImplTest extends ImplFunctionalityTest {
     }
 
     protected void testEach(Object obj) {
-        ISequentialAccessList<Integer> list = (ISequentialAccessList<Integer>) obj;
+        IList<Integer> list = (IList<Integer>) obj;
 
         Assertions.assertEquals(0, list.size());
         Assertions.assertTrue(list.isEmpty());
@@ -126,6 +129,13 @@ class SequentialAccessListImplTest extends ImplFunctionalityTest {
         list.clear();
         Assertions.assertTrue(list.isEmpty());
         Assertions.assertEquals(0, list.size());
+
+        int sz = 15;
+        for (int i = 0; i < sz; i++) {
+            list.add(0, i);
+        }
+        Assertions.assertEquals(sz, list.size());
+
     }
 
 }

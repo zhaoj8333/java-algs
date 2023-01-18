@@ -1,4 +1,4 @@
-package com.algs.datastructure.trie;
+package com.algs.datastructure.tree.trie;
 
 import java.util.HashMap;
 import java.util.Map;

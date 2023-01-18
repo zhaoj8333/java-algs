@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.DoublyLinkNode;
+import com.algs.datastructure.node.DoublyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
@@ -33,7 +33,6 @@ public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
             add(itr.next());
         }
     }
-
 
     /**
      * prev -> newDoublyLinkNode -> next

@@ -20,7 +20,7 @@ class MergeSortImplTest {
         Character[] chars = ArrayBuilder.randomPrintableCharArray(39);
         ArraysUtil.println(chars);
 
-        Character[] copy = ArraysUtil.copy(chars);
+        Character[] copy = ArraysUtil.copyAll(chars);
         sort(chars);
 
         Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));
@@ -118,7 +118,7 @@ class MergeSortImplTest {
         Character[] chars = getChars();
         ArraysUtil.println(chars);
 
-        Character[] copy = ArraysUtil.copy(chars);
+        Character[] copy = ArraysUtil.copyAll(chars);
         sort0(chars);
 
         Assertions.assertTrue(ArraySortUtil.onlySorted(copy, chars));

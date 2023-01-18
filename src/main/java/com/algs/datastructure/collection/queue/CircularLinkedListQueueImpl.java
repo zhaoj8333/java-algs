@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.SinglyLinkNode;
+import com.algs.datastructure.node.SinglyLinkNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;

@@ -44,7 +44,7 @@ class SequenceOfShellSortCompareTest<E extends Comparable<E>> extends ImplPerfor
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        Integer[] copy = ArraysUtil.copy(testArray);
+        Integer[] copy = ArraysUtil.copyAll(testArray);
         return new ShellSortAlysImpl<>(copy, null, sg);
     }
 

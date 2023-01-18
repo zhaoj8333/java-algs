@@ -69,7 +69,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
         }
         ArrayCompareAndSwapSort<Integer> sort = null;
         try {
-            Integer[] copy = ArraysUtil.copy(testArray);
+            Integer[] copy = ArraysUtil.copyAll(testArray);
             sort = (ArrayCompareAndSwapSort<Integer>) constructor.newInstance(copy, cmp);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
@@ -159,7 +159,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
         int theThreshold = 0;
 
         for (int i = 1024 * 128 / 32; i < 1024 * 1024 * 3; i *= 2) {
-            Integer[] copy = ArraysUtil.copy(array);
+            Integer[] copy = ArraysUtil.copyAll(array);
 //            MergeSortImpl<Integer> sort = new MergeSortTdOptmImpl<>(copy, Integer::compareTo);
             MergeSortImpl<Integer> sort = new MergeSortBuOptmImpl<>(copy, Integer::compareTo);
             int threshold = i;

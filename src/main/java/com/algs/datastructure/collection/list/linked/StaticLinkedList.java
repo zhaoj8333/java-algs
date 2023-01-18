@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.node.LinkNode;
+import com.algs.datastructure.node.LinkNode;
 
 public class StaticLinkedList<E> implements ISequentialAccessList<E> {
 

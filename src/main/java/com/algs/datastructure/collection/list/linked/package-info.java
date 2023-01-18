@@ -2,9 +2,9 @@ package com.algs.datastructure.collection.list.linked;
 
 /**
  * node:
- * {@link com.algs.datastructure.collection.node.LinkNode}
- * {@link com.algs.datastructure.collection.node.SinglyLinkNode}
- * {@link com.algs.datastructure.collection.node.DoublyLinkNode}
+ * {@link com.algs.datastructure.node.LinkNode}
+ * {@link com.algs.datastructure.node.SinglyLinkNode}
+ * {@link com.algs.datastructure.node.DoublyLinkNode}
  *
  * singly linked list:
  * {@link com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl}

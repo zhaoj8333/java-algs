@@ -53,7 +53,7 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
         Object instance = null;
         try {
             Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
-            Integer[] testedData = ArraysUtil.copy(testArray[offset]);
+            Integer[] testedData = ArraysUtil.copyAll(testArray[offset]);
             instance = constructor.newInstance(testedData, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
@@ -102,31 +102,31 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
         CompareAndSwapSortAlys<Character> alys;
 
         try {
-            alys = new MergeSortTdAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys = new MergeSortTdAlysImpl<>(ArraysUtil.copyAll(array), Comparator.comparingInt(o -> o));
             alys.sort();
 
-            alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys = new MergeSortTdOptmAlysImpl<>(ArraysUtil.copyAll(array), Comparator.comparingInt(o -> o));
             alys.sort();
 
-            alys = new MergeSortBuAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys = new MergeSortBuAlysImpl<>(ArraysUtil.copyAll(array), Comparator.comparingInt(o -> o));
             alys.sort();
 
-            alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copy(array), Comparator.comparingInt(o -> o));
+            alys = new MergeSortBuOptmAlysImpl<>(ArraysUtil.copyAll(array), Comparator.comparingInt(o -> o));
             alys.sort();
 
-            alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copy(array), null);
+            alys = new NaturalMergeSortBuAlysImpl<>(ArraysUtil.copyAll(array), null);
             alys.sort();
 //
-            alys = new QuickSortAlysImpl<>(ArraysUtil.copy(array));
+            alys = new QuickSortAlysImpl<>(ArraysUtil.copyAll(array));
             alys.sort();
 
-            alys = new QuickSort3wayAlysImpl<>(ArraysUtil.copy(array));
+            alys = new QuickSort3wayAlysImpl<>(ArraysUtil.copyAll(array));
             alys.sort();
 
-            alys = new NoSentinelQuickSortAlysImpl<>(ArraysUtil.copy(array));
+            alys = new NoSentinelQuickSortAlysImpl<>(ArraysUtil.copyAll(array));
             alys.sort();
 
-            alys = new QuickSortIgnoreSmallArrayAlysImpl<>(ArraysUtil.copy(array));
+            alys = new QuickSortIgnoreSmallArrayAlysImpl<>(ArraysUtil.copyAll(array));
             alys.sort();
 
             return true;

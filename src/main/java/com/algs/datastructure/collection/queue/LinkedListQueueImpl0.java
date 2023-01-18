@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.node.DoublyLinkNode;
+import com.algs.datastructure.node.DoublyLinkNode;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
 

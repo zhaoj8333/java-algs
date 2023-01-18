@@ -4,6 +4,7 @@ import com.algs.application.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.RangeUtil;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -67,8 +68,15 @@ public final class ArraysUtil {
     }
 
     public static <E> void reverse(E[] array) {
-        int len = array.length;
-        for (int i = 0; i < len >> 1; i++) {
+        reverse(array, 0, array.length);
+    }
+
+    /**
+     * array: [from, to)
+     */
+    public static <E> void reverse(E[] array, int from, int to) {
+        int len = to - from;
+        for (int i = from; i < (from + to) >> 1; i++) {
             E tmp = array[i];
             array[i] = array[len - i - 1];
             array[len - i - 1] = tmp;
@@ -112,10 +120,22 @@ public final class ArraysUtil {
         System.out.println(list.toString());
     }
 
+    public static <E> void rangeClear(E[] array) {
+        rangeClear(array, 0, array.length - 1);
+    }
+
+    public static <E> void rangeClear(E[] array, int begin, int end) {
+        RangeUtil.requireIndexRange(begin, 0, array.length - 1);
+        RangeUtil.requireIndexRange(end, 0, array.length - 1);
+        for (int i = begin; i <= end; i++) {
+            array[i] = null;
+        }
+    }
+
     /**
      * copy array
      */
-    public static <E> E[] copy(E[] array) {
+    public static <E> E[] copyAll(E[] array) {
         E[] target = (E[]) new Object[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
@@ -124,10 +144,19 @@ public final class ArraysUtil {
     /**
      * copy array
      */
-    public static <E extends Comparable<E>> E[] copy(E[] array) {
+    public static <E extends Comparable<E>> E[] copyAll(E[] array) {
         E[] target = (E[]) new Comparable[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
+    }
+
+    public static <E> void copyAll(E[] src, E[] dst) {
+        if (dst.length < src.length) {
+            throw new ArrayIndexOutOfBoundsException("Dst array length too small");
+        }
+        for (int i = 0; i < src.length; i++) {
+            dst[i] = src[i];
+        }
     }
 
     public static <E, T> T[] copyAndConvert(E[] array) {
@@ -208,28 +237,28 @@ public final class ArraysUtil {
         return doubles;
     }
 
-    public static Integer[] copy(Integer[] array) {
+    public static Integer[] copyAll(Integer[] array) {
         ObjectUtil.requireNonNull(array);
         Integer[] target = new Integer[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
-    public static int[] copy(int[] array) {
+    public static int[] copyAll(int[] array) {
         ObjectUtil.requireNonNull(array);
         int[] target = new int[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
-    public static Character[] copy(Character[] array) {
+    public static Character[] copyAll(Character[] array) {
         ObjectUtil.requireNonNull(array);
         Character[] target = new Character[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
         return target;
     }
 
-    public static Short[] copy(Short[] array) {
+    public static Short[] copyAll(Short[] array) {
         ObjectUtil.requireNonNull(array);
         Short[] target = new Short[array.length];
         System.arraycopy(array, 0, target, 0, array.length);
@@ -283,7 +312,7 @@ public final class ArraysUtil {
     }
 
     public static long countInversion(Integer[] array) {
-        Integer[] copy = ArraysUtil.copy(array);
+        Integer[] copy = ArraysUtil.copyAll(array);
         return countInversion(copy, null);
     }
 

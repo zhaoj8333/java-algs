@@ -37,7 +37,7 @@ class ArraySortImplTest extends ImplFunctionalityTest {
         Object instance = null;
         try {
             Constructor<?> constructor = targetClass.getConstructor(Integer[].class, Comparator.class);
-            Integer[] data = ArraysUtil.copy(testIntArray);
+            Integer[] data = ArraysUtil.copyAll(testIntArray);
             instance = constructor.newInstance(data, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();

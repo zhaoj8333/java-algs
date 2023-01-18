@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.node.LinkNode;
+import com.algs.datastructure.node.LinkNode;
 
 public interface ISequentialAccessList<E> extends IList<E> {
 

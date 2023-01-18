@@ -100,7 +100,7 @@ class QuickSortImplTest {
 
         for (int i = 0; i < retry; i++) {
             ArraysUtil.shuffle(worstCase);
-            Integer[] copy = ArraysUtil.copy(worstCase);
+            Integer[] copy = ArraysUtil.copyAll(worstCase);
             MaximumSwapOfLargestElement<Integer> msle = new MaximumSwapOfLargestElement<>(copy, false);
             int swap = msle.get();
             if (swap > max) {
@@ -149,7 +149,7 @@ class QuickSortImplTest {
 
         for (int i = 0; i < retry; i++) {
             ArraysUtil.shuffle(worstCase);
-            Integer[] copy = ArraysUtil.copy(worstCase);
+            Integer[] copy = ArraysUtil.copyAll(worstCase);
             CompareAndSwapSortAlys<Integer> sort = new QuickSortAlysImpl<>(copy);
             sort.sort();
             if (sort.getSwapCount() > max) {
@@ -164,7 +164,7 @@ class QuickSortImplTest {
     void _2_3_5() {
         Integer[] array = ArrayBuilder.randomArrayWithSeveralValues(100000, 2);
 
-        Integer[] copy = ArraysUtil.copy(array);
+        Integer[] copy = ArraysUtil.copyAll(array);
         Integer[] finalCopy = copy;
         StopWatchTask<Object> sw = new StopWatchTask<>() {
             @Override
@@ -185,7 +185,7 @@ class QuickSortImplTest {
         };
         sw.exec(true);
 
-        Integer[] copy1 = ArraysUtil.copy(array);
+        Integer[] copy1 = ArraysUtil.copyAll(array);
         sw = new StopWatchTask<>() {
             @Override
             protected Object profileTask() {

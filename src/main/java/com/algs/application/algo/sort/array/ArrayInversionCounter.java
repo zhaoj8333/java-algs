@@ -19,7 +19,7 @@ public class ArrayInversionCounter<E extends Comparable<E>> {
     private long count;
 
     public ArrayInversionCounter(E[] array, Comparator<E> comparator) {
-        this.array = ArraysUtil.copy(array);
+        this.array = ArraysUtil.copyAll(array);
         aux = (E[]) new Comparable[array.length >> 1];
         this.comparator = comparator;
     }

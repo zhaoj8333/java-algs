@@ -36,7 +36,7 @@ class KMedianQuickSortCompareTest<E extends Comparable<E>> extends ArraySortComp
         }
         ArrayCompareAndSwapSort<Integer> sort = null;
         try {
-            Integer[] copy = ArraysUtil.copy(testArray);
+            Integer[] copy = ArraysUtil.copyAll(testArray);
             sort = (ArrayCompareAndSwapSort<Integer>) constructor.newInstance(copy, cmp, Ks[kIndex]);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();

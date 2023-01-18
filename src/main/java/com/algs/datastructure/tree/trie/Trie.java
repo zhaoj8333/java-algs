@@ -1,5 +1,6 @@
 package com.algs.datastructure.trie;
 
+import com.algs.datastructure.tree.trie.Node;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;

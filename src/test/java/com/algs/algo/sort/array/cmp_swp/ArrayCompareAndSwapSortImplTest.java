@@ -58,7 +58,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         Object instance = null;
         try {
             Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
-            Character[] testedData = ArraysUtil.copy(array);
+            Character[] testedData = ArraysUtil.copyAll(array);
             instance = constructor.newInstance(testedData, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
@@ -273,7 +273,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         Integer[] best = new Integer[0];
         for (int i = 0; i < 50000000; i++) {
             Integer[] array = ArrayBuilder.randomIntArray(30);
-            CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copy(array));
+            CompareAndSwapSortAlys<Integer> sort = new ShellSortAlysImpl<>(ArraysUtil.copyAll(array));
             sort.sort();
             int cost = sort.getCost();
             if (cost > max) {
@@ -306,7 +306,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
             @Override
             protected Object profileTask() {
                 for (int i = 0; i < count; i++) {
-                    ArrayCompareAndSwapSort<Character> insertion = new InsertionSortImpl<>(ArraysUtil.copy(chars));
+                    ArrayCompareAndSwapSort<Character> insertion = new InsertionSortImpl<>(ArraysUtil.copyAll(chars));
                     insertion.sort();
                 }
                 return "InsertionSortImpl";
@@ -326,7 +326,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
             @Override
             protected Object profileTask() {
                 for (int i = 0; i < count; i++) {
-                    ArrayCompareAndSwapSort<Character> insertion = new QuickSortImpl0<>(ArraysUtil.copy(chars));
+                    ArrayCompareAndSwapSort<Character> insertion = new QuickSortImpl0<>(ArraysUtil.copyAll(chars));
                     insertion.sort();
                 }
                 return "QuickSortImpl0";

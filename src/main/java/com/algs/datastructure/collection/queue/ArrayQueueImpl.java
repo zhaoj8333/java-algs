@@ -68,8 +68,7 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
         if (size == entries.length) {
-            int length = entries.length;
-            ensureCapacity(length << 1);
+            ensureCapacity(entries.length << 1);
         }
         entries[(headIndex + size) % entries.length] = item;
         size++;
