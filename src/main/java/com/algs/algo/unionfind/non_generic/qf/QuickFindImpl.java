@@ -46,7 +46,7 @@ public class QuickFindImpl implements IUnionFind {
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         return id[a];
     }
 

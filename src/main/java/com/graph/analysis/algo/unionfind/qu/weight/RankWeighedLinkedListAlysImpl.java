@@ -31,7 +31,7 @@ public class RankWeighedLinkedListAlysImpl extends RankWeighedLinkedListImpl imp
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, data.size());
+        RangeUtil.requireIntRange(a, 0, data.size());
         while (!Objects.equals(a, id.get(a))) {
             cost += a;
             a = id.get(a);

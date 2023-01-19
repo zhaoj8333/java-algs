@@ -90,4 +90,10 @@ public class CircularArrayListImpl<E> implements IList<E>, RandomAccessList<E> {
     public Iterator<E> iterator() {
         return null;
     }
+
+    @Override
+    public Iterator<E> reverseIterator() {
+        return null;
+    }
+
 }

@@ -84,4 +84,10 @@ public class StaticLinkedList<E> implements ISequentialAccessList<E> {
     public ISequentialAccessList<E> copy() {
         return null;
     }
+
+    @Override
+    public Iterator<E> reverseIterator() {
+        return null;
+    }
+
 }

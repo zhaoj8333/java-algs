@@ -20,7 +20,7 @@ public class FullCompressImpl0 extends FullCompressImpl {
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         int root = a;
         while (!Objects.equals(root, id[root])) {
             root = id[root];

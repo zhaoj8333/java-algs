@@ -12,18 +12,18 @@ public class RangeUtil {
         }
     }
 
-    public static void requireIndexRange(int index, int min, int max) {
-        if (index < min || index >= max) {
-            throw new IndexOutOfBoundsException(String.format("require index range [%d, %d)", min, max));
+    public static void requireIntRange(int intVal, int min, int max) {
+        if (intVal < min || intVal >= max) {
+            throw new IndexOutOfBoundsException(String.format("require range [%d, %d)", min, max));
         }
     }
 
     /**
      * [min, max]
      */
-    public static void requireRangeWhenAdd(int index, int min, int max) {
-        if (index < min || index > max) {
-            throw new IndexOutOfBoundsException(String.format("require index range [%d, %d]", min, max));
+    public static void requireRangeWhenAdd(int intVal, int min, int max) {
+        if (intVal < min || intVal > max) {
+            throw new IndexOutOfBoundsException(String.format("require range [%d, %d]", min, max));
         }
     }
 

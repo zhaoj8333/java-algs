@@ -23,7 +23,7 @@ public class QuickUnionAlysImpl extends QuickUnionImpl implements IUnionFindAlys
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         while (!Objects.equals(id[a], a)) {
             a = id[a];
             cost += 2;

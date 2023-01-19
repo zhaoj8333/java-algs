@@ -61,7 +61,7 @@ public class FullCompressImpl implements IUnionFind {
      */
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         if (!Objects.equals(a, id[a])) {
             id[a] = find(id[a]);
         }

@@ -52,7 +52,7 @@ public class RankWeighedLinkedListImpl implements IDynamicUnionFind {
      */
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.size());
+        RangeUtil.requireIntRange(a, 0, id.size());
         while (!Objects.equals(a, id.get(a))) {
             a = id.get(a);
         }

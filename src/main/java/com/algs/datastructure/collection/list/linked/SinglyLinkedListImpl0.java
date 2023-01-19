@@ -89,7 +89,7 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
 
     @Override
     public SinglyLinkNode<E> node(int index) {
-        RangeUtil.requireIndexRange(index, 0, size);
+        RangeUtil.requireIntRange(index, 0, size);
         SinglyLinkNode<E> node = head;
         for (int i = 0; i < index; i++) {
             node = node.next;
@@ -215,6 +215,11 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
     @Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator();
+    }
+
+    @Override
+    public Iterator<E> reverseIterator() {
+        return null;
     }
 
 }

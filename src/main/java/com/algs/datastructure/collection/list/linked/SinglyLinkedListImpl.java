@@ -245,4 +245,9 @@ public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
         return new SinglyLinkedListIterator();
     }
 
+    @Override
+    public Iterator<E> reverseIterator() {
+        return null;
+    }
+
 }

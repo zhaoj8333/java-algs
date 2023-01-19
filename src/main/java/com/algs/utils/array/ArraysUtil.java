@@ -125,8 +125,8 @@ public final class ArraysUtil {
     }
 
     public static <E> void rangeClear(E[] array, int begin, int end) {
-        RangeUtil.requireIndexRange(begin, 0, array.length - 1);
-        RangeUtil.requireIndexRange(end, 0, array.length - 1);
+        RangeUtil.requireIntRange(begin, 0, array.length - 1);
+        RangeUtil.requireIntRange(end, 0, array.length - 1);
         for (int i = begin; i <= end; i++) {
             array[i] = null;
         }

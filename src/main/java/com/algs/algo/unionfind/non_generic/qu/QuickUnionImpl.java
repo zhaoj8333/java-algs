@@ -42,7 +42,7 @@ public class QuickUnionImpl implements IUnionFind {
 
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         while (id[a] != a) {
             a = id[a];
         }

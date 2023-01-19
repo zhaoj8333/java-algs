@@ -221,4 +221,9 @@ public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
         return list;
     }
 
+    @Override
+    public Iterator<E> reverseIterator() {
+        return null;
+    }
+
 }

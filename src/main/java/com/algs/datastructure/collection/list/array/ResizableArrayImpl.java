@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class ResizableArrayImpl<E> implements RandomAccessList<E> {
 
+    private final double expandRatio;
     private int size;
     private E[] entries;
 
@@ -19,7 +20,17 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
     }
 
     public ResizableArrayImpl(int capacity) {
-        entries = (E[]) new Object[capacity];
+        this(capacity, DefaultValues.CAPACITY_EXPANSION_RATIO);
+    }
+
+    public ResizableArrayImpl(int capacity, double expandRatio) {
+        RangeUtil.requireRangeWhenAdd(capacity, 1, Integer.MAX_VALUE);
+        RangeUtil.requireNumberRange(expandRatio, 1, 1000);
+        if (capacity == 1 && expandRatio < 2) {
+            expandRatio = 2;
+        }
+        this.expandRatio = expandRatio;
+        this.entries = (E[]) new Object[capacity];
     }
 
     @Override
@@ -32,7 +43,7 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(index, 0, size);
         if (size == entries.length) {
-            ensureCapacity(entries.length << 1);
+            ensureCapacity((int) (entries.length * expandRatio));
         }
         if (index < size) {
             for (int i = size; i > index; i--) {
@@ -51,7 +62,7 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
 
     @Override
     public E set(int index, E item) {
-        RangeUtil.requireIndexRange(index, 0, size);
+        RangeUtil.requireIntRange(index, 0, size);
         E entry = entries[index];
         entries[index] = item;
         return entry;
@@ -64,7 +75,7 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
                 return i;
             }
         }
-        return -1;
+        return DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
@@ -79,13 +90,13 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
 
     @Override
     public E get(int index) {
-        RangeUtil.requireIndexRange(index, 0, size);
+        RangeUtil.requireIntRange(index, 0, size);
         return entries[index];
     }
 
     @Override
     public boolean contains(E item) {
-        return indexOf(item) != -1;
+        return indexOf(item) != DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     @Override
@@ -103,7 +114,7 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
     @Override
     public E remove(E item) {
         int index = indexOf(item);
-        if (index > -1) {
+        if (index > DefaultValues.ELEMENT_NOT_FOUND) {
             return remove(index);
         }
         return null;
@@ -144,4 +155,25 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
     public Iterator<E> iterator() {
         return new ResizableArrayImplIterator();
     }
+
+    private class ResizableArrayImplReverseIterator implements Iterator<E> {
+
+        private int index = size;
+
+        @Override
+        public boolean hasNext() {
+            return index > 0;
+        }
+
+        @Override
+        public E next() {
+            return entries[--index];
+        }
+    }
+
+    @Override
+    public Iterator<E> reverseIterator() {
+        return new ResizableArrayImplReverseIterator();
+    }
+
 }

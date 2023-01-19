@@ -34,7 +34,7 @@ public class HalvingWithoutWeightImpl extends QuickUnionImpl {
      */
     @Override
     public int find(int a) {
-        RangeUtil.requireIndexRange(a, 0, id.length);
+        RangeUtil.requireIntRange(a, 0, id.length);
         while (!Objects.equals(a, id[a])) {
             id[a] = id[id[a]];
             a = id[a];
