@@ -2,22 +2,32 @@ package com.algs.datastructure.node;
 
 import com.algs.datastructure.collection.list.array.RandomAccessList;
 
-public class SkipNode<K, V> implements LinkNode<K> {
+public class SkipLinkNode<K, V> implements LinkNode<V> {
 
-    public K item;
-    public RandomAccessList<SkipNode<K, V>> nexts;
+    private final K key;
+    private V value;
+    public RandomAccessList<SkipLinkNode<K, V>> nexts;
 
-    public SkipNode(K item, RandomAccessList<SkipNode<K, V>> nexts) {
-        this.item = item;
+    public SkipLinkNode(K key, V value, RandomAccessList<SkipLinkNode<K, V>> nexts) {
+        this.key = key;
+        this.value = value;
         this.nexts = nexts;
     }
 
-    @Override
-    public K getValue() {
-        return item;
+    public K getKey() {
+        return key;
     }
 
-    public RandomAccessList<SkipNode<K, V>> getNexts() {
+    @Override
+    public V getValue() {
+        return value;
+    }
+
+    public void setValue(V value) {
+        this.value = value;
+    }
+
+    public RandomAccessList<SkipLinkNode<K, V>> getNexts() {
         return nexts;
     }
 

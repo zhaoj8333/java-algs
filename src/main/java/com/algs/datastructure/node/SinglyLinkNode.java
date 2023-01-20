@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.node;
+package com.algs.datastructure.node;
 
 import java.util.Objects;
 

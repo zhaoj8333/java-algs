@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.node;
+package com.algs.datastructure.node;
 
 public class DoublyLinkNode<E> implements LinkNode<E> {
 

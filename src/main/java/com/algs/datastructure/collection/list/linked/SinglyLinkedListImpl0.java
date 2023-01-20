@@ -185,6 +185,7 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
         }
         E ret = node.item;
         node.item = null;
+        assert prev != null;
         prev.next = node.next;
         size--;
         return ret;
