@@ -24,7 +24,9 @@ public class ArrayStackImpl<E> implements IStack<E> {
 
     private void resize(int newCapacity) {
         E[] newEntries = (E[]) new Object[newCapacity];
-        System.arraycopy(entries, 0, newEntries, 0, size);
+        for (int i = 0; i < size; i++) {
+            newEntries[i] = entries[i];
+        }
         entries = newEntries;
     }
 
@@ -43,8 +45,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
         ObjectUtil.requireNonEmpty(this);
         modCount++;
         E entry = entries[size - 1];
-        entries[size - 1] = null;
-        size--;
+        entries[size--] = null;
         return entry;
     }
 

@@ -10,13 +10,13 @@ import java.util.Objects;
  * Implemented by DoublyLinkedList
  */
 @SuppressWarnings("unchecked")
-public class LinkedListQueueImpl0<E> implements IQueue<E> {
+public class LinkedQueueImpl0<E> implements IQueue<E> {
 
     private int size;
     private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
     private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
-    public LinkedListQueueImpl0() {
+    public LinkedQueueImpl0() {
         head.next = tail;
         tail.prev = head;
     }
@@ -113,7 +113,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
         return array;
     }
 
-    private class LinkedListQueueIterator0<E> implements Iterator<E> {
+    private class LinkedQueueIterator0<E> implements Iterator<E> {
 
         private DoublyLinkNode<E> next = (DoublyLinkNode<E>) head.next;
 
@@ -132,7 +132,7 @@ public class LinkedListQueueImpl0<E> implements IQueue<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new LinkedListQueueIterator0<>();
+        return new LinkedQueueIterator0<>();
     }
 
     @Override

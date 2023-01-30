@@ -5,7 +5,7 @@ import com.algs.datastructure.node.SinglyLinkNode;
 
 import java.util.Objects;
 
-public class LinkedListBagImpl<E> implements IBag<E> {
+public class LinkedBagImpl<E> implements IBag<E> {
 
     private int size;
     private SinglyLinkNode<E> head;
@@ -113,7 +113,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
         return sb.toString();
     }
 
-    private class LinkedListBagIterator<E> implements Iterator<E> {
+    private class LinkedBagIterator<E> implements Iterator<E> {
 
         private SinglyLinkNode<E> node = (SinglyLinkNode<E>) head;
 
@@ -132,7 +132,7 @@ public class LinkedListBagImpl<E> implements IBag<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new LinkedListBagIterator<>();
+        return new LinkedBagIterator<>();
     }
 
     @Override

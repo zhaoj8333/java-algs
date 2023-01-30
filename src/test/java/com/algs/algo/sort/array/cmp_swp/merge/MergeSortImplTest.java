@@ -4,7 +4,7 @@ import com.algs.algo.sort.ISortable;
 import com.algs.application.algo.sort.SortedQueueMerger;
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
+import com.algs.datastructure.collection.queue.LinkedQueueImpl;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
@@ -238,7 +238,7 @@ class MergeSortImplTest {
     @Test
     void _2_2_14() {
         IQueue<Integer> q1 = new ArrayQueueImpl<>();
-        IQueue<Integer> q2 = new LinkedListQueueImpl<>();
+        IQueue<Integer> q2 = new LinkedQueueImpl<>();
         for (int i = 1; i <= 10; i++) {
             if (i % 2 == 0) {
                 q1.enque(i);

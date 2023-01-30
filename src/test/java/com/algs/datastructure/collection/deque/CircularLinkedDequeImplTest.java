@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class CircularLinkedListDequeImplTest {
+class CircularLinkedDequeImplTest {
 
     @Test
     void test() {
-        IDeque<Integer> q = new CircularLinkedListDequeImpl<>();
+        IDeque<Integer> q = new CircularLinkedDequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         Assertions.assertEquals(0, q.size());
 
@@ -51,7 +51,7 @@ class CircularLinkedListDequeImplTest {
 
     @Test
     void hasCircle() {
-        CircularLinkedListDequeImpl<Integer> q = new CircularLinkedListDequeImpl<>();
+        CircularLinkedDequeImpl<Integer> q = new CircularLinkedDequeImpl<>();
         Assertions.assertTrue(q.hasCircle());
 
         q.enque(1);

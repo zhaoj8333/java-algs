@@ -1,6 +1,6 @@
 package com.algs.application.algo.sort;
 
-import com.algs.datastructure.collection.deque.LinkedListDequeImpl0;
+import com.algs.datastructure.collection.deque.LinkedDequeImpl0;
 import com.algs.datastructure.collection.queue.IQueue;
 
 public class SortedQueueMerger<E extends Comparable<E>> {
@@ -14,7 +14,7 @@ public class SortedQueueMerger<E extends Comparable<E>> {
     }
 
     public IQueue<E> merge() {
-        IQueue<E> q = new LinkedListDequeImpl0<>();
+        IQueue<E> q = new LinkedDequeImpl0<>();
         while (!q1.isEmpty() && !q2.isEmpty()) {
             E n1 = q1.peek();
             E n2 = q2.peek();

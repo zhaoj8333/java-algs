@@ -2,10 +2,10 @@ package com.algs.application.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedListQueueImpl0;
+import com.algs.datastructure.collection.queue.LinkedQueueImpl0;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
-import com.algs.datastructure.collection.stack.LinkedListStackImpl;
+import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
@@ -45,7 +45,7 @@ public class ArithmeticExpressionEvaluator {
     }
 
     public IQueue<Double> getDoubleFromString(String string) {
-        IQueue<Double> q = new LinkedListQueueImpl0<>();
+        IQueue<Double> q = new LinkedQueueImpl0<>();
         int length = string.length();
         for (int i = 0; i < length; i++) {
             StringBuilder sb = new StringBuilder();
@@ -70,7 +70,7 @@ public class ArithmeticExpressionEvaluator {
             return 0D;
         }
         IStack<String> ops = new ArrayStackImpl<>();
-        IStack<Double> vals = new LinkedListStackImpl<>();
+        IStack<Double> vals = new LinkedStackImpl<>();
 
         int len = expression.length();
         for (int i = 0; i < len; i++) {
@@ -132,7 +132,7 @@ public class ArithmeticExpressionEvaluator {
             return "";
         }
         IStack<String> ops = new ArrayStackImpl<>();
-        IStack<Double> vals = new LinkedListStackImpl<>();
+        IStack<Double> vals = new LinkedStackImpl<>();
 
         int length = unCompleteExpression.length();
         int[] leftBracePositions = new int[length];

@@ -1,8 +1,7 @@
 package com.algs.application.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
-import com.algs.datastructure.collection.stack.LinkedListStackImpl;
+import com.algs.datastructure.collection.stack.LinkedStackImpl;
 
 public class ValidBraces {
 
@@ -17,7 +16,7 @@ public class ValidBraces {
 
     public boolean usingStack(String s) {
 //        IStack<Character> stack = new ArrayStackImpl<>();
-        IStack<Character> stack = new LinkedListStackImpl<>();
+        IStack<Character> stack = new LinkedStackImpl<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '(' || c == '{' || c == '[') {

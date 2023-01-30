@@ -6,13 +6,13 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
+public class CircularLinkedQueueImpl<E> implements IQueue<E> {
 
     private int size;
     private SinglyLinkNode<E> head = new SinglyLinkNode<>(null, null);
     private SinglyLinkNode<E> tail = new SinglyLinkNode<>(null, null);
 
-    public CircularLinkedListQueueImpl() {
+    public CircularLinkedQueueImpl() {
         head.next = tail;
         tail.next = head;
     }
@@ -121,7 +121,7 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
         return array;
     }
 
-    private class CircularLinkedListQueueIterator<E> implements Iterator<E> {
+    private class CircularLinkedQueueIterator<E> implements Iterator<E> {
 
         private SinglyLinkNode<E> node = (SinglyLinkNode<E>) head.next;
         private int index = 0;
@@ -142,7 +142,7 @@ public class CircularLinkedListQueueImpl<E> implements IQueue<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new CircularLinkedListQueueIterator<>();
+        return new CircularLinkedQueueIterator<>();
     }
 
     @Override

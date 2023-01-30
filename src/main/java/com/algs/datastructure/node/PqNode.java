@@ -2,10 +2,10 @@ package com.algs.datastructure.node;
 
 public class PqNode<E> {
 
-    E item;
-    PqNode<E> parent;
-    PqNode<E> left;
-    PqNode<E> right;
+    public E item;
+    public PqNode<E> parent;
+    public PqNode<E> left;
+    public PqNode<E> right;
 
     public PqNode() {
     }

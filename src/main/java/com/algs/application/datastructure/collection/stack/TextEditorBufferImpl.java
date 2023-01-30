@@ -2,7 +2,7 @@ package com.algs.application.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
-import com.algs.datastructure.collection.stack.LinkedListStackImpl;
+import com.algs.datastructure.collection.stack.LinkedStackImpl;
 
 public class TextEditorBufferImpl implements TextEditorBuffer {
 
@@ -15,7 +15,7 @@ public class TextEditorBufferImpl implements TextEditorBuffer {
 
     public TextEditorBufferImpl() {
         this.leftSide = new ArrayStackImpl<>();
-        this.rightSide = new LinkedListStackImpl<>();
+        this.rightSide = new LinkedStackImpl<>();
     }
 
     @Override

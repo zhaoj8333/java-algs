@@ -1,7 +1,7 @@
 package com.algs.algo.sort.array.cmp_swp.shell.sequence;
 
 import com.algs.datastructure.collection.deque.IDeque;
-import com.algs.datastructure.collection.deque.LinkedListDequeImpl;
+import com.algs.datastructure.collection.deque.LinkedDequeImpl;
 
 /**
  * The best step sequence evaluated: the worst complexity O(n^(4/3))
@@ -11,7 +11,7 @@ public class SedgeWick extends SequenceGenerator {
 
     @Override
     public IDeque<Integer> generate(int max) {
-        IDeque<Integer> stepSeq = new LinkedListDequeImpl<>();
+        IDeque<Integer> stepSeq = new LinkedDequeImpl<>();
         int k = 0, step;
         while (true) {
             if (k % 2 == 0) {

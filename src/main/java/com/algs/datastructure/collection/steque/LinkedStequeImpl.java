@@ -10,7 +10,7 @@ import java.util.Objects;
  * Implemented by DoublyLinkedList
  */
 @SuppressWarnings("unchecked")
-public class LinkedListStequeImpl<E> implements ISteque<E> {
+public class LinkedStequeImpl<E> implements ISteque<E> {
 
     private int size;
     private DoublyLinkNode<E> head;
@@ -125,7 +125,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
         return array;
     }
 
-    private class LinkedListQueueIterator<E> implements Iterator<E> {
+    private class LinkedQueueIterator<E> implements Iterator<E> {
 
         private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head;
 
@@ -144,7 +144,7 @@ public class LinkedListStequeImpl<E> implements ISteque<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new LinkedListQueueIterator<>();
+        return new LinkedQueueIterator<>();
     }
 
     @Override

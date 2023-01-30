@@ -10,7 +10,7 @@ class BagImplTest extends ImplFunctionalityTest {
     @SuppressWarnings("unchecked")
     protected Class<IBag>[] targetClasses = (Class<IBag>[]) new Class<?>[] {
             ArrayBagImpl.class,
-            LinkedListBagImpl.class,
+            LinkedBagImpl.class,
     };
 
     @Override

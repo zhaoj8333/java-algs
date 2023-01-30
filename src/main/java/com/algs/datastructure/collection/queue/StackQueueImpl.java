@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.queue;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
-import com.algs.datastructure.collection.stack.LinkedListStackImpl;
+import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 
@@ -16,7 +16,7 @@ import java.util.Objects;
 public class StackQueueImpl<E> implements IQueue<E> {
 
     private final IStack<E> h = new ArrayStackImpl<>();
-    private final IStack<E> t = new LinkedListStackImpl<>();
+    private final IStack<E> t = new LinkedStackImpl<>();
 
     @Override
     public void enque(E item) {

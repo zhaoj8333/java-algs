@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class LinkedListStequeImplTest {
+class LinkedStequeImplTest {
 
     @Test
     void test() {
-        ISteque<Integer> q = new LinkedListStequeImpl<>();
+        ISteque<Integer> q = new LinkedStequeImpl<>();
         Assertions.assertTrue(q.isEmpty());
         q.enque(1);
         q.deque();

@@ -9,9 +9,9 @@ class DequeImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
         ArrayDequeImpl.class,
-            CircularLinkedListDequeImpl.class,
-            LinkedListDequeImpl.class,
-            LinkedListDequeImpl0.class,
+            CircularLinkedDequeImpl.class,
+            LinkedDequeImpl.class,
+            LinkedDequeImpl0.class,
     };
 
     @Override

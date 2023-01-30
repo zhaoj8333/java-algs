@@ -7,8 +7,8 @@ package com.algs.datastructure.collection.deque;
  *
  * {@link com.algs.datastructure.collection.deque.ArrayDequeImpl}
  *
- * {@link com.algs.datastructure.collection.deque.LinkedListDequeImpl}
- * {@link com.algs.datastructure.collection.deque.LinkedListDequeImpl0}
- * {@link com.algs.datastructure.collection.deque.CircularLinkedListDequeImpl}
+ * {@link com.algs.datastructure.collection.deque.LinkedDequeImpl}
+ * {@link com.algs.datastructure.collection.deque.LinkedDequeImpl0}
+ * {@link com.algs.datastructure.collection.deque.CircularLinkedDequeImpl}
  *
  */

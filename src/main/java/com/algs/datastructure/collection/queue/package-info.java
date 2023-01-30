@@ -8,8 +8,8 @@ package com.algs.datastructure.collection.queue;
  * {@link com.algs.datastructure.collection.queue.ArrayQueueImpl}
  * {@link com.algs.datastructure.collection.queue.RandomArrayQueueImpl}
  *
- * {@link com.algs.datastructure.collection.queue.LinkedListQueueImpl}
- * {@link com.algs.datastructure.collection.queue.LinkedListQueueImpl0}
- * {@link com.algs.datastructure.collection.queue.CircularLinkedListQueueImpl}
+ * {@link com.algs.datastructure.collection.queue.LinkedQueueImpl}
+ * {@link com.algs.datastructure.collection.queue.LinkedQueueImpl0}
+ * {@link com.algs.datastructure.collection.queue.CircularLinkedQueueImpl}
  *
  */

@@ -7,7 +7,7 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class LinkedListStackImpl<E> implements IStack<E> {
+public class LinkedStackImpl<E> implements IStack<E> {
 
     private int size;
     private SinglyLinkNode<E> top;
@@ -88,11 +88,11 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         return CollectionUtil.toString(this);
     }
 
-    private class LinkedListStackIterator<E> implements Iterator<E> {
+    private class LinkedStackIterator<E> implements Iterator<E> {
 
         private SinglyLinkNode<E> newTop;
 
-        public LinkedListStackIterator() {
+        public LinkedStackIterator() {
             if (Objects.nonNull(top)) {
                 newTop = new SinglyLinkNode(top.item, top.next);
             }
@@ -113,7 +113,7 @@ public class LinkedListStackImpl<E> implements IStack<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new LinkedListStackIterator<>();
+        return new LinkedStackIterator<>();
     }
 
     private class LinkedListStackReverseIterator0<E> implements Iterator<E> {
@@ -159,12 +159,12 @@ public class LinkedListStackImpl<E> implements IStack<E> {
         }
     }
 
-    private class LinkedListStackReverseIterator<E> implements Iterator<E> {
+    private class LinkedStackReverseIterator<E> implements Iterator<E> {
 
         private int i;
         private final E[] array;
 
-        public LinkedListStackReverseIterator() {
+        public LinkedStackReverseIterator() {
             Iterator<E> itr = (Iterator<E>) iterator();
             array = (E[]) new Object[size];
             int index = 0;

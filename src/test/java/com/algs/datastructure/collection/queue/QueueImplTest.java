@@ -12,9 +12,9 @@ class QueueImplTest extends ImplFunctionalityTest {
 
     protected final Class<?>[] targetClasses = new Class[]{
             ArrayDequeImpl.class,
-            CircularLinkedListQueueImpl.class,
-            LinkedListQueueImpl.class,
-            LinkedListQueueImpl0.class,
+            CircularLinkedQueueImpl.class,
+            LinkedQueueImpl.class,
+            LinkedQueueImpl0.class,
             QueueImplByPq.class,
             StackQueueImpl.class,
             StackQueueImplOptm1.class
@@ -39,7 +39,7 @@ class QueueImplTest extends ImplFunctionalityTest {
 
     void circularLinedList() {
 
-        IQueue<Integer> q = new CircularLinkedListQueueImpl<>();
+        IQueue<Integer> q = new CircularLinkedQueueImpl<>();
         Assertions.assertTrue(q.isEmpty());
 
         q.enque(1);

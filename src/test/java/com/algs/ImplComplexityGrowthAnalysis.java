@@ -1,7 +1,7 @@
 package com.algs;
 
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
+import com.algs.datastructure.collection.queue.LinkedQueueImpl;
 import com.algs.utils.DrawUtil;
 
 import java.awt.*;
@@ -10,7 +10,7 @@ public abstract class ImplComplexityGrowthAnalysis<E> {
 
     protected static final int n = 512;
     protected static final int y = (int) ((98 * n) / 2.6);
-    private static final IQueue<Color> colors = new LinkedListQueueImpl<>();
+    private static final IQueue<Color> colors = new LinkedQueueImpl<>();
 
     static {
         Color[] c = new Color[] {Color.RED, Color.green, Color.magenta, Color.orange, Color.cyan, Color.pink, Color.blue};

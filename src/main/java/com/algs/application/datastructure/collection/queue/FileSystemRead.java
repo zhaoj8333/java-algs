@@ -2,7 +2,7 @@ package com.algs.application.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.queue.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedListQueueImpl;
+import com.algs.datastructure.collection.queue.LinkedQueueImpl;
 
 import java.io.File;
 import java.util.Objects;
@@ -32,7 +32,7 @@ public class FileSystemRead {
     }
 
     public IQueue<String> read(String path) {
-        IQueue<File> readSequence = new LinkedListQueueImpl<>();
+        IQueue<File> readSequence = new LinkedQueueImpl<>();
         IQueue<String> q = new ArrayQueueImpl<>();
         File file = new File(path);
         if (!file.isDirectory()) {

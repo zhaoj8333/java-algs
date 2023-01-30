@@ -13,7 +13,7 @@ class StackImplTest extends ImplFunctionalityTest {
     protected final Class<?>[] targetClasses = new Class[]{
             ArrayStackImpl.class,
             DestackImplByDeque.class,
-            LinkedListStackImpl.class,
+            LinkedStackImpl.class,
             StackImplByPq.class
     };
 

@@ -7,5 +7,5 @@ package com.algs.datastructure.collection.stack;
  *
  * {@link com.algs.datastructure.collection.stack.ArrayStackImpl}
  * {@link com.algs.datastructure.collection.stack.DestackImplByDeque}
- * {@link com.algs.datastructure.collection.stack.LinkedListStackImpl}
+ * {@link com.algs.datastructure.collection.stack.LinkedStackImpl}
  */

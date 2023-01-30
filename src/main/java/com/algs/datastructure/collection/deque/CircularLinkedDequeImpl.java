@@ -6,13 +6,13 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
+public class CircularLinkedDequeImpl<E> implements IDeque<E> {
 
     private int size;
     private final DoublyLinkNode<E> head = new DoublyLinkNode<>(null, null, null);
     private final DoublyLinkNode<E> tail = new DoublyLinkNode<>(null, null, null);
 
-    public CircularLinkedListDequeImpl() {
+    public CircularLinkedDequeImpl() {
         head.next = tail;
         head.prev = tail;
         tail.prev = head;
@@ -152,7 +152,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
         return array;
     }
 
-    private class CircularLinkedListDequeIterator<E> implements Iterator<E> {
+    private class CircularLinkedDequeIterator<E> implements Iterator<E> {
 
         private DoublyLinkNode<E> node = (DoublyLinkNode<E>) head.next;
 
@@ -171,7 +171,7 @@ public class CircularLinkedListDequeImpl<E> implements IDeque<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new CircularLinkedListDequeIterator<>();
+        return new CircularLinkedDequeIterator<>();
     }
 
     @Override

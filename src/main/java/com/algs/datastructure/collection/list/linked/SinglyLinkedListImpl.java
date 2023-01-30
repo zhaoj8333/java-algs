@@ -3,7 +3,7 @@ package com.algs.datastructure.collection.list.linked;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.bag.LinkedListBagImpl;
+import com.algs.datastructure.collection.bag.LinkedBagImpl;
 import com.algs.datastructure.node.LinkNode;
 import com.algs.datastructure.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
@@ -110,7 +110,7 @@ public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
      *  in each iteration, get the node(firstSinglyLinkNode) and insert it to the newHead,
      *  keep node(first) point to the first node of the rest of previous linkedlist
      *
-     *  Essentially, iterate reverse is {@link LinkedListBagImpl#linkHead(Object)}
+     *  Essentially, iterate reverse is {@link LinkedBagImpl#linkHead(Object)}
      *
      * @param node oldHead
      * @return newHead
