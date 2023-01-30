@@ -171,7 +171,7 @@ public class ArrayBinaryPqImpl0<E extends Comparable<E>> implements IPriorityQue
 
     @Override
     public void clear() {
-        ArraysUtil.fill(entries, null);
+        ArraysUtil.fill(entries, 0, size, null);
         size = 0;
     }
 

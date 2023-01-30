@@ -70,7 +70,7 @@ public class ArrayStackImpl<E> implements IStack<E> {
 
     @Override
     public void clear() {
-        ArraysUtil.fill(entries, null);
+        ArraysUtil.fill(entries, 0, size, null);
         modCount++;
         size = 0;
     }

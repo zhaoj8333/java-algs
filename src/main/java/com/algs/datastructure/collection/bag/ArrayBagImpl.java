@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.bag;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.CollectionUtil;
+import com.algs.utils.array.ArraysUtil;
 
 import java.util.Objects;
 
@@ -105,9 +106,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            entries[i] = null;
-        }
+        ArraysUtil.fill(entries, 0, size, null);
         size = 0;
     }
 

@@ -34,7 +34,7 @@ public class QuickSortRandomizeArrayImpl0<E extends Comparable<E>> extends Quick
 //            insertionSort(array, begin, end);
 //            return;
 //        }
-        int mid = partition(begin, end);
+    int mid = partition(begin, end);
         sort(begin, mid);
         sort(mid + 1, end);
     }

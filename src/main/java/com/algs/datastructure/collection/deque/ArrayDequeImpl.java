@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.deque;
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.array.ArraysUtil;
 
 import java.util.Objects;
 
@@ -116,9 +117,10 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
 
     @Override
     public void clear() {
-        while (!isEmpty()) {
-            deque();
-        }
+//        while (!isEmpty()) {
+//            deque();
+//        }
+        ArraysUtil.fill(entries, 0, size, null);
         headIndex = 0;
         size = 0;
     }

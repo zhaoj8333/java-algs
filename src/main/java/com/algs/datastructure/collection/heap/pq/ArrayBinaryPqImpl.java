@@ -96,7 +96,9 @@ public class ArrayBinaryPqImpl<E extends Comparable<E>> implements IPriorityQueu
 
     private void resize(int newCap) {
         E[] newEntries = (E[]) new Comparable[newCap];
-        System.arraycopy(entries, 0, newEntries, 0, size);
+        for (int i = 0; i < size; i++) {
+            newEntries[i] = entries[i];
+        }
         entries = newEntries;
     }
 
@@ -187,7 +189,7 @@ public class ArrayBinaryPqImpl<E extends Comparable<E>> implements IPriorityQueu
 
     @Override
     public void clear() {
-        ArraysUtil.fill(entries, null);
+        ArraysUtil.fill(entries, 0, size, null);
         size = 0;
     }
 

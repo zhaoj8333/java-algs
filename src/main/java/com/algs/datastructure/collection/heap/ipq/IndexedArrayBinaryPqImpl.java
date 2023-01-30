@@ -151,8 +151,8 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
 
     @Override
     public void clear() {
-        ArraysUtil.fill(pq, 0);
-        ArraysUtil.fill(qp, 0);
+        ArraysUtil.fill(pq, 0, size, 0);
+        ArraysUtil.fill(qp, 0, size, 0);
         ArraysUtil.fill(entries, null);
         size = 0;
     }

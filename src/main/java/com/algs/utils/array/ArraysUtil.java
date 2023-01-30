@@ -16,13 +16,25 @@ public final class ArraysUtil {
     private static Random r = new Random();
 
     public static void fill(int[] array, int value) {
-        for (int i = 0; i < array.length; i++) {
+        fill(array, 0, array.length, value);
+    }
+
+    public static void fill(int[] array, int from, int to, int value) {
+        RangeUtil.requireIntRange(from, 0, array.length);
+        RangeUtil.requireIntRange(to, 0, array.length);
+        for (int i = from; i < to; i++) {
             array[i] = value;
         }
     }
 
     public static <E> void fill(E[] array, Object value) {
-        for (int i = 0; i < array.length; i++) {
+        fill(array, 0, array.length, value);
+    }
+
+    public static <E> void fill(E[] array, int from, int to, Object value) {
+        RangeUtil.requireIntRange(from, 0, array.length);
+        RangeUtil.requireIntRange(to, 0, array.length);
+        for (int i = from; i < to; i++) {
             array[i] = (E) value;
         }
     }

@@ -2,6 +2,7 @@ package com.algs.datastructure.collection.heap.pq;
 
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.node.PqNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Comparator;

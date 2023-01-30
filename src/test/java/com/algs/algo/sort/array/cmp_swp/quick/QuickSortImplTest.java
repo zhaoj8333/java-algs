@@ -337,4 +337,12 @@ class QuickSortImplTest {
 
     }
 
+    /**
+     * Corner cases
+     */
+    @Test
+    void _2_3_30() {
+
+
+    }
 }
