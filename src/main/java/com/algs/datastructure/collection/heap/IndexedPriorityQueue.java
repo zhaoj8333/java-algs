@@ -1,6 +1,6 @@
-package com.algs.datastructure.collection.heap.ipq;
+package com.algs.datastructure.collection.heap;
 
-import com.algs.datastructure.collection.heap.pq.IPriorityQueue;
+import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 
 /**
  * Disadvantage of {@link IPriorityQueue}: Can't access the objects in the queue and update them which sometimes we need to do it.

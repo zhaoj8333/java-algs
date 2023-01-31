@@ -1,15 +1,17 @@
 package com.algs.datastructure.collection.heap;
 
 /**
- * {@link com.algs.datastructure.collection.heap.pq.IPriorityQueue}
+ * {@link com.algs.datastructure.collection.heap.array.IPriorityQueue}
  *
- * Binary Heap:
- *  {@link com.algs.datastructure.collection.heap.pq.ArrayBinaryPqImpl}
- *  {@link com.algs.datastructure.collection.heap.pq.ArrayBinaryPqImpl0}
- *  {@link com.algs.datastructure.collection.heap.pq.TernaryPqImpl}
- *  {@link com.algs.datastructure.collection.heap.pq.DaryHeapImpl}
+ * {@link com.algs.datastructure.collection.heap.array.ArrayPq}
+ *  {@link com.algs.datastructure.collection.heap.array.BinaryArrayPqSentinelImpl}
+ *  {@link com.algs.datastructure.collection.heap.array.TernaryArrayPqImpl}
+ *  {@link com.algs.datastructure.collection.heap.array.DaryArrayPqImpl}
  *
- * {@link com.algs.datastructure.collection.heap.ipq.IndexedPriorityQueue}
+ * {@link com.algs.datastructure.collection.heap.link.LinkedPq}
+ *  {@link com.algs.datastructure.collection.heap.link.BinaryLinkedPqImpl}
+ *
+ * {@link com.algs.datastructure.collection.heap.IndexedPriorityQueue}
  *
  * 2-3 Heap:
  * Beap:

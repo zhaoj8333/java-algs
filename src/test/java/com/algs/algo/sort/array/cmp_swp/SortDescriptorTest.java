@@ -15,7 +15,7 @@ class SortDescriptorTest {
     @Test
     void describe() {
 
-        IList<Character> list = FileUtil.readChars(FilePath.TINY_TXT);
+        IList<Character> list = FileUtil.readChars(FilePath.TINY);
         Object[] chars = CollectionUtil.toArray(list);
         ArraysUtil.println(chars);
         Character[] array = ArraysUtil.toChars(chars);

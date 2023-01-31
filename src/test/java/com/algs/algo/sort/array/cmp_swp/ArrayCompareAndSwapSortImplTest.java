@@ -62,7 +62,7 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
     @Test
     @Override
     public void test() {
-        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
+        IList<Character> chars = FileUtil.readChars(FilePath.TINY);
         Assertions.assertNotNull(chars);
         array = ArraysUtil.toChars(chars.toArray());
 

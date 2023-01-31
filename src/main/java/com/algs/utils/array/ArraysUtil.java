@@ -163,11 +163,15 @@ public final class ArraysUtil {
     }
 
     public static <E> void copyAll(E[] src, E[] dst) {
+        copyAll(src, dst, 0, 0, src.length);
+    }
+
+    public static <E> void copyAll(E[] src, E[] dst, int srcPos, int dstPos, int len) {
         if (dst.length < src.length) {
             throw new ArrayIndexOutOfBoundsException("Dst array length too small");
         }
-        for (int i = 0; i < src.length; i++) {
-            dst[i] = src[i];
+        for (int i = srcPos; i < len; i++) {
+            dst[dstPos + i] = src[srcPos + i];
         }
     }
 
@@ -348,4 +352,5 @@ public final class ArraysUtil {
         }
         return count;
     }
+
 }

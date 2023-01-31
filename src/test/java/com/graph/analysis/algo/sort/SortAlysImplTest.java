@@ -141,7 +141,7 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
     }
 
     private Character[] getChars() {
-        IList<Character> chars = FileUtil.readChars(FilePath.TINY_TXT);
+        IList<Character> chars = FileUtil.readChars(FilePath.TINY);
         assert chars != null;
         Character[] array = ArraysUtil.toChars(chars.toArray());
 

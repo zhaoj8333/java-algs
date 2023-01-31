@@ -21,7 +21,7 @@ class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
         Object instance = null;
         try {
             Constructor<?> constructor = targetClass.getConstructor(SinglyLinkedListImpl.class);
-            instance = constructor.newInstance(FileUtil.readChars(FilePath.TINY_TXT));
+            instance = constructor.newInstance(FileUtil.readChars(FilePath.TINY));
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }

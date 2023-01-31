@@ -1,11 +1,21 @@
-package com.algs.datastructure.collection.heap.pq;
+package com.algs.datastructure.collection.heap.array;
 
 import com.algs.datastructure.collection.Iterator;
 
 /**
  * // TODO: 10/22/22
  */
-public class TernaryPqImpl<E extends Comparable<E>> implements IPriorityQueue<E> {
+public class TernaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
+
+    @Override
+    protected void siftUp(int index) {
+
+    }
+
+    @Override
+    protected void siftDown(int index) {
+
+    }
 
     @Override
     public int size() {
@@ -15,11 +25,6 @@ public class TernaryPqImpl<E extends Comparable<E>> implements IPriorityQueue<E>
     @Override
     public boolean isEmpty() {
         return false;
-    }
-
-    @Override
-    public E get(int index) {
-        return null;
     }
 
     @Override
@@ -38,23 +43,8 @@ public class TernaryPqImpl<E extends Comparable<E>> implements IPriorityQueue<E>
     }
 
     @Override
-    public void reverse() {
-
-    }
-
-    @Override
     public void add(E item) {
 
-    }
-
-    @Override
-    public E remove(int index) {
-        return null;
-    }
-
-    @Override
-    public E remove(E item) {
-        return null;
     }
 
     @Override
@@ -70,11 +60,6 @@ public class TernaryPqImpl<E extends Comparable<E>> implements IPriorityQueue<E>
     @Override
     public E replace(E item) {
         return null;
-    }
-
-    @Override
-    public int compare(E a, E b) {
-        return 0;
     }
 
     @Override

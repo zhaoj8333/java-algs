@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.heap.pq;
+package com.algs.datastructure.collection.heap.array;
 
 import com.algs.datastructure.collection.ICollection;
 

@@ -2,7 +2,6 @@ package com.algs.utils;
 
 import com.algs.datastructure.collection.ICollection;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 
 public final class ObjectUtil<E> {
@@ -30,16 +29,20 @@ public final class ObjectUtil<E> {
     }
 
     public static <E> void requireNonEmpty(E[] array) {
+        requireNonNull(array);
         if (array.length == 0) {
             throw new RuntimeException("Array should be non empty");
         }
     }
 
-    public static String getGetterMethodName(Field field) {
-        String fieldName = field.getName();
-        char[] chars = fieldName.toCharArray();
-        chars[0] = (char) (chars[0] - ('a' - 'A'));
-        return "get" + new String(chars);
+    public static <E> void requireNonNullElement(E[] array) {
+        requireNonNull(array);
+        requireNonEmpty(array);
+        for (E e : array) {
+            if (Objects.isNull(e)) {
+                throw new RuntimeException("All elements should't be null");
+        }
     }
+}
 
 }

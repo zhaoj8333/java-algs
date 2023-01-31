@@ -8,9 +8,9 @@ public class CollectionUtil<E> {
     public static <E> E[] toArray(ICollection<E> collection) {
         Iterator<E> itr = collection.iterator();
         E[] array =  (E[]) new Object[collection.size()];
-        int index = 0;
+        int i = 0;
         while (itr.hasNext()) {
-            array[index++] = itr.next();
+            array[i++] = itr.next();
         }
         return array;
     }
@@ -19,11 +19,11 @@ public class CollectionUtil<E> {
         Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
         sb.append('{');
-        int index = 0;
+        int i = 0;
         while (itr.hasNext()) {
-            index++;
+            i++;
             sb.append(itr.next());
-            if (index < collection.size()) {
+            if (i < collection.size()) {
                 sb.append(',').append(' ');
             }
         }
@@ -33,10 +33,10 @@ public class CollectionUtil<E> {
 
     public static int [] toPrimitive(ICollection collection) {
         int[] ints = new int[collection.size()];
-        int index = 0;
+        int i = 0;
         Iterator itr = collection.iterator();
         while (itr.hasNext()) {
-            ints[index++] = (int) itr.next();
+            ints[i++] = (int) itr.next();
         }
         return ints;
     }

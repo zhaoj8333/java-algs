@@ -1,18 +1,97 @@
-package com.algs.datastructure.collection.heap.pq;
+package com.algs.datastructure.collection.heap.array;
 
+import com.algs.ImplFunctionalityTest;
 import com.algs.application.datastructure.collection.heap.HeapCheck;
-import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.collection.list.IList;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ArrayBinaryPqImpl0Test {
+import java.lang.reflect.Constructor;
+import java.util.Comparator;
+import java.util.Objects;
+
+class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
+
+    private static final Integer[] testData;
+
+    static {
+        Object[] integers = Objects.requireNonNull(FileUtil.readInts(FilePath.INT_8)).toArray();
+        testData = ArraysUtil.toIntegers(integers);
+    }
+
+    protected Class<?>[] targetClasses = new Class<?>[] {
+            BinaryArrayPqSentinelImpl.class,
+            BinaryArrayPqImpl.class,
+    };
+
+    @Override
+    protected Object construct(Class<?> targetClass) {
+        Object instance = null;
+        try {
+            Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
+            Integer[] data = ArraysUtil.copyAll(testData);
+            instance = constructor.newInstance(data, null);
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        return instance;
+    }
+
+    @Override
+    protected void testEach(Object obj) {
+        IPriorityQueue<Integer> pq = (IPriorityQueue) obj;
+
+        Assertions.assertEquals(40, pq.get());
+        Assertions.assertEquals(pq.get(), pq.remove());
+        Assertions.assertFalse(pq.contains(40));
+
+        pq.replace(31);
+        Assertions.assertEquals(31, pq.get());
+
+        pq.add(33);
+        Assertions.assertEquals(33, pq.get());
+
+        Integer remove0 = pq.remove();
+        Assertions.assertEquals(33, remove0);
+        Integer remove1 = pq.remove();
+        Assertions.assertEquals(31, remove1);
+        Integer remove2 = pq.remove();
+        Assertions.assertEquals(15, remove2);
+        Integer remove3 = pq.remove();
+        Assertions.assertEquals(10, remove3);
+        Integer remove4 = pq.remove();
+        Assertions.assertEquals(8, remove4);
+        Integer remove5 = pq.remove();
+        Assertions.assertEquals(0, remove5);
+        Integer remove6 = pq.remove();
+        Assertions.assertEquals(-10, remove6);
+        Integer remove7 = pq.remove();
+        Assertions.assertEquals(-20, remove7);
+        Integer remove8 = pq.remove();
+        Assertions.assertEquals(-30, remove8);
+
+        Assertions.assertFalse(pq.contains(-30));
+
+        pq.replace(-21);
+        Assertions.assertEquals(-21, pq.get());
+
+        pq.add(-33);
+        Assertions.assertEquals(-21, pq.get());
+
+    }
+
+    @Test
+    @Override
+    public void test() {
+        test(targetClasses);
+    }
 
     @Test
     void _2_4_1() {
         String input = "PRIO*R**I*T*Y***QUE***U*E";
-        IPriorityQueue<Character> pq = new ArrayBinaryPqImpl0<>();
+        IPriorityQueue<Character> pq = new BinaryArrayPqSentinelImpl<>();
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == '*') {
                 Character remove = pq.remove();
@@ -23,17 +102,6 @@ class ArrayBinaryPqImpl0Test {
             System.out.println(pq);
         }
         System.out.println();
-    }
-
-    @Test
-    void _2_4_5() {
-        String input = "EASYQUESTION";
-        IPriorityQueue<Character> pq = new ArrayBinaryPqImpl<>();
-        for (int i = 0; i < input.length(); i++) {
-            pq.add(input.charAt(i));
-        }
-        IPriorityQueue<Character> pq1 = pq;
-
     }
 
     /**
@@ -99,12 +167,12 @@ class ArrayBinaryPqImpl0Test {
      */
     @Test
     void _2_4_7_8() {
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl<>();
+        IPriorityQueue<Integer> pq = new BinaryArrayPqSentinelImpl<>();
         for (int i = 15; i >= 1; i--) {
             pq.add(i);
         }
 
-        IPriorityQueue<Integer> pq1 = new ArrayBinaryPqImpl<>();
+        IPriorityQueue<Integer> pq1 = new BinaryArrayPqSentinelImpl<>();
         for (int i = 1; i <= 15; i++) {
             pq1.add(i);
         }
@@ -123,9 +191,7 @@ class ArrayBinaryPqImpl0Test {
      *
      *  Kth min element -> (n-k+1) th element
      *
-     * {@link ArrayBinaryPqImpl0Test#_2_4_7_8()}
      */
-    @Test
     void _2_4_8() {
     }
 
@@ -189,7 +255,7 @@ class ArrayBinaryPqImpl0Test {
          *          12     11          10      9
          *        8   7   6   5      4   3    2  1
          */
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl<>();
+        IPriorityQueue<Integer> pq = new BinaryArrayPqSentinelImpl<>();
         for (int i = 1; i <= 32; i++) {
             pq.add(i);
         }
@@ -198,7 +264,7 @@ class ArrayBinaryPqImpl0Test {
 
     @Test
     void _2_4_17() {
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl0<>();
+        IPriorityQueue<Integer> pq = new BinaryArrayPqSentinelImpl<>();
         for (int i = 0; i < 10; i++) {
             pq.add(i);
         }
@@ -232,142 +298,4 @@ class ArrayBinaryPqImpl0Test {
      */
     void _2_4_20() { }
 
-    @Test
-    void testInit() {
-        IList<Integer> ints8 = FileUtil.readInts("data/ints/8ints.txt");
-        assert ints8 != null;
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl0<>(ints8);
-        Integer integer = pq.get();
-        Assertions.assertEquals(9, pq.size());
-        Assertions.assertEquals(40, integer);
-
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
-    void isEmpty() {
-    }
-
-    @Test
-    void add() {
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl0<>();
-
-        for (int i = 1; i < 12; i++) {
-            pq.add(i);
-        }
-        pq.add(12);
-
-        Assertions.assertEquals(12, pq.get());
-        pq.add(13);
-        Assertions.assertEquals(13, pq.get());
-
-//        Assertions.assertEquals(12, pq.remove());
-
-
-        System.out.println(pq);
-
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
-    void remove() {
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl0<>();
-
-        pq.add(1);
-        pq.add(2);
-        pq.add(2);
-        Integer remove2 = pq.remove();
-        Assertions.assertEquals(2, remove2);
-        pq.clear();
-
-        for (int i = 1; i < 15; i++) {
-            pq.add(i);
-        }
-
-        Integer integer = pq.get();
-        Integer remove = pq.remove();
-        Assertions.assertEquals(integer, remove);
-        Assertions.assertEquals(14, remove);
-
-        Integer integer1 = pq.get();
-        Integer remove1 = pq.remove();
-        Assertions.assertEquals(integer1, remove1);
-        Assertions.assertEquals(13, remove1);
-
-        System.out.println(pq);
-    }
-
-    @Test
-    void replace() {
-        IPriorityQueue<Integer> pq = new ArrayBinaryPqImpl0<>();
-
-        Integer replace = pq.replace(1);
-        Integer integer = pq.get();
-        Assertions.assertEquals(1, integer);
-        Assertions.assertEquals(1, replace);
-        Assertions.assertEquals(1, pq.size());
-
-        Integer replace1 = pq.replace(2);
-        Assertions.assertEquals(1, replace1);
-
-        for (int i = 3; i < 15; i++) {
-            pq.add(i);
-        }
-        Integer replace2 = pq.replace(20);
-        Assertions.assertEquals(14, replace2);
-
-        Integer replace3 = pq.replace(19);
-        Assertions.assertEquals(20, replace3);
-        Assertions.assertEquals(19, pq.get());
-
-        Integer replace4 = pq.replace(0);
-        Assertions.assertEquals(19, replace4);
-
-        Iterator<Integer> itr = pq.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-    }
-
-    @Test
-    void compare() {
-    }
-
-    @Test
-    void contains() {
-    }
-
-    @Test
-    void clear() {
-    }
-
-    @Test
-    void toArray() {
-    }
-
-    @Test
-    void iterator() {
-    }
-
-    @Test
-    void testGet() {
-    }
-
-    @Test
-    void testRemove() {
-    }
-
-    @Test
-    void testRemove1() {
-    }
-
-    @Test
-    void reverse() {
-    }
 }

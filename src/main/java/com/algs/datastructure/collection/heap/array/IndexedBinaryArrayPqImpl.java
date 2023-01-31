@@ -1,79 +1,20 @@
-package com.algs.datastructure.collection.heap.ipq;
+package com.algs.datastructure.collection.heap.array;
 
-import com.algs.DefaultValues;
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
+import com.algs.utils.array.ArraysUtil;
 
-import java.util.Comparator;
-import java.util.Objects;
+public class IndexedBinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
 
-public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements IndexedPriorityQueue<E> {
-
-    private int size;
-    private E[] entries;
     private int[] pq; // pq[i] = k, k is index in entries, heap sorted
     private int[] qp; // qp: i = pq[i], qp[i] = i in pq
-    private final Comparator<E> comparator;
-
-    public IndexedArrayBinaryPqImpl() {
-        this(DefaultValues.DEFAULT_CAPACITY);
-    }
-
-    public IndexedArrayBinaryPqImpl(int capacity) {
-        this(capacity, null);
-    }
-
-    public IndexedArrayBinaryPqImpl(int capacity, Comparator<E> comparator) {
-        this.size = capacity;
-        entries = (E[]) new Comparable[capacity + 1];
-        this.pq = new int[capacity + 1];
-        this.qp = new int[capacity + 1];
-        ArraysUtil.fill(qp, -1);
-        this.comparator = comparator;
-    }
-
-    public IndexedArrayBinaryPqImpl(ICollection<E> collection) {
-        this(collection.size());
-    }
-
-    public IndexedArrayBinaryPqImpl(ICollection<E> collection, Comparator<E> comparator) {
-        this(collection.size(), comparator);
-        Iterator<E> itr = collection.iterator();
-        int index = 0;
-        for (int i = 0; i < collection.size(); i++) {
-            entries[index++] = itr.next();
-        }
-        heapify();
-    }
-
-    private void heapify() {
-
-    }
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
-    public int compare(E a, E b) {
-        return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
-    }
 
     @Override
     public void add(E item) {
         add(size, item);
     }
 
-    @Override
     public void add(int i, E item) {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(i, 0, size);
@@ -86,7 +27,7 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
         siftUp(size);
     }
 
-    private void resize(int newCapacity) {
+    protected void resize(int newCapacity) {
         E[] newEntries = (E[]) new Comparable[newCapacity + 1];
         System.arraycopy(entries, 0, newEntries, 0, size);
         entries = newEntries;
@@ -98,7 +39,7 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
         pq = newQp;
     }
 
-    private void siftUp(int index) {
+    public void siftUp(int index) {
         int i = pq[index];
         E entry = entries[i];
         while (index > 1) {
@@ -113,33 +54,27 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
         pq[index] = pq[i];
     }
 
-    @Override
     public void change(int i, E item) {
         ObjectUtil.requireNonNull(item);
 
     }
 
-    @Override
     public boolean contains(int i) {
         return false;
     }
 
-    @Override
     public void delete(int k) {
 
     }
 
-    @Override
     public E min() {
         return null;
     }
 
-    @Override
     public int minIndex() {
         return 0;
     }
 
-    @Override
     public int delMin() {
         return 0;
     }
@@ -177,7 +112,7 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
         return entry;
     }
 
-    private void siftDown(int index) {
+    public void siftDown(int index) {
         E entry = entries[index];
         int half = size >> 1;
 
@@ -193,26 +128,6 @@ public class IndexedArrayBinaryPqImpl<E extends Comparable<E>> implements Indexe
     @Override
     public Iterator<E> iterator() {
         return null;
-    }
-
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public E remove(E item) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public E get(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
     }
 
 }
