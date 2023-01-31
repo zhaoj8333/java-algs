@@ -8,7 +8,7 @@ import com.algs.utils.array.ArraysUtil;
 import java.util.Comparator;
 
 /**
- * Not using first entry
+ * Sentinel: keep first entry for nothing use
  * i = 1, root node
  * i > 1, index of parent node is: i/2
  *        index of child nodes are: 2i, 2i
