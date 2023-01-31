@@ -1,6 +1,7 @@
-package com.algs.datastructure.collection.queue;
+package com.algs.datastructure.collection.queue.link;
 
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.node.SinglyLinkNode;
 import com.algs.utils.ObjectUtil;
 
@@ -146,7 +147,7 @@ public class CircularLinkedQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -156,7 +157,7 @@ public class CircularLinkedQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 

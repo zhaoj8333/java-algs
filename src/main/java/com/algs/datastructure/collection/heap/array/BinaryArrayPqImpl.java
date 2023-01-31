@@ -3,6 +3,7 @@ package com.algs.datastructure.collection.heap.array;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.array.ArraysUtil;
 
 import java.util.Comparator;
 
@@ -57,14 +58,58 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
         heapify(0);
     }
 
-    @Override
-    public void add(E item) {
-        ObjectUtil.requireNonNull(item);
-        if (size >= entries.length) {
-            resize(size << 1);
+    protected void heapify(int begin) {
+        for (int i = (size >> 1) - 1; i >= begin; i--) {
+            siftDown(i);
         }
-        entries[size++] = item;
-        siftUp(size - 1);
+    }
+
+    protected void ensureCapacity(int newCap) {
+        E[] newEntries = (E[]) new Comparable[newCap];
+        for (int i = 0; i < size; i++) {
+            newEntries[i] = entries[i];
+        }
+        entries = newEntries;
+    }
+
+    @Override
+    protected void siftUp(int i) {
+        E entry = entries[i];
+        while (i > 0) {
+            int pi = (i - 1) >> 1;
+            E parent = entries[pi];
+            if (compare(entry, parent) <= 0) {
+                break;
+            }
+            entries[i] = parent;
+            i = pi;
+        }
+        entries[i] = entry;
+    }
+
+    @Override
+    protected void siftDown(int i) {
+        E root = entries[i];
+        int half = size >> 1;
+        while (i < half) { // index < index of first leaf-node(number of non leaf-node)
+            int mi = (i << 1) + 1;
+            E child = entries[mi];
+            int ri = mi + 1;
+            if (ri < size && compare(entries[ri], child) > 0) {
+                child = entries[mi = ri];
+            }
+            if (compare(root, child) >= 0) {
+                break;
+            }
+            entries[i] = child;
+            i = mi;
+        }
+        entries[i] = root;
+    }
+
+    @Override
+    public boolean contains(E item) {
+        return ArraysUtil.contains(entries, item, 0, size);
     }
 
     @Override
@@ -77,46 +122,11 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
     public E remove() {
         ObjectUtil.requireNonEmpty(this);
         E entry = entries[0];
-        int lastIndex = --size;
-        entries[0] = entries[lastIndex];
-        entries[lastIndex] = null;
+        int li = --size;
+        entries[0] = entries[li];
+        entries[li] = null;
         siftDown(0);
         return entry;
-    }
-
-    @Override
-    protected void siftUp(int index) {
-        E entry = entries[index];
-        while (index > 0) {
-            int pIndex = (index - 1) >> 1;
-            E parent = entries[pIndex];
-            if (compare(entry, parent) <= 0) {
-                break;
-            }
-            entries[index] = parent;
-            index = pIndex;
-        }
-        entries[index] = entry;
-    }
-
-    @Override
-    protected void siftDown(int index) {
-        E root = entries[index];
-        int half = size >> 1;
-        while (index < half) { // index < index of first leaf-node(number of non leaf-node)
-            int maxIndex = (index << 1) + 1;
-            E maxChild = entries[maxIndex];
-            int rightIndex = maxIndex + 1;
-            if (rightIndex < size && compare(entries[rightIndex], maxChild) > 0) {
-                maxChild = entries[maxIndex = rightIndex];
-            }
-            if (compare(root, maxChild) >= 0) {
-                break;
-            }
-            entries[index] = maxChild;
-            index = maxIndex;
-        }
-        entries[index] = root;
     }
 
     @Override
@@ -132,6 +142,22 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
             siftDown(0);
         }
         return root;
+    }
+
+    @Override
+    public void add(E item) {
+        ObjectUtil.requireNonNull(item);
+        if (size >= entries.length) {
+            ensureCapacity(size << 1);
+        }
+        entries[size++] = item;
+        siftUp(size - 1);
+    }
+
+    @Override
+    public void clear() {
+        ArraysUtil.fill(entries, 0, size, null);
+        size = 0;
     }
 
     private class BinaryArrayPqImplIterator<E> implements Iterator<E> {

@@ -173,7 +173,7 @@ public class DestackImplByDeque<E> implements ICollection<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -183,7 +183,7 @@ public class DestackImplByDeque<E> implements ICollection<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 

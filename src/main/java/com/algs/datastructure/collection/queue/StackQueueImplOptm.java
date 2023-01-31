@@ -12,9 +12,8 @@ import java.util.Objects;
 /**
  * Use {@link IStack}
  * to implement {@link IQueue}, assure constant time of {@link IQueue#deque()}
- * // TODO: 10/4/22 {@link com.algs.datastructure.collection.queue.StackQueueImplOpt1Test}
  */
-public class StackQueueImplOptm1<E> implements IQueue<E> {
+public class StackQueueImplOptm<E> implements IQueue<E> {
 
     private final IStack<E> h  = new ArrayStackImpl<>();
     private final IStack<E> t  = new LinkedStackImpl<>();
@@ -119,7 +118,7 @@ public class StackQueueImplOptm1<E> implements IQueue<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -129,7 +128,7 @@ public class StackQueueImplOptm1<E> implements IQueue<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 

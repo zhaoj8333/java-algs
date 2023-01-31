@@ -82,8 +82,8 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
     }
 
     @Override
-    public E get(int index) {
-        SinglyLinkNode<E> node = node(index);
+    public E get(int i) {
+        SinglyLinkNode<E> node = node(i);
         return Objects.isNull(node) ? null : node.item;
     }
 
@@ -124,8 +124,8 @@ public class SinglyLinkedListImpl0<E> implements ISequentialAccessList<E> {
     }
 
     @Override
-    public E remove(int index) {
-        SinglyLinkNode<E> prev = node(index - 1);
+    public E remove(int i) {
+        SinglyLinkNode<E> prev = node(i - 1);
         SinglyLinkNode<E> node = prev.next;
         E item = node.item;
         node.item = null;

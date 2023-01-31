@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.utils.ObjectUtil;
 
 /**

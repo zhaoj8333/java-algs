@@ -3,10 +3,12 @@ package com.algs.datastructure.collection.queue;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.deque.ArrayDequeImpl;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
+import com.algs.datastructure.collection.queue.link.CircularLinkedQueueImpl;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl0;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 class QueueImplTest extends ImplFunctionalityTest {
 
@@ -15,9 +17,9 @@ class QueueImplTest extends ImplFunctionalityTest {
             CircularLinkedQueueImpl.class,
             LinkedQueueImpl.class,
             LinkedQueueImpl0.class,
-            QueueImplByPq.class,
+            QueuePqImpl.class,
             StackQueueImpl.class,
-            StackQueueImplOptm1.class
+            StackQueueImplOptm.class
     };
 
     @Override
@@ -27,58 +29,7 @@ class QueueImplTest extends ImplFunctionalityTest {
 
     @Override
     protected void testEach(Object obj) {
-        enqueue();
-        dequeue();
-        isEmpty();
-        contains();
-        size();
-        clear();
-        toArray();
-        iterate();
-    }
 
-    void circularLinedList() {
-
-        IQueue<Integer> q = new CircularLinkedQueueImpl<>();
-        Assertions.assertTrue(q.isEmpty());
-
-        q.enque(1);
-        Assertions.assertEquals(1, q.size());
-        q.enque(2);
-        q.enque(3);
-        q.enque(4);
-
-//        Assertions.assertEquals(4, q.get(3));
-//        Assertions.assertTrue(q.contains(4));
-
-        /*
-         *  1 2 3 4
-         */
-        Object[] integers = q.toArray();
-        System.out.println(Arrays.toString(integers));
-
-        Integer deque = q.deque();
-        Assertions.assertEquals(1, deque);
-        deque = q.deque();
-        Assertions.assertEquals(2, deque);
-        deque = q.deque();
-        Assertions.assertEquals(3, deque);
-        deque = q.deque();
-        Assertions.assertEquals(4, deque);
-
-        Assertions.assertTrue(q.isEmpty());
-
-        q.enque(1);
-        q.enque(2);
-        q.enque(3);
-        q.enque(4);
-
-        Iterator<Integer> itr = q.iterator();
-        while (itr.hasNext()) {
-            Integer next = itr.next();
-            System.out.print(next + " ");
-        }
-        System.out.println();
     }
 
     void enqueue() {

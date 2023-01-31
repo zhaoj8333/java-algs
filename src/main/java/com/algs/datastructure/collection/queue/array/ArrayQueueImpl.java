@@ -1,6 +1,5 @@
-package com.algs.datastructure.collection.queue;
+package com.algs.datastructure.collection.queue.array;
 
-import com.algs.DefaultValues;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
 
@@ -11,23 +10,14 @@ import java.util.Objects;
  * ArrayQueue: when enqueue, #{{@link ArrayQueueImpl#ensureCapacity(int)}} is called, will extend the entries automatically
  */
 @SuppressWarnings("unchecked")
-public class ArrayQueueImpl<E> implements IQueue<E> {
-
-    protected int size;
-    protected int headIndex;
-    protected E[] entries;
+public class ArrayQueueImpl<E> extends ArrayQueue<E> {
 
     public ArrayQueueImpl() {
-        this(DefaultValues.DEFAULT_CAPACITY);
+        super();
     }
 
     public ArrayQueueImpl(int capacity) {
-        entries = (E[]) new Object[capacity];
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
+        super(capacity);
     }
 
     @Override
@@ -42,11 +32,6 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
             }
         }
         return false;
-    }
-
-    @Override
-    public int size() {
-        return size;
     }
 
     private void ensureCapacity(int newCapacity) {
@@ -124,31 +109,6 @@ public class ArrayQueueImpl<E> implements IQueue<E> {
     @Override
     public Iterator<E> iterator() {
         return new ArrayQueueIterator<>();
-    }
-
-    @Override
-    public final E get(int index) {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
-
-    @Override
-    public final void add(E o) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final E remove(int index) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final E remove(E o) {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
 }

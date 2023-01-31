@@ -190,7 +190,7 @@ public class LinkedStackImpl<E> implements IStack<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -200,7 +200,7 @@ public class LinkedStackImpl<E> implements IStack<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 

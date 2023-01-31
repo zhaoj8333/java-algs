@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.collection.Iterator;
 
-public class QueueImplByPq<E> implements IQueue<E> {
+public class RandomQueuePqImpl<E> implements IQueue<E> {
     @Override
     public void enque(E item) {
 
@@ -29,7 +29,7 @@ public class QueueImplByPq<E> implements IQueue<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         return null;
     }
 
@@ -44,7 +44,7 @@ public class QueueImplByPq<E> implements IQueue<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public E remove(int i) {
         return null;
     }
 

@@ -2,9 +2,9 @@ package com.algs.algo.sort.array.cmp_swp.merge;
 
 import com.algs.algo.sort.ISortable;
 import com.algs.application.algo.sort.SortedQueueMerger;
-import com.algs.datastructure.collection.queue.ArrayQueueImpl;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedQueueImpl;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;

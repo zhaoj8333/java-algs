@@ -62,17 +62,14 @@ public final class ArraysUtil {
     }
 
     public static <E> boolean contains(E[] array, E val) {
-        for (E e : array) {
-            if (Objects.equals(val, e)) {
-                return true;
-            }
-        }
-        return false;
+        return contains(array, val, 0, array.length);
     }
 
-    public static boolean contains(Integer[] array, Integer val) {
-        for (Integer e : array) {
-            if (Objects.equals(val, e)) {
+    public static <E> boolean contains(E[] array, E val, int from, int to) {
+        RangeUtil.requireIntRange(from, 0, array.length);
+        RangeUtil.requireIntRange(to, 0, array.length);
+        for (int i = from; i < to; i++) {
+            if (Objects.equals(array[i], val)) {
                 return true;
             }
         }

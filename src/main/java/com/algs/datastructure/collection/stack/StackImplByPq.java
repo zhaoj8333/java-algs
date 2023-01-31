@@ -132,7 +132,7 @@ public class StackImplByPq<E extends Comparable<E>> implements IStack<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
@@ -142,7 +142,7 @@ public class StackImplByPq<E extends Comparable<E>> implements IStack<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public E remove(int i) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 

@@ -26,7 +26,7 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         return null;
     }
 
@@ -47,7 +47,7 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public E remove(int i) {
         return null;
     }
 

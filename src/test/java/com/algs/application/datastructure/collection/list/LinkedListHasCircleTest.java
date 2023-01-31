@@ -1,6 +1,6 @@
 package com.algs.application.datastructure.collection.list;
 
-import com.algs.datastructure.collection.queue.CircularLinkedQueueImpl;
+import com.algs.datastructure.collection.queue.link.CircularLinkedQueueImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -136,7 +136,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -146,7 +146,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
     }
 
     @Override
-    public E remove(int index) {
+    public E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 

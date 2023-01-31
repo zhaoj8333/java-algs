@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection.queue;
+package com.algs.datastructure.collection.queue.array;
 
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.array.ArraysUtil;

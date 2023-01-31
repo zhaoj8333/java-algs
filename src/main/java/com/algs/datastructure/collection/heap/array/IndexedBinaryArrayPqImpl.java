@@ -11,6 +11,11 @@ public class IndexedBinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E
     private int[] qp; // qp: i = pq[i], qp[i] = i in pq
 
     @Override
+    protected void heapify(int i) {
+
+    }
+
+    @Override
     public void add(E item) {
         add(size, item);
     }
@@ -104,16 +109,16 @@ public class IndexedBinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E
 
     @Override
     public E remove() {
-        int index = pq[1];
-        E entry = entries[index];
-        entries[index] = null;
+        int i = pq[1];
+        E entry = entries[i];
+        entries[i] = null;
         pq[1] = pq[size--];
-        siftDown(index);
+        siftDown(i);
         return entry;
     }
 
-    public void siftDown(int index) {
-        E entry = entries[index];
+    public void siftDown(int i) {
+        E entry = entries[i];
         int half = size >> 1;
 
     }

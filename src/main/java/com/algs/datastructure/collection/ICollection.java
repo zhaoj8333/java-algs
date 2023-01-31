@@ -6,11 +6,10 @@ public interface ICollection<E> extends Iterable<E> {
 //    int count();
     boolean isEmpty();
 
-
     /**
      * search
      */
-    E get(int index);
+    E get(int i);
     boolean contains(E item);
 //    boolean contains(E item, int fromIndex, int toIndex);
 //    E min();
@@ -19,7 +18,7 @@ public interface ICollection<E> extends Iterable<E> {
 //    E max(int fromIndex, int toIndex);
 
     void add(E item);
-    E remove(int index);
+    E remove(int i);
     E remove(E item);
     void clear();
 

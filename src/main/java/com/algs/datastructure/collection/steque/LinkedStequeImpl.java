@@ -148,7 +148,7 @@ public class LinkedStequeImpl<E> implements ISteque<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
@@ -158,7 +158,7 @@ public class LinkedStequeImpl<E> implements ISteque<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 

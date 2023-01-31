@@ -30,7 +30,7 @@ public class CircularArrayListImpl<E> implements IList<E>, RandomAccessList<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         return null;
     }
 
@@ -45,7 +45,7 @@ public class CircularArrayListImpl<E> implements IList<E>, RandomAccessList<E> {
 
     }
 
-    public E remove(int index) {
+    public E remove(int i) {
         return null;
     }
 

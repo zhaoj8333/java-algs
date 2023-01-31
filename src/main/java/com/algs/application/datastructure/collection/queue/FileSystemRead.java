@@ -1,8 +1,8 @@
 package com.algs.application.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.queue.ArrayQueueImpl;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.LinkedQueueImpl;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 
 import java.io.File;
 import java.util.Objects;

@@ -130,7 +130,7 @@ public class StackQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -140,7 +140,7 @@ public class StackQueueImpl<E> implements IQueue<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 

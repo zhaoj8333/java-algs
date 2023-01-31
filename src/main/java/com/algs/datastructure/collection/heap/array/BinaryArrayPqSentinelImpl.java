@@ -1,5 +1,6 @@
 package com.algs.datastructure.collection.heap.array;
 
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.utils.ObjectUtil;
@@ -16,11 +17,11 @@ import java.util.Comparator;
 public class BinaryArrayPqSentinelImpl<E extends Comparable<E>> extends ArrayPq<E> {
 
     public BinaryArrayPqSentinelImpl() {
-        super();
+        this(DefaultValues.DEFAULT_CAPACITY);
     }
 
     public BinaryArrayPqSentinelImpl(int capacity) {
-        super(capacity + 1, null);
+        this(capacity, null);
     }
 
     public BinaryArrayPqSentinelImpl(int capacity, Comparator<E> comparator) {
@@ -57,13 +58,55 @@ public class BinaryArrayPqSentinelImpl<E extends Comparable<E>> extends ArrayPq<
     }
 
     @Override
-    public void add(E item) {
-        ObjectUtil.requireNonNull(item);
-        if (size == entries.length - 1) {
-            resize(size << 1);
+    protected void heapify(int begin) {
+        for (int i = (size >> 1) - 1; i >= begin; i--) {
+            siftDown(i);
         }
-        entries[++size] = item;
-        siftUp(size);
+    }
+
+    protected void ensureCapacity(int newCap) {
+        E[] newEntries = (E[]) new Comparable[newCap];
+        for (int i = 1; i < size + 1; i++) {
+            newEntries[i] = entries[i];
+        }
+        entries = newEntries;
+    }
+
+    @Override
+    protected void siftUp(int i) {
+        E entry = entries[i];
+        while (i > 1) {
+            int pi = i / 2;
+            if (compare(entry, entries[pi]) <= 0) {
+                break;
+            }
+            entries[i] = entries[pi];
+            i = pi;
+        }
+        entries[i] = entry;
+    }
+
+    protected void siftDown(int i) {
+        E entry = entries[i];
+        int half = size >> 1;
+        while (i <= half) {
+            int ci = i << 1;
+            E child = entries[ci];
+            if (ci + 1 <= size && compare(entries[ci], entries[ci + 1]) < 0) {
+                child = entries[++ci];
+            }
+            if (compare(entry, child) >= 0) {
+                break;
+            }
+            entries[i] = child;
+            i = ci;
+        }
+        entries[i] = entry;
+    }
+
+    @Override
+    public boolean contains(E item) {
+        return ArraysUtil.contains(entries, item, 1, size);
     }
 
     @Override
@@ -76,58 +119,42 @@ public class BinaryArrayPqSentinelImpl<E extends Comparable<E>> extends ArrayPq<
     public E remove() {
         ObjectUtil.requireNonEmpty(this);
         E entry = entries[1];
-        entries[1] = entries[size];
-        entries[size--] = null;
+        int li = --size + 1;
+        entries[1] = entries[li];
+        entries[li] = null;
         siftDown(1);
         return entry;
     }
 
     @Override
-    protected void siftUp(int index) {
-        E entry = entries[index];
-        while (index > 1) {
-            int pIndex = index / 2;
-            if (compare(entry, entries[pIndex]) <= 0) {
-                break;
-            }
-            entries[index] = entries[pIndex];
-            index = pIndex;
-        }
-        entries[index] = entry;
-    }
-
-    protected void siftDown(int index) {
-        E entry = entries[index];
-        int half = size >> 1;
-        while (index <= half) {
-            int childIndex = index << 1;
-            E maxChild = entries[childIndex];
-            if (childIndex + 1 <= size && compare(entries[childIndex], entries[childIndex + 1]) < 0) {
-                maxChild = entries[++childIndex];
-            }
-            if (compare(entry, maxChild) >= 0) {
-                break;
-            }
-            entries[index] = maxChild;
-            index = childIndex;
-        }
-        entries[index] = entry;
-    }
-
-    @Override
     public E replace(E item) {
         ObjectUtil.requireNonNull(item);
-        E root;
+        E root = null;
         if (size == 0) {
             entries[1] = item;
-            size = 1;
-            root = item;
+            size++;
         } else {
             root = entries[1];
             entries[1] = item;
             siftDown(1);
         }
         return root;
+    }
+
+    @Override
+    public void add(E item) {
+        ObjectUtil.requireNonNull(item);
+        if (size >= entries.length - 1) {
+            ensureCapacity((size << 1) + 1);
+        }
+        entries[++size] = item;
+        siftUp(size);
+    }
+
+    @Override
+    public void clear() {
+        ArraysUtil.fill(entries, 1, size, null);
+        size = 0;
     }
 
     private class BinaryArrayPqSentinelImplIterator<E> implements Iterator<E> {

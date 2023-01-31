@@ -10,7 +10,7 @@ import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingWithoutWei
 import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingWithoutWeightImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
-import com.algs.datastructure.collection.queue.ArrayQueueImpl;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.utils.Connection;
 import org.junit.jupiter.api.Assertions;

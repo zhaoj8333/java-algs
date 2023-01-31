@@ -6,7 +6,7 @@ package com.algs.datastructure.collection.heap;
  * {@link com.algs.datastructure.collection.heap.array.ArrayPq}
  *  {@link com.algs.datastructure.collection.heap.array.BinaryArrayPqSentinelImpl}
  *  {@link com.algs.datastructure.collection.heap.array.TernaryArrayPqImpl}
- *  {@link com.algs.datastructure.collection.heap.array.DaryArrayPqImpl}
+ *  {@link com.algs.datastructure.collection.heap.array.KWayArrayPqImpl}
  *
  * {@link com.algs.datastructure.collection.heap.link.LinkedPq}
  *  {@link com.algs.datastructure.collection.heap.link.BinaryLinkedPqImpl}

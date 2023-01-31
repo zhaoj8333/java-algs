@@ -11,26 +11,26 @@ import java.util.Objects;
 
 public class ResizableArrayImpl<E> implements RandomAccessList<E> {
 
-    private final double expandRatio;
     private int size;
     private E[] entries;
+    private final double ratio;
 
     public ResizableArrayImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public ResizableArrayImpl(int capacity) {
-        this(capacity, DefaultValues.CAPACITY_EXPANSION_RATIO);
+    public ResizableArrayImpl(int cap) {
+        this(cap, DefaultValues.CAPACITY_EXPANSION_RATIO);
     }
 
-    public ResizableArrayImpl(int capacity, double expandRatio) {
-        RangeUtil.requireRangeWhenAdd(capacity, 1, Integer.MAX_VALUE);
-        RangeUtil.requireNumberRange(expandRatio, 1, 1000);
-        if (capacity == 1 && expandRatio < 2) {
-            expandRatio = 2;
+    public ResizableArrayImpl(int cap, double ratio) {
+        RangeUtil.requireRangeWhenAdd(cap, 1, Integer.MAX_VALUE);
+        RangeUtil.requireNumberRange(ratio, 1, 1000);
+        this.ratio = ratio;
+        if (cap < DefaultValues.DEFAULT_CAPACITY) {
+            cap = DefaultValues.DEFAULT_CAPACITY;
         }
-        this.expandRatio = expandRatio;
-        this.entries = (E[]) new Object[capacity];
+        this.entries = (E[]) new Object[cap];
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
         ObjectUtil.requireNonNull(item);
         RangeUtil.requireRangeWhenAdd(index, 0, size);
         if (size == entries.length) {
-            ensureCapacity((int) (entries.length * expandRatio));
+            ensureCapacity((int) (entries.length * ratio));
         }
         if (index < size) {
             for (int i = size; i > index; i--) {
@@ -61,10 +61,10 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
     }
 
     @Override
-    public E set(int index, E item) {
-        RangeUtil.requireIntRange(index, 0, size);
-        E entry = entries[index];
-        entries[index] = item;
+    public E set(int i, E item) {
+        RangeUtil.requireIntRange(i, 0, size);
+        E entry = entries[i];
+        entries[i] = item;
         return entry;
     }
 
@@ -89,9 +89,9 @@ public class ResizableArrayImpl<E> implements RandomAccessList<E> {
     }
 
     @Override
-    public E get(int index) {
-        RangeUtil.requireIntRange(index, 0, size);
-        return entries[index];
+    public E get(int i) {
+        RangeUtil.requireIntRange(i, 0, size);
+        return entries[i];
     }
 
     @Override

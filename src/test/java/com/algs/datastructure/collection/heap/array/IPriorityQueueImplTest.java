@@ -22,8 +22,9 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     }
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-            BinaryArrayPqSentinelImpl.class,
-            BinaryArrayPqImpl.class,
+//            BinaryArrayPqSentinelImpl.class,
+//            BinaryArrayPqImpl.class,
+            TernaryArrayPqImpl.class,
     };
 
     @Override

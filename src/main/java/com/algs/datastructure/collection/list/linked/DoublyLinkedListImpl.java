@@ -59,8 +59,8 @@ public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
     }
 
     @Override
-    public E get(int index) {
-        DoublyLinkNode<E> node = node(index);
+    public E get(int i) {
+        DoublyLinkNode<E> node = node(i);
         return Objects.isNull(node) ? null : node.item;
     }
 
@@ -123,8 +123,8 @@ public class DoublyLinkedListImpl<E> implements ISequentialAccessList<E> {
      * head <->n0 <-> prev <-> removedDoublyLinkNode <-> next <-> n*
      */
     @Override
-    public E remove(int index) {
-        DoublyLinkNode<E> prev = node(index - 1);
+    public E remove(int i) {
+        DoublyLinkNode<E> prev = node(i - 1);
         DoublyLinkNode<E> node = prev.next;
         DoublyLinkNode<E> next = node.next;
         prev.next = next;

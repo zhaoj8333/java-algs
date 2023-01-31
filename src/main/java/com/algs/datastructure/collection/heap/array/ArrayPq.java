@@ -39,48 +39,25 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         heapify(0);
     }
 
-    protected void heapify(int begin) {
-        for (int i = (size >> 1) - 1; i >= begin; i--) {
-            siftDown(i);
-        }
-    }
+    protected abstract void heapify(int i);
 
-    protected void resize(int newCap) {
-        E[] newEntries = (E[]) new Comparable[newCap];
-        for (int i = 0; i < size; i++) {
-            newEntries[i] = entries[i];
-        }
-        entries = newEntries;
-    }
+    protected abstract void siftUp(int i);
 
-    protected abstract void siftUp(int index);
-
-    protected abstract void siftDown(int index);
+    protected abstract void siftDown(int i);
 
     @Override
-    public int size() {
+    public final int size() {
         return size;
     }
 
     @Override
-    public boolean isEmpty() {
+    public final boolean isEmpty() {
         return size == 0;
     }
 
     @Override
-    public int compare(E a, E b) {
+    public final int compare(E a, E b) {
         return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
-    }
-
-    @Override
-    public boolean contains(E item) {
-        return ArraysUtil.contains(entries, item);
-    }
-
-    @Override
-    public void clear() {
-        ArraysUtil.fill(entries, 0, size, null);
-        size = 0;
     }
 
     @Override
@@ -89,12 +66,12 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
     }
 
     @Override
-    public final E get(int index) {
+    public final E get(int i) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("unsupported operation");
     }
 

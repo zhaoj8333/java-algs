@@ -175,7 +175,7 @@ public class CircularLinkedDequeImpl<E> implements IDeque<E> {
     }
 
     @Override
-    public E get(int index) {
+    public E get(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
@@ -185,7 +185,7 @@ public class CircularLinkedDequeImpl<E> implements IDeque<E> {
     }
 
     @Override
-    public final E remove(int index) {
+    public final E remove(int i) {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
