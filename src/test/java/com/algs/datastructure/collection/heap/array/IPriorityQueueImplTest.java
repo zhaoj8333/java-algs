@@ -22,8 +22,8 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     }
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-//            BinaryArrayPqSentinelImpl.class,
-//            BinaryArrayPqImpl.class,
+            BinaryArrayPqSentinelImpl.class,
+            BinaryArrayPqImpl.class,
             TernaryArrayPqImpl.class,
     };
 
@@ -44,6 +44,28 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     protected void testEach(Object obj) {
         IPriorityQueue<Integer> pq = (IPriorityQueue) obj;
 
+        initedWithData(pq);
+
+        pq.clear();
+
+        for (int i = 0; i < 5; i++) {
+            pq.add(i);
+        }
+        IPriorityQueue<Integer> pq1 = pq;
+
+        pq.add(20);
+        pq.remove();
+        pq.add(100);
+        pq.remove();
+        IPriorityQueue<Integer> pq2 = pq;
+
+        pq.add(200);
+        pq.add(300);
+        pq.remove();
+        pq.remove();
+    }
+
+    private void initedWithData(IPriorityQueue<Integer> pq) {
         Assertions.assertEquals(40, pq.get());
         Assertions.assertEquals(pq.get(), pq.remove());
         Assertions.assertFalse(pq.contains(40));
@@ -80,7 +102,6 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
 
         pq.add(-33);
         Assertions.assertEquals(-21, pq.get());
-
     }
 
     @Test
@@ -261,26 +282,6 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
             pq.add(i);
         }
         IPriorityQueue<Integer> pq1 = pq;
-    }
-
-    @Test
-    void _2_4_17() {
-        IPriorityQueue<Integer> pq = new BinaryArrayPqSentinelImpl<>();
-        for (int i = 0; i < 10; i++) {
-            pq.add(i);
-        }
-        IPriorityQueue<Integer> pq1 = pq;
-
-        pq.add(20);
-        pq.remove();
-        pq.add(100);
-        pq.remove();
-        IPriorityQueue<Integer> pq2 = pq;
-
-        pq.add(200);
-        pq.add(300);
-        pq.remove();
-        pq.remove();
     }
 
     /**

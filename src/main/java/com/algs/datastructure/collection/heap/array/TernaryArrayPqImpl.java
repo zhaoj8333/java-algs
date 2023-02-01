@@ -41,48 +41,47 @@ public class TernaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
     }
 
     @Override
-    protected void heapify(int i) {
-
+    protected void heapify(int begin) {
+        for (int i = (size / 3) - 1; i >= begin; i--) {
+            siftDown(i);
+        }
     }
 
     @Override
     protected void siftUp(int i) {
-
+        E entry = entries[i];
+        while (i > 0) {
+            int pi = (i - 1) / 3;
+            E parent = entries[pi];
+            if (compare(entry, parent) <= 0) {
+                break;
+            }
+            entries[i] = parent;
+            i = pi;
+        }
+        entries[i] = entry;
     }
 
     @Override
     protected void siftDown(int i) {
-
-    }
-
-    @Override
-    public E get() {
-        return null;
-    }
-
-    @Override
-    public E remove() {
-        return null;
-    }
-
-    @Override
-    public E replace(E item) {
-        return null;
-    }
-
-    @Override
-    public boolean contains(E item) {
-        return false;
-    }
-
-    @Override
-    public void add(E item) {
-
-    }
-
-    @Override
-    public void clear() {
-
+        E root = entries[i];
+        int lp = size / 3;
+        while (i < lp) {
+            int ci = i * 3 + 1;     // index of max child
+            E child = entries[ci];
+            if (ci + 1 < size && compare(child, entries[ci + 1]) < 0) {
+                child = entries[++ci];
+            }
+            if (ci + 1 < size && compare(child, entries[ci + 1]) < 0) {
+                child = entries[++ci];
+            }
+            if (compare(root, child) >= 0) {
+                break;
+            }
+            entries[i] = child;
+            i = ci;
+        }
+        entries[i] = root;
     }
 
     private class TernaryArrayPqImplIterator<E> implements Iterator<E> {

@@ -39,11 +39,22 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         heapify(0);
     }
 
-    protected abstract void heapify(int i);
+    protected void ensureCapacity(int newCap) {
+        E[] newEntries = (E[]) new Comparable[newCap];
+        for (int i = 0; i < size; i++) {
+            newEntries[i] = entries[i];
+        }
+        entries = newEntries;
+    }
 
-    protected abstract void siftUp(int i);
-
-    protected abstract void siftDown(int i);
+    /**
+     * {@link #siftDown(int)} from bigger index to smaller index, maintains the property of heap
+     */
+    protected void heapify(int begin) {
+        for (int i = (size >> 1) - 1; i >= begin; i--) {
+            siftDown(i);
+        }
+    }
 
     @Override
     public final int size() {
@@ -59,6 +70,63 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
     public final int compare(E a, E b) {
         return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
     }
+
+    @Override
+    public boolean contains(E item) {
+        return ArraysUtil.contains(entries, item, 0, size);
+    }
+
+    @Override
+    public E get() {
+        ObjectUtil.requireNonEmpty(this);
+        return entries[0];
+    }
+
+    @Override
+    public E remove() {
+        ObjectUtil.requireNonEmpty(this);
+        E entry = entries[0];
+        int li = --size;
+        entries[0] = entries[li];
+        entries[li] = null;
+        siftDown(0);
+        return entry;
+    }
+
+    @Override
+    public E replace(E item) {
+        ObjectUtil.requireNonNull(item);
+        E root = null;
+        if (size == 0) {
+            entries[0] = item;
+            size++;
+        } else {
+            root = entries[0];
+            entries[0] = item;
+            siftDown(0);
+        }
+        return root;
+    }
+
+    @Override
+    public void add(E item) {
+        ObjectUtil.requireNonNull(item);
+        if (size >= entries.length) {
+            ensureCapacity(size << 1);
+        }
+        entries[size++] = item;
+        siftUp(size - 1);
+    }
+
+    @Override
+    public void clear() {
+        ArraysUtil.fill(entries, 0, size, null);
+        size = 0;
+    }
+
+    protected abstract void siftUp(int i);
+
+    protected abstract void siftDown(int i);
 
     @Override
     public E[] toArray() {

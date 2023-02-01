@@ -33,7 +33,7 @@ public final class ArraysUtil {
 
     public static <E> void fill(E[] array, int from, int to, Object value) {
         RangeUtil.requireIntRange(from, 0, array.length);
-        RangeUtil.requireIntRange(to, 0, array.length);
+        RangeUtil.requireIntRange(to, 0, array.length + 1);
         for (int i = from; i < to; i++) {
             array[i] = (E) value;
         }

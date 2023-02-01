@@ -2,8 +2,6 @@ package com.algs.datastructure.collection.heap.array;
 
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
-import com.algs.utils.ObjectUtil;
-import com.algs.utils.array.ArraysUtil;
 
 import java.util.Comparator;
 
@@ -58,20 +56,6 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
         heapify(0);
     }
 
-    protected void heapify(int begin) {
-        for (int i = (size >> 1) - 1; i >= begin; i--) {
-            siftDown(i);
-        }
-    }
-
-    protected void ensureCapacity(int newCap) {
-        E[] newEntries = (E[]) new Comparable[newCap];
-        for (int i = 0; i < size; i++) {
-            newEntries[i] = entries[i];
-        }
-        entries = newEntries;
-    }
-
     @Override
     protected void siftUp(int i) {
         E entry = entries[i];
@@ -105,59 +89,6 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
             i = mi;
         }
         entries[i] = root;
-    }
-
-    @Override
-    public boolean contains(E item) {
-        return ArraysUtil.contains(entries, item, 0, size);
-    }
-
-    @Override
-    public E get() {
-        ObjectUtil.requireNonEmpty(this);
-        return entries[0];
-    }
-
-    @Override
-    public E remove() {
-        ObjectUtil.requireNonEmpty(this);
-        E entry = entries[0];
-        int li = --size;
-        entries[0] = entries[li];
-        entries[li] = null;
-        siftDown(0);
-        return entry;
-    }
-
-    @Override
-    public E replace(E item) {
-        ObjectUtil.requireNonNull(item);
-        E root = null;
-        if (size == 0) {
-            entries[0] = item;
-            size++;
-        } else {
-            root = entries[0];
-            entries[0] = item;
-            siftDown(0);
-        }
-        return root;
-    }
-
-    @Override
-    public void add(E item) {
-        ObjectUtil.requireNonNull(item);
-        if (size >= entries.length) {
-            ensureCapacity(size << 1);
-        }
-        entries[size++] = item;
-        siftUp(size - 1);
-    }
-
-    @Override
-    public void clear() {
-        ArraysUtil.fill(entries, 0, size, null);
-        size = 0;
     }
 
     private class BinaryArrayPqImplIterator<E> implements Iterator<E> {

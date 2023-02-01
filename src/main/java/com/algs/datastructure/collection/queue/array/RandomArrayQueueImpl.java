@@ -10,13 +10,13 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
 
     @Override
     public E deque() {
-        int randomIndex = randomIndex();
-        int lastIndex = (headIndex + size - 1) % entries.length;
-        E randomEntry = entries[randomIndex];
-        entries[randomIndex] = entries[lastIndex];
-        entries[lastIndex] = null;
+        int ri = randomIndex();
+        int li = (headIndex + size - 1) % entries.length;
+        E entry = entries[ri];
+        entries[ri] = entries[li];
+        entries[li] = null;
         size--;
-        return randomEntry;
+        return entry;
     }
 
     private int randomIndex() {
