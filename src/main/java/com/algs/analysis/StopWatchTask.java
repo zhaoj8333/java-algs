@@ -23,7 +23,7 @@ public abstract class StopWatchTask<E> {
         }
         Class<? extends StopWatchTask> klass = this.getClass();
         profile.append('\n');
-        profile.append("class:").append(shorterName(klass.getName()));
+        profile.append("class:").append(shorterName(klass.getSimpleName()));
         profile.append('\n');
         profile.append("parameters:");
         Field[] fields = klass.getDeclaredFields();
@@ -43,7 +43,7 @@ public abstract class StopWatchTask<E> {
                     if (s.length() > 200) {
                         profile.append("...").append(", ");
                     } else {
-                        profile.append(value).append(", ");
+                        profile.append(s).append(", ");
                     }
                 }
             } catch (IllegalAccessException e) {
@@ -92,12 +92,14 @@ public abstract class StopWatchTask<E> {
         for (String line : lines) {
             if (!line.isBlank()) {
                 String[] keyVal = line.split(":");
-                table.add(new TableLine(keyVal[0], keyVal[1]));
-                if (keyVal[0].length() > maxTitleDashNum) {
-                    maxTitleDashNum = keyVal[0].length();
-                }
-                if (keyVal[1].length() > maxValueDashNum) {
-                    maxValueDashNum = keyVal[1].length();
+                if (keyVal.length > 1) {
+                    table.add(new TableLine(keyVal[0], keyVal[1]));
+                    if (keyVal[0].length() > maxTitleDashNum) {
+                        maxTitleDashNum = keyVal[0].length();
+                    }
+                    if (keyVal[1].length() > maxValueDashNum) {
+                        maxValueDashNum = keyVal[1].length();
+                    }
                 }
             }
         }

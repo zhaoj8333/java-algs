@@ -6,22 +6,32 @@ import com.algs.utils.DrawUtil;
 
 import java.awt.*;
 
-public abstract class ImplComplexityGrowthAnalysis<E> {
+public abstract class ImplComplexityGrowthCompareAnalysis<E> {
 
     protected static final int n = 512;
     protected static final int y = (int) ((98 * n) / 2.6);
     private static final IQueue<Color> colors = new LinkedQueueImpl<>();
 
     static {
-        Color[] c = new Color[] {Color.RED, Color.green, Color.magenta, Color.orange, Color.cyan, Color.pink, Color.blue};
-        for (Color color : c) colors.enque(color);
+        Color[] c = new Color[] {
+                Color.RED,
+                Color.green,
+                Color.magenta,
+                Color.orange,
+                Color.cyan,
+                Color.pink,
+                Color.blue
+        };
+        for (Color color : c) {
+            colors.enque(color);
+        }
     }
 
     public abstract void drawReferenceLine();
 
     protected abstract Object construct(Class<?> targetClass, int offset);
 
-    protected abstract void execEachByOffset(Object obj);
+    protected abstract void execEach(Object obj);
 
     public void analyze(Class<?>[] targetClasses) {
         for (Class<?> klass : targetClasses) {
@@ -30,7 +40,7 @@ public abstract class ImplComplexityGrowthAnalysis<E> {
             System.out.println("Testing: " + klass.getName() + ", " + color.toString());
             for (int i = 0; i < n; i++) {
                 Object targetObject = construct(klass, i);
-                execEachByOffset(targetObject);
+                execEach(targetObject);
             }
         }
     }
@@ -39,8 +49,6 @@ public abstract class ImplComplexityGrowthAnalysis<E> {
         DrawUtil.setCanvasSize();
         DrawUtil.setXscale(0, n * 0.75);
         DrawUtil.setYscale(0, y);
-        DrawUtil.textRight(500, 18000, "6*N*lgN");
-        DrawUtil.textRight(520, 15500, "5*N*lgN");
         DrawUtil.setPenRadius(0.006);
         DrawUtil.setPenColor();
 
@@ -66,6 +74,6 @@ public abstract class ImplComplexityGrowthAnalysis<E> {
         }
     }
 
-    protected abstract void analyze();
+    public abstract void analyze();
 
 }

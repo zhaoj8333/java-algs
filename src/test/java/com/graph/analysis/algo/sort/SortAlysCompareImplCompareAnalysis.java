@@ -1,6 +1,6 @@
 package com.graph.analysis.algo.sort;
 
-import com.algs.ImplComplexityGrowthAnalysis;
+import com.algs.ImplComplexityGrowthCompareAnalysis;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.DrawUtil;
 import com.algs.utils.array.ArrayBuilder;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 
-class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
+class SortAlysCompareImplCompareAnalysis<E> extends ImplComplexityGrowthCompareAnalysis<E> {
 
     private static final Integer[][] testArray = new Integer[n][];
 
@@ -62,13 +62,13 @@ class SortAlysImplTest<E> extends ImplComplexityGrowthAnalysis<E> {
     }
 
     @Override
-    protected void execEachByOffset(Object obj) {
+    protected void execEach(Object obj) {
         CompareAndSwapSortAlys<Integer> sortAlys = (CompareAndSwapSortAlys<Integer>) obj;
         sortAlys.analyze();
     }
 
     public static void main(String[] args) {
-        SortAlysImplTest<Integer> test = new SortAlysImplTest<>();
+        SortAlysCompareImplCompareAnalysis<Integer> test = new SortAlysCompareImplCompareAnalysis<>();
         Assertions.assertTrue(test.assureFunctionality());
 
         test.drawCoordinate();

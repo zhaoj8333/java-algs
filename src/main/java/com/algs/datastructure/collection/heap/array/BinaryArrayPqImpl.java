@@ -75,18 +75,18 @@ public class BinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E> {
     protected void siftDown(int i) {
         E root = entries[i];
         int half = size >> 1;
-        while (i < half) { // index < index of first leaf-node(number of non leaf-node)
-            int mi = (i << 1) + 1;
-            E child = entries[mi];
-            int ri = mi + 1;
+        while (i < half) { // i < index of first leaf-node(number of non leaf-node)
+            int ci = (i << 1) + 1;
+            E child = entries[ci];
+            int ri = ci + 1;
             if (ri < size && compare(entries[ri], child) > 0) {
-                child = entries[mi = ri];
+                child = entries[ci = ri];
             }
             if (compare(root, child) >= 0) {
                 break;
             }
             entries[i] = child;
-            i = mi;
+            i = ci;
         }
         entries[i] = root;
     }

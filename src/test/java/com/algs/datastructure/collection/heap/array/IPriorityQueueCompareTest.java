@@ -20,8 +20,8 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
      * {@link TernaryArrayPqImpl} is better than {@link BinaryArrayPqImpl}
      */
     private final Class<?>[] targetClasses = new Class<?>[] {
-            BinaryArrayPqImpl.class,
             TernaryArrayPqImpl.class,
+            BinaryArrayPqImpl.class,
     };
 
     @Test
@@ -50,16 +50,17 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
     @Override
     protected void execEach(Object obj) {
         IPriorityQueue<Integer> pq = (IPriorityQueue<Integer>) obj;
+        IPriorityQueue<Integer> finalPq = pq;
         StopWatchTask<Object> sw = new StopWatchTask<>() {
             @Override
             protected Object profileTask() {
                 // add
                 for (int i = 0; i < testArray.length; i++) {
-                    pq.add(testArray[i]);
+                    finalPq.add(testArray[i]);
                 }
                 // remove
-                while (!pq.isEmpty()) {
-                    pq.remove();
+                while (!finalPq.isEmpty()) {
+                    finalPq.remove();
                 }
                 return null;
             }
@@ -71,6 +72,9 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
             protected void assertResult() { }
         };
         sw.exec(true);
+        pq = null;
+        obj = null;
+        System.gc();
     }
 
 }

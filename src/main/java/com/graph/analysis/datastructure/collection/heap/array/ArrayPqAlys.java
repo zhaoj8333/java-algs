@@ -1,42 +1,24 @@
-package com.algs.datastructure.collection.heap.array;
+package com.graph.analysis.datastructure.collection.heap.array;
 
-import com.algs.DefaultValues;
+import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.array.ArraysUtil;
+import com.graph.analysis.datastructure.collection.CollectionAlys;
 
 import java.util.Comparator;
 import java.util.Objects;
 
-public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue<E> {
+public abstract class ArrayPqAlys<E extends Comparable<E>> extends CollectionAlys<E> implements IPriorityQueue<E> {
 
     protected int size;
     protected E[] entries;
     protected Comparator<E> comparator;
 
-    public ArrayPq() {
-        this(DefaultValues.DEFAULT_CAPACITY);
-    }
-
-    public ArrayPq(int capacity) {
-        this(capacity, null);
-    }
-
-    public ArrayPq(int capacity, Comparator<E> comparator) {
-        this.entries = (E[]) new Comparable[capacity];
+    public ArrayPqAlys(E[] rawData, Comparator<E> comparator) {
+        super(rawData);
+        this.entries = (E[]) new Comparable[rawData.length];
         this.comparator = comparator;
-    }
-
-    public ArrayPq(E[] array) {
-        this(array, null);
-    }
-
-    public ArrayPq(E[] array, Comparator<E> comparator) {
-        this(array.length, comparator);
-        ObjectUtil.requireNonNullElement(array);
-        ArraysUtil.copyAll(array, entries);
-        size = array.length;
-        heapify(0);
     }
 
     protected void ensureCapacity(int newCap) {
@@ -44,14 +26,12 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         for (int i = 0; i < size; i++) {
             newEntries[i] = entries[i];
         }
+        arrayAcc += size;
         entries = newEntries;
     }
 
-    /**
-     * {@link #siftDown(int)} from bigger index to smaller index, maintains the nature of heap
-     */
-    protected void heapify(int begin) {
-        for (int i = (size >> 1) - 1; i >= begin; i--) {
+    protected void heapify() {
+        for (int i = (size >> 1) - 1; i >= 0; i--) {
             siftDown(i);
         }
     }
@@ -71,6 +51,9 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
     }
 
+    /**
+     * // TODO: 2/2/23  
+     */
     @Override
     public boolean contains(E item) {
         return ArraysUtil.contains(entries, item, 0, size);
@@ -79,6 +62,7 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
     @Override
     public E get() {
         ObjectUtil.requireNonEmpty(this);
+        arrayAcc += 1;
         return entries[0];
     }
 
@@ -89,6 +73,7 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         int li = --size;
         entries[0] = entries[li];
         entries[li] = null;
+        arrayAcc += 4;
         siftDown(0);
         return entry;
     }
@@ -103,8 +88,10 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         } else {
             root = entries[0];
             entries[0] = item;
+            arrayAcc++;
             siftDown(0);
         }
+        arrayAcc++;
         return root;
     }
 
@@ -115,6 +102,7 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
             ensureCapacity(size << 1);
         }
         entries[size++] = item;
+        arrayAcc++;
         siftUp(size - 1);
     }
 
