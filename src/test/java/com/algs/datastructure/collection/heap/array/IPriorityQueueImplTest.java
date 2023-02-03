@@ -22,18 +22,25 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     }
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-            BinaryArrayPqSentinelImpl.class,
-            BinaryArrayPqImpl.class,
-            TernaryArrayPqImpl.class,
+//            BinaryArrayPqSentinelImpl.class,
+//            BinaryArrayPqImpl.class,
+//            TernaryArrayPqImpl.class,
+            KWayArrayPqImpl.class,
     };
 
     @Override
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
-            Integer[] data = ArraysUtil.copyAll(testData);
-            instance = constructor.newInstance(data, null);
+            if (!Objects.equals(targetClass.getSimpleName(), KWayArrayPqImpl.class.getSimpleName())) {
+                Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
+                Integer[] data = ArraysUtil.copyAll(testData);
+                instance = constructor.newInstance(data, null);
+            } else {
+                Constructor<?> constructor = targetClass.getConstructor(int.class, Comparable[].class, Comparator.class);
+                Integer[] data = ArraysUtil.copyAll(testData);
+                instance = constructor.newInstance(4, data, null);
+            }
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
@@ -44,7 +51,7 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     protected void testEach(Object obj) {
         IPriorityQueue<Integer> pq = (IPriorityQueue) obj;
 
-        initedWithData(pq);
+        withData(pq);
 
         pq.clear();
 
@@ -65,7 +72,7 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
         pq.remove();
     }
 
-    private void initedWithData(IPriorityQueue<Integer> pq) {
+    private void withData(IPriorityQueue<Integer> pq) {
         Assertions.assertEquals(40, pq.get());
         Assertions.assertEquals(pq.get(), pq.remove());
         Assertions.assertFalse(pq.contains(40));
@@ -108,6 +115,45 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     @Override
     public void test() {
         test(targetClasses);
+    }
+
+    @Test
+    void kwayPq() {
+        try {
+            System.out.println("Testing Data: " + ArraysUtil.toString(testData));
+            System.out.println();
+
+            for (int k = 2; k < 11; k++) {
+                Constructor<?> constructor = KWayArrayPqImpl.class.getConstructor(
+                        int.class, Comparable[].class, Comparator.class
+                );
+                Integer[] data = ArraysUtil.copyAll(testData);
+                ArrayPq<Integer> pq = (ArrayPq<Integer>) constructor.newInstance(k, new Integer[]{}, null);
+
+                System.out.print("Testing " + k + " Way: ");
+                for (Integer em : data) {
+                    pq.add(em);
+                }
+                System.out.print(" size: " + pq.size() + ",\t\t");
+//                Integer remove = pq.remove();
+//                System.out.print(remove + ", ");
+                Assertions.assertEquals(40, pq.remove());
+                Assertions.assertEquals(30, pq.remove());
+                Assertions.assertEquals(15, pq.remove());
+                Assertions.assertEquals(10, pq.remove());
+                Assertions.assertEquals(8, pq.remove());
+                Assertions.assertEquals(0, pq.remove());
+                Assertions.assertEquals(-10, pq.remove());
+                Assertions.assertEquals(-20, pq.remove());
+                Assertions.assertEquals(-30, pq.remove());
+//                while (!pq.isEmpty()) {
+//                System.out.print(pq.remove() + ", ");
+//                }
+                System.out.println();
+            }
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

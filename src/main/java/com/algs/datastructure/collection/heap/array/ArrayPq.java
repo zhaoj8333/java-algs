@@ -89,7 +89,9 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         int li = --size;
         entries[0] = entries[li];
         entries[li] = null;
-        siftDown(0);
+        if (size > 1) {
+            siftDown(0);
+        }
         return entry;
     }
 

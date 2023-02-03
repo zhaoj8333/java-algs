@@ -18,10 +18,17 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
 
     /**
      * {@link TernaryArrayPqImpl} is better than {@link BinaryArrayPqImpl}
+     *
+     * {@link com.graph.analysis.datastructure.collection.heap.array.ArrayPqAlys}
+     * {@link com.graph.analysis.datastructure.collection.heap.array.BinaryArrayPqImplAlys}
+     * {@link com.graph.analysis.datastructure.collection.heap.array.TernaryArrayPqImplAlys}
+     *
+     * Run: {@link com.graph.datastructure.collection.heap.array.PriorityQueueImplCompareAlys}
      */
     private final Class<?>[] targetClasses = new Class<?>[] {
             TernaryArrayPqImpl.class,
             BinaryArrayPqImpl.class,
+            KWayArrayPqImpl.class,
     };
 
     @Test
