@@ -3,14 +3,12 @@ package com.algs.datastructure.collection.heap.array;
 import com.algs.ImplPerformanceTest;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
-import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
-import java.util.Comparator;
 
 /**
- * Looks like the best K value for {@link KWayArrayPqImpl} is 4
+ * Looks like the best K value for {@link KWayArrayPqImpl} is 3
  */
 class KWayArrayPqImplCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 
@@ -48,9 +46,8 @@ class KWayArrayPqImplCompareTest<E extends Comparable<E>> extends ImplPerformanc
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(int.class, Comparable[].class, Comparator.class);
-            Integer[] data = ArraysUtil.copyAll(testArray);
-            instance = constructor.newInstance(Ks[kIndex], data, null);
+            Constructor<?> constructor = targetClass.getConstructor(int.class);
+            instance = constructor.newInstance(Ks[kIndex]);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
@@ -88,24 +85,4 @@ class KWayArrayPqImplCompareTest<E extends Comparable<E>> extends ImplPerformanc
         obj = null;
         System.gc();
     }
-//
-//    @Test
-//    void findBestGeometricSequenceBase() {
-//        int minCost = 0;
-//        int base = 0;
-//        long minimum = Integer.MAX_VALUE;
-//        for (int i = 2; i < 32; i++) {
-//            int step = i;
-//
-//            long timing = st.exec(false);
-//            int cost = st.getCost();
-//            if (minimum > timing) {
-//                minimum = timing;
-//                minCost = cost;
-//                base = i;
-//                iseq = st;
-//            }
-//        }
-//        System.out.println("min time: " + minimum + ", min cost: " + minCost + ", base: " + base);
-//    }
 }
