@@ -1,14 +1,12 @@
-package com.algs.application.datastructure.collection.heap;
+package com.algs.application.datastructure.collection.median_find;
 
-import com.algs.application.datastructure.collection.median_find.MedianFinder;
-import com.algs.application.datastructure.collection.median_find.PqMedianFinder;
 import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-class PqMedianFinderTest {
+class MedianFinderTest {
 
     @Test
     void test() {
@@ -49,5 +47,4 @@ class PqMedianFinderTest {
         Assertions.assertTrue(ArraysUtil.sameElements(expected0, b3));
 
     }
-
 }
