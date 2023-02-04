@@ -1,17 +1,22 @@
 package com.algs.datastructure.collection.heap.link;
 
 import com.algs.datastructure.collection.Iterator;
-import com.algs.datastructure.node.PqNode;
+import com.algs.datastructure.collection.stack.ArrayStackImpl;
+import com.algs.datastructure.collection.stack.IStack;
+import com.algs.datastructure.node.BinaryPqNode;
 import com.algs.utils.ObjectUtil;
 
+// TODO: 2/4/23  
 public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
+
+    private BinaryPqNode<E> root = new BinaryPqNode<>(null);
 
     @Override
     public E get() {
         if (isEmpty()) {
             return null;
         }
-        return root.item;
+        return root.value;
     }
 
     @Override
@@ -38,12 +43,25 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
     @Override
     public void add(E item) {
         ObjectUtil.requireNonNull(item);
-        if (isEmpty()) {
-            root = new PqNode<>(item, null, null, null);
-        } else {
-
+        BinaryPqNode<E> node = new BinaryPqNode<>(item);
+        int pi = size >> 1;
+        IStack<Integer> paths = indexToPath(pi);
+        Iterator<Integer> itr = paths.iterator();
+        while (itr.hasNext()) {
+            Integer index = paths.pop();
+            
         }
         size++;
+    }
+
+    private IStack<Integer> indexToPath(final int i) {
+        IStack<Integer> stack = new ArrayStackImpl<>();
+        int index = i;
+        while (index > -1) {
+            stack.push(index);
+            index = (i - 1) / 2;
+        }
+        return stack;
     }
 
     @Override
@@ -58,7 +76,7 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
 
     @Override
     public void clear() {
-        root.item = null;
+        root.value = null;
         root.left = null;
         root.right = null;
         size = 0;
@@ -79,13 +97,4 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
         return null;
     }
 
-    @Override
-    protected void siftUp(int index) {
-
-    }
-
-    @Override
-    protected void siftDown(int index) {
-
-    }
 }

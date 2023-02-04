@@ -3,21 +3,32 @@ package com.algs.datastructure.collection.heap.link;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
-import com.algs.datastructure.node.PqNode;
+import com.algs.datastructure.node.BinaryPqNode;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Comparator;
 import java.util.Objects;
 
-/**
- * // TODO: 1/31/23  
- */
 public abstract class LinkedPq<E extends Comparable<E>> implements IPriorityQueue<E> {
 
     protected int size;
-    protected PqNode<E> root;
+    protected BinaryPqNode<E> root;
     protected Comparator<E> comparator;
 
     public LinkedPq() {
+        this((ICollection<E>) null);
+    }
+
+    public LinkedPq(E[] array) {
+        this(array, null);
+    }
+
+    public LinkedPq(E[] array, Comparator<E> comparator) {
+        ObjectUtil.requireNonNull(array);
+        for (E entry : array) {
+            add(entry);
+        }
+        this.comparator = comparator;
     }
 
     public LinkedPq(ICollection<E> collection) {
@@ -25,19 +36,15 @@ public abstract class LinkedPq<E extends Comparable<E>> implements IPriorityQueu
     }
 
     public LinkedPq(ICollection<E> collection, Comparator<E> comparator) {
-        Iterator<E> itr = collection.iterator();
-        while (itr.hasNext()) {
-
+        ObjectUtil.requireNonNull(collection);
+        if (!collection.isEmpty()) {
+            Iterator<E> itr = collection.iterator();
+            while (itr.hasNext()) {
+                add(itr.next());
+            }
         }
-    }
-
-    public LinkedPq(Comparator<E> comparator) {
         this.comparator = comparator;
     }
-
-    protected abstract void siftUp(int index);
-
-    protected abstract void siftDown(int index);
 
     @Override
     public int size() {
