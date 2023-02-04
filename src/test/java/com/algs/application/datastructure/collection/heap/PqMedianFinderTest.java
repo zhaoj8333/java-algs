@@ -1,16 +1,18 @@
 package com.algs.application.datastructure.collection.heap;
 
+import com.algs.application.datastructure.collection.median_find.MedianFinder;
+import com.algs.application.datastructure.collection.median_find.PqMedianFinder;
 import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-class MedianFinderTest {
+class PqMedianFinderTest {
 
     @Test
     void test() {
-        MedianFinder<Integer> dmf = new MedianFinder<>();
+        MedianFinder<Integer> dmf = new PqMedianFinder<>();
         // 2, 9, 18, 23, 30, 59, 68, 100
         Integer[] array = new Integer[] {100, 2, 59, 9, 23, 68, 18, 30};
         for (Integer em : array) {

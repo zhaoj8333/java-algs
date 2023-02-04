@@ -1,4 +1,4 @@
-package com.algs.application.datastructure.collection.heap;
+package com.algs.application.datastructure.collection.median_find;
 
 import com.algs.datastructure.collection.heap.array.BinaryArrayPqImpl;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
@@ -6,17 +6,18 @@ import com.algs.utils.CompareUtil;
 
 import java.util.Comparator;
 
-public class MedianFinder<E extends Comparable<E>> {
+public class PqMedianFinder<E extends Comparable<E>> implements MedianFinder<E> {
 
     private int size;
     private final IPriorityQueue<E> minPq;
     private final IPriorityQueue<E> maxPq;
 
-    public MedianFinder() {
+    public PqMedianFinder() {
         this.minPq = new BinaryArrayPqImpl<E>(0, Comparator.reverseOrder());
         this.maxPq = new BinaryArrayPqImpl<E>(0, Comparator.naturalOrder());
     }
 
+    @Override
     public void insert(E item) {
         if (size == 0 || CompareUtil.less(item, maxPq.get())) {
             maxPq.add(item);
@@ -31,6 +32,7 @@ public class MedianFinder<E extends Comparable<E>> {
         size++;
     }
 
+    @Override
     public E[] find() {
         E[] medians = (E[]) new Comparable[2];
         if (size % 2 == 0) {
@@ -46,6 +48,7 @@ public class MedianFinder<E extends Comparable<E>> {
         return medians;
     }
 
+    @Override
     public E[] delete() {
         E[] medians = (E[]) new Comparable[2];
         if (size % 2 == 0) {
