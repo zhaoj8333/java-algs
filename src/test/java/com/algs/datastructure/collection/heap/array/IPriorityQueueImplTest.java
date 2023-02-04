@@ -1,7 +1,9 @@
 package com.algs.datastructure.collection.heap.array;
 
 import com.algs.ImplFunctionalityTest;
+import com.algs.application.datastructure.collection.heap.CubeSum;
 import com.algs.application.datastructure.collection.heap.HeapCheck;
+import com.algs.application.datastructure.collection.nodes.Cube;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
@@ -346,4 +348,13 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
      */
     void _2_4_20() { }
 
+    @Test
+    void _2_4_25() {
+        CubeSum cnt = new CubeSum();
+        int n = 3;
+        IPriorityQueue<Cube> pq = new BinaryArrayPqImpl<Cube>(n + 1, Comparator.reverseOrder());
+        cnt.init(pq, n);
+        cnt.compute(pq, n);
+
+    }
 }

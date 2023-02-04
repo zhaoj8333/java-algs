@@ -1,5 +1,6 @@
 package com.algs.utils.array;
 
+import com.algs.DefaultValues;
 import com.algs.application.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.CompareUtil;
@@ -74,6 +75,40 @@ public final class ArraysUtil {
             }
         }
         return false;
+    }
+
+    public static <E> boolean sameElements(E[] a, E[] b) {
+        if (!Objects.equals(a.length, b.length)) {
+            return false;
+        }
+        for (E e : a) {
+            if (indexOf(b, e) == DefaultValues.ELEMENT_NOT_FOUND) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static <E> boolean equals(E[] a, E[] b) {
+        if (!Objects.equals(a.length, b.length)) {
+            return false;
+        }
+        int len = a.length;
+        for (int i = 0; i < len; i++) {
+            if (!Objects.equals(a[i], b[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static <E> int indexOf(E[] array, E val) {
+        for (int i = 0; i < array.length; i++) {
+            if (Objects.equals(val, array[i])) {
+                return i;
+            }
+        }
+        return DefaultValues.ELEMENT_NOT_FOUND;
     }
 
     public static <E> void reverse(E[] array) {

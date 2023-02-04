@@ -23,6 +23,9 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
     }
 
     public ArrayPq(int capacity, Comparator<E> comparator) {
+        if (capacity <= DefaultValues.DEFAULT_CAPACITY) {
+            capacity = DefaultValues.DEFAULT_CAPACITY;
+        }
         this.entries = (E[]) new Comparable[capacity];
         this.comparator = comparator;
     }
@@ -33,7 +36,6 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
 
     public ArrayPq(E[] array, Comparator<E> comparator) {
         this(array.length, comparator);
-        ObjectUtil.requireNonNullElement(array);
         ArraysUtil.copyAll(array, entries);
         size = array.length;
         heapify(0);

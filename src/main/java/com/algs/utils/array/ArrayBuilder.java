@@ -1,5 +1,6 @@
 package com.algs.utils.array;
 
+import com.algs.application.datastructure.collection.nodes.Coord3D;
 import com.algs.utils.RandomUtil;
 
 import java.util.Random;
@@ -21,8 +22,8 @@ public final class ArrayBuilder {
 
     private static final Random r = new Random();
 
-    public static Comparable[] randomArray(int length) {
-        Comparable[] array = new Comparable[length];
+    public static Integer[] randomArray(int length) {
+        Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
             array[i] = r.nextInt(Integer.MAX_VALUE);
         }
@@ -126,6 +127,14 @@ public final class ArrayBuilder {
         Integer[] array = new Integer[size];
         for (int i = 0; i < size; i++) {
             array[i] = i + from;
+        }
+        return array;
+    }
+
+    public static Coord3D[] randomCoords(int length) {
+        Coord3D[] array = new Coord3D[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = Coord3D.random(length);
         }
         return array;
     }
