@@ -68,7 +68,6 @@ public abstract class ArrayPqAlys<E extends Comparable<E>> extends CollectionAly
 
     @Override
     public E remove() {
-        ObjectUtil.requireNonEmpty(this);
         E entry = entries[0];
         int li = --size;
         entries[0] = entries[li];

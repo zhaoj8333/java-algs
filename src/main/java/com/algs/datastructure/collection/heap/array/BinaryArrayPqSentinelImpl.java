@@ -117,7 +117,6 @@ public class BinaryArrayPqSentinelImpl<E extends Comparable<E>> extends ArrayPq<
 
     @Override
     public E remove() {
-        ObjectUtil.requireNonEmpty(this);
         E entry = entries[1];
         int li = --size + 1;
         entries[1] = entries[li];

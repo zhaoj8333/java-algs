@@ -86,7 +86,6 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
 
     @Override
     public E remove() {
-        ObjectUtil.requireNonEmpty(this);
         E entry = entries[0];
         int li = --size;
         entries[0] = entries[li];
