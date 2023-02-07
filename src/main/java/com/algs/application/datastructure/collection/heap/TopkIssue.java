@@ -20,7 +20,7 @@ public class TopkIssue<E extends Comparable<E>> {
             E next = itr.next();
             if (heap.size() < k) {
                 heap.add(next);
-            } else if (heap.compare(next, heap.get()) < 0) {
+            } else if (heap.compare(next, heap.peek()) < 0) {
                 heap.replace(next);
             }
         }

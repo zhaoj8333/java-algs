@@ -12,7 +12,7 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
     private BinaryPqNode<E> root = new BinaryPqNode<>(null);
 
     @Override
-    public E get() {
+    public E peek() {
         if (isEmpty()) {
             return null;
         }

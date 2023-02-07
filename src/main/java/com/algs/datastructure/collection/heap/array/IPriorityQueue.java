@@ -4,7 +4,7 @@ import com.algs.datastructure.collection.ICollection;
 
 public interface IPriorityQueue<E extends Comparable<E>> extends ICollection<E> {
 
-    E get();
+    E peek();
 
     E remove();
 

@@ -103,7 +103,7 @@ public class IndexedBinaryArrayPqImpl<E extends Comparable<E>> extends ArrayPq<E
     }
 
     @Override
-    public E get() {
+    public E peek() {
         return entries[pq[1]];
     }
 

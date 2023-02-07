@@ -65,7 +65,7 @@ public class CubeSum {
 
     private void getEqualValues(IPriorityQueue<Cube> pq, Cube curVal, IList<Cube> equalResults, int n) {
         equalResults.add(curVal);
-        while (!pq.isEmpty() && Objects.equals(pq.get().value, curVal.value)) {
+        while (!pq.isEmpty() && Objects.equals(pq.peek().value, curVal.value)) {
             Cube top = pq.remove();
             equalResults.add(top);
             insertNext(pq, top, n);

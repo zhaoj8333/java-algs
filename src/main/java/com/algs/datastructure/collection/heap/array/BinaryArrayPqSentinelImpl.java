@@ -110,7 +110,7 @@ public class BinaryArrayPqSentinelImpl<E extends Comparable<E>> extends ArrayPq<
     }
 
     @Override
-    public E get() {
+    public E peek() {
         ObjectUtil.requireNonEmpty(this);
         return entries[1];
     }

@@ -13,13 +13,16 @@ public class PqMedianFinder<E extends Comparable<E>> implements MedianFinder<E> 
     private final IPriorityQueue<E> maxPq;
 
     public PqMedianFinder() {
-        this.minPq = new BinaryArrayPqImpl<E>(0, Comparator.reverseOrder());
-        this.maxPq = new BinaryArrayPqImpl<E>(0, Comparator.naturalOrder());
+        this.minPq = new BinaryArrayPqImpl<E>(0, Comparator.reverseOrder());    // bigger values
+        this.maxPq = new BinaryArrayPqImpl<E>(0, Comparator.naturalOrder());    // smalller values
     }
 
+    /**
+     * Bigger values put into the min Pq, Smaller ones into the max pq
+     */
     @Override
     public void insert(E item) {
-        if (size == 0 || CompareUtil.less(item, maxPq.get())) {
+        if (size == 0 || CompareUtil.less(item, maxPq.peek())) {
             maxPq.add(item);
         } else {
             minPq.add(item);
@@ -36,13 +39,13 @@ public class PqMedianFinder<E extends Comparable<E>> implements MedianFinder<E> 
     public E[] find() {
         E[] medians = (E[]) new Comparable[2];
         if (size % 2 == 0) {
-            medians[0] = minPq.get();
-            medians[1] = maxPq.get();
+            medians[0] = minPq.peek();
+            medians[1] = maxPq.peek();
         } else {
             if (minPq.size() > maxPq.size()) {
-                medians[0] = minPq.get();
+                medians[0] = minPq.peek();
             } else {
-                medians[0] = maxPq.get();
+                medians[0] = maxPq.peek();
             }
         }
         return medians;

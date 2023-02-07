@@ -60,7 +60,7 @@ public abstract class ArrayPqAlys<E extends Comparable<E>> extends CollectionAly
     }
 
     @Override
-    public E get() {
+    public E peek() {
         ObjectUtil.requireNonEmpty(this);
         arrayAcc += 1;
         return entries[0];

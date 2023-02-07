@@ -75,15 +75,15 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     }
 
     private void withData(IPriorityQueue<Integer> pq) {
-        Assertions.assertEquals(40, pq.get());
-        Assertions.assertEquals(pq.get(), pq.remove());
+        Assertions.assertEquals(40, pq.peek());
+        Assertions.assertEquals(pq.peek(), pq.remove());
         Assertions.assertFalse(pq.contains(40));
 
         pq.replace(31);
-        Assertions.assertEquals(31, pq.get());
+        Assertions.assertEquals(31, pq.peek());
 
         pq.add(33);
-        Assertions.assertEquals(33, pq.get());
+        Assertions.assertEquals(33, pq.peek());
 
         Integer remove0 = pq.remove();
         Assertions.assertEquals(33, remove0);
@@ -107,10 +107,10 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
         Assertions.assertFalse(pq.contains(-30));
 
         pq.replace(-21);
-        Assertions.assertEquals(-21, pq.get());
+        Assertions.assertEquals(-21, pq.peek());
 
         pq.add(-33);
-        Assertions.assertEquals(-21, pq.get());
+        Assertions.assertEquals(-21, pq.peek());
     }
 
     @Test

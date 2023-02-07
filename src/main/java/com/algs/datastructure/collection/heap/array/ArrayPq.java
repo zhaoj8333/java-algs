@@ -79,7 +79,7 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
     }
 
     @Override
-    public E get() {
+    public E peek() {
         ObjectUtil.requireNonEmpty(this);
         return entries[0];
     }
