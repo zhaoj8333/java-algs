@@ -9,7 +9,8 @@ import java.util.Comparator;
 /**
  * {@link HeapSortImpl}:
  *
- * Advantages: ~ 2N logN
+ * Advantages: ~ 2N logN, When {@link #siftDown(int)},
+ * it requires at least 2*N*logN compares which might be bigger than {@link com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0}
  * Disadvantages: can't use cache, it is barely used, because it don't compare adjacent members,
  *  the cache miss is far more higher than adjacent comparing soring:
  *      {@link QuickSortImpl},

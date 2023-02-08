@@ -13,7 +13,10 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
     protected static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(900000);
+//        testArray = ArrayBuilder.randomIntArray(900000);
+//        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 50);
+//        testArray = ArrayBuilder.ascIntArray(900000);
+        testArray = ArrayBuilder.randomIntArrayBetween(900000, 1, 1);
     }
 
     /**

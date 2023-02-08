@@ -58,6 +58,10 @@ public final class ArrayBuilder {
 
     public static Integer[] randomIntArrayBetween(int length, int min, int max) {
         Integer[] array = new Integer[length];
+        if (min == max) {
+            ArraysUtil.fill(array, min);
+            return array;
+        }
         for (int i = 0; i < length; i++) {
             array[i] = r.nextInt(max - min) + min;
         }

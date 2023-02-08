@@ -3,17 +3,16 @@ package com.graph.analysis.algo.unionfind;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
-import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.utils.Connection;
 import com.algs.utils.DrawUtil;
+import com.algs.utils.array.ArraysUtil;
 import com.graph.GraphicAnalysis;
 import com.graph.analysis.algo.unionfind.qf.QuickFindAlysImpl;
 import com.graph.analysis.algo.unionfind.qu.weight.QuickUnionAlysImpl;
 import com.graph.analysis.algo.unionfind.qu.weight.RankWeighedAlysImpl;
 import com.graph.analysis.algo.unionfind.qu.weight.SizeWeighedAlysImpl;
-
-import java.util.Arrays;
 
 public class ErdosRenyiAlysImpl implements GraphicAnalysis {
 
@@ -80,7 +79,7 @@ public class ErdosRenyiAlysImpl implements GraphicAnalysis {
             DrawUtil.setPenColor(DrawUtil.BLACK);
             Result res = itr.next();
             int[] nums = res.result;
-            System.out.println(res.name + ": " + Arrays.toString(nums));
+            System.out.println(res.name + ": " + ArraysUtil.toString(nums, 20));
             int totalCost = 0;
             DrawUtil.textRight(xscale + 330, (yscale / 2 + (j += 21050)), String.valueOf(res.name));
             for (int value : nums) {

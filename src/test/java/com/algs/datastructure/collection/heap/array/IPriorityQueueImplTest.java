@@ -355,6 +355,5 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
         IPriorityQueue<Cube> pq = new BinaryArrayPqImpl<Cube>(n + 1, Comparator.reverseOrder());
         cnt.init(pq, n);
         cnt.compute(pq, n);
-
     }
 }

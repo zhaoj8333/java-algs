@@ -4,21 +4,35 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.non_generic.IDynamicUnionFind;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedLinkedListImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-class QuickUnionImplTest extends ImplFunctionalityTest {
+import java.lang.reflect.Constructor;
+
+class IDynamicUnionFindImplTest extends ImplFunctionalityTest {
+
+    protected Class<?>[] targetClasses = new Class<?>[]{
+            RankWeighedLinkedListImpl.class,
+    };
 
     @Override
     protected Object construct(Class<?> targetClass) {
-        return null;
+        Object instance = null;
+        try {
+            Constructor<?> constructor = targetClass.getConstructor();
+            instance = constructor.newInstance();
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        return instance;
     }
 
     @Override
     protected void testEach(Object obj) {
-        IDynamicUnionFind uf = new RankWeighedLinkedListImpl();
+        IDynamicUnionFind uf = (IDynamicUnionFind) obj;
         Assertions.assertEquals(0, uf.count());
 
         for (int i = 0; i < 10; i++) {
-            int i1 = uf.newSite();
+            uf.newSite();
         }
 
         Assertions.assertEquals(0, uf.find(0));
@@ -41,7 +55,9 @@ class QuickUnionImplTest extends ImplFunctionalityTest {
         Assertions.assertEquals(7, uf.count());
     }
 
+    @Test
     @Override
     public void test() {
+        test(targetClasses);
     }
 }

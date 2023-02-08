@@ -1,6 +1,7 @@
 package com.algs.utils;
 
 public class Connection<E> {
+
     public E a;
     public E b;
 

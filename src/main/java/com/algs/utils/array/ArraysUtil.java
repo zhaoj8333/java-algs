@@ -21,8 +21,6 @@ public final class ArraysUtil {
     }
 
     public static void fill(int[] array, int from, int to, int value) {
-        RangeUtil.requireIntRange(from, 0, array.length);
-        RangeUtil.requireIntRange(to, 0, array.length);
         for (int i = from; i < to; i++) {
             array[i] = value;
         }
@@ -313,7 +311,65 @@ public final class ArraysUtil {
         return target;
     }
 
+    public static String toString(double[] array, int len) {
+        ObjectUtil.requireNonNull(array);
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < len; i++) {
+            sb.append(array[i]);
+            if (i < len - 1) {
+                sb.append(", ");
+            }
+        }
+        if (len + 1< array.length) {
+            sb.append(", ..., ");
+            sb.append(array[array.length - 1]);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public static String toString(float[] array, int len) {
+        ObjectUtil.requireNonNull(array);
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < len; i++) {
+            sb.append(array[i]);
+            if (i < len - 1) {
+                sb.append(", ");
+            }
+        }
+        if (len + 1< array.length) {
+            sb.append(", ..., ");
+            sb.append(array[array.length - 1]);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public static String toString(long[] array, int len) {
+        ObjectUtil.requireNonNull(array);
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < len; i++) {
+            sb.append(array[i]);
+            if (i < len - 1) {
+                sb.append(", ");
+            }
+        }
+        if (len + 1< array.length) {
+            sb.append(", ..., ");
+            sb.append(array[array.length - 1]);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
     public static String toString(int[] array) {
+        return toString(array, array.length);
+    }
+
+    public static String toString(char[] array) {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
@@ -327,15 +383,58 @@ public final class ArraysUtil {
         return sb.toString();
     }
 
-    public static String toString(char[] array) {
+    public static String toString(char[] array, int len) {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < len; i++) {
             sb.append(array[i]);
-            if (i < array.length - 1) {
+            if (i < len - 1) {
                 sb.append(", ");
             }
+        }
+        if (len + 1< array.length) {
+            sb.append(", ..., ");
+            sb.append(array[array.length - 1]);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public static String toString(int[] array, int len) {
+        ObjectUtil.requireNonNull(array);
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < len; i++) {
+            sb.append(array[i]);
+            if (i < len - 1) {
+                sb.append(", ");
+            }
+        }
+        if (len + 1< array.length) {
+            sb.append(", ..., ");
+            sb.append(array[array.length - 1]);
+            sb.append("}");
+            sb.append(" --- length " + array.length);
+        } else {
+            sb.append("}");
+        }
+        return sb.toString();
+    }
+
+    public static String toString(Object[] array, int len) {
+        ObjectUtil.requireNonNull(array);
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < len; i++) {
+            sb.append(array[i]);
+            if (i < len - 1) {
+                sb.append(", ");
+            }
+        }
+        if (len + 1< array.length) {
+            sb.append("...");
+            sb.append(array[array.length - 1]);
         }
         sb.append("}");
         return sb.toString();
