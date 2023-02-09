@@ -130,6 +130,32 @@ public class FileUtil {
         return chars;
     }
 
+    public static IList<String> readEnglishWords(String fileName) {
+        File file = getFile(fileName);
+        if (file == null) return null;
+        IList<String> strings = new SinglyLinkedListImpl<>();
+        if (file.isFile() && file.exists()) {
+            InputStreamReader isr = null;
+            LineNumberReader lnr = null;
+            try {
+                isr = new InputStreamReader(new FileInputStream(file));
+                lnr = new LineNumberReader(isr);
+                String line;
+                while ((line = lnr.readLine()) != null) {
+                    String[] words = line.split(" ");
+                    for (String word : words) {
+                        strings.add(word);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close(isr, null);
+            }
+        }
+        return strings;
+    }
+
     public static IList<Long> readLongs(String fileName) {
         File file = getFile(fileName);
         if (file == null) return null;
@@ -201,6 +227,10 @@ public class FileUtil {
 
     public static Byte[] readBytesAsArray(String fileName) {
         return CollectionUtil.toByteArray(readBytes(fileName));
+    }
+
+    public static String[] readEnglishWordsAsArray(String fileName) {
+        return CollectionUtil.toArray(readEnglishWords(fileName));
     }
 
     public static Short[] readShortsAsArray(String fileName) {
