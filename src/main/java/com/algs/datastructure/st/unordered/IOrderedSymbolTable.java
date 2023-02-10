@@ -1,4 +1,7 @@
-package com.algs.datastructure.st;
+package com.algs.datastructure.st.unordered;
+
+import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.st.ISymbolTable;
 
 /**
  * When a method is to return a key but there is no key fitting the description in the table, throw an exception
@@ -45,7 +48,8 @@ public interface IOrderedSymbolTable<K extends Comparable<K>, V> extends ISymbol
 
     /**
      *  keys in [low, high], in sorted order
+     * @return
      */
-    Iterable<K> keys(K low, K high);
+    Iiterable<K> keys(K low, K high);
 
 }

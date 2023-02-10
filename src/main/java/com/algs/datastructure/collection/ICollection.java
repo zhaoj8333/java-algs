@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection;
 
-public interface ICollection<E> extends Iterable<E> {
+public interface ICollection<E> extends Iiterable<E> {
 
     int size();
 //    int count();

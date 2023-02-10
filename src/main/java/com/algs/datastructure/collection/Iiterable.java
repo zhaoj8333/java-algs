@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection;
 
-public interface Iterable<E> {
+public interface Iiterable<E> {
 
     Iterator<E> iterator();
 

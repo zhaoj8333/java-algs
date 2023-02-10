@@ -1,11 +1,12 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.algo.sort.ISortable;
+import com.algs.utils.CompareUtil;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.array.ArraySortUtil;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.util.Comparator;
-import java.util.Objects;
 
 /**
  * Comparison and swap based sorting
@@ -30,7 +31,7 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
     }
 
     protected int compareEntry(E a, E b) {
-        return Objects.nonNull(comparator) ? comparator.compare(a, b) : a.compareTo(b);
+        return CompareUtil.compare(a, b, comparator);
     }
 
     protected int compareIndex(int i, int j) {
@@ -38,9 +39,7 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
     }
 
     protected void swap(int i, int j) {
-        E tmp = array[j];
-        array[j] = array[i];
-        array[i] = tmp;
+        ArraySortUtil.swap(array, i, j);
     }
 
     protected int insertionCutoff = 8;

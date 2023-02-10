@@ -1,6 +1,6 @@
-package com.algs.datastructure.st;
+package com.algs.datastructure.st.unordered;
 
-import com.algs.datastructure.collection.Iterable;
+import com.algs.datastructure.collection.Iiterable;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.LinkedSTNode;
@@ -8,22 +8,22 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class LinkedSequentialSearch<K, V> extends AbstractSequentialTable<K, V> {
+public class LinkedSequentialSearchSymbolTableImpl<K, V> extends AbstractSymbolTable<K, V> {
 
     private LinkedSTNode<K, V> head;
 
-    public LinkedSequentialSearch() {
+    public LinkedSequentialSearchSymbolTableImpl() {
     }
 
     @Override
-    public void put(K key, V value) {
+    public void put(K key, V val) {
         ObjectUtil.requireNonNull(key);
         LinkedSTNode<K, V> node = node(key);
         if (Objects.nonNull(node)) {
-            node.val = value;
+            node.val = val;
             return;
         }
-        head = new LinkedSTNode<>(key, value, head);
+        head = new LinkedSTNode<>(key, val, head);
         size++;
     }
 
@@ -66,7 +66,7 @@ public class LinkedSequentialSearch<K, V> extends AbstractSequentialTable<K, V> 
     }
 
     @Override
-    public Iterable<K> keys() {
+    public Iiterable<K> keys() {
         IList<K> list = new ResizableArrayImpl<>(size);
         LinkedSTNode<K, V> node = this.head;
         while (Objects.nonNull(node)) {

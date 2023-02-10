@@ -151,7 +151,7 @@ public final class ArraysUtil {
     }
 
     public static <E> void println(E[] array) {
-        System.out.println(toString(array));
+        System.out.println(toString(array, 20));
     }
 
     public static void println(char[] array) {
@@ -433,7 +433,7 @@ public final class ArraysUtil {
             }
         }
         if (len + 1< array.length) {
-            sb.append("...");
+            sb.append(", ... , ");
             sb.append(array[array.length - 1]);
         }
         sb.append("}");

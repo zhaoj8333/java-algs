@@ -1,6 +1,6 @@
 package com.algs.datastructure.st;
 
-import com.algs.datastructure.collection.Iterable;
+import com.algs.datastructure.collection.Iiterable;
 
 /**
  * Symbol Table is a data structure for key-value pairs that supports insert(put) and search(get) for the value
@@ -26,7 +26,7 @@ public interface ISymbolTable<K, V> {
 
     V get(K key);
 
-    void put(K key, V value);
+    void put(K key, V val);
 
     /**
      * Deletion:
@@ -38,9 +38,9 @@ public interface ISymbolTable<K, V> {
     boolean contains(K key);
 
     /**
-     * We don't implement {@link Iterable} interface, instead, use {@link #keys()} method to return a {@link Iterable}
+     * We don't implement {@link Iiterable} interface, instead, use {@link #keys()} method to return a {@link Iiterable}
      */
-    Iterable<K> keys();
+    Iiterable<K> keys();
 
     void clear();
 

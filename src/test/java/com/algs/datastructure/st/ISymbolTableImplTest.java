@@ -1,15 +1,16 @@
 package com.algs.datastructure.st;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.datastructure.st.ordered.BinarySearchSymbolTableImpl;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
-import java.util.Objects;
 
 class ISymbolTableImplTest extends ImplFunctionalityTest {
 
@@ -20,7 +21,8 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
     }
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-        LinkedSequentialSearch.class
+//            LinkedSequentialSearchSymbolTableImpl.class,
+            BinarySearchSymbolTableImpl.class,
     };
 
     @Override
@@ -37,7 +39,7 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
 
     @Override
     protected void testEach(Object obj) {
-        ISymbolTable<String, Integer> st = new LinkedSequentialSearch<>();
+        ISymbolTable<String, Integer> st = (ISymbolTable<String, Integer>) obj;
         Assertions.assertTrue(st.isEmpty());
         Assertions.assertEquals(0, st.size());
 
@@ -57,19 +59,27 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
         st.clear();
         Assertions.assertTrue(st.isEmpty());
 
-        Iterator<String> itr = testData.iterator();
-        while (itr.hasNext()) {
-            String key = itr.next();
-            Integer val = st.get(key);
-            if (Objects.isNull(val)) {
+//        st.put("it", 1);
+//        st.put("it", 2);
+        Object[] strings = CollectionUtil.toArray(testData);
+        ArraysUtil.println(strings);
+
+        st.put("it", 1);
+        st.put("was", 1);
+        st.put("the", 1);
+        st.put("of", 1);
+        st.put("it", 2);
+        st.put("times", 1);
+
+        for (Object string : strings) {
+            String key = (String) string;
+            if (!st.contains(key)) {
                 st.put(key, 1);
             } else {
-                st.put(key, val + 1);
+                st.put(key, st.get(key) + 1);
             }
         }
-
         Assertions.assertEquals(20, st.size());
-
     }
 
     @Test
