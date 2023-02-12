@@ -28,7 +28,7 @@ public interface IOrderedSymbolTable<K extends Comparable<K>, V> extends ISymbol
     /**
      * smallest key greater than or equal to key
      */
-    K ceiling(K key);
+    K ceil(K key);
 
     /**
      * number of keys less than key

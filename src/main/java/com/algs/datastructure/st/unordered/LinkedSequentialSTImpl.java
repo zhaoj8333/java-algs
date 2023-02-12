@@ -8,11 +8,11 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class LinkedSequentialSearchSymbolTableImpl<K, V> extends AbstractSymbolTable<K, V> {
+public class LinkedSequentialSTImpl<K, V> extends AbstractSymbolTable<K, V> {
 
     private LinkedSTNode<K, V> head;
 
-    public LinkedSequentialSearchSymbolTableImpl() {
+    public LinkedSequentialSTImpl() {
     }
 
     @Override

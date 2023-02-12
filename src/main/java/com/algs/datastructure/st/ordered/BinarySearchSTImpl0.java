@@ -10,19 +10,19 @@ import com.algs.utils.array.ArraysUtil;
 
 import java.util.Comparator;
 
-public class BinarySearchSymbolTableImpl0<K extends Comparable<K>, V> extends AbstractOrderedSymbolTable<K, V> {
+public class BinarySearchSTImpl0<K extends Comparable<K>, V> extends AbstractOrderedSymbolTable<K, V> {
 
     private ComparableSTNode<K, V>[] entries;
 
-    public BinarySearchSymbolTableImpl0() {
+    public BinarySearchSTImpl0() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public BinarySearchSymbolTableImpl0(int capacity) {
+    public BinarySearchSTImpl0(int capacity) {
         this(capacity, null);
     }
 
-    public BinarySearchSymbolTableImpl0(int capacity, Comparator<K> comparator) {
+    public BinarySearchSTImpl0(int capacity, Comparator<K> comparator) {
         super(comparator);
         this.entries = (ComparableSTNode<K, V>[]) new ComparableSTNode<?, ?>[capacity];
     }
@@ -56,7 +56,7 @@ public class BinarySearchSymbolTableImpl0<K extends Comparable<K>, V> extends Ab
     }
 
     @Override
-    public K ceiling(K key) {
+    public K ceil(K key) {
         int rank = rank(key);
         return entries[rank].key;
     }
@@ -132,7 +132,7 @@ public class BinarySearchSymbolTableImpl0<K extends Comparable<K>, V> extends Ab
     }
 
     /**
-     * This approach can reduce the {@link BinarySearchSymbolTableImpl#put(Comparable, Object)}
+     * This approach can reduce the {@link BinarySearchSTImpl#put(Comparable, Object)}
      * Complexity from 2N to N
      */
     @Override
