@@ -13,7 +13,7 @@ public abstract class AbstractOrderedSymbolTable<K extends Comparable<K>, V>
 
     private final Comparator<K> comparator;
 
-    protected AbstractOrderedSymbolTable(Comparator<K> comparator) {
+    public AbstractOrderedSymbolTable(Comparator<K> comparator) {
         this.comparator = comparator;
     }
 

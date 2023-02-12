@@ -2,7 +2,9 @@ package com.algs.datastructure.st;
 
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.st.ordered.BinarySearchSymbolTableImpl;
+import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
+import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
+import com.algs.datastructure.st.unordered.LinkedSequentialSTImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
@@ -21,8 +23,9 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
     }
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-//            LinkedSequentialSearchSymbolTableImpl.class,
-            BinarySearchSymbolTableImpl.class,
+            LinkedSequentialSTImpl.class,
+            BinarySearchSTImpl.class,
+            BinarySearchSTImpl0.class,
     };
 
     @Override

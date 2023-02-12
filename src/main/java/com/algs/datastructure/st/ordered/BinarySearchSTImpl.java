@@ -20,24 +20,24 @@ import java.util.Comparator;
  *  {@link #min()}                   1
  *  {@link #max()}                   1
  *  {@link #floor(Comparable)}       logN
- *  {@link #ceiling(Comparable)}     logN
+ *  {@link #ceil(Comparable)}     logN
  *  {@link #deleteMin()}             N
  *  {@link #deleteMax()}             N
  */
-public class BinarySearchSymbolTableImpl<K extends Comparable<K>, V> extends AbstractOrderedSymbolTable<K, V> {
+public class BinarySearchSTImpl<K extends Comparable<K>, V> extends AbstractOrderedSymbolTable<K, V> {
 
     private K[] keys;
     private V[] vals;
 
-    public BinarySearchSymbolTableImpl() {
+    public BinarySearchSTImpl() {
         this(DefaultValues.DEFAULT_CAPACITY);
     }
 
-    public BinarySearchSymbolTableImpl(int capacity) {
+    public BinarySearchSTImpl(int capacity) {
         this(capacity, null);
     }
 
-    public BinarySearchSymbolTableImpl(int capacity, Comparator<K> comparator) {
+    public BinarySearchSTImpl(int capacity, Comparator<K> comparator) {
         super(comparator);
         this.keys = (K[]) new Comparable[capacity];
         this.vals = (V[]) new Object[capacity];
@@ -75,7 +75,7 @@ public class BinarySearchSymbolTableImpl<K extends Comparable<K>, V> extends Abs
     }
 
     @Override
-    public K ceiling(K key) {
+    public K ceil(K key) {
         int rank = rank(key);
         return keys[rank];
     }
@@ -154,9 +154,8 @@ public class BinarySearchSymbolTableImpl<K extends Comparable<K>, V> extends Abs
     }
 
     /**
-     * for random, {@link #put(Comparable, Object)} is too slow
-     * we can initialize with the whole array, use {@link com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0}
-     * to sort the array to initialize this
+     * for random inputs, this put is too slow, we can initialize with the whole array,
+     * use {@link com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0} to sort the array to initialize this
      */
     @Override
     public void put(K key, V val) {
