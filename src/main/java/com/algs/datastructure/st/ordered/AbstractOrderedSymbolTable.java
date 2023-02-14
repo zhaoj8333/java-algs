@@ -1,7 +1,6 @@
 package com.algs.datastructure.st.ordered;
 
 import com.algs.datastructure.st.unordered.AbstractSymbolTable;
-import com.algs.datastructure.st.unordered.IOrderedSymbolTable;
 import com.algs.utils.CompareUtil;
 
 import java.util.Comparator;

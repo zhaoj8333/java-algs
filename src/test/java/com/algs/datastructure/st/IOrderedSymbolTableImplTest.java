@@ -7,7 +7,7 @@ import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
 import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
-import com.algs.datastructure.st.unordered.IOrderedSymbolTable;
+import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;

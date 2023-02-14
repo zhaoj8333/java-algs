@@ -5,6 +5,7 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
 import com.algs.datastructure.st.unordered.LinkedSequentialSTImpl;
+import com.algs.datastructure.st.unordered.SelfOrganizedArraySTImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
@@ -26,6 +27,7 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
             LinkedSequentialSTImpl.class,
             BinarySearchSTImpl.class,
             BinarySearchSTImpl0.class,
+            SelfOrganizedArraySTImpl.class,
     };
 
     @Override
@@ -90,4 +92,5 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
     public void test() {
         test(targetClasses);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.algs.datastructure.st.unordered;
+package com.algs.datastructure.st.ordered;
 
 import com.algs.datastructure.collection.Iiterable;
 import com.algs.datastructure.st.ISymbolTable;
