@@ -6,8 +6,8 @@ import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
-import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
 import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
+import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
@@ -59,8 +59,6 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             st.put('z', 90);
         }
 
-        Assertions.assertEquals(5, st.size('i', 'y'));
-
         {
             Assertions.assertEquals(1, st.get('a'));
             Assertions.assertEquals(1, st.get('b'));
@@ -98,11 +96,17 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
         Assertions.assertEquals('a', st.min());
         Assertions.assertEquals('x', st.max());
 
+        // a, c, d, e, f, h, j, m, o, s, x
         {
-            // a, c, d, e, f, h, j, m, o, s, x
             Assertions.assertEquals('a', st.select(0));
             Assertions.assertEquals('c', st.select(1));
             Assertions.assertEquals('h', st.select(5));
+        }
+
+        {
+            Assertions.assertEquals(5, st.size('i', 'y'));
+            Assertions.assertEquals(5, st.size('b', 'i'));
+            Assertions.assertEquals(7, st.size('c', 'n'));
         }
 
         {
@@ -112,6 +116,17 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             Assertions.assertEquals('d', itr.next());
             Assertions.assertEquals('e', itr.next());
             Assertions.assertEquals('f', itr.next());
+
+            keys = st.keys('c', 'n');
+            itr = keys.iterator();
+            Assertions.assertEquals('c', itr.next());
+            Assertions.assertEquals('d', itr.next());
+            Assertions.assertEquals('e', itr.next());
+            Assertions.assertEquals('f', itr.next());
+            Assertions.assertEquals('h', itr.next());
+            Assertions.assertEquals('j', itr.next());
+            Assertions.assertEquals('m', itr.next());
+
         }
     }
 

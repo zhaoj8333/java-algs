@@ -7,6 +7,7 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.RangeUtil;
 import com.algs.utils.array.ArraysUtil;
 
 import java.util.Comparator;
@@ -121,6 +122,7 @@ public class BinarySearchSTImpl<K extends Comparable<K>, V> extends AbstractOrde
 
     @Override
     public K select(int n) {
+        RangeUtil.requireIntRange(n, 0, size);
         return keys[n];
     }
 
@@ -145,12 +147,22 @@ public class BinarySearchSTImpl<K extends Comparable<K>, V> extends AbstractOrde
         return rank(high) - rank(low);
     }
 
+    //   b              i
+    // a, c, d, e, f, h, j, m, o, s, x
     @Override
     public Iiterable<K> keys(K low, K high) {
         int lowRank = rank(low);
+        int begin = lowRank;
+        if (compare(low, keys[lowRank]) > 0) {
+            begin++;
+        }
         int highRank = rank(high);
+        int end = highRank;
+        if (compare(high, keys[highRank]) < 0) {
+            end--;
+        }
         IList<K> list = new ResizableArrayImpl<>();
-        for (int i = lowRank; i <= highRank; i++) {
+        for (int i = begin; i <= end; i++) {
             list.add(keys[i]);
         }
         return list;

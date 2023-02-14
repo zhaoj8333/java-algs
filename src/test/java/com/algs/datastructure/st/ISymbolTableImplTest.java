@@ -1,7 +1,9 @@
 package com.algs.datastructure.st;
 
 import com.algs.ImplFunctionalityTest;
+import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.collection.list.IList;
+import com.algs.datastructure.st.unordered.SelfOrganizedArraySTImpl;
 import com.algs.datastructure.st.unordered.SelfOrganizedLinkedSTImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.array.ArraysUtil;
@@ -24,7 +26,7 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
 //            LinkedSequentialSTImpl.class,
 //            BinarySearchSTImpl.class,
 //            BinarySearchSTImpl0.class,
-//            SelfOrganizedArraySTImpl.class,
+            SelfOrganizedArraySTImpl.class,
             SelfOrganizedLinkedSTImpl.class,
     };
 
@@ -89,6 +91,23 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
     @Override
     public void test() {
         test(targetClasses);
+    }
+
+    @Test
+    void _3_1_24() {
+        ISymbolTable<String, Integer> arrayST = new SelfOrganizedArraySTImpl<>();
+        ISymbolTable<String, Integer> linkedST = new SelfOrganizedLinkedSTImpl<>();
+        Iterator<String> itr = testData.iterator();
+        int i = 0;
+        while (itr.hasNext()) {
+            String next = itr.next();
+            arrayST.put(next, i);
+            linkedST.put(next, i++);
+        }
+
+        arrayST.get("age");
+        linkedST.get("age");
+
     }
 
 }

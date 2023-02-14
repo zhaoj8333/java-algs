@@ -117,6 +117,7 @@ public class OrderedLinkedSequentialSTImpl<K extends Comparable<K>, V> extends A
 
     @Override
     public K select(int k) {
+        RangeUtil.requireIntRange(k, 0, size);
         LinkedSTNode<K, V> node = node(k);
         return Objects.nonNull(node) ? node.key : null;
     }
@@ -148,11 +149,16 @@ public class OrderedLinkedSequentialSTImpl<K extends Comparable<K>, V> extends A
         ObjectUtil.requireNonNull(low);
         ObjectUtil.requireNonNull(high);
         int sz = 0;
-        if (compare(low, high) < 0) {
-            LinkedSTNode<K, V> leftNode = floorNode(low);
-            LinkedSTNode<K, V> node = leftNode.next;
-            while (isNodeBetween(node, low, high)) {
-                sz++;
+        if (compare(low, high) <= 0) {
+            LinkedSTNode<K, V> node = floorNode(low);
+            while (Objects.nonNull(node)) {
+                int cmp = compare(node.key, high);
+                if (compare(node.key, low) >= 0 && cmp <= 0) {
+                    sz++;
+                }
+                if (cmp > 0) {
+                    break;
+                }
                 node = node.next;
             }
         }
@@ -164,11 +170,16 @@ public class OrderedLinkedSequentialSTImpl<K extends Comparable<K>, V> extends A
         ObjectUtil.requireNonNull(low);
         ObjectUtil.requireNonNull(high);
         IList<K> list = new ResizableArrayImpl<>();
-        if (compare(low, high) < 0) {
-            LinkedSTNode<K, V> leftNode = floorNode(low);
-            LinkedSTNode<K, V> node = leftNode.next;
-            while (isNodeBetween(node, low, high)) {
-                list.add(node.key);
+        if (compare(low, high) <= 0) {
+            LinkedSTNode<K, V> node = floorNode(low);
+            while (Objects.nonNull(node)) {
+                int cmp = compare(node.key, high);
+                if (compare(node.key, low) >= 0 && cmp <= 0) {
+                    list.add(node.key);
+                }
+                if (cmp > 0) {
+                    break;
+                }
                 node = node.next;
             }
         }
