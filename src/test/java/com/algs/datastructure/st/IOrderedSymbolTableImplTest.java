@@ -3,16 +3,20 @@ package com.algs.datastructure.st;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iiterable;
 import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
 import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
 import com.algs.datastructure.st.unordered.IOrderedSymbolTable;
+import com.algs.utils.array.ArraysUtil;
+import com.algs.utils.file.FilePath;
+import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-class IOrderedSymbolTableTest extends ImplFunctionalityTest {
+class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
             BinarySearchSTImpl.class,
@@ -115,6 +119,22 @@ class IOrderedSymbolTableTest extends ImplFunctionalityTest {
     @Override
     public void test() {
         test(targetClasses);
+    }
+
+    @Test
+    void _3_1_12() {
+        String[] strings = FileUtil.readEnglishWordsAsArray(FilePath.MED_TALE);
+        String[] array = ArraysUtil.toStrings(ArraysUtil.copyAll(strings));
+        ArraysUtil.println(array);
+
+        ComparableSTNode<String, Integer>[] copiedArray = (ComparableSTNode<String, Integer>[]) new ComparableSTNode<?, ?>[array.length];
+        for (int i = 0; i < array.length; i++) {
+//            if (!"".equals(array[i])) {
+                copiedArray[i] = new ComparableSTNode<>(array[i], 0);
+//            }
+        }
+        BinarySearchSTImpl<String, Integer> st = new BinarySearchSTImpl<>(copiedArray, null);
+
     }
 
 }

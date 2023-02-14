@@ -283,6 +283,20 @@ public final class ArraysUtil {
         return doubles;
     }
 
+    public static String[] toStrings(Object[] array) {
+        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonEmpty(array);
+        boolean b = array[0] instanceof String;
+        if (!b) {
+            throw new ClassCastException("Unable to convert to Double");
+        }
+        String[] strings = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            strings[i] = (String) array[i];
+        }
+        return strings;
+    }
+
     public static Integer[] copyAll(Integer[] array) {
         ObjectUtil.requireNonNull(array);
         Integer[] target = new Integer[array.length];

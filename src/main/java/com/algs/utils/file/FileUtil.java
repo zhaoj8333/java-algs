@@ -4,6 +4,7 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.Connection;
+import com.algs.utils.array.ArraysUtil;
 
 import java.io.*;
 import java.net.URL;
@@ -230,7 +231,7 @@ public class FileUtil {
     }
 
     public static String[] readEnglishWordsAsArray(String fileName) {
-        return CollectionUtil.toArray(readEnglishWords(fileName));
+        return ArraysUtil.toStrings(CollectionUtil.toArray(readEnglishWords(fileName)));
     }
 
     public static Short[] readShortsAsArray(String fileName) {

@@ -1,9 +1,11 @@
 package com.algs.datastructure.st.ordered;
 
 import com.algs.DefaultValues;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
 import com.algs.datastructure.collection.Iiterable;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
+import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.array.ArraysUtil;
 
@@ -35,6 +37,25 @@ public class BinarySearchSTImpl<K extends Comparable<K>, V> extends AbstractOrde
 
     public BinarySearchSTImpl(int capacity) {
         this(capacity, null);
+    }
+
+    /**
+     * It's not space efficient
+     */
+    public BinarySearchSTImpl(ComparableSTNode<K, V>[] array , Comparator<K> comparator) {
+        this(array.length, comparator);
+        MergeSortTdImpl<ComparableSTNode<K, V>> sort = new MergeSortTdImpl<>(array, Comparator.naturalOrder());
+        sort.sort();
+        keys[0] = array[0].key;
+        vals[0] = array[0].val;
+        int i = 1;
+        for (int j = 1; j < array.length; j++) {
+            if (compare(array[j - 1].key, array[j].key) == 0) {
+                continue;
+            }
+            keys[i] = array[j].key;
+            vals[i++] = array[j].val;
+        }
     }
 
     public BinarySearchSTImpl(int capacity, Comparator<K> comparator) {
