@@ -63,7 +63,6 @@ public class SelfOrganizedArraySTImpl<K, V> extends AbstractSymbolTable<K, V> {
 
     @Override
     public void put(K key, V val) {
-        ObjectUtil.requireNonNull(key);
         ObjectUtil.requireNonNull(val);
         int idx = node(key);
         if (idx > DefaultValues.ELEMENT_NOT_FOUND) {
