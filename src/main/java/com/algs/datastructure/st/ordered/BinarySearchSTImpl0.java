@@ -58,8 +58,7 @@ public class BinarySearchSTImpl0<K extends Comparable<K>, V> extends AbstractOrd
 
     @Override
     public K ceil(K key) {
-        int rank = rank(key);
-        return entries[rank].key;
+        return entries[rank(key)].key;
     }
 
     @Override
@@ -101,7 +100,21 @@ public class BinarySearchSTImpl0<K extends Comparable<K>, V> extends AbstractOrd
 
     @Override
     public int size(K low, K high) {
-        return rank(high) - rank(low);
+        if (compare(low, high) > 0) {
+            return 0;
+        }
+        int lowRank = rank(low);
+        int hiRank = rank(high);
+        if (compare(low, entries[lowRank].key) == 0) {
+            if (hiRank < size) {
+                if (compare(high, entries[hiRank].key) == 0) {
+                    return hiRank - lowRank + 1;
+                }
+            } else {
+                return size;
+            }
+        }
+        return hiRank - lowRank;
     }
 
     @Override

@@ -4,33 +4,42 @@ import com.algs.ImplPerformanceTest;
 import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
+import com.algs.datastructure.st.ordered.InterpolationSearchSTImpl;
 import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
 import com.algs.utils.RandomUtil;
-import com.algs.utils.file.FilePath;
-import com.algs.utils.file.FileUtil;
+import com.algs.utils.array.ArrayBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
 class ISymbolTableImplCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 
-    protected static final String[] testArray;
+    protected static final Integer[] testArray;
 
     static {
-        System.out.println("Reading file ...");
-        testArray = FileUtil.readEnglishWordsAsArray(FilePath.TALE);
+//        System.out.println("Reading file ...");
+//        testArray = FileUtil.readEnglishWordsAsArray(FilePath.TALE);
+        testArray = ArrayBuilder.randomIntArrayBetween(28000, 0, 22000);
+
     }
 
     private final Class<?>[] targetClasses = new Class<?>[] {
             BinarySearchSTImpl.class,
-            BinarySearchSTImpl0.class,
-            OrderedLinkedSequentialSTImpl.class
+//            BinarySearchSTImpl0.class,
+//            OrderedLinkedSequentialSTImpl.class,
+            InterpolationSearchSTImpl.class,
     };
 
     /**
+     * {@link com.algs.utils.file.FilePath#TALE}
+     *
      * {@link BinarySearchSTImpl}:  411 ms
      * {@link BinarySearchSTImpl0}: 216 ms
      * {@link OrderedLinkedSequentialSTImpl}: 8705 ms
+     *
+     * testArray = ArrayBuilder.randomIntArrayBetween(50000, 0, 30000);
+     * {@link BinarySearchSTImpl}: 1986 ms
+     * {@link InterpolationSearchSTImpl}: 1363 ms
      */
     @Test
     @Override
@@ -52,12 +61,12 @@ class ISymbolTableImplCompareTest<E extends Comparable<E>> extends ImplPerforman
 
     @Override
     protected void execEach(Object obj) {
-        ISymbolTable<String, Integer> st = (ISymbolTable<String, Integer>) obj;
+        ISymbolTable<Integer, Integer> st = (ISymbolTable<Integer, Integer>) obj;
 
         StopWatchTask<Object> sw = new StopWatchTask<>() {
             @Override
             protected Object profileTask() {
-                for (String em : testArray) {
+                for (Integer em : testArray) {
                     st.put(em, RandomUtil.uniform(Integer.MAX_VALUE));
                 }
                 return null;

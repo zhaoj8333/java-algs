@@ -152,12 +152,14 @@ public class OrderedLinkedSequentialSTImpl<K extends Comparable<K>, V> extends A
         if (compare(low, high) <= 0) {
             LinkedSTNode<K, V> node = floorNode(low);
             while (Objects.nonNull(node)) {
-                int cmp = compare(node.key, high);
-                if (compare(node.key, low) >= 0 && cmp <= 0) {
-                    sz++;
-                }
-                if (cmp > 0) {
-                    break;
+                if (Objects.nonNull(node.key)) {
+                    int cmp = compare(node.key, high);
+                    if (compare(node.key, low) >= 0 && cmp <= 0) {
+                        sz++;
+                    }
+                    if (cmp > 0) {
+                        break;
+                    }
                 }
                 node = node.next;
             }

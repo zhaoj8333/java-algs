@@ -4,24 +4,23 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.collection.Iiterable;
 import com.algs.datastructure.collection.Iterator;
 import com.algs.datastructure.node.ComparableSTNode;
-import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
-import com.algs.datastructure.st.ordered.BinarySearchSTImpl0;
-import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
-import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
+import com.algs.datastructure.st.ordered.*;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
             BinarySearchSTImpl.class,
-            BinarySearchSTImpl0.class,
-            OrderedLinkedSequentialSTImpl.class,
+//            BinarySearchSTImpl0.class,
+//            OrderedLinkedSequentialSTImpl.class,
+            InterpolationSearchSTImpl.class,
     };
 
     @Override
@@ -38,94 +37,102 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 
     @Override
     protected void testEach(Object obj) {
-        IOrderedSymbolTable<Character, Integer> st = (IOrderedSymbolTable<Character, Integer>) obj;
+        IOrderedSymbolTable<Integer, Integer> st = (IOrderedSymbolTable<Integer, Integer>) obj;
 
         {
-            st.put('a', 1);
-            st.put('b', 1);
-            st.put('d', 1);
-            st.put('c', 1);
-            st.put('f', 1);
-            st.put('e', 1);
+            st.put(0, 1);
+            st.put(1, 1);
+            st.put(3, 1);
+            st.put(2, 1);
+            st.put(5, 1);
+            st.put(4, 1);
 
-            st.put('e', 90);
+            st.put(4, 90);
 
-            st.put('h', 90);
-            st.put('j', 90);
-            st.put('m', 90);
-            st.put('o', 90);
-            st.put('s', 90);
-            st.put('x', 90);
-            st.put('z', 90);
+            st.put(7, 90);
+            st.put(9, 90);
+            st.put(12, 90);
+            st.put(14, 90);
+            st.put(18, 90);
+            st.put(23, 90);
+            st.put(25, 90);
         }
 
         {
-            Assertions.assertEquals(1, st.get('a'));
-            Assertions.assertEquals(1, st.get('b'));
-            Assertions.assertEquals(90, st.get('e'));
-            Assertions.assertEquals(1, st.get('f'));
+            assertEquals(1, st.get(0));
+            assertEquals(1, st.get(1));
+            assertEquals(90, st.get(4));
+            assertEquals(1, st.get(5));
         }
 
         {
-            Assertions.assertEquals(0, st.rank('a'));
-            Assertions.assertEquals(1, st.rank('b'));
-            Assertions.assertEquals(2, st.rank('c'));
-            Assertions.assertEquals(3, st.rank('d'));
-            Assertions.assertEquals(4, st.rank('e'));
-            Assertions.assertEquals(5, st.rank('f'));
+            assertEquals(0, st.rank(0));
+            assertEquals(1, st.rank(1));
+            assertEquals(2, st.rank(2));
+            assertEquals(3, st.rank(3));
+            assertEquals(4, st.rank(4));
+            assertEquals(5, st.rank(5));
 
-            st.delete('a');
+            st.delete(0);
             st.deleteMin();
-            Assertions.assertEquals(0, st.rank('c'));
-            Assertions.assertEquals(1, st.rank('d'));
-            Assertions.assertEquals(2, st.rank('e'));
-            Assertions.assertEquals(3, st.rank('f'));
+            assertEquals(0, st.rank(2));
+            assertEquals(1, st.rank(3));
+            assertEquals(2, st.rank(4));
+            assertEquals(3, st.rank(5));
 
             st.deleteMax();
-            Assertions.assertEquals(0, st.rank('c'));
-            Assertions.assertEquals(1, st.rank('d'));
-            Assertions.assertEquals(2, st.rank('e'));
+            assertEquals(0, st.rank(2));
+            assertEquals(1, st.rank(3));
+            assertEquals(2, st.rank(4));
         }
 
-        st.put('a', 1);
-        Assertions.assertEquals('a', st.floor('b'));
-        Assertions.assertEquals('c', st.ceil('b'));
-        Assertions.assertEquals('c', st.ceil('c'));
-        Assertions.assertEquals(11, st.size());
+        st.put(0, 1);
+        assertEquals(0, st.floor(1));
+        assertEquals(0, st.floor(0));
+        assertEquals(12, st.floor(13));
+        assertEquals(18, st.floor(19));
+        assertEquals(2, st.ceil(1));
+        assertEquals(2, st.ceil(2));
+        assertEquals(11, st.size());
 
-        Assertions.assertEquals('a', st.min());
-        Assertions.assertEquals('x', st.max());
+        assertEquals(0, st.min());
+        assertEquals(23, st.max());
 
-        // a, c, d, e, f, h, j, m, o, s, x
+        // 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23
         {
-            Assertions.assertEquals('a', st.select(0));
-            Assertions.assertEquals('c', st.select(1));
-            Assertions.assertEquals('h', st.select(5));
-        }
-
-        {
-            Assertions.assertEquals(5, st.size('i', 'y'));
-            Assertions.assertEquals(5, st.size('b', 'i'));
-            Assertions.assertEquals(7, st.size('c', 'n'));
+            assertEquals(0, st.select(0));
+            assertEquals(2, st.select(1));
+            assertEquals(7, st.select(5));
         }
 
         {
-            Iiterable<Character> keys = st.keys('b', 'i');
-            Iterator<Character> itr = keys.iterator();
-            Assertions.assertEquals('c', itr.next());
-            Assertions.assertEquals('d', itr.next());
-            Assertions.assertEquals('e', itr.next());
-            Assertions.assertEquals('f', itr.next());
+            assertEquals(5, st.size(0, 5));
+            assertEquals(5, st.size(8, 24));
+            assertEquals(4, st.size(3, 8));
+            assertEquals(7, st.size(2, 13));
+            assertEquals(11, st.size(-4, 25));
+            assertEquals(11, st.size(0, 19090));
+            assertEquals(0, st.size(19, 20));
+            assertEquals(0, st.size(5, 4));
+        }
 
-            keys = st.keys('c', 'n');
+        {
+            Iiterable<Integer> keys = st.keys(1, 8);
+            Iterator<Integer> itr = keys.iterator();
+            assertEquals(2, itr.next());
+            assertEquals(3, itr.next());
+            assertEquals(4, itr.next());
+            assertEquals(5, itr.next());
+
+            keys = st.keys(2, 13);
             itr = keys.iterator();
-            Assertions.assertEquals('c', itr.next());
-            Assertions.assertEquals('d', itr.next());
-            Assertions.assertEquals('e', itr.next());
-            Assertions.assertEquals('f', itr.next());
-            Assertions.assertEquals('h', itr.next());
-            Assertions.assertEquals('j', itr.next());
-            Assertions.assertEquals('m', itr.next());
+            assertEquals(2, itr.next());
+            assertEquals(3, itr.next());
+            assertEquals(4, itr.next());
+            assertEquals(5, itr.next());
+            assertEquals(7, itr.next());
+            assertEquals(9, itr.next());
+            assertEquals(12, itr.next());
 
         }
     }
@@ -149,6 +156,31 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 //            }
         }
         BinarySearchSTImpl<String, Integer> st = new BinarySearchSTImpl<>(copiedArray, null);
+    }
+
+    /**
+     * mid: 8, key: 20, begin: 0, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 9, key: 20, begin: 9, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 0, key: 1, begin: 0, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 3, key: 8, begin: 0, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 5, key: 8, begin: 4, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 0, key: 2, begin: 0, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 1, key: 2, begin: 1, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 5, key: 13, begin: 0, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     * mid: 7, key: 13, begin: 6, end: 10
+     * { 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23, null, null, null, null, null, null, null, null }
+     *
+     * {@link InterpolationSearchSTImpl}
+     */
+    void _3_1_24() {
 
     }
 

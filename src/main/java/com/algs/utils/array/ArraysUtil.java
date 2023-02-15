@@ -329,7 +329,7 @@ public final class ArraysUtil {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < Math.min(len, array.length); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -347,7 +347,7 @@ public final class ArraysUtil {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < Math.min(len, array.length); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -365,7 +365,7 @@ public final class ArraysUtil {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < Math.min(len, array.length); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -401,7 +401,7 @@ public final class ArraysUtil {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < Math.min(len, array.length); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -419,7 +419,7 @@ public final class ArraysUtil {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < Math.min(len, array.length); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -439,8 +439,8 @@ public final class ArraysUtil {
     public static String toString(Object[] array, int len) {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        for (int i = 0; i < len; i++) {
+        sb.append("{ ");
+        for (int i = 0; i < Math.min(array.length, len); i++) {
             sb.append(array[i]);
             if (i < len - 1) {
                 sb.append(", ");
@@ -450,7 +450,8 @@ public final class ArraysUtil {
             sb.append(", ... , ");
             sb.append(array[array.length - 1]);
         }
-        sb.append("}");
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        sb.append(" }");
         return sb.toString();
     }
 
