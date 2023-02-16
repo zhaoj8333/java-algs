@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.queue.link;
 
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.node.DoublyLinkNode;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;

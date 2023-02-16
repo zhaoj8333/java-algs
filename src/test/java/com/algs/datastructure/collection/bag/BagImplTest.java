@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.bag;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

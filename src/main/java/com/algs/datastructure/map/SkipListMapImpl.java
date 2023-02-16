@@ -1,7 +1,7 @@
 package com.algs.datastructure.map;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.SkipLinkNode;
 import com.algs.utils.ObjectUtil;

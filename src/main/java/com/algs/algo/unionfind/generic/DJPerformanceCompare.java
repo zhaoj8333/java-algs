@@ -1,7 +1,7 @@
 package com.algs.algo.unionfind.generic;
 
 import com.algs.analysis.StopWatchTask;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;

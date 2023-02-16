@@ -1,6 +1,6 @@
 package com.algs.datastructure.st;
 
-import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.Iiterable;
 
 /**
  * Symbol Table is a data structure for key-value pairs that supports insert(put) and search(get) for the value

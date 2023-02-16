@@ -1,7 +1,7 @@
 package com.graph.analysis.algo.unionfind.qf;
 
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.Connection;
 import com.algs.utils.DrawUtil;

@@ -1,4 +1,4 @@
-package com.algs.datastructure.collection;
+package com.algs.datastructure;
 
 public interface Iterator<E> {
 

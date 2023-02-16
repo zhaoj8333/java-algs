@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 
 public class QueuePqImpl<E> implements IQueue<E> {
     @Override

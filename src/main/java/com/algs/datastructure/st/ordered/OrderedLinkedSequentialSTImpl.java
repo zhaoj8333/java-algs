@@ -1,6 +1,6 @@
 package com.algs.datastructure.st.ordered;
 
-import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.LinkedSTNode;

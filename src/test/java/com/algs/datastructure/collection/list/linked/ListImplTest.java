@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.utils.array.ArraysUtil;

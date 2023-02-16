@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.queue;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.queue.array.RandomArrayQueueImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

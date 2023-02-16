@@ -2,7 +2,7 @@ package com.algs.datastructure.st.ordered;
 
 import com.algs.DefaultValues;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
-import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.ComparableSTNode;

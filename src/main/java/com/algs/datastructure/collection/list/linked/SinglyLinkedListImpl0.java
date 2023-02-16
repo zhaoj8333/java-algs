@@ -2,7 +2,7 @@ package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.SinglyLinkNode;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;

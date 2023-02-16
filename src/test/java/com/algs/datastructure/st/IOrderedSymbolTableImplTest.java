@@ -1,8 +1,8 @@
 package com.algs.datastructure.st;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iiterable;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iiterable;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.ComparableSTNode;
 import com.algs.datastructure.st.ordered.*;
 import com.algs.utils.array.ArraysUtil;

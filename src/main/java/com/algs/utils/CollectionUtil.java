@@ -1,7 +1,7 @@
 package com.algs.utils;
 
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 
 public class CollectionUtil<E> {
 

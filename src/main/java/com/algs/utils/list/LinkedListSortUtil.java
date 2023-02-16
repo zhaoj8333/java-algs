@@ -1,6 +1,6 @@
 package com.algs.utils.list;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.utils.CompareUtil;
 

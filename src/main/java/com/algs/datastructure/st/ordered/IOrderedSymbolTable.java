@@ -1,6 +1,6 @@
 package com.algs.datastructure.st.ordered;
 
-import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.st.ISymbolTable;
 
 /**
@@ -48,7 +48,6 @@ public interface IOrderedSymbolTable<K extends Comparable<K>, V> extends ISymbol
 
     /**
      *  keys in [low, high], in sorted order
-     * @return
      */
     Iiterable<K> keys(K low, K high);
 

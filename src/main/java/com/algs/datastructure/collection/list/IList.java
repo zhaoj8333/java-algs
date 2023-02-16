@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.list;
 
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 
 public interface IList<E> extends ICollection<E> {
 

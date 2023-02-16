@@ -1,7 +1,7 @@
 package com.algs.datastructure.st;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.st.unordered.SelfOrganizedArraySTImpl;
 import com.algs.datastructure.st.unordered.SelfOrganizedLinkedSTImpl;

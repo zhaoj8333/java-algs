@@ -2,7 +2,7 @@ package com.graph.analysis.algo.sort;
 
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SedgeWick;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.utils.array.ArraySortUtil;
 import org.junit.jupiter.api.Assertions;
 

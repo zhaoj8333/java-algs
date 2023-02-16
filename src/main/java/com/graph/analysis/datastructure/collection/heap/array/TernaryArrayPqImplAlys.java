@@ -1,6 +1,6 @@
 package com.graph.analysis.datastructure.collection.heap.array;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 
 import java.util.Comparator;
 

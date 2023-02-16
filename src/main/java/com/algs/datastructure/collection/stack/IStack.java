@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 
 /**
  * {@link java.util.Stack}

@@ -1,5 +1,7 @@
 package com.algs.datastructure.collection;
 
+import com.algs.datastructure.Iiterable;
+
 public interface ICollection<E> extends Iiterable<E> {
 
     int size();

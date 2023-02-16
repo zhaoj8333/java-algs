@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.queue;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.deque.ArrayDequeImpl;
 import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.link.CircularLinkedQueueImpl;

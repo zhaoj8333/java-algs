@@ -1,6 +1,6 @@
 package com.algs.datastructure.map;
 
-import com.algs.datastructure.collection.Iiterable;
+import com.algs.datastructure.Iiterable;
 
 public interface IMap<K, V> extends Iiterable<V> {
 

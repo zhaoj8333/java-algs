@@ -1,7 +1,7 @@
 package com.algs.datastructure.collection.deque;
 
 import com.algs.datastructure.node.DoublyLinkNode;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;

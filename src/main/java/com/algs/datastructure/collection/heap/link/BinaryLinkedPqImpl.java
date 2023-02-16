@@ -1,6 +1,6 @@
 package com.algs.datastructure.collection.heap.link;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.node.BinaryPqNode;

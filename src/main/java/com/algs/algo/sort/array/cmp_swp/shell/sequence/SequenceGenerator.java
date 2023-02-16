@@ -1,6 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.shell.sequence;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.deque.IDeque;
 
 public abstract class SequenceGenerator {

@@ -1,7 +1,7 @@
 package com.algs.application.datastructure.collection.heap;
 
 import com.algs.datastructure.collection.ICollection;
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Test;

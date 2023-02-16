@@ -1,6 +1,6 @@
 package com.algs.algo.sort.linkedlist;
 
-import com.algs.datastructure.collection.Iterator;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.datastructure.node.LinkNode;
 import com.algs.datastructure.node.SinglyLinkNode;
