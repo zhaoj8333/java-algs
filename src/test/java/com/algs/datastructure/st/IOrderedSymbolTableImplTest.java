@@ -4,7 +4,13 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.ComparableSTNode;
-import com.algs.datastructure.st.ordered.*;
+import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
+import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
+import com.algs.datastructure.st.ordered.InterpolationSearchSTImpl;
+import com.algs.datastructure.tree.ITree;
+import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
+import com.algs.datastructure.tree.printer.BinaryTreeInfo;
+import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
@@ -17,10 +23,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-            BinarySearchSTImpl.class,
+//            BinarySearchSTImpl.class,
 //            BinarySearchSTImpl0.class,
 //            OrderedLinkedSequentialSTImpl.class,
-            InterpolationSearchSTImpl.class,
+//            InterpolationSearchSTImpl.class,
+            BinarySearchTreeImpl.class,
     };
 
     @Override
@@ -39,6 +46,7 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
     protected void testEach(Object obj) {
         IOrderedSymbolTable<Integer, Integer> st = (IOrderedSymbolTable<Integer, Integer>) obj;
 
+        // put
         {
             st.put(0, 1);
             st.put(1, 1);
@@ -58,6 +66,11 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             st.put(25, 90);
         }
 
+        if (st instanceof ITree) {
+            BinaryTrees.print((BinaryTreeInfo) st);
+        }
+
+        // get
         {
             assertEquals(1, st.get(0));
             assertEquals(1, st.get(1));
@@ -65,6 +78,7 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             assertEquals(1, st.get(5));
         }
 
+        // rank delete
         {
             assertEquals(0, st.rank(0));
             assertEquals(1, st.rank(1));
@@ -86,25 +100,29 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             assertEquals(2, st.rank(4));
         }
 
-        st.put(0, 1);
-        assertEquals(0, st.floor(1));
-        assertEquals(0, st.floor(0));
-        assertEquals(12, st.floor(13));
-        assertEquals(18, st.floor(19));
-        assertEquals(2, st.ceil(1));
-        assertEquals(2, st.ceil(2));
-        assertEquals(11, st.size());
+        // floor ceil
+        {
+            st.put(0, 1);
+            assertEquals(0, st.floor(1));
+            assertEquals(0, st.floor(0));
+            assertEquals(12, st.floor(13));
+            assertEquals(18, st.floor(19));
+            assertEquals(2, st.ceil(1));
+            assertEquals(2, st.ceil(2));
+            assertEquals(11, st.size());
 
-        assertEquals(0, st.min());
-        assertEquals(23, st.max());
-
+            assertEquals(0, st.min());
+            assertEquals(23, st.max());
+        }
         // 0, 2, 3, 4, 5, 7, 9, 12, 14, 18, 23
+        // select
         {
             assertEquals(0, st.select(0));
             assertEquals(2, st.select(1));
             assertEquals(7, st.select(5));
         }
 
+        // size
         {
             assertEquals(5, st.size(0, 5));
             assertEquals(5, st.size(8, 24));
@@ -116,6 +134,7 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
             assertEquals(0, st.size(5, 4));
         }
 
+        // keys
         {
             Iiterable<Integer> keys = st.keys(1, 8);
             Iterator<Integer> itr = keys.iterator();

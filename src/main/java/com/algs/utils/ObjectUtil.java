@@ -22,6 +22,14 @@ public final class ObjectUtil<E> {
         }
     }
 
+    public static void requireNonNull(Object... objects) {
+        for (Object object : objects) {
+            if (Objects.isNull(object)) {
+                throw new IllegalArgumentException("require Object non empty");
+            }
+        }
+    }
+
     public static <E> void requireNonEmpty(ICollection<E> collection) {
         if (collection.isEmpty()) {
             throw new RuntimeException("Already Empty");

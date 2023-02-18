@@ -1,20 +1,23 @@
 package com.algs.datastructure.node;
 
-public class BinaryPqNode<E> {
+public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
 
-    public E value;
-    public BinaryPqNode<E> parent;
-    public BinaryPqNode<E> left;
-    public BinaryPqNode<E> right;
+    public BstNode<K, V> parent;
+    public BstNode<K, V> left;
+    public BstNode<K, V> right;
 
-    public BinaryPqNode(E value) {
-        this(value, null, null, null);
-    }
-
-    public BinaryPqNode(E value, BinaryPqNode<E> parent, BinaryPqNode<E> left, BinaryPqNode<E> right) {
+    public BstNode(K key, V value, BstNode<K, V> parent, BstNode<K, V> left, BstNode<K, V> right, int size) {
+        this.key = key;
         this.value = value;
         this.parent = parent;
         this.left = left;
         this.right = right;
+        this.size = size;
     }
+
+    @Override
+    public K getValue() {
+        return key;
+    }
+
 }
