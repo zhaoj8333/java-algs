@@ -90,7 +90,7 @@ public abstract class StopWatchTask<E> {
         List<TableLine> table = new ArrayList<>(7);
         int maxTitleDashNum = 0, maxValueDashNum = 0;
         for (String line : lines) {
-            if (!line.isBlank()) {
+            if (!Objects.equals(line.trim(), "")) {
                 String[] keyVal = line.split(":");
                 if (keyVal.length > 1) {
                     table.add(new TableLine(keyVal[0], keyVal[1]));
@@ -123,23 +123,31 @@ public abstract class StopWatchTask<E> {
         sb.append(' ');
         String key = tl.key;
         sb.append(key);
-        sb.append(" ".repeat(keyWidth));
+        for (int i = 0; i < keyWidth; i++) {
+            sb.append(" ");
+        }
         sb.append(' ');
         sb.append('|');
         sb.append(' ');
         String value = tl.value;
         sb.append(value);
         sb.append(' ');
-        sb.append(" ".repeat(valueWidth));
+        for (int i = 0; i < valueWidth; i++) {
+            sb.append(" ");
+        }
         sb.append('|');
         sb.append('\n');
     }
 
     private void appendTable(StringBuilder sb, int titleSize, int valueSize) {
         sb.append('+');
-        sb.append("-".repeat(titleSize));
+        for (int i = 0; i < titleSize; i++) {
+            sb.append("-");
+        }
         sb.append('+');
-        sb.append("-".repeat(valueSize));
+        for (int i = 0; i < valueSize; i++) {
+            sb.append("-");
+        }
         sb.append("+\n");
     }
 

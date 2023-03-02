@@ -1,11 +1,9 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.utils.array.ArraysUtil;
-import jdk.jfr.Label;
 
 import java.util.Comparator;
 
-@Label("Very Slow")
 public class DequeueSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {
 
     public DequeueSortImpl(E[] array) {

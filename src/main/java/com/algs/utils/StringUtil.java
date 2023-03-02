@@ -1,5 +1,6 @@
 package com.algs.utils;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class StringUtil {
@@ -90,6 +91,13 @@ public class StringUtil {
             return random(count, 0, 0, false, false, null, RANDOM);
         }
         return random(count, 0, chars.length, false, false, chars, RANDOM);
+    }
+
+    public static boolean isBlank(String str) {
+        if (Objects.isNull(str)) {
+            return true;
+        }
+         return Objects.equals(str.trim(), "");
     }
 
 }

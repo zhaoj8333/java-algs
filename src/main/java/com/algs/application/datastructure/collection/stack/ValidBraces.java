@@ -2,6 +2,7 @@ package com.algs.application.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
+import com.algs.utils.StringUtil;
 
 public class ValidBraces {
 
@@ -11,7 +12,7 @@ public class ValidBraces {
             s = s.replace("()", "");
             s = s.replace("[]", "");
         }
-        return s.isBlank();
+        return StringUtil.isBlank(s);
     }
 
     public boolean usingStack(String s) {

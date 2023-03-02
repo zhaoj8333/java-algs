@@ -117,7 +117,10 @@ class UnionFindImplTest extends ImplFunctionalityTest {
         print(qf);
 
         printPath(qf, connections);
-        String repeat = "-".repeat(50);
+        StringBuilder repeat = new StringBuilder("-");
+        for (int i = 0; i < 50; i++) {
+            repeat.append("-");
+        }
         System.out.println(repeat);
 
         qf = new QuickUnionImpl();

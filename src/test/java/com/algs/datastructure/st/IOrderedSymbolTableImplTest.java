@@ -8,7 +8,7 @@ import com.algs.datastructure.st.ordered.BinarySearchSTImpl;
 import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
 import com.algs.datastructure.st.ordered.InterpolationSearchSTImpl;
 import com.algs.datastructure.tree.ITree;
-import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
+import com.algs.datastructure.tree.bst.RecursiveBinarySearchTreeImpl;
 import com.algs.datastructure.tree.printer.BinaryTreeInfo;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
@@ -27,7 +27,7 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 //            BinarySearchSTImpl0.class,
 //            OrderedLinkedSequentialSTImpl.class,
 //            InterpolationSearchSTImpl.class,
-            BinarySearchTreeImpl.class,
+            RecursiveBinarySearchTreeImpl.class,
     };
 
     @Override

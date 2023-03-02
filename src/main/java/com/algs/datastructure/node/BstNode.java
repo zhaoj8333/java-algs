@@ -1,5 +1,7 @@
 package com.algs.datastructure.node;
 
+import java.util.Objects;
+
 public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
 
     public BstNode<K, V> parent;
@@ -18,6 +20,18 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
     @Override
     public K getValue() {
         return key;
+    }
+
+    public boolean isLeaf() {
+        return Objects.isNull(this.left) && Objects.isNull(this.right);
+    }
+
+    public boolean hasTowChildren() {
+        return Objects.nonNull(this.left) && Objects.nonNull(this.right);
+    }
+
+    public boolean hasChild() {
+        return Objects.nonNull(this.left) || Objects.nonNull(this.right);
     }
 
 }

@@ -11,20 +11,34 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     int size(TreeNode<K, V> node);
 
-    Iterator<K> inOrderIterator();
+    int height();
 
-    Iterator<K> levelOrderIterator();
+    int depth();
 
-    Iterator<K> preOrderIterator();
+    int leaves();
 
-    Iterator<K> postOrderIterator();
+    // int maxWidth();
 
-    Iterator<K> inOrderIterator(Visitable visitor);
+    // int maxDepth();   N ary Tree
 
-    Iterator<K> levelOrderIterator(Visitable visitor);
+    // Flatten to linked list
 
-    Iterator<K> preOrderIterator(Visitable visitor);
+    // construct from in order + post order, pre order + in order, pre order + post order, level order
 
-    Iterator<K> postOrderIterator(Visitable visitor);
+    // symmetric tree 对称二叉树
+
+    TreeNode<K, V> reverse();
+
+    TreeNode<K, V> sibling(TreeNode<K, V> node);
+
+    int level(int level);
+
+    TreeNode<K, V> pred(TreeNode<K, V> node);
+
+    TreeNode<K, V> succ(TreeNode<K, V> node);
+
+    boolean isComplete();
+
+    Iterator<K> iterator(Class<?> itrClass, Visitable visitor);
 
 }

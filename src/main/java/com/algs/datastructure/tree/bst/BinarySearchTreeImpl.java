@@ -1,86 +1,106 @@
 package com.algs.datastructure.tree.bst;
 
 import com.algs.datastructure.Iiterable;
+import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
 /**
- * Recursive Implementation
+ * Non-Recursive Implementation
  */
 public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBinarySearchTree<K, V> {
 
     @Override
     public K min() {
-        return min((BstNode<K, V>) root).key;
-    }
-
-    private BstNode<K, V> min(BstNode<K, V> root) {
-        if (Objects.isNull(root.left)) {
-            return root;
-        }
-        return min(root.left);
+        return null;
     }
 
     @Override
     public K max() {
-        return max((BstNode<K, V>) root).key;
-    }
-
-    private BstNode<K, V> max(BstNode<K, V> root) {
-        if (Objects.isNull(root.right)) {
-            return root;
-        }
-        return max(root.right);
+        return null;
     }
 
     @Override
     public K floor(K key) {
-        BstNode<K, V> floor = floor((BstNode<K, V>) root, key);
-        return Objects.nonNull(floor) ? floor.key : null;
-    }
-
-    private BstNode<K, V> floor(BstNode<K, V> root, K key) {
-        if (Objects.isNull(root)) {
-            return null;
-        }
-        int cmp = compare(key, root.key);
-        if (cmp == 0) {
-            return root;
-        } else if (cmp < 0) {
-            return floor(root.left, key);
-        }
-        BstNode<K, V> tmp = floor(root.right, key);
-        if (Objects.nonNull(tmp)) {
-            return tmp;
-        } else {
-            return root;
-        }
+        return null;
     }
 
     @Override
     public K ceil(K key) {
-        BstNode<K, V> ceil = ceil((BstNode<K, V>) root, key);
-        return Objects.nonNull(ceil) ? ceil.key : null;
+        return null;
     }
 
-    private BstNode<K, V> ceil(BstNode<K, V> root, K key) {
-        if (Objects.isNull(root)) {
+    @Override
+    public int height() {
+        int height = 0;
+        IQueue<BstNode<K, V>> q = new LinkedQueueImpl<>();
+        q.enque(root);
+        int lvSz = 1;
+        while (!q.isEmpty()) {
+            BstNode<K, V> node = q.deque();
+            lvSz--;
+            if (Objects.nonNull(node.left)) {
+                q.enque(node.left);
+            }
+            if (Objects.nonNull(node.right)) {
+                q.enque(node.right);
+            }
+            if (lvSz == 0) {
+                lvSz = q.size();
+                height++;
+            }
+        }
+        return height;
+    }
+
+    @Override
+    public int depth() {
+        return 0;
+    }
+
+    @Override
+    public int leaves() {
+        return 0;
+    }
+
+    @Override
+    public BstNode<K, V> reverse() {
+        return reverse(root);
+    }
+
+    /**
+     * Using way of {@link com.algs.datastructure.tree.bst.itr.PreOrderIteratorImpl}
+     * be careful if use the way of {@link com.algs.datastructure.tree.bst.itr.InOrderIteratorImpl}
+     */
+    private BstNode<K, V> reverse(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
             return null;
         }
-        int cmp = compare(key, root.key);
-        if (cmp == 0) {
-            return root;
-        } else if (cmp > 0) {
-            return ceil(root.right, key);
-        }
-        BstNode<K, V> tmp = ceil(root.left, key);
-        if (Objects.nonNull(tmp)) {
-            return tmp;
-        } else {
-            return root;
-        }
+        BstNode<K, V> tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+        reverse(node.left);
+        reverse(node.right);
+        return node;
+    }
+
+    @Override
+    public int level(int level) {
+        return 0;
+    }
+
+    @Override
+    public TreeNode<K, V> pred(TreeNode<K, V> node) {
+        return null;
+    }
+
+    @Override
+    public TreeNode<K, V> succ(TreeNode<K, V> node) {
+        return null;
     }
 
     @Override
@@ -115,46 +135,51 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public V get(K key) {
-        BstNode<K, V> node = get((BstNode<K, V>) root, key);
-        return Objects.nonNull(node) ? node.value : null;
-    }
-
-    private BstNode<K, V> get(BstNode<K, V> root, K key) {
         ObjectUtil.requireNonNull(key);
-        if (Objects.isNull(root)) {
-            return null;
+        BstNode<K, V> node = root;
+        while (Objects.nonNull(node)) {
+            int cmp = compare(key, node.key);
+            if (cmp == 0) {
+                return node.value;
+            }
+            if (cmp > 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
         }
-        int cmp = compare(key, root.key);
-        if (cmp == 0) {
-            return root;
-        } else if (cmp < 0) {
-            return get(root.left, key);
-        } else {
-            return get(root.right, key);
-        }
+        return null;
     }
 
     @Override
     public void put(K key, V val) {
-        root = put((BstNode<K, V>) root, key, val);
-    }
-
-    private BstNode<K, V> put(BstNode<K, V> root, K key, V val) {
         ObjectUtil.requireNonNull(key, val);
         if (Objects.isNull(root)) {
-            return new BstNode<>(key, val, null, null, null, 1);
+            root = new BstNode<>(key, val, null, null, null, 1);
+            return;
         }
-        int cmp = compare(key, root.key);
-        if (cmp == 0) {
-            root.value = val;
-            return root; // ???
-        } else if (cmp < 0) {
-            root.left = put(root.left, key, val);
+        BstNode<K, V> node = root;
+        BstNode<K, V> parent = root;
+        int cmp = 0;
+        while (Objects.nonNull(node)) {
+            parent = node;
+            cmp = compare(key, node.key);
+            if (cmp == 0) {
+                node.value = val;
+                return;
+            }
+            if (cmp < 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        BstNode<K, V> newNode = new BstNode<>(key, val, null, null, null, 1);
+        if (cmp < 0) {
+            parent.left = newNode;
         } else {
-            root.right = put(root.right, key, val);
+            parent.right = newNode;
         }
-        root.size = size(root.left) + size(root.right) + 1;
-        return root;
     }
 
     @Override

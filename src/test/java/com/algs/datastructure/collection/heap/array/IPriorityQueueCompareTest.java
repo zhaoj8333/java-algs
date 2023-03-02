@@ -76,10 +76,12 @@ class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformance
             }
 
             @Override
-            protected void assertInput() { }
+            protected void assertInput() {
+            }
 
             @Override
-            protected void assertResult() { }
+            protected void assertResult() {
+            }
         };
         sw.exec(true);
         pq = null;

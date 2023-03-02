@@ -7,6 +7,7 @@ import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.utils.ObjectUtil;
+import com.algs.utils.StringUtil;
 
 import java.util.Objects;
 
@@ -66,7 +67,7 @@ public class ArithmeticExpressionEvaluator {
 
     public Double evaluate(String expression) {
         ObjectUtil.requireNonNull(expression);
-        if (expression.isBlank()) {
+        if (StringUtil.isBlank(expression)) {
             return 0D;
         }
         IStack<String> ops = new ArrayStackImpl<>();
@@ -128,7 +129,7 @@ public class ArithmeticExpressionEvaluator {
      */
     public String autoCompleteLeftBracesOfInfixExpression(String unCompleteExpression) {
         ObjectUtil.requireNonNull(unCompleteExpression);
-        if (unCompleteExpression.isBlank()) {
+        if (StringUtil.isBlank(unCompleteExpression)) {
             return "";
         }
         IStack<String> ops = new ArrayStackImpl<>();
