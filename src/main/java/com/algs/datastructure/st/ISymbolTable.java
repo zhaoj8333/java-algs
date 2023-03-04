@@ -12,7 +12,7 @@ import com.algs.datastructure.Iiterable;
  *  Convention:
  *      Only one value is associated with one key, key is unique
  *      When a new key-value {@link #put(Object, Object)} into table which already contains this key, new value will replace the old one
- *      Null keys: Key can't be null
+ *      Null keys: Key can't be null,
  *      Null values: Value can't be null, {@link #get(Object)} should be null for keys not in the table
  *
  *      Shorthand methods: {@link #contains(Object)}, {@link #size()}, {@link #isEmpty()}

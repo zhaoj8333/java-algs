@@ -7,10 +7,7 @@ import com.algs.utils.CompareUtil;
 
 import java.util.Comparator;
 
-public abstract class AbstractOrderedSymbolTable<K extends Comparable<K>, V>
-        extends AbstractSymbolTable<K, V>
-        implements IOrderedSymbolTable<K, V>
-{
+public abstract class AbstractOrderedSymbolTable<K extends Comparable<K>, V> extends AbstractSymbolTable<K, V> implements IOrderedSymbolTable<K, V> {
 
     private final Comparator<K> comparator;
 
@@ -34,4 +31,5 @@ public abstract class AbstractOrderedSymbolTable<K extends Comparable<K>, V>
         sb.append(" }");
         return sb.toString();
     }
+
 }

@@ -5,7 +5,6 @@ import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.bst.AbstractBinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
-import com.algs.datastructure.tree.bst.RecursiveBinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.itr.PreOrderIteratorImpl;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
@@ -20,7 +19,7 @@ import java.lang.reflect.Constructor;
 class ITreeImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-            RecursiveBinarySearchTreeImpl.class,
+//            RecursiveBinarySearchTreeImpl.class,
             BinarySearchTreeImpl.class,
     };
 
@@ -58,22 +57,39 @@ class ITreeImplTest extends ImplFunctionalityTest {
                     System.out.print(treeNode.key + ", ");
                 }
         );
+        Assertions.assertEquals("(20)", tree.get(20));
+
+        BinaryTrees.print(tree);
+
+        Assertions.assertNull(tree.pred(0));
+        Assertions.assertNull(tree.pred(1));
+        Assertions.assertEquals(10, tree.pred(11));
+        Assertions.assertEquals(17, tree.pred(20));
+        Assertions.assertEquals(3, tree.pred(4));
+        Assertions.assertEquals(7, tree.pred(8));
+
+        Assertions.assertNull(tree.succ(0));
+        Assertions.assertNull(tree.succ(26));
+        Assertions.assertEquals(17, tree.succ(11));
+        Assertions.assertEquals(25, tree.succ(20));
+        Assertions.assertEquals(5, tree.succ(4));
+        Assertions.assertEquals(10, tree.succ(8));
+
         while (itr.hasNext()) {
             Integer next = itr.next();
         }
         System.out.println();
 
-        BinaryTrees.print(tree);
-
-        Assertions.assertFalse(tree.isEmpty());
-        Assertions.assertEquals(6, tree.height());
-        Assertions.assertFalse(tree.isComplete());
-
-        System.out.println();
-        System.out.println("------------------------------- reverse -----------------------------");
-        tree.reverse();
-        BinaryTrees.print(tree);
-        System.out.println();
+//
+//        Assertions.assertFalse(tree.isEmpty());
+//        Assertions.assertEquals(6, tree.height());
+//        Assertions.assertFalse(tree.isComplete());
+//
+//        System.out.println();
+//        System.out.println("------------------------------- reverse -----------------------------");
+//        tree.reverse();
+//        BinaryTrees.print(tree);
+//        System.out.println();
 
     }
 

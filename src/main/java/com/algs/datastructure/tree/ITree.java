@@ -23,19 +23,16 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     // Flatten to linked list
 
-    // construct from in order + post order, pre order + in order, pre order + post order, level order
+    // construct from in order + post order, preorder + in order, preorder + post order, level order
 
-    // symmetric tree 对称二叉树
-
+    /**
+     * symmetric tree 对称二叉树
+     */
     TreeNode<K, V> reverse();
 
     TreeNode<K, V> sibling(TreeNode<K, V> node);
 
-    int level(int level);
-
-    TreeNode<K, V> pred(TreeNode<K, V> node);
-
-    TreeNode<K, V> succ(TreeNode<K, V> node);
+    // int level(int level);
 
     boolean isComplete();
 

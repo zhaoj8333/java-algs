@@ -32,5 +32,14 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
         return null;
     }
 
+    @Override
+    public K pred(K key) {
+        return null;
+    }
+
+    @Override
+    public K succ(K key) {
+        return null;
+    }
 }
 

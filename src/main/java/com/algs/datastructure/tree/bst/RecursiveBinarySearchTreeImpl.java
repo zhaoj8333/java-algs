@@ -1,8 +1,6 @@
 package com.algs.datastructure.tree.bst;
 
 import com.algs.datastructure.Iiterable;
-import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
@@ -114,39 +112,54 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
 
     @Override
     public TreeNode<K, V> reverse() {
-        if (Objects.isNull(root)) {
+        return reverse(root);
+    }
+
+    public K pred(K key) {
+        BstNode<K, V> node = get(root, key);
+        if (Objects.isNull(node)) {
             return null;
         }
-        IQueue<BstNode<K, V>> q = new LinkedQueueImpl<>();
-        q.enque(root);
-        while (!q.isEmpty()) {
-            BstNode<K, V> node = q.deque();
-            BstNode<K, V> tmp = node.left;
-            node.left = node.right;
-            node.right = tmp;
-            if (Objects.nonNull(node.left)) {
-                q.enque(node.left);
-            }
-            if (Objects.nonNull(node.right)) {
-                q.enque(node.right);
-            }
+        BstNode<K, V> pred = pred(node);
+        return Objects.nonNull(pred) ? pred.key : null;
+    }
+
+    protected BstNode<K, V> pred(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
         }
-        return root;
+        BstNode<K, V> left = node.left;
+        if (Objects.nonNull(left)) {
+            return max(left);
+        }
+        if (Objects.isNull(node.right)) {
+            return node;
+        }
+        return pred(root);
     }
 
-    @Override
-    public int level(int level) {
-        return 0;
-    }
-
-    @Override
-    public TreeNode<K, V> pred(TreeNode<K, V> node) {
+    public K succ(K key) {
         return null;
     }
 
-    @Override
-    public TreeNode<K, V> succ(TreeNode<K, V> node) {
+    public K succNode(K key, BstNode<K, V> root) {
         return null;
+    }
+
+    /**
+     * Using way of {@link com.algs.datastructure.tree.bst.itr.PreOrderIteratorImpl},
+     * be careful if you use the way of {@link com.algs.datastructure.tree.bst.itr.InOrderIteratorImpl}
+     */
+    private BstNode<K, V> reverse(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        BstNode<K, V> tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+        reverse(node.left);
+        reverse(node.right);
+        return node;
     }
 
     @Override

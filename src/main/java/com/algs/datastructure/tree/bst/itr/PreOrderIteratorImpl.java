@@ -27,5 +27,15 @@ public class PreOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterat
 
         return null;
     }
+
+    @Override
+    public K pred(K key) {
+        return null;
+    }
+
+    @Override
+    public K succ(K key) {
+        return null;
+    }
 }
 

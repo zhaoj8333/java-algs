@@ -49,5 +49,15 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
         pushNode(node);
         return node.key;
     }
+
+    @Override
+    public K pred(K key) {
+        return null;
+    }
+
+    @Override
+    public K succ(K key) {
+        return null;
+    }
 }
 

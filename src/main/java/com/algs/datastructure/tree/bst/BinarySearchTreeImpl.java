@@ -4,7 +4,6 @@ import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
@@ -16,12 +15,34 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public K min() {
-        return null;
+        BstNode<K, V> min = min(root);
+        return Objects.nonNull(min) ? min.key : null;
+    }
+
+    private BstNode<K, V> min(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        while (Objects.nonNull(node.left)) {
+            node = node.left;
+        }
+        return node;
     }
 
     @Override
     public K max() {
-        return null;
+        BstNode<K, V> max = max(root);
+        return Objects.nonNull(max) ? max.key : null;
+    }
+
+    private BstNode<K, V> max(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        while (Objects.nonNull(node.right)) {
+            node = node.right;
+        }
+        return node;
     }
 
     @Override
@@ -69,38 +90,24 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public BstNode<K, V> reverse() {
-        return reverse(root);
-    }
-
-    /**
-     * Using way of {@link com.algs.datastructure.tree.bst.itr.PreOrderIteratorImpl}
-     * be careful if use the way of {@link com.algs.datastructure.tree.bst.itr.InOrderIteratorImpl}
-     */
-    private BstNode<K, V> reverse(BstNode<K, V> node) {
-        if (Objects.isNull(node)) {
+        if (Objects.isNull(root)) {
             return null;
         }
-        BstNode<K, V> tmp = node.left;
-        node.left = node.right;
-        node.right = tmp;
-        reverse(node.left);
-        reverse(node.right);
-        return node;
-    }
-
-    @Override
-    public int level(int level) {
-        return 0;
-    }
-
-    @Override
-    public TreeNode<K, V> pred(TreeNode<K, V> node) {
-        return null;
-    }
-
-    @Override
-    public TreeNode<K, V> succ(TreeNode<K, V> node) {
-        return null;
+        IQueue<BstNode<K, V>> q = new LinkedQueueImpl<>();
+        q.enque(root);
+        while (!q.isEmpty()) {
+            BstNode<K, V> node = q.deque();
+            BstNode<K, V> tmp = node.left;
+            node.left = node.right;
+            node.right = tmp;
+            if (Objects.nonNull(node.left)) {
+                q.enque(node.left);
+            }
+            if (Objects.nonNull(node.right)) {
+                q.enque(node.right);
+            }
+        }
+        return root;
     }
 
     @Override
@@ -135,17 +142,22 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public V get(K key) {
+        BstNode<K, V> node = getNode(key);
+        return Objects.nonNull(node) ? node.value : null;
+    }
+
+    private BstNode<K, V> getNode(K key) {
         ObjectUtil.requireNonNull(key);
         BstNode<K, V> node = root;
         while (Objects.nonNull(node)) {
             int cmp = compare(key, node.key);
             if (cmp == 0) {
-                return node.value;
+                return node;
             }
             if (cmp > 0) {
-                node = node.left;
-            } else {
                 node = node.right;
+            } else {
+                node = node.left;
             }
         }
         return null;
@@ -174,7 +186,7 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
                 node = node.right;
             }
         }
-        BstNode<K, V> newNode = new BstNode<>(key, val, null, null, null, 1);
+        BstNode<K, V> newNode = new BstNode<>(key, val, parent, null, null, 1);
         if (cmp < 0) {
             parent.left = newNode;
         } else {

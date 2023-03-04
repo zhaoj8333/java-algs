@@ -499,4 +499,11 @@ public final class ArraysUtil {
         return count;
     }
 
+    public static int random(int[] array) {
+        return array[r.nextInt(array.length)];
+    }
+
+    public static Integer random(Integer[] array) {
+        return array[r.nextInt(array.length)];
+    }
 }

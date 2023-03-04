@@ -23,4 +23,14 @@ public abstract class TreeIterator<K extends Comparable<K>> implements Iterator<
         }
     }
 
+    /**
+     * predecessor
+     */
+    public abstract K pred(K key);
+
+    /**
+     * successor
+     */
+    public abstract K succ(K key);
+
 }
