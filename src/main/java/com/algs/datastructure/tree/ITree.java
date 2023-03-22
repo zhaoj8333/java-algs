@@ -17,13 +17,27 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     int leaves();
 
-    // int maxWidth();
+    /**
+     * Distance: go from node a to node b, how many nodes
+     * Max distance between two nodes
+     */
+     int maxDistance();
 
     // int maxDepth();   N ary Tree
 
     // Flatten to linked list
 
     // construct from in order + post order, preorder + in order, preorder + post order, level order
+
+    /**
+     * predecessor
+     */
+    K pred(K key);
+
+    /**
+     * successor
+     */
+    K succ(K key);
 
     /**
      * symmetric tree 对称二叉树
@@ -35,6 +49,8 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
     // int level(int level);
 
     boolean isComplete();
+
+    boolean isBalanced();
 
     Iterator<K> iterator(Class<?> itrClass, Visitable visitor);
 

@@ -5,12 +5,21 @@ import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
 
-import java.util.Objects;
-
+/**
+ * Recursive order:
+ *
+ * For Recursive iterators, each node will be accessed 3 times,
+ *
+ * When node is firstly accessed, then visited by {@link Visitable}, it's {@link PreOrderIteratorImpl}
+ * When node is secondly accessed, then visited by {@link Visitable}, it's {@link InOrderIteratorImpl}
+ * When node is thirdly accessed, then visited by {@link Visitable}, it's {@link PostOrderIteratorImpl}
+ *
+ * Any recursive functions can be implemented non-recursively
+ */
 // left, root, right
 public class InOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
 
-    protected BstNode<K, V> node;
+    protected BstNode<K, V> root;
 
     private final IStack<BstNode<K, V>> orderStack;
 
@@ -20,8 +29,9 @@ public class InOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterato
 
     public InOrderIteratorImpl(BstNode<K, V> root, Visitable visitor) {
         super(visitor);
-        this.node = root;
+        this.root = root;
         orderStack = new LinkedStackImpl<>();
+        orderStack.push(root);
     }
 
     @Override
@@ -31,60 +41,6 @@ public class InOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterato
 
     @Override
     public K next() {
-        return null;
-    }
-
-    @Override
-    public K pred(K key) {
-        BstNode<K, V> node = predNode(key);
-        return Objects.nonNull(node) ? node.key : null;
-    }
-
-    protected BstNode<K, V> predNode(K key) {
-//        ObjectUtil.requireNonNull(key);
-//        BstNode<K, V> node = getNode(key);
-//        if (Objects.isNull(node)) {
-//            return null;
-//        }
-//        BstNode<K, V> tmp = node.left;
-//        if (Objects.nonNull(tmp)) {
-//            while (Objects.nonNull(tmp.right)) {
-//                tmp = tmp.right;
-//            }
-//            return tmp;
-//        }
-//         parent
-//        while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.left)) {
-//            node = node.parent;
-//        }
-//        return Objects.nonNull(node.parent) ? node.parent : null;
-        return null;
-    }
-
-    @Override
-    public K succ(K key) {
-        BstNode<K, V> node = succNode(key);
-        return Objects.nonNull(node) ? node.key : null;
-    }
-
-    protected BstNode<K, V> succNode(K key) {
-//        ObjectUtil.requireNonNull(key);
-//        BstNode<K, V> node = getNode(key);
-//        if (Objects.isNull(node)) {
-//            return null;
-//        }
-//        BstNode<K, V> tmp = node.right;
-//        if (Objects.nonNull(tmp)) {
-//            while (Objects.nonNull(tmp.left)) {
-//                tmp = tmp.left;
-//            }
-//            return tmp;
-//        }
-//         parent
-//        while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.right)) {
-//            node = node.parent;
-//        }
-//        return Objects.nonNull(node.parent) ? node.parent : null;
         return null;
     }
 

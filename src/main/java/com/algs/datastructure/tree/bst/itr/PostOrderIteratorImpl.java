@@ -28,14 +28,5 @@ public class PostOrderIteratorImpl<K extends Comparable<K>, V> extends TreeItera
         return null;
     }
 
-    @Override
-    public K pred(K key) {
-        return null;
-    }
-
-    @Override
-    public K succ(K key) {
-        return null;
-    }
 }
 

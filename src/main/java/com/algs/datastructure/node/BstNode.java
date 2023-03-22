@@ -26,7 +26,7 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
         return Objects.isNull(this.left) && Objects.isNull(this.right);
     }
 
-    public boolean hasTowChildren() {
+    public boolean hasTwoChildren() {
         return Objects.nonNull(this.left) && Objects.nonNull(this.right);
     }
 
@@ -34,4 +34,24 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
         return Objects.nonNull(this.left) || Objects.nonNull(this.right);
     }
 
+    public boolean isLeft() {
+        if (Objects.isNull(this.parent)) {
+            return false;
+        }
+        return Objects.equals(this.parent.left, this);
+    }
+
+    public boolean isRight() {
+        if (Objects.isNull(this.parent)) {
+            return false;
+        }
+        return Objects.equals(this.parent.right, this);
+    }
+
+    @Override
+    public String toString() {
+        return "BstNode{" +
+                "key=" + key +
+                '}';
+    }
 }

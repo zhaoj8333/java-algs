@@ -23,10 +23,11 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
         if (Objects.isNull(node)) {
             return null;
         }
-        while (Objects.nonNull(node.left)) {
-            node = node.left;
+        BstNode<K, V> min = node;
+        while (Objects.nonNull(min.left)) {
+            min = min.left;
         }
-        return node;
+        return min;
     }
 
     @Override
@@ -39,14 +40,33 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
         if (Objects.isNull(node)) {
             return null;
         }
-        while (Objects.nonNull(node.right)) {
-            node = node.right;
+        BstNode<K, V> max = node;
+        while (Objects.nonNull(max.right)) {
+            max = max.right;
         }
-        return node;
+        return max;
     }
 
     @Override
     public K floor(K key) {
+        ObjectUtil.requireNonNull(key);
+        BstNode<K, V> parent = null;
+        BstNode<K, V> node = root;
+        while (Objects.nonNull(node)) {
+            int cmp = compare(key, node.key);
+            if (cmp == 0) {
+                return node.key;
+            }
+            parent = node;
+            if (cmp < 0) {
+                node = node.left;
+//                if (compare(key, )) {
+//                    return ;
+//                }
+            } else {
+                node = node.right;
+            }
+        }
         return null;
     }
 
@@ -79,12 +99,65 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
     }
 
     @Override
+    public K pred(K key) {
+        BstNode<K, V> node = pred(getNode(key));
+        return Objects.nonNull(node) ? node.key : null;
+    }
+
+    protected BstNode<K, V> pred(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        BstNode<K, V> tmp = node.left;
+        if (Objects.nonNull(tmp)) {
+            while (Objects.nonNull(tmp.right)) {
+                tmp = tmp.right;
+            }
+            return tmp;
+        }
+        // parent
+        while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.left)) {
+            node = node.parent;
+        }
+        return node.parent;
+    }
+
+    @Override
+    public K succ(K key) {
+        BstNode<K, V> node = succ(getNode(key));
+        return Objects.nonNull(node) ? node.key : null;
+    }
+
+    protected BstNode<K, V> succ(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        BstNode<K, V> tmp = node.right;
+        if (Objects.nonNull(tmp)) {
+            while (Objects.nonNull(tmp.left)) {
+                tmp = tmp.left;
+            }
+            return tmp;
+        }
+        // parent
+        while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.right)) {
+            node = node.parent;
+        }
+        return node.parent;
+    }
+
+    @Override
     public int depth() {
         return 0;
     }
 
     @Override
     public int leaves() {
+        return 0;
+    }
+
+    @Override
+    public int maxDistance() {
         return 0;
     }
 
@@ -111,6 +184,16 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
     }
 
     @Override
+    public boolean isComplete() {
+        return super.isComplete();
+    }
+
+    @Override
+    public boolean isBalanced() {
+        return false;
+    }
+
+    @Override
     public int rank(K key) {
         return 0;
     }
@@ -122,12 +205,28 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public void deleteMin() {
-
+        BstNode<K, V> min = min(root);
+        if (Objects.isNull(min)) {
+            return;
+        }
+        if (Objects.isNull(min.parent)) {
+            root = null;
+            return;
+        }
+        delete(min);
     }
 
     @Override
     public void deleteMax() {
-
+        BstNode<K, V> max = max(root);
+        if (Objects.isNull(max)) {
+            return;
+        }
+        if (Objects.isNull(max.parent)) {
+            root = null;
+            return;
+        }
+        delete(max);
     }
 
     @Override
@@ -185,6 +284,7 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
             } else {
                 node = node.right;
             }
+            parent.size++;
         }
         BstNode<K, V> newNode = new BstNode<>(key, val, parent, null, null, 1);
         if (cmp < 0) {
@@ -196,7 +296,47 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
 
     @Override
     public void delete(K key) {
+        delete(getNode(key));
+    }
 
+    public void delete(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return;
+        }
+        if (node.hasTwoChildren()) {
+            BstNode<K, V> rept;
+            if (node.left.size >= node.right.size) {
+                rept = max(node.left);
+            } else {
+                rept = min(node.right);
+            }
+            if (Objects.nonNull(rept)) {
+                node.key = rept.key;
+                node.value = rept.value;
+            }
+            node = rept;
+        }
+        if (Objects.isNull(node)) {
+            return;
+        }
+        if (Objects.isNull(node.parent)) {
+            root = null;
+            return;
+        }
+        BstNode<K, V> replt = Objects.nonNull(node.left) ? node.left : node.right;
+        if (Objects.nonNull(replt)) {
+            replt.parent = node.parent;
+        }
+        if (Objects.equals(node.parent.left, node)) {
+            node.parent.left = replt;
+        } else if (Objects.equals(node.parent.right, node)) {
+            node.parent.right = replt;
+        }
+        BstNode<K, V> tmp = node;
+        while (Objects.nonNull(tmp.parent)) {
+            tmp.parent.size--;
+            tmp = tmp.parent;
+        }
     }
 
     @Override

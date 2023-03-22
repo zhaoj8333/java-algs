@@ -4,15 +4,16 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
 // left, root, right
 public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
 
-    protected BstNode<K, V> node;
+    private BstNode<K, V> node;
 
-    private final IStack<BstNode<K, V>> orderStack;
+    private final IStack<BstNode<K, V>> stack;
 
     public InOrderStackIteratorImpl(BstNode<K, V> root) {
         this(root, null);
@@ -20,42 +21,31 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIt
 
     public InOrderStackIteratorImpl(BstNode<K, V> root, Visitable visitor) {
         super(visitor);
-        this.node = root;
-        orderStack = new LinkedStackImpl<>();
-        pushNode(node);
-    }
-
-    private void pushNode(BstNode<K, V> node) {
-        if (Objects.nonNull(node)) {
-            if (Objects.nonNull(node.left)) {
-                orderStack.push(node.left);
-            }
-            if (Objects.nonNull(node.right)) {
-                orderStack.push(node.right);
-            }
-        }
+        ObjectUtil.requireNonNull(root);
+        stack = new LinkedStackImpl<>();
+        node = root;
     }
 
     @Override
     public boolean hasNext() {
-        return !orderStack.isEmpty();
+        return Objects.nonNull(node) || !stack.isEmpty();
     }
 
+    /**
+     * 1. all the left nodes push to stack, from the perspective of left size of the tree,
+     * the pop order of nodes are always: left node first, then root node;
+     * 2. pop the node from stack, visit it, access the right subtree
+     */
     @Override
     public K next() {
-        BstNode<K, V> node = orderStack.pop();
-        visit(node);
-        pushNode(node);
-        return node.key;
+        while (Objects.nonNull(node)) {
+            stack.push(node);
+            node = node.left;
+        }
+        BstNode<K, V> pop = stack.pop();
+        visit(pop);
+        node = pop.right;
+        return pop.key;
     }
 
-    @Override
-    public K pred(K key) {
-        return null;
-    }
-
-    @Override
-    public K succ(K key) {
-        return null;
-    }
 }
