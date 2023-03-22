@@ -4,15 +4,17 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
 // left, right, root
 public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
 
-    protected BstNode<K, V> node;
+    private final IStack<BstNode<K, V>> stack;
 
-    private final IStack<BstNode<K, V>> orderStack;
+    // last visited node
+    private BstNode<K, V> root;
 
     public PostOrderStackIteratorImpl(BstNode<K, V> root) {
         this(root, null);
@@ -20,44 +22,31 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
 
     public PostOrderStackIteratorImpl(BstNode<K, V> root, Visitable visitor) {
         super(visitor);
-        this.node = root;
-        orderStack = new LinkedStackImpl<>();
-        pushNode(node);
-    }
-
-    private void pushNode(BstNode<K, V> node) {
-        if (Objects.nonNull(node)) {
-            if (Objects.nonNull(node.left)) {
-                orderStack.push(node.left);
-            }
-            if (Objects.nonNull(node.right)) {
-                orderStack.push(node.right);
-            }
-            orderStack.push(node);
-        }
+        ObjectUtil.requireNonNull(root);
+        stack = new LinkedStackImpl<>();
+        stack.push(root);
     }
 
     @Override
     public boolean hasNext() {
-        return !orderStack.isEmpty();
+        return Objects.nonNull(root) && !stack.isEmpty();
     }
 
     @Override
     public K next() {
-        BstNode<K, V> node = orderStack.pop();
-        visit(node);
-        pushNode(node);
-        return node.key;
+        while (true) {
+            BstNode<K, V> next = stack.top();
+            if (Objects.nonNull(next.left) && !Objects.equals(root, next.left) && !Objects.equals(root, next.right)) {
+                stack.push(next.left);
+            } else if (Objects.nonNull(next.right) && !Objects.equals(root, next.right)) {
+                stack.push(next.right);
+            } else {
+                visit(stack.pop());
+                root = next;
+                return next.key;
+            }
+        }
     }
 
-    @Override
-    public K pred(K key) {
-        return null;
-    }
-
-    @Override
-    public K succ(K key) {
-        return null;
-    }
 }
 

@@ -37,14 +37,14 @@ public final class ObjectUtil<E> {
     }
 
     public static <E> void requireNonEmpty(E[] array) {
-        requireNonNull(array);
+        requireNonNull((Object) array);
         if (array.length == 0) {
             throw new RuntimeException("Array should be non empty");
         }
     }
 
     public static <E> void requireNonNullElement(E[] array) {
-        requireNonNull(array);
+        requireNonNull((Object) array);
         requireNonEmpty(array);
         for (E e : array) {
             if (Objects.isNull(e)) {

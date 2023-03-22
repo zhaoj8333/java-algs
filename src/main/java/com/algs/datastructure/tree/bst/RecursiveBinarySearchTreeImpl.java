@@ -11,26 +11,28 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
 
     @Override
     public K min() {
-        return min(root).key;
+        BstNode<K, V> min = min(root);
+        return Objects.nonNull(min) ? min.key : null;
     }
 
-    private BstNode<K, V> min(BstNode<K, V> root) {
-        if (Objects.isNull(root.left)) {
-            return root;
+    private BstNode<K, V> min(BstNode<K, V> node) {
+        if (Objects.isNull(node) || Objects.isNull(node.left)) {
+            return node;
         }
-        return min(root.left);
+        return min(node.left);
     }
 
     @Override
     public K max() {
-        return max(root).key;
+        BstNode<K, V> max = max(root);
+        return Objects.nonNull(max) ? max.key : null;
     }
 
-    private BstNode<K, V> max(BstNode<K, V> root) {
-        if (Objects.isNull(root.right)) {
-            return root;
+    private BstNode<K, V> max(BstNode<K, V> node) {
+        if (Objects.isNull(node) || Objects.isNull(node.right)) {
+            return node;
         }
-        return max(root.right);
+        return max(node.right);
     }
 
     @Override
@@ -111,6 +113,15 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
     }
 
     @Override
+    public int maxDistance() {
+        return 0;
+    }
+
+    private int maxDistance(BstNode<K, V> a, BstNode<K, V> b) {
+        return 0;
+    }
+
+    @Override
     public TreeNode<K, V> reverse() {
         return reverse(root);
     }
@@ -165,6 +176,19 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
     @Override
     public boolean isComplete() {
         return false;
+    }
+
+    @Override
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return true;
+        }
+        return isBalanced(node.left) && isBalanced(node.right)
+                && Math.abs(height(node.left) - height(node.right)) <= 1;
     }
 
     @Override
