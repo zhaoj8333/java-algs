@@ -10,7 +10,7 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
 
     protected BstNode<K, V> node;
 
-    private final IQueue<BstNode<K, V>> orderQueue;
+    private final IQueue<BstNode<K, V>> queue;
 
     public LevelOrderIteratorImpl(BstNode<K, V> root) {
         this(root, null);
@@ -19,7 +19,7 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
     public LevelOrderIteratorImpl(BstNode<K, V> root, Visitable visitor) {
         super(visitor);
         this.node = root;
-        orderQueue = new LinkedQueueImpl0<>();
+        queue = new LinkedQueueImpl0<>();
     }
 
     @Override

@@ -193,117 +193,58 @@ class ITreeImplTest extends ImplFunctionalityTest {
         BinaryTrees.println(tree);
     }
 
+    private static void assertSequence(TreeIterator<Integer> itr, Integer[] array) {
+        int i = 0;
+        while (itr.hasNext()) {
+            Assertions.assertEquals(array[i++], itr.next());
+        }
+    }
+
     private static void testItr(AbstractBinarySearchTree<Integer, String> tree) {
         TreeIterator<Integer> itr = null;
 
         /**
-         * pre order
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
+         * {@link PreOrderStackIteratorImpl}
+         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26,
          */
         {
-            System.out.println(PreOrderIteratorImpl.class.getSimpleName());
+            Integer[] array = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
             itr = (TreeIterator<Integer>) tree.iterator(PreOrderStackIteratorImpl.class, null);
-            Integer next = itr.next();
-            Assertions.assertEquals(15, next);
-            next = itr.next();
-            Assertions.assertEquals(11, next);
-            next = itr.next();
-            Assertions.assertEquals(9, next);
-            next = itr.next();
-            Assertions.assertEquals(1, next);
-            next = itr.next();
-            Assertions.assertEquals(4, next);
-            next = itr.next();
-            Assertions.assertEquals(3, next);
-            next = itr.next();
-            Assertions.assertEquals(7, next);
-            next = itr.next();
-            Assertions.assertEquals(5, next);
-
-//            itr = (TreeIterator<Integer>) tree.iterator(PreOrderStackIteratorImpl.class, null);
-//            while (itr.hasNext()) {
-//                next = itr.next();
-//                System.out.print(next + ", ");
-//            }
-            System.out.println();
+            assertSequence(itr, array);
         }
 
         /**
-         * in order
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
+         * {@link InOrderStackIteratorImpl}
+         * 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30,
          */
         {
-            System.out.println(InOrderStackIteratorImpl.class.getSimpleName());
+            Integer[] array = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
             itr = (TreeIterator<Integer>) tree.iterator(InOrderStackIteratorImpl.class, null);
-            Integer next = itr.next();
-            Assertions.assertEquals(1, next);
-            next = itr.next();
-            Assertions.assertEquals(3, next);
-            next = itr.next();
-            Assertions.assertEquals(4, next);
-            next = itr.next();
-            Assertions.assertEquals(5, next);
-            next = itr.next();
-            Assertions.assertEquals(7, next);
-            next = itr.next();
-            Assertions.assertEquals(8, next);
-            next = itr.next();
-            Assertions.assertEquals(9, next);
-            next = itr.next();
-            Assertions.assertEquals(10, next);
-            next = itr.next();
-            Assertions.assertEquals(11, next);
-            next = itr.next();
-            Assertions.assertEquals(13, next);
-            next = itr.next();
-            Assertions.assertEquals(14, next);
-            next = itr.next();
-            Assertions.assertEquals(15, next);
-
-            itr = (TreeIterator<Integer>) tree.iterator(InOrderStackIteratorImpl.class, null);
-//            while (itr.hasNext()) {
-//                next = itr.next();
-//                System.out.print(next + ", ");
-//            }
-            System.out.println();
+            assertSequence(itr, array);
         }
 
         /**
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
-         * post order
+         * {@link PostOrderStackIteratorImpl}
          * 3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15
          */
         {
-            System.out.println(PostOrderStackIteratorImpl.class.getSimpleName());
             itr = (TreeIterator<Integer>) tree.iterator(PostOrderStackIteratorImpl.class, null);
-            Integer next = itr.next();
-            Assertions.assertEquals(3, next);
-            next = itr.next();
-            Assertions.assertEquals(5, next);
-            next = itr.next();
-            Assertions.assertEquals(8, next);
-            next = itr.next();
-            Assertions.assertEquals(7, next);
-            next = itr.next();
-            Assertions.assertEquals(4, next);
-            next = itr.next();
-            Assertions.assertEquals(1, next);
-            next = itr.next();
-            Assertions.assertEquals(10, next);
-            next = itr.next();
-            Assertions.assertEquals(9, next);
-            next = itr.next();
-            Assertions.assertEquals(14, next);
-            next = itr.next();
-            Assertions.assertEquals(13, next);
-            next = itr.next();
-            Assertions.assertEquals(11, next);
+            Integer[] array = new Integer[] {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
+            assertSequence(itr, array);
+        }
 
-//            while (itr.hasNext()) {
-//                next = itr.next();
-//                System.out.print(next + ", ");
-//            }
-            System.out.println();
+        /**
+         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
+         * {@link LevelOrderQueueIteratorImpl}
+         * 15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8,
+         */
+        {
+            itr = (TreeIterator<Integer>) tree.iterator(LevelOrderQueueIteratorImpl.class, null);
+            Integer[] array = new Integer[] {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
+            assertSequence(itr, array);
         }
     }
 

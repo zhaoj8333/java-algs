@@ -2,7 +2,7 @@ package com.algs.datastructure.tree.bst.itr;
 
 import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.link.LinkedQueueImpl0;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
 
 import java.util.Objects;
@@ -12,7 +12,7 @@ public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends Tre
 
     protected BstNode<K, V> node;
 
-    private final IQueue<BstNode<K, V>> orderQueue;
+    private final IQueue<BstNode<K, V>> queue;
 
     public LevelOrderQueueIteratorImpl(BstNode<K, V> root) {
         this(root, null);
@@ -21,25 +21,25 @@ public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends Tre
     public LevelOrderQueueIteratorImpl(BstNode<K, V> root, Visitable visitor) {
         super(visitor);
         this.node = root;
-        orderQueue = new LinkedQueueImpl0<>();
-        pushNode(node);
+        queue = new LinkedQueueImpl<>();
+        queue.enque(root);
     }
 
     private void pushNode(BstNode<K, V> node) {
         if (Objects.nonNull(node)) {
-            orderQueue.enque(node);
+            queue.enque(node);
         }
     }
 
     @Override
     public boolean hasNext() {
-        return !orderQueue.isEmpty();
+        return !queue.isEmpty();
     }
 
     @Override
     public K next() {
-        BstNode<K, V> node = orderQueue.deque();
-        visitor.visit(node);
+        BstNode<K, V> node = queue.deque();
+        visit(node);
         pushNode(node.left);
         pushNode(node.right);
         return node.key;
