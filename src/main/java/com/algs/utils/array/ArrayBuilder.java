@@ -1,6 +1,6 @@
 package com.algs.utils.array;
 
-import com.algs.application.datastructure.collection.nodes.Coord3D;
+import com.algs.issues.datastructure.collection.nodes.Coord3D;
 import com.algs.utils.RandomUtil;
 
 import java.util.Random;

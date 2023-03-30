@@ -1,7 +1,7 @@
 package com.algs.utils.array;
 
 import com.algs.DefaultValues;
-import com.algs.application.algo.sort.array.ArrayInversionCounter;
+import com.algs.issues.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.ObjectUtil;
@@ -506,4 +506,5 @@ public final class ArraysUtil {
     public static Integer random(Integer[] array) {
         return array[r.nextInt(array.length)];
     }
+
 }

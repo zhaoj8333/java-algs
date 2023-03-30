@@ -2,6 +2,7 @@ package com.algs.datastructure.tree.bst.itr;
 
 import com.algs.datastructure.Visitable;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 
 // left, right, root
 public class PostOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
@@ -24,9 +25,8 @@ public class PostOrderIteratorImpl<K extends Comparable<K>, V> extends TreeItera
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         return null;
     }
-
 }
 

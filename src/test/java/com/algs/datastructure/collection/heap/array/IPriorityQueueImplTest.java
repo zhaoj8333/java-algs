@@ -1,9 +1,9 @@
 package com.algs.datastructure.collection.heap.array;
 
 import com.algs.ImplFunctionalityTest;
-import com.algs.application.datastructure.collection.heap.CubeSum;
-import com.algs.application.datastructure.collection.heap.HeapCheck;
-import com.algs.application.datastructure.collection.nodes.Cube;
+import com.algs.issues.datastructure.collection.heap.CubeSum;
+import com.algs.issues.datastructure.collection.heap.HeapCheck;
+import com.algs.issues.datastructure.collection.nodes.Cube;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;

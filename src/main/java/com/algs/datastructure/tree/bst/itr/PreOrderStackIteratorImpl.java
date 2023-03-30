@@ -4,6 +4,7 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeI
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         BstNode<K, V> node = stack.pop();
         visit(node);
         if (Objects.nonNull(node.right)) {
@@ -39,6 +40,6 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeI
         if (Objects.nonNull(node.left)) {
             stack.push(node.left);
         }
-        return node.key;
+        return (TreeNode<K, Object>) node;
     }
 }

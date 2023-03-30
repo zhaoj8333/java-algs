@@ -4,6 +4,7 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl0;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 
 // by topdown level
 public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
@@ -28,9 +29,8 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         return null;
     }
-
 }
 

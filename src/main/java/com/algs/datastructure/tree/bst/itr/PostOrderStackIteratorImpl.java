@@ -4,6 +4,7 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
@@ -33,7 +34,7 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         while (true) {
             BstNode<K, V> next = stack.top();
             if (Objects.nonNull(next.left) && !Objects.equals(root, next.left) && !Objects.equals(root, next.right)) {
@@ -43,10 +44,9 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
             } else {
                 visit(stack.pop());
                 root = next;
-                return next.key;
+                return (TreeNode<K, Object>) next;
             }
         }
     }
-
 }
 

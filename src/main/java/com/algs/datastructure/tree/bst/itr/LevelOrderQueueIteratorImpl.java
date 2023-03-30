@@ -4,6 +4,7 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 
 import java.util.Objects;
 
@@ -37,13 +38,12 @@ public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends Tre
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         BstNode<K, V> node = queue.deque();
         visit(node);
         pushNode(node.left);
         pushNode(node.right);
-        return node.key;
+        return (TreeNode<K, Object>) node;
     }
-
 }
 

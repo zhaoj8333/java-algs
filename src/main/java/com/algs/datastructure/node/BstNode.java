@@ -50,8 +50,6 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
 
     @Override
     public String toString() {
-        return "BstNode{" +
-                "key=" + key +
-                '}';
+        return String.valueOf(key);
     }
 }

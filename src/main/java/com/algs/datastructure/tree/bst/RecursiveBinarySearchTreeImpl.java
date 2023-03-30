@@ -7,7 +7,7 @@ import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
-public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBinarySearchTree<K, V> {
+public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySearchTree<K, V> {
 
     @Override
     public K min() {
@@ -112,11 +112,6 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
         return 0;
     }
 
-    @Override
-    public int maxDistance() {
-        return 0;
-    }
-
     private int maxDistance(BstNode<K, V> a, BstNode<K, V> b) {
         return 0;
     }
@@ -171,11 +166,6 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends A
         reverse(node.left);
         reverse(node.right);
         return node;
-    }
-
-    @Override
-    public boolean isComplete() {
-        return false;
     }
 
     @Override

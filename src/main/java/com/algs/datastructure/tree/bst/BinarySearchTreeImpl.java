@@ -6,12 +6,21 @@ import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
 import com.algs.utils.ObjectUtil;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
  * Non-Recursive Implementation
  */
-public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBinarySearchTree<K, V> {
+public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySearchTree<K, V> {
+
+    public BinarySearchTreeImpl() {
+        this(null);
+    }
+
+    public BinarySearchTreeImpl(Comparator<K> comparator) {
+        super(comparator);
+    }
 
     @Override
     public K min() {
@@ -157,11 +166,6 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
     }
 
     @Override
-    public int maxDistance() {
-        return 0;
-    }
-
-    @Override
     public BstNode<K, V> reverse() {
         if (Objects.isNull(root)) {
             return null;
@@ -181,11 +185,6 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends AbstractBi
             }
         }
         return root;
-    }
-
-    @Override
-    public boolean isComplete() {
-        return super.isComplete();
     }
 
     @Override

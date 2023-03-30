@@ -4,6 +4,7 @@ import com.algs.datastructure.Visitable;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 
 /**
  * Recursive order:
@@ -40,8 +41,7 @@ public class InOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterato
     }
 
     @Override
-    public K next() {
+    public TreeNode<K, Object> nextNode() {
         return null;
     }
-
 }

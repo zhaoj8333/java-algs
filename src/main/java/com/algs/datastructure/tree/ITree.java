@@ -21,7 +21,7 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
      * Distance: go from node a to node b, how many nodes
      * Max distance between two nodes
      */
-     int maxDistance();
+     int maxWidth();
 
     // int maxDepth();   N ary Tree
 

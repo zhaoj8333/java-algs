@@ -3,7 +3,7 @@ package com.algs.datastructure.tree;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.tree.bst.AbstractBinarySearchTree;
+import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.itr.*;
 import com.algs.datastructure.tree.printer.BinaryTrees;
@@ -39,7 +39,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
     @Override
     protected void testEach(Object obj) {
-        AbstractBinarySearchTree<Integer, String> tree = (AbstractBinarySearchTree<Integer, String>) obj;
+        BinarySearchTree<Integer, String> tree = (BinarySearchTree<Integer, String>) obj;
         for (Integer em : testArray) {
             tree.put(em, "(" + em + ")");
         }
@@ -67,7 +67,11 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
 //        testFloorAndCeil(tree);
 
-        testItr(tree);
+//        testItr(tree);
+
+        testSerialize(tree);
+
+        testOther(tree);
 
 //        testDelete(tree);
 
@@ -83,12 +87,21 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
     }
 
-    private void testIsBalanced(AbstractBinarySearchTree<Integer, String> tree) {
+    private void testSerialize(BinarySearchTree<Integer, String> tree) {
+        String serializedTree = tree.serialize(InOrderStackIteratorImpl.class);
+        System.out.println(serializedTree);
+    }
+
+    private void testOther(BinarySearchTree<Integer, String> tree) {
+        Assertions.assertEquals(5, tree.maxWidth());
+    }
+
+    private void testIsBalanced(BinarySearchTree<Integer, String> tree) {
         boolean balanced = tree.isBalanced();
         Assertions.assertFalse(balanced);
     }
 
-    private void testMinMax(AbstractBinarySearchTree<Integer, String> tree) {
+    private void testMinMax(BinarySearchTree<Integer, String> tree) {
         if (tree.isEmpty()) {
             Assertions.assertNull(tree.max());
             Assertions.assertNull(tree.min());
@@ -98,7 +111,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
     }
 
-    private void testFloorAndCeil(AbstractBinarySearchTree<Integer, String> tree) {
+    private void testFloorAndCeil(BinarySearchTree<Integer, String> tree) {
         // floor
         {
             Assertions.assertEquals(15, tree.floor(15));
@@ -151,7 +164,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
      *       │   │
      *       5   8
      */
-    private void testDelete(AbstractBinarySearchTree<Integer, String> tree) {
+    private void testDelete(BinarySearchTree<Integer, String> tree) {
         Assertions.assertEquals(20, tree.size());
         tree.delete(5);
         Assertions.assertEquals(19, tree.size());
@@ -193,14 +206,14 @@ class ITreeImplTest extends ImplFunctionalityTest {
         BinaryTrees.println(tree);
     }
 
-    private static void assertSequence(TreeIterator<Integer> itr, Integer[] array) {
+    private void assertSequence(TreeIterator<Integer> itr, Integer[] array) {
         int i = 0;
         while (itr.hasNext()) {
             Assertions.assertEquals(array[i++], itr.next());
         }
     }
 
-    private static void testItr(AbstractBinarySearchTree<Integer, String> tree) {
+    private void testItr(BinarySearchTree<Integer, String> tree) {
         TreeIterator<Integer> itr = null;
 
         /**
