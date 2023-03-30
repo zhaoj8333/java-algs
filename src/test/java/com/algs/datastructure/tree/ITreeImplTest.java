@@ -1,11 +1,14 @@
 package com.algs.datastructure.tree;
 
+import com.algs.ISerializable;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.itr.*;
+import com.algs.datastructure.tree.bst.serialize.DFSSerializerImpl;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
@@ -88,8 +91,10 @@ class ITreeImplTest extends ImplFunctionalityTest {
     }
 
     private void testSerialize(BinarySearchTree<Integer, String> tree) {
-        String serializedTree = tree.serialize(InOrderStackIteratorImpl.class);
-        System.out.println(serializedTree);
+        TreeIterator<Integer> itr = tree.iterator();
+        TreeNode<Integer, Object> root = itr.nextNode();
+        ISerializable serializer = new DFSSerializerImpl<>(root, tree.iterator());
+        System.out.println(serializer.serialize());
     }
 
     private void testOther(BinarySearchTree<Integer, String> tree) {
