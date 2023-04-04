@@ -1,20 +1,23 @@
 package com.algs.datastructure.tree.bst.serialize;
 
 import com.algs.ISerializable;
+import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
+import com.algs.datastructure.tree.bst.itr.PreOrderStackIteratorImpl;
 import com.algs.datastructure.tree.bst.itr.TreeIterator;
 import com.algs.utils.ObjectUtil;
+import com.algs.datastructure.tree.ITree;
+
+import com.sun.source.tree.Tree;
+import java.util.Objects;
 
 public abstract class TreeSerializer<K extends Comparable<K>, V> implements ISerializable {
 
-    protected final TreeNode<K, V> root;
+    protected final ITree<K, V> tree;
 
-    protected final TreeIterator<K> itr;
-
-    public TreeSerializer(TreeNode<K, V> root, TreeIterator<K> itr) {
-        ObjectUtil.requireNonNull(root);
-        this.root = root;
-        this.itr  = itr;
+    public TreeSerializer(ITree<K, V> tree) {
+        ObjectUtil.requireNonNull(tree);
+        this.tree = tree;
     }
 
 }

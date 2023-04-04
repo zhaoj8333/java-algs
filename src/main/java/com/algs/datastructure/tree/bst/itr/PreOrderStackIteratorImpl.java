@@ -1,6 +1,6 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
@@ -10,7 +10,7 @@ import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 // root, left, right
-public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
+public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
 
     private final IStack<BstNode<K, V>> stack;
 
@@ -18,7 +18,7 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeI
         this(root, null);
     }
 
-    public PreOrderStackIteratorImpl(BstNode<K, V> root, Visitable visitor) {
+    public PreOrderStackIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
         super(visitor);
         ObjectUtil.requireNonNull(root);
         stack = new LinkedStackImpl<>();
@@ -31,7 +31,7 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeI
     }
 
     @Override
-    public TreeNode<K, Object> nextNode() {
+    public TreeNode<K, V> nextNode() {
         BstNode<K, V> node = stack.pop();
         visit(node);
         if (Objects.nonNull(node.right)) {
@@ -40,6 +40,6 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeI
         if (Objects.nonNull(node.left)) {
             stack.push(node.left);
         }
-        return (TreeNode<K, Object>) node;
+        return (TreeNode<K, V>) node;
     }
 }

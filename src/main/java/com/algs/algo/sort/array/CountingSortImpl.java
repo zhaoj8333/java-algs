@@ -3,7 +3,6 @@ package com.algs.algo.sort.array;
 import java.util.Comparator;
 
 /**
- * // TODO: 12/16/22  
  * Complexity:
  *  Generally, it's O(n), but deeply rely on the input array
  *
@@ -25,10 +24,6 @@ public class CountingSortImpl extends ArraySort<Integer> {
     public void sort() {
         sort0();
         // sort1();
-    }
-
-    private void sort1() {
-
     }
 
     public void sort0() {

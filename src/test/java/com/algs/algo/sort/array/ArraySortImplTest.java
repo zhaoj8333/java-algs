@@ -13,7 +13,8 @@ import java.util.Comparator;
 class ArraySortImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-//        CountingSortImpl.class
+//        CountingSortImpl.class,
+        RadixSortImpl.class,
     };
 
     private Integer[] testIntArray;
@@ -52,7 +53,7 @@ class ArraySortImplTest extends ImplFunctionalityTest {
 //        Assertions.assertNotNull(list);
 //        testArray = ArraysUtil.toIntegers(list.toArray());
 //        testArray = ArrayBuilder.randomIntArrayBetween(10, -20, 20);
-        testIntArray = ArrayBuilder.randomIntArrayBetween(10, -100, 100);
+        testIntArray = ArrayBuilder.randomIntArrayBetween(10, 0, 1100);
 
         test(targetClasses);
     }

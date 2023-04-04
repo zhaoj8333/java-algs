@@ -3,14 +3,17 @@ package com.algs.datastructure.tree;
 import com.algs.ISerializable;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iterator;
+import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.itr.*;
-import com.algs.datastructure.tree.bst.serialize.DFSSerializerImpl;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
+import com.algs.datastructure.tree.bst.serialize.RecursivePreOrderSerializerImpl;
+import com.algs.datastructure.tree.bst.serialize.RecursiveInOrderSerializerImpl;
+import com.algs.datastructure.tree.bst.serialize.RecursivePostOrderSerializerImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +29,9 @@ class ITreeImplTest extends ImplFunctionalityTest {
             BinarySearchTreeImpl.class,
     };
 
-    private final Integer[] testArray = { 15, 11, 9, 13, 22, 14, 30, 1, 4, 10, 17, 7, 4, 5, 25, 20, 8, 3, 3, 26 };
+    private final Integer[][] testArrays = {
+            { 15, 11, 9, 13, 22, 14, 30, 1, 4, 10, 17, 7, 4, 5, 25, 20, 8, 3, 3, 26 },
+    };
 
     @Override
     protected Object construct(Class<?> targetClass) {
@@ -43,7 +48,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
     @Override
     protected void testEach(Object obj) {
         BinarySearchTree<Integer, String> tree = (BinarySearchTree<Integer, String>) obj;
-        for (Integer em : testArray) {
+        for (Integer em : testArrays[0]) {
             tree.put(em, "(" + em + ")");
         }
         Iterator<Integer> itr = tree.iterator(
@@ -70,11 +75,11 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
 //        testFloorAndCeil(tree);
 
-//        testItr(tree);
+        testItr(tree);
 
-        testSerialize(tree);
+//        testSerialize(tree);
 
-        testOther(tree);
+//        testOther(tree);
 
 //        testDelete(tree);
 
@@ -91,10 +96,24 @@ class ITreeImplTest extends ImplFunctionalityTest {
     }
 
     private void testSerialize(BinarySearchTree<Integer, String> tree) {
-        TreeIterator<Integer> itr = tree.iterator();
-        TreeNode<Integer, Object> root = itr.nextNode();
-        ISerializable serializer = new DFSSerializerImpl<>(root, tree.iterator());
-        System.out.println(serializer.serialize());
+        ISerializable serializer = new RecursivePreOrderSerializerImpl<>(tree);
+        String rep = serializer.serialize();
+        System.out.println("PreOrder : " + rep);
+
+        serializer = new RecursiveInOrderSerializerImpl<>(tree);
+        rep = serializer.serialize();
+        System.out.println("InOrder  : " + rep);
+
+        serializer = new RecursivePostOrderSerializerImpl<>(tree);
+        rep = serializer.serialize();
+        System.out.println("PostOrder: " + rep);
+
+//        serializer = new PreOrderSerializerImpl<>(tree);
+//        String ep = serializer.serialize();
+//        Assertions.assertEquals(rep, ep);
+
+
+
     }
 
     private void testOther(BinarySearchTree<Integer, String> tree) {
@@ -211,47 +230,50 @@ class ITreeImplTest extends ImplFunctionalityTest {
         BinaryTrees.println(tree);
     }
 
-    private void assertSequence(TreeIterator<Integer> itr, Integer[] array) {
-        int i = 0;
+    private void iterateAndAssert(BinarySearchTree<Integer, String> tree, Class<?> itrClass, Integer[] expectedSeq) {
+        IQueue<Integer> seq = new LinkedQueueImpl<>();
+        TreeIterator<Integer, String> itr = (TreeIterator<Integer, String>) tree.iterator(itrClass, null);
         while (itr.hasNext()) {
-            Assertions.assertEquals(array[i++], itr.next());
+            seq.enque(itr.next());
         }
+        Assertions.assertTrue(ArraysUtil.equals(expectedSeq, seq));
     }
 
     private void testItr(BinarySearchTree<Integer, String> tree) {
-        TreeIterator<Integer> itr = null;
 
         /**
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
          * {@link PreOrderStackIteratorImpl}
+         * {@link PreOrderIteratorImpl}
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26,
          */
         {
             Integer[] array = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
-            itr = (TreeIterator<Integer>) tree.iterator(PreOrderStackIteratorImpl.class, null);
-            assertSequence(itr, array);
+            iterateAndAssert(tree, PreOrderStackIteratorImpl.class, array);
+//            iterateAndAssert(tree, PreOrderIteratorImpl.class, array);
+
         }
 
         /**
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
          * {@link InOrderStackIteratorImpl}
+         * {@link InOrderIteratorImpl}
          * 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30,
          */
         {
             Integer[] array = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
-            itr = (TreeIterator<Integer>) tree.iterator(InOrderStackIteratorImpl.class, null);
-            assertSequence(itr, array);
+            iterateAndAssert(tree, InOrderStackIteratorImpl.class, array);
         }
 
         /**
          * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
          * {@link PostOrderStackIteratorImpl}
+         * {@link PostOrderIteratorImpl}
          * 3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15
          */
         {
-            itr = (TreeIterator<Integer>) tree.iterator(PostOrderStackIteratorImpl.class, null);
             Integer[] array = new Integer[] {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
-            assertSequence(itr, array);
+            iterateAndAssert(tree, PostOrderStackIteratorImpl.class, array);
         }
 
         /**
@@ -260,16 +282,15 @@ class ITreeImplTest extends ImplFunctionalityTest {
          * 15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8,
          */
         {
-            itr = (TreeIterator<Integer>) tree.iterator(LevelOrderQueueIteratorImpl.class, null);
             Integer[] array = new Integer[] {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
-            assertSequence(itr, array);
+            iterateAndAssert(tree, LevelOrderQueueIteratorImpl.class, array);
         }
     }
 
     @Test
     @Override
     public void test() {
-        System.out.println("Testing array: " + ArraysUtil.toString(testArray));
+        System.out.println("Testing array: " + ArraysUtil.toString(testArrays[0]));
         System.out.println();
         test(targetClasses);
     }

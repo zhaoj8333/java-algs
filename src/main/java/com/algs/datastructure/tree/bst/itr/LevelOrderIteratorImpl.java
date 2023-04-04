@@ -1,13 +1,13 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl0;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
 
 // by topdown level
-public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
+public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
 
     protected BstNode<K, V> node;
 
@@ -17,7 +17,7 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
         this(root, null);
     }
 
-    public LevelOrderIteratorImpl(BstNode<K, V> root, Visitable visitor) {
+    public LevelOrderIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
         super(visitor);
         this.node = root;
         queue = new LinkedQueueImpl0<>();
@@ -29,7 +29,7 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIter
     }
 
     @Override
-    public TreeNode<K, Object> nextNode() {
+    public TreeNode<K, V> nextNode() {
         return null;
     }
 }

@@ -1,6 +1,6 @@
 package com.algs.datastructure.tree.bst;
 
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
@@ -165,6 +165,11 @@ public abstract class BinarySearchTree<K extends Comparable<K>, V> implements IT
     }
 
     @Override
+    public BstNode<K, V> getRoot() {
+        return root;
+    }
+
+    @Override
     public String toString() {
         return TreeUtil.toString(this);
     }
@@ -191,20 +196,20 @@ public abstract class BinarySearchTree<K extends Comparable<K>, V> implements IT
     }
 
     @Override
-    public TreeIterator<K> iterator() {
+    public TreeIterator<K, V> iterator() {
         return iterator(InOrderStackIteratorImpl.class, null);
     }
 
     @Override
-    public TreeIterator<K> iterator(Class<?> itrClass, Visitable visitor) {
+    public TreeIterator<K, V> iterator(Class<?> itrClass, IVisitor visitor) {
         Object instance = null;
         try {
-            Constructor<?> constructor = itrClass.getConstructor(BstNode.class, Visitable.class);
+            Constructor<?> constructor = itrClass.getConstructor(BstNode.class, IVisitor.class);
             instance = constructor.newInstance(root, visitor);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        return (TreeIterator<K>) instance;
+        return (TreeIterator<K, V>) instance;
     }
 
 }

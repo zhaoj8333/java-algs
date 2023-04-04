@@ -2,7 +2,7 @@ package com.algs.datastructure.tree;
 
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.Iterator;
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
 import com.algs.datastructure.tree.printer.BinaryTreeInfo;
@@ -44,6 +44,8 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
      */
     TreeNode<K, V> reverse();
 
+    TreeNode<K, V> getRoot();
+
     TreeNode<K, V> sibling(TreeNode<K, V> node);
 
     // int level(int level);
@@ -52,6 +54,6 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     boolean isBalanced();
 
-    Iterator<K> iterator(Class<?> itrClass, Visitable visitor);
+    Iterator<K> iterator(Class<?> itrClass, IVisitor visitor);
 
 }

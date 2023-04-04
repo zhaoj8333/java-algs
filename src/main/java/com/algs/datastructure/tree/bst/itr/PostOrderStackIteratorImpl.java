@@ -1,6 +1,6 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
@@ -10,7 +10,7 @@ import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 // left, right, root
-public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
+public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
 
     private final IStack<BstNode<K, V>> stack;
 
@@ -21,10 +21,11 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
         this(root, null);
     }
 
-    public PostOrderStackIteratorImpl(BstNode<K, V> root, Visitable visitor) {
+    public PostOrderStackIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
         super(visitor);
         ObjectUtil.requireNonNull(root);
         stack = new LinkedStackImpl<>();
+        this.root = root;
         stack.push(root);
     }
 
@@ -34,7 +35,7 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
     }
 
     @Override
-    public TreeNode<K, Object> nextNode() {
+    public TreeNode<K, V> nextNode() {
         while (true) {
             BstNode<K, V> next = stack.top();
             if (Objects.nonNull(next.left) && !Objects.equals(root, next.left) && !Objects.equals(root, next.right)) {
@@ -44,7 +45,7 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
             } else {
                 visit(stack.pop());
                 root = next;
-                return (TreeNode<K, Object>) next;
+                return (TreeNode<K, V>) next;
             }
         }
     }

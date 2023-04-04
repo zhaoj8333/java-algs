@@ -1,6 +1,7 @@
 package com.algs.utils.array;
 
 import com.algs.DefaultValues;
+import com.algs.datastructure.Iterator;
 import com.algs.issues.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.CompareUtil;
@@ -94,6 +95,20 @@ public final class ArraysUtil {
         int len = a.length;
         for (int i = 0; i < len; i++) {
             if (!Objects.equals(a[i], b[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static <E> boolean equals(E[] a, ICollection<E> b) {
+        if (!Objects.equals(a.length, b.size())) {
+            return false;
+        }
+        Iterator<E> itr = b.iterator();
+        int len = a.length;
+        for (int i = 0; i < len; i++) {
+            if (itr.hasNext() && !Objects.equals(a[i], itr.next())) {
                 return false;
             }
         }

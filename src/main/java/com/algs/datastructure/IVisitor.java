@@ -1,6 +1,6 @@
 package com.algs.datastructure;
 
-public interface Visitable {
+public interface IVisitor {
 
     void visit(Object obj);
 

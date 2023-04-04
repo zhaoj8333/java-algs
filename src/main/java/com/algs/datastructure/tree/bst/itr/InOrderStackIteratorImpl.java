@@ -1,6 +1,6 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.Visitable;
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.datastructure.node.BstNode;
@@ -10,7 +10,7 @@ import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 // left, root, right
-public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K> {
+public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
 
     private BstNode<K, V> node;
 
@@ -20,7 +20,7 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIt
         this(root, null);
     }
 
-    public InOrderStackIteratorImpl(BstNode<K, V> root, Visitable visitor) {
+    public InOrderStackIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
         super(visitor);
         ObjectUtil.requireNonNull(root);
         stack = new LinkedStackImpl<>();
@@ -38,7 +38,7 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIt
      * 2. pop the node from stack, visit it, access the right subtree
      */
     @Override
-    public TreeNode<K, Object> nextNode() {
+    public TreeNode<K, V> nextNode() {
         while (Objects.nonNull(node)) {
             stack.push(node);
             node = node.left;
@@ -46,6 +46,6 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIt
         BstNode<K, V> pop = stack.pop();
         visit(pop);
         node = pop.right;
-        return (TreeNode<K, Object>) pop;
+        return (TreeNode<K, V>) pop;
     }
 }
