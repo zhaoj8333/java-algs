@@ -1,6 +1,8 @@
 package com.algs.datastructure.tree.bst.serialize;
 
+import com.algs.DefaultValues;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
 import java.util.Objects;
 
@@ -12,22 +14,21 @@ public class RecursivePostOrderSerializerImpl<K extends Comparable<K>, V> extend
 
     @Override
     public String serialize() {
-        BstNode<K, V> root = (BstNode<K, V>) tree.getRoot();
         StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        serialize(root, sb);
-        sb.append("]");
+        sb.append(DefaultValues.SQUARE_BRACKET_BEGIN);
+        serialize((BstNode<K, V>) root, sb);
+        sb.append(DefaultValues.SQUARE_BRACKET_END);
         return sb.toString();
     }
 
     private void serialize(BstNode<K, V> node, StringBuilder sb) {
         if (Objects.isNull(node)) {
-            sb.append("#").append(",");
+            sb.append(DefaultValues.NULLVAL).append(DefaultValues.DELIMITER);
             return;
         }
         serialize(node.left, sb);
         serialize(node.right, sb);
-        sb.append(node.key).append(",");
+        sb.append(node.key).append(DefaultValues.DELIMITER);
     }
 
     @Override

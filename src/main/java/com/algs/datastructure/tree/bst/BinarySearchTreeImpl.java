@@ -4,6 +4,7 @@ import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.tree.bst.serialize.ValHandler;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Comparator;
@@ -283,13 +284,17 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySear
             } else {
                 node = node.right;
             }
-            parent.size++;
         }
         BstNode<K, V> newNode = new BstNode<>(key, val, parent, null, null, 1);
         if (cmp < 0) {
             parent.left = newNode;
         } else {
             parent.right = newNode;
+        }
+        BstNode<K, V> tmp = newNode;
+        while (Objects.nonNull(tmp.parent)) {
+            tmp.parent.size();
+            tmp = tmp.parent;
         }
     }
 

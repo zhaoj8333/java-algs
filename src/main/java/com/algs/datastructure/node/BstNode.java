@@ -17,6 +17,17 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
         this.size = size;
     }
 
+    public void size() {
+        int sz = 1;
+        if (Objects.nonNull(left)) {
+            sz += left.size;
+        }
+        if (Objects.nonNull(right)) {
+            sz += right.size;
+        }
+        size = sz;
+    }
+
     @Override
     public K getValue() {
         return key;
@@ -51,5 +62,42 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
     @Override
     public String toString() {
         return String.valueOf(key);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BstNode<?, ?> that = (BstNode<?, ?>) o;
+        if (size != that.size) {
+            return false;
+        }
+        return Objects.equals(parent, that.parent) && Objects.equals(left, that.left) && Objects.equals(right, that.right);
+    }
+
+    public boolean equalsWithoutParent(BstNode<K, V> that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null || getClass() != that.getClass()) {
+            return false;
+        }
+        if (size != that.size) {
+            return false;
+        }
+        return equalsTo(left, that.left) && equalsTo(right, that.right);
+    }
+
+    public boolean equalsTo(BstNode<K, V> a, BstNode<K, V> b) {
+        return (a == b) || (a != null && a.equalsWithoutParent(b));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parent, left, right);
     }
 }

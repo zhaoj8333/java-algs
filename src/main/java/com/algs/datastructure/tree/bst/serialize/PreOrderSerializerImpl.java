@@ -15,14 +15,13 @@ public class PreOrderSerializerImpl<K extends Comparable<K>, V> extends TreeSeri
 
     @Override
     public String serialize() {
-        if (tree.isEmpty()) {
+        if (Objects.isNull(root)) {
             return "[#,]";
         }
         StringBuilder sb = new StringBuilder();
         sb.append('[');
-        BstNode<K, V> root = (BstNode<K, V>) tree.getRoot();
         IStack<BstNode<K, V>> stack = new LinkedStackImpl<>();
-        stack.push(root);
+        stack.push((BstNode<K, V>) root);
         while (!stack.isEmpty()) {
             BstNode<K, V> node = stack.pop();
             sb.append(node).append(",");

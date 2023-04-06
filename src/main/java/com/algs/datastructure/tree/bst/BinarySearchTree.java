@@ -8,6 +8,7 @@ import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.tree.bst.itr.InOrderStackIteratorImpl;
 import com.algs.datastructure.tree.bst.itr.TreeIterator;
+import com.algs.datastructure.tree.bst.serialize.ValHandler;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.TreeUtil;
 
@@ -167,6 +168,13 @@ public abstract class BinarySearchTree<K extends Comparable<K>, V> implements IT
     @Override
     public BstNode<K, V> getRoot() {
         return root;
+    }
+
+    @Override
+    public void setRoot(TreeNode<K, V> root) {
+        if (root instanceof BstNode) {
+            this.root = (BstNode<K, V>) root;
+        }
     }
 
     @Override

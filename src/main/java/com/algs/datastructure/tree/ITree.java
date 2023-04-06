@@ -46,6 +46,8 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     TreeNode<K, V> getRoot();
 
+    void setRoot(TreeNode<K, V> root);
+
     TreeNode<K, V> sibling(TreeNode<K, V> node);
 
     // int level(int level);

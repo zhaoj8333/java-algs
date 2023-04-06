@@ -13,11 +13,29 @@ import java.util.Objects;
 
 public abstract class TreeSerializer<K extends Comparable<K>, V> implements ISerializable {
 
-    protected final ITree<K, V> tree;
+    protected final TreeNode<K, V> root;
+
+    private final ValHandler keyHandler;
+
+    private final ValHandler valHandler;
 
     public TreeSerializer(ITree<K, V> tree) {
+        this(tree, null, null);
+    }
+
+    public TreeSerializer(ITree<K, V> tree, ValHandler keyHandler, ValHandler valHandler) {
         ObjectUtil.requireNonNull(tree);
-        this.tree = tree;
+        this.root = tree.getRoot();
+        this.keyHandler = keyHandler;
+        this.valHandler = valHandler;
+    }
+
+    protected Object handleKey(Object key) {
+        return Objects.nonNull(key) ? keyHandler.handle(key) : key;
+    }
+
+    protected Object handleVal(Object val) {
+        return Objects.nonNull(val) ? valHandler.handle(val) : val;
     }
 
 }

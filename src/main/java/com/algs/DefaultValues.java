@@ -10,4 +10,10 @@ public class DefaultValues {
 
     public static final int ANIMATION_PAUSE_MILLISECONDS = 1000;
 
+    public static final Character SQUARE_BRACKET_BEGIN = '[';
+    public static final Character SQUARE_BRACKET_END = ']';
+
+    public static final Character DELIMITER = ',';
+    public static final Character NULLVAL = '#';
+
 }
