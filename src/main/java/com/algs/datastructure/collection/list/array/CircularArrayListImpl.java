@@ -6,9 +6,9 @@ import com.algs.datastructure.collection.list.IList;
 import java.util.Collection;
 
 /**
- *
+ * // TODO: 4/18/2023  
  */
-public class CircularArrayListImpl<E> implements IList<E>, RandomAccessList<E> {
+public class CircularArrayListImpl<E> implements IList<E>, RandomAccessable<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
 

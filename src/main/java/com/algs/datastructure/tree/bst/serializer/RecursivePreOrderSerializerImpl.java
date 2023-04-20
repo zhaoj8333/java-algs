@@ -1,18 +1,14 @@
-package com.algs.datastructure.tree.bst.serialize;
+package com.algs.datastructure.tree.bst.serializer;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
-import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.RecursiveBinarySearchTreeImpl;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
-public class RecursivePreOrderSerializerImpl<K extends Comparable<K>, V> extends TreeSerializer<K, V> {
+public class RecursivePreOrderSerializerImpl<K extends Comparable<K>, V> extends BstSerializer<K, V> {
 
     public RecursivePreOrderSerializerImpl(ITree<K, V> tree) {
         this(tree, null, null);
@@ -25,30 +21,25 @@ public class RecursivePreOrderSerializerImpl<K extends Comparable<K>, V> extends
     @Override
     public String serialize() {
         StringBuilder sb = new StringBuilder();
-        sb.append(DefaultValues.SQUARE_BRACKET_BEGIN);
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         serialize((BstNode<K, V>) root, sb);
-        sb.append(DefaultValues.SQUARE_BRACKET_END);
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
         return sb.toString();
     }
 
     private void serialize(BstNode<K, V> node, StringBuilder sb) {
         if (Objects.isNull(node)) {
-            sb.append(DefaultValues.NULLVAL).append(DefaultValues.DELIMITER);
+            appendNode(node, sb);
             return;
         }
-        sb.append(node.key).append(DefaultValues.DELIMITER);
+        appendNode(node, sb);
         serialize(node.left, sb);
         serialize(node.right, sb);
     }
 
     @Override
     public ITree<K, V> deserialize(String data) {
-        LinkedQueueImpl<String> queue = new LinkedQueueImpl<>();
-        String sequence = data.substring(1, data.length() - 1);
-        String[] elements = sequence.split(String.valueOf(DefaultValues.DELIMITER));
-        for (String element : elements) {
-            queue.enque(element);
-        }
+        IQueue<String> queue = prepare(data);
         BstNode<K, V> root = deserialize(queue, null);
         BinarySearchTree<K, V> tree = new RecursiveBinarySearchTreeImpl<>();
         tree.setRoot(root);
@@ -59,16 +50,14 @@ public class RecursivePreOrderSerializerImpl<K extends Comparable<K>, V> extends
         if (queue.isEmpty()) {
             return null;
         }
-        String ele = queue.deque();
-        if (Objects.equals(ele, String.valueOf(DefaultValues.NULLVAL))) {
+        String elem = queue.deque();
+        if (Objects.equals(elem, String.valueOf(DefaultValues.NULLVAL))) {
             return null;
         }
-        K key = (K) handleKey(ele);
-        V val = (V) handleVal(ele);
-        BstNode<K, V> node = new BstNode<>(key, val, parent, null, null, 1);
+        BstNode<K, V> node = buildNode(elem, parent);
         node.left  = deserialize(queue, node);
         node.right = deserialize(queue, node);
-        node.size();
+        node.updateSize();
         return node;
     }
 

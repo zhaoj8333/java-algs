@@ -2,7 +2,7 @@ package com.algs.datastructure.tree.bst;
 
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
+import com.algs.datastructure.node.BstNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
@@ -117,7 +117,7 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends B
     }
 
     @Override
-    public TreeNode<K, V> reverse() {
+    public BstNode<K, V> reverse() {
         return reverse(root);
     }
 
@@ -264,4 +264,5 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends B
     public Iiterable<K> keys() {
         return null;
     }
+
 }

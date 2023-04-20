@@ -10,10 +10,14 @@ public class DefaultValues {
 
     public static final int ANIMATION_PAUSE_MILLISECONDS = 1000;
 
-    public static final Character SQUARE_BRACKET_BEGIN = '[';
-    public static final Character SQUARE_BRACKET_END = ']';
+    public static final Character LEFT_SQUARE_BRACKET  = '[';
+    public static final Character RIGHT_SQUARE_BRACKET = ']';
 
+    public static final Character LEFT_BRACE_BRACKET  = '{';
+    public static final Character RIGHT_BRACE_BRACKET = '}';
+
+    public static final Character SPACE = ' ';
     public static final Character DELIMITER = ',';
-    public static final Character NULLVAL = '#';
+    public static final String NULLVAL = "#";
 
 }

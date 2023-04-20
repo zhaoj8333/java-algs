@@ -1,11 +1,10 @@
 package com.algs.utils;
 
-import com.algs.datastructure.Iterator;
-import com.algs.datastructure.tree.bst.itr.TreeIterator;
+import com.algs.DefaultValues;
+import com.algs.datastructure.tree.bst.itr.BstIterator;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
-import com.algs.datastructure.tree.bst.serialize.RecursivePreOrderSerializerImpl;
 import java.util.Objects;
 
 public class TreeUtil<K extends Comparable<K>, V> {
@@ -15,12 +14,16 @@ public class TreeUtil<K extends Comparable<K>, V> {
         return "";
     }
 
+    public static String emptySerializedTree() {
+        return "" + DefaultValues.LEFT_SQUARE_BRACKET + DefaultValues.NULLVAL + DefaultValues.DELIMITER + DefaultValues.RIGHT_SQUARE_BRACKET;
+    }
+
     public static <K extends Comparable<K>, V> boolean equals(ITree<K, V> a, ITree<K, V> b) {
         if (Objects.isNull(a) || Objects.isNull(b)) {
             return false;
         }
-        TreeIterator<K, V> itrA = (TreeIterator<K, V>) a.iterator();
-        TreeIterator<K, V> itrB = (TreeIterator<K, V>) b.iterator();
+        BstIterator<K, V> itrA = (BstIterator<K, V>) a.iterator();
+        BstIterator<K, V> itrB = (BstIterator<K, V>) b.iterator();
         try {
             while (itrA.hasNext()) {
                 TreeNode<K, V> nodeA = itrA.nextNode();

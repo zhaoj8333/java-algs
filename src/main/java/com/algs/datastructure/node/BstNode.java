@@ -17,7 +17,7 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
         this.size = size;
     }
 
-    public void size() {
+    public void updateSize() {
         int sz = 1;
         if (Objects.nonNull(left)) {
             sz += left.size;

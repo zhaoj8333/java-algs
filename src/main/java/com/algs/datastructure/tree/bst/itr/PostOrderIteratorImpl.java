@@ -1,33 +1,29 @@
 package com.algs.datastructure.tree.bst.itr;
 
+import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
+import java.util.Objects;
 
 // left, right, root
-// TODO: 4/4/2023  
-public class PostOrderIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
+public class PostOrderIteratorImpl<K extends Comparable<K>, V> extends BstRecursiveIterator<K, V> {
 
-    protected BstNode<K, V> node;
-
-    public PostOrderIteratorImpl(BstNode<K, V> root) {
-        this(root, null);
+    public PostOrderIteratorImpl(ITree<K, V> tree) {
+        this(tree, null);
     }
 
-    public PostOrderIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
-        super(visitor);
-        this.node = root;
-    }
-
-
-    @Override
-    public boolean hasNext() {
-        return false;
+    public PostOrderIteratorImpl(ITree<K, V> tree, IVisitor visitor) {
+        super(tree, visitor);
     }
 
     @Override
-    public TreeNode<K, V> nextNode() {
-        return null;
+    protected void iterate(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return;
+        }
+        iterate(node.left);
+        iterate(node.right);
+        visit(node);
     }
 
 }

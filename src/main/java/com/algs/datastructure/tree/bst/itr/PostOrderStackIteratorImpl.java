@@ -3,29 +3,29 @@ package com.algs.datastructure.tree.bst.itr;
 import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
+import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 import com.algs.utils.ObjectUtil;
 
 import java.util.Objects;
 
 // left, right, root
-public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
+public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends BstIterator<K, V> {
 
     private final IStack<BstNode<K, V>> stack;
 
     // last visited node
     private BstNode<K, V> root;
 
-    public PostOrderStackIteratorImpl(BstNode<K, V> root) {
-        this(root, null);
+    public PostOrderStackIteratorImpl(ITree<K, V> tree) {
+        this(tree, null);
     }
 
-    public PostOrderStackIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
+    public PostOrderStackIteratorImpl(ITree<K, V> tree, IVisitor visitor) {
         super(visitor);
-        ObjectUtil.requireNonNull(root);
+        ObjectUtil.requireNonNull(tree);
         stack = new LinkedStackImpl<>();
-        this.root = root;
+        root = (BstNode<K, V>) tree.getRoot();
         stack.push(root);
     }
 
@@ -35,7 +35,7 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
     }
 
     @Override
-    public TreeNode<K, V> nextNode() {
+    public BstNode<K, V> nextNode() {
         while (true) {
             BstNode<K, V> next = stack.top();
             if (Objects.nonNull(next.left) && !Objects.equals(root, next.left) && !Objects.equals(root, next.right)) {
@@ -45,7 +45,7 @@ public class PostOrderStackIteratorImpl<K extends Comparable<K>, V> extends Tree
             } else {
                 visit(stack.pop());
                 root = next;
-                return (TreeNode<K, V>) next;
+                return (BstNode<K, V>) next;
             }
         }
     }

@@ -2,10 +2,10 @@ package com.algs.analysis;
 
 public class ThreeSum extends StopWatchTask {
 
-    private final int[] array;
+    private final Integer[] array;
     private final long sum;
 
-    public ThreeSum(int[] array, long sum) {
+    public ThreeSum(Integer[] array, long sum) {
         this.array = array;
         this.sum = sum;
     }

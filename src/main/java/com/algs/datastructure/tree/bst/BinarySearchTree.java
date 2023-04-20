@@ -7,8 +7,7 @@ import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.tree.bst.itr.InOrderStackIteratorImpl;
-import com.algs.datastructure.tree.bst.itr.TreeIterator;
-import com.algs.datastructure.tree.bst.serialize.ValHandler;
+import com.algs.datastructure.tree.bst.itr.BstIterator;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.TreeUtil;
 
@@ -155,7 +154,7 @@ public abstract class BinarySearchTree<K extends Comparable<K>, V> implements IT
     }
 
     @Override
-    public TreeNode<K, V> sibling(TreeNode<K, V> node) {
+    public BstNode<K, V> sibling(TreeNode<K, V> node) {
         BstNode<K, V> n = (BstNode<K, V>) node;
         BstNode<K, V> parent = n.parent;
         if (compare(parent.left.key, node.key) < 0) {
@@ -204,20 +203,20 @@ public abstract class BinarySearchTree<K extends Comparable<K>, V> implements IT
     }
 
     @Override
-    public TreeIterator<K, V> iterator() {
+    public BstIterator<K, V> iterator() {
         return iterator(InOrderStackIteratorImpl.class, null);
     }
 
     @Override
-    public TreeIterator<K, V> iterator(Class<?> itrClass, IVisitor visitor) {
+    public BstIterator<K, V> iterator(Class<?> itrClass, IVisitor visitor) {
         Object instance = null;
         try {
-            Constructor<?> constructor = itrClass.getConstructor(BstNode.class, IVisitor.class);
-            instance = constructor.newInstance(root, visitor);
+            Constructor<?> constructor = itrClass.getConstructor(ITree.class, IVisitor.class);
+            instance = constructor.newInstance(this, visitor);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        return (TreeIterator<K, V>) instance;
+        return (BstIterator<K, V>) instance;
     }
 
 }

@@ -340,57 +340,60 @@ public final class ArraysUtil {
         return target;
     }
 
+    public static String toString(double[] array) {
+        return toString(array, array.length);
+    }
+
     public static String toString(double[] array, int len) {
-        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         for (int i = 0; i < Math.min(len, array.length); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
-            }
+            sb.append(array[i]).append(DefaultValues.DELIMITER);
         }
-        if (len + 1< array.length) {
-            sb.append(", ..., ");
-            sb.append(array[array.length - 1]);
-        }
-        sb.append("}");
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
         return sb.toString();
     }
 
+    public static String toString(float[] array) {
+        return toString(array, array.length);
+    }
+
     public static String toString(float[] array, int len) {
-        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         for (int i = 0; i < Math.min(len, array.length); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
-            }
+            sb.append(array[i]).append(DefaultValues.DELIMITER);
         }
-        if (len + 1< array.length) {
-            sb.append(", ..., ");
-            sb.append(array[array.length - 1]);
-        }
-        sb.append("}");
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
         return sb.toString();
+    }
+
+    public static String toString(long[] array) {
+        return toString(array, array.length);
     }
 
     public static String toString(long[] array, int len) {
         ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         for (int i = 0; i < Math.min(len, array.length); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
-            }
+            sb.append(array[i]).append(DefaultValues.DELIMITER);
         }
-        if (len + 1< array.length) {
-            sb.append(", ..., ");
-            sb.append(array[array.length - 1]);
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
+        return sb.toString();
+    }
+
+    public static String toString(char[] array) {
+        return toString(array, array.length);
+    }
+
+    public static String toString(char[] array, int len) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
+        for (int i = 0; i < Math.min(len, array.length); i++) {
+            sb.append(array[i]).append(DefaultValues.DELIMITER);
         }
-        sb.append("}");
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
         return sb.toString();
     }
 
@@ -398,90 +401,33 @@ public final class ArraysUtil {
         return toString(array, array.length);
     }
 
-    public static String toString(char[] array) {
-        ObjectUtil.requireNonNull(array);
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        for (int i = 0; i < array.length; i++) {
-            sb.append(array[i]);
-            if (i < array.length - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append("}");
-        return sb.toString();
-    }
-
-    public static String toString(char[] array, int len) {
-        ObjectUtil.requireNonNull(array);
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        for (int i = 0; i < Math.min(len, array.length); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
-            }
-        }
-        if (len + 1< array.length) {
-            sb.append(", ..., ");
-            sb.append(array[array.length - 1]);
-        }
-        sb.append("}");
-        return sb.toString();
-    }
-
     public static String toString(int[] array, int len) {
-        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         for (int i = 0; i < Math.min(len, array.length); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
-            }
-        }
-        if (len + 1< array.length) {
-            sb.append(", ..., ");
-            sb.append(array[array.length - 1]);
-            sb.append("}");
-            sb.append(" --- length " + array.length);
-        } else {
-            sb.append("}");
+            sb.append(array[i]).append(DefaultValues.DELIMITER);
         }
         return sb.toString();
     }
 
     public static String toString(Object[] array, int len) {
-        ObjectUtil.requireNonNull(array);
         StringBuilder sb = new StringBuilder();
-        sb.append("{ ");
+        sb.append(DefaultValues.LEFT_SQUARE_BRACKET);
         for (int i = 0; i < Math.min(array.length, len); i++) {
-            sb.append(array[i]);
-            if (i < len - 1) {
-                sb.append(", ");
+            Object obj = array[i];
+            if (Objects.isNull(obj)) {
+                sb.append(DefaultValues.NULLVAL);
+            } else {
+                sb.append(obj);
             }
+            sb.append(DefaultValues.DELIMITER);
         }
-        if (len + 1< array.length) {
-            sb.append(", ... , ");
-            sb.append(array[array.length - 1]);
-        }
-        sb.delete(sb.lastIndexOf(","), sb.length());
-        sb.append(" }");
+        sb.append(DefaultValues.RIGHT_SQUARE_BRACKET);
         return sb.toString();
     }
 
     public static String toString(Object[] array) {
-        ObjectUtil.requireNonNull(array);
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        for (int i = 0; i < array.length; i++) {
-            sb.append(array[i]);
-            if (i < array.length - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append("}");
-        return sb.toString();
+        return toString(array, array.length);
     }
 
     public static <E extends Comparable<E>> long countInversion(E[] array) {

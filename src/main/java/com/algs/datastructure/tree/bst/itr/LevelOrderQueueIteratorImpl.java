@@ -4,26 +4,26 @@ import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 
+import com.algs.datastructure.tree.ITree;
 import java.util.Objects;
 
 // by topdown level
-public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends TreeIterator<K, V> {
+public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends BstIterator<K, V> {
 
     protected BstNode<K, V> node;
 
     private final IQueue<BstNode<K, V>> queue;
 
-    public LevelOrderQueueIteratorImpl(BstNode<K, V> root) {
-        this(root, null);
+    public LevelOrderQueueIteratorImpl(ITree<K, V> tree) {
+        this(tree, null);
     }
 
-    public LevelOrderQueueIteratorImpl(BstNode<K, V> root, IVisitor visitor) {
+    public LevelOrderQueueIteratorImpl(ITree<K, V> tree, IVisitor visitor) {
         super(visitor);
-        this.node = root;
+        node = (BstNode<K, V>) tree.getRoot();
         queue = new LinkedQueueImpl<>();
-        queue.enque(root);
+        queue.enque((BstNode<K, V>) tree.getRoot());
     }
 
     private void pushNode(BstNode<K, V> node) {
@@ -38,12 +38,12 @@ public class LevelOrderQueueIteratorImpl<K extends Comparable<K>, V> extends Tre
     }
 
     @Override
-    public TreeNode<K, V> nextNode() {
+    public BstNode<K, V> nextNode() {
         BstNode<K, V> node = queue.deque();
         visit(node);
         pushNode(node.left);
         pushNode(node.right);
-        return (TreeNode<K, V>) node;
+        return (BstNode<K, V>) node;
     }
 }
 

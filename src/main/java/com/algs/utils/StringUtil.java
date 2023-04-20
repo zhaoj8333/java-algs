@@ -1,5 +1,6 @@
 package com.algs.utils;
 
+import com.algs.DefaultValues;
 import java.util.Objects;
 import java.util.Random;
 
@@ -98,6 +99,10 @@ public class StringUtil {
             return true;
         }
          return Objects.equals(str.trim(), "");
+    }
+
+    public static boolean isNullString(String str) {
+        return Objects.equals(str, String.valueOf(DefaultValues.NULLVAL));
     }
 
 }

@@ -1,9 +1,15 @@
 package com.algs.utils;
 
+import com.algs.DefaultValues;
 import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
+import java.util.Objects;
 
 public class CollectionUtil<E> {
+
+    public static <E> void println(ICollection<E> collection) {
+        System.out.println(toString(collection));
+    }
 
     public static <E> E[] toArray(ICollection<E> collection) {
         Iterator<E> itr = collection.iterator();
@@ -18,27 +24,35 @@ public class CollectionUtil<E> {
     public static <E> String toString(ICollection<E> collection) {
         Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
-        sb.append('{');
+        sb.append(DefaultValues.LEFT_BRACE_BRACKET);
         int i = 0;
         while (itr.hasNext()) {
             i++;
-            sb.append(itr.next());
-            if (i < collection.size()) {
-                sb.append(',').append(' ');
+            E next = itr.next();
+            if (Objects.isNull(next)) {
+                sb.append(DefaultValues.NULLVAL);
+            } else {
+                sb.append(next);
             }
+            sb.append(DefaultValues.DELIMITER);
         }
-        sb.append('}');
+        sb.append(DefaultValues.RIGHT_BRACE_BRACKET);
         return sb.toString();
     }
 
-    public static int [] toPrimitive(ICollection collection) {
-        int[] ints = new int[collection.size()];
-        int i = 0;
-        Iterator itr = collection.iterator();
-        while (itr.hasNext()) {
-            ints[i++] = (int) itr.next();
+    public static <E> String[] toStringArray(ICollection<E> collection) {
+        ObjectUtil.requireNonNull(collection);
+        ObjectUtil.requireNonEmpty(collection);
+        String[] strs = new String[collection.size()];
+        for (int i = 0; i < collection.size(); i++) {
+            E obj = collection.get(i);
+            if (Objects.isNull(obj)) {
+                strs[i] = String.valueOf(DefaultValues.NULLVAL);
+            } else {
+                strs[i] = String.valueOf(obj);
+            }
         }
-        return ints;
+        return strs;
     }
 
     public static <E> Byte[] toByteArray(ICollection<E> collection) {

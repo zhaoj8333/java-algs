@@ -1,22 +1,17 @@
 package com.algs.datastructure.tree;
 
-import com.algs.ISerializable;
+import com.algs.IJunitTestable;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iterator;
-import com.algs.datastructure.collection.queue.IQueue;
-import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
+import com.algs.datastructure.tree.bst.TreeIteratorImplTest;
 import com.algs.datastructure.tree.bst.itr.*;
-import com.algs.datastructure.tree.bst.serialize.ValHandler;
+import com.algs.datastructure.tree.bst.serializer.ValHandler;
+import com.algs.datastructure.tree.bst.TreeSerializerImplTest;
 import com.algs.datastructure.tree.printer.BinaryTrees;
-import com.algs.utils.TreeUtil;
 import com.algs.utils.array.ArraysUtil;
-import com.algs.datastructure.tree.bst.serialize.RecursivePreOrderSerializerImpl;
-import com.algs.datastructure.tree.bst.serialize.RecursiveInOrderSerializerImpl;
-import com.algs.datastructure.tree.bst.serialize.RecursivePostOrderSerializerImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -48,7 +43,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
         return instance;
     }
 
-    private ValHandler keyHandler = new ValHandler() {
+    private final ValHandler keyHandler = new ValHandler() {
         @Override
         public Integer handle(Object parameter) {
             if (parameter instanceof Integer) {
@@ -60,7 +55,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
         }
     };
 
-    private ValHandler valHandler = new ValHandler() {
+    private final ValHandler valHandler = new ValHandler() {
         @Override
         public String handle(Object parameter) {
             return "(" + String.valueOf(parameter) + ")";
@@ -75,20 +70,6 @@ class ITreeImplTest extends ImplFunctionalityTest {
             String val = (String) valHandler.handle(em);
             tree.put(key, val);
         }
-        Iterator<Integer> itr = tree.iterator(
-//                InOrderStackIteratorImpl.class,
-//                PreOrderStackIteratorImpl.class,
-//                PostOrderIteratorImpl.class,
-//                LevelOrderQueueIteratorImpl.class,
-                PreOrderIteratorImpl.class,
-//                InOrderIteratorImpl.class,
-//                PostOrderIteratorImpl.class,
-//                LevelOrderIteratorImpl.class,
-                ele -> {
-                    BstNode<Integer, String> treeNode = (BstNode<Integer, String>) ele;
-                    System.out.print(treeNode.key + ", ");
-                }
-        );
         Assertions.assertEquals("(20)", tree.get(20));
 
         BinaryTrees.println(tree);
@@ -96,8 +77,8 @@ class ITreeImplTest extends ImplFunctionalityTest {
 //        testMinMax(tree);
 //        testIsBalanced(tree);
 //        testFloorAndCeil(tree);
-//        testItr(tree);
-        testSerialize(tree);
+        testItr(tree);
+        testSerializer(tree);
 //        testOther(tree);
 //        testDelete(tree);
 //        Assertions.assertFalse(tree.isEmpty());
@@ -112,36 +93,14 @@ class ITreeImplTest extends ImplFunctionalityTest {
 
     }
 
-    private void testSerialize(BinarySearchTree<Integer, String> tree) {
-        ISerializable serializer = new RecursivePreOrderSerializerImpl<Integer, String>(tree, keyHandler, valHandler);
-        // serialize
-        String serializedResult = serializer.serialize();
-        String expectedResult = "[15,11,9,1,#,4,3,#,#,7,5,#,#,8,#,#,10,#,#,13,#,14,#,#,22,17,#,20,#,#,30,25,#,26,#,#,#,]";
-        System.out.println("serialized Result: " + serializedResult);
-        System.out.println("expected   Result: " + expectedResult);
-        Assertions.assertEquals(serializedResult, expectedResult);
-        // deserialize
-        ITree<Integer, String> deserializedTree = (ITree<Integer, String>) serializer.deserialize(expectedResult);
-        Assertions.assertTrue(TreeUtil.equals(tree, deserializedTree));
+    private void testItr(BinarySearchTree<Integer, String> tree) {
+        IJunitTestable test = new TreeIteratorImplTest<>(tree);
+        test.test();
+    }
 
-        serializer = new RecursiveInOrderSerializerImpl<>(tree);
-        serializedResult = serializer.serialize();
-        expectedResult = "[#,1,#,3,#,4,#,5,#,7,#,8,#,9,#,10,#,11,#,13,#,14,#,15,#,17,#,20,#,22,#,25,#,26,#,30,#,]";
-        Assertions.assertEquals(serializedResult, expectedResult);
-        deserializedTree = (ITree<Integer, String>) serializer.deserialize(expectedResult);
-        Assertions.assertTrue(TreeUtil.equals(tree, deserializedTree));
-
-        serializer = new RecursivePostOrderSerializerImpl<>(tree);
-        serializedResult = serializer.serialize();
-        expectedResult = "[#,#,#,3,#,#,5,#,#,8,7,4,1,#,#,10,9,#,#,#,14,13,11,#,#,#,20,17,#,#,#,26,25,#,30,22,15,]";
-        Assertions.assertEquals(serializedResult, expectedResult);
-        deserializedTree = (ITree<Integer, String>) serializer.deserialize(expectedResult);
-        Assertions.assertTrue(TreeUtil.equals(tree, deserializedTree));
-
-//        serializer = new PreOrderSerializerImpl<>(tree);
-//        String ep = serializer.serialize();
-//        Assertions.assertEquals(rep, ep);
-
+    private void testSerializer(BinarySearchTree<Integer, String> tree) {
+        IJunitTestable test = new TreeSerializerImplTest(tree, keyHandler, valHandler);
+        test.test();
     }
 
     private void testOther(BinarySearchTree<Integer, String> tree) {
@@ -256,63 +215,6 @@ class ITreeImplTest extends ImplFunctionalityTest {
         System.out.println();
         System.out.println("after all deleted: ");
         BinaryTrees.println(tree);
-    }
-
-    private void iterateAndAssert(BinarySearchTree<Integer, String> tree, Class<?> itrClass, Integer[] expectedSeq) {
-        IQueue<Integer> seq = new LinkedQueueImpl<>();
-        TreeIterator<Integer, String> itr = (TreeIterator<Integer, String>) tree.iterator(itrClass, null);
-        while (itr.hasNext()) {
-            seq.enque(itr.next());
-        }
-        Assertions.assertTrue(ArraysUtil.equals(expectedSeq, seq));
-    }
-
-    private void testItr(BinarySearchTree<Integer, String> tree) {
-
-        /**
-         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
-         * {@link PreOrderStackIteratorImpl}
-         * {@link PreOrderIteratorImpl}
-         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26,
-         */
-        {
-            Integer[] array = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
-            iterateAndAssert(tree, PreOrderStackIteratorImpl.class, array);
-//            iterateAndAssert(tree, PreOrderIteratorImpl.class, array);
-
-        }
-
-        /**
-         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
-         * {@link InOrderStackIteratorImpl}
-         * {@link InOrderIteratorImpl}
-         * 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30,
-         */
-        {
-            Integer[] array = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
-            iterateAndAssert(tree, InOrderStackIteratorImpl.class, array);
-        }
-
-        /**
-         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
-         * {@link PostOrderStackIteratorImpl}
-         * {@link PostOrderIteratorImpl}
-         * 3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15
-         */
-        {
-            Integer[] array = new Integer[] {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
-            iterateAndAssert(tree, PostOrderStackIteratorImpl.class, array);
-        }
-
-        /**
-         * 15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26
-         * {@link LevelOrderQueueIteratorImpl}
-         * 15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8,
-         */
-        {
-            Integer[] array = new Integer[] {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
-            iterateAndAssert(tree, LevelOrderQueueIteratorImpl.class, array);
-        }
     }
 
     @Test
