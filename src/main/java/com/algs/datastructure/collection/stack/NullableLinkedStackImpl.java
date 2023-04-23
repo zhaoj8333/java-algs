@@ -33,7 +33,7 @@ public class NullableLinkedStackImpl<E> implements IStack<E> {
 
     @Override
     public E top() {
-        return top.item;
+        return Objects.nonNull(top) ? top.item : null;
     }
 
     @Override

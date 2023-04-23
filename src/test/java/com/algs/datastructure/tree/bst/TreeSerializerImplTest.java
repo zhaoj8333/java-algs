@@ -22,10 +22,13 @@ public class TreeSerializerImplTest<K extends Comparable<K>, V> extends ImplFunc
     protected Class<?>[] targetClasses = new Class<?>[] {
             RecursivePreOrderSerializerImpl.class,
             PreOrderSerializerImpl.class,
+
             RecursiveInOrderSerializerImpl.class,
-            RecursivePostOrderSerializerImpl.class,
             InOrderSerializerImpl.class,
+
+            RecursivePostOrderSerializerImpl.class,
             PostOrderSerializerImpl.class,
+
             LevelOrderSerializerImpl.class,
     };
 
@@ -42,21 +45,21 @@ public class TreeSerializerImplTest<K extends Comparable<K>, V> extends ImplFunc
         this.keyHandler = keyHandler;
         this.valHandler = valHandler;
         expectedResults = new HashMap<>();
-        Integer[] ints = null;
-        ints = new Integer[] {15, 11, 9, 1, null, 4, 3, null, null, 7, 5, null, null, 8, null, null, 10, null, null, 13, null, 14, null, null, 22, 17, null, 20, null, null, 30, 25, null, 26, null, null, null};
-        expectedResults.put(RecursivePreOrderSerializerImpl.class, ints);
-        ints = new Integer[] {15, 11, 9, 1, null, 4, 3, null, null, 7, 5, null, null, 8, null, null, 10, null, null, 13, null, 14, null, null, 22, 17, null, 20, null, null, 30, 25, null, 26, null, null, null};
-        expectedResults.put(PreOrderSerializerImpl.class, ints);
-        ints = new Integer[] {null, 1, null, 3, null, 4, null, 5, null, 7, null, 8, null, 9, null, 10, null, 11, null, 13, null, 14, null, 15, null, 17, null, 20, null, 22, null, 25, null, 26, null, 30, null};
-        expectedResults.put(RecursiveInOrderSerializerImpl.class, ints);
-        ints = new Integer[] {null, 1, null, 3, null, 4, null, 5, null, 7, null, 8, null, 9, null, 10, null, 11, null, 13, null, 14, null, 15, null, 17, null, 20, null, 22, null, 25, null, 26, null, 30, null};
-        expectedResults.put(InOrderSerializerImpl.class, ints);
-        ints = new Integer[] {null, null, null, 3, null, null, 5, null, null, 8, 7, 4, 1, null, null, 10, 9, null, null, null, 14, 13, 11, null, null, null, 20, 17, null, null, null, 26, 25, null, 30, 22, 15};
-        expectedResults.put(RecursivePostOrderSerializerImpl.class, ints);
-        ints = new Integer[] {null, null, null, 3, null, null, 5, null, null, 8, 7, 4, 1, null, null, 10, 9, null, null, null, 14, 13, 11, null, null, null, 20, 17, null, null, null, 26, 25, null, 30, 22, 15};
-        expectedResults.put(PostOrderSerializerImpl.class, ints);
-        ints = new Integer[] {15, 11, 22, 9, 13, 17, 30, 1, 10, null, 14, null, 20, 25, null, null, 4, null, null, null, null, null, null, null, 26, 3, 7, null, null, null, null, 5, 8, null, null, null, null};
-        expectedResults.put(LevelOrderSerializerImpl.class, ints);
+
+        Integer[] preArray = new Integer[] {15,11,9,1,null,4,3,null,null,7,5,null,null,8,null,null,10,null,null,13,null,14,null,null,22,17,null,20,null,null,30,25,null,26,null,null,null};
+        expectedResults.put(RecursivePreOrderSerializerImpl.class, preArray);
+        expectedResults.put(PreOrderSerializerImpl.class, preArray);
+
+        Integer[] inArray = new Integer[] {null,1,null,3,null,4,null,5,null,7,null,8,null,9,null,10,null,11,null,13,null,14,null,15,null,17,null,20,null,22,null,25,null,26,null,30,null};
+        expectedResults.put(RecursiveInOrderSerializerImpl.class, inArray);
+        expectedResults.put(InOrderSerializerImpl.class, inArray);
+
+        Integer[] postArray = new Integer[] {null,null,null,3,null,null,5,null,null,8,7,4,1,null,null,10,9,null,null,null,14,13,11,null,null,null,20,17,null,null,null,26,25,null,30,22,15};
+        expectedResults.put(RecursivePostOrderSerializerImpl.class, postArray);
+        expectedResults.put(PostOrderSerializerImpl.class, postArray);
+
+        Integer[] levelArray = new Integer[] {15,11,22,9,13,17,30,1,10,null,14,null,20,25,null,null,4,null,null,null,null,null,null,null,26,3,7,null,null,null,null,5,8,null,null,null,null};
+        expectedResults.put(LevelOrderSerializerImpl.class, levelArray);
     }
 
     @Override

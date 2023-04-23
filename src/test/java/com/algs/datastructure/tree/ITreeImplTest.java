@@ -77,7 +77,7 @@ class ITreeImplTest extends ImplFunctionalityTest {
 //        testMinMax(tree);
 //        testIsBalanced(tree);
 //        testFloorAndCeil(tree);
-        testItr(tree);
+//        testItr(tree);
         testSerializer(tree);
 //        testOther(tree);
 //        testDelete(tree);

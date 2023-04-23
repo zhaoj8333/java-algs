@@ -73,10 +73,9 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
             return false;
         }
         BstNode<?, ?> that = (BstNode<?, ?>) o;
-        if (size != that.size) {
-            return false;
-        }
-        return Objects.equals(parent, that.parent) && Objects.equals(left, that.left) && Objects.equals(right, that.right);
+        return Objects.equals(this.size, that.size) && Objects.equals(this.key, that.key)
+                && Objects.equals(this.value, that.value) && Objects.equals(parent, that.parent)
+                && Objects.equals(left, that.left) && Objects.equals(right, that.right);
     }
 
     public boolean equalsWithoutParent(BstNode<K, V> that) {

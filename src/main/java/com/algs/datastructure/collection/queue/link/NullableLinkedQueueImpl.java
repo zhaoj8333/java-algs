@@ -79,9 +79,6 @@ public class NullableLinkedQueueImpl<E> implements IQueue<E> {
 
     @Override
     public E peek() {
-        if (isEmpty()) {
-            return null;
-        }
         return head.item;
     }
 

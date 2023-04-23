@@ -18,7 +18,7 @@ public final class ObjectUtil<E> {
 
     public static void requireNonNull(Object object) {
         if (Objects.isNull(object)) {
-            throw new IllegalArgumentException("require Object non empty");
+            throw new IllegalArgumentException("require Object non null");
         }
     }
 

@@ -32,7 +32,7 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
 
             PreOrderStackIteratorImpl.class,
             InOrderStackIteratorImpl.class,
-//            PostOrderStackIteratorImpl.class,
+            PostOrderStackIteratorImpl.class,
             LevelOrderQueueIteratorImpl.class,
     };
 
@@ -43,17 +43,21 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
     public TreeIteratorImplTest(ITree<K, V> tree) {
         this.tree = tree;
         expectedResults = new HashMap<>();
-        expectedResults.put(PreOrderIteratorImpl.class,        new Integer[]{15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26});
-        expectedResults.put(PreOrderStackIteratorImpl.class,   new Integer[]{15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26});
+        Integer[] preArray = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
+        expectedResults.put(PreOrderIteratorImpl.class, preArray);
+        expectedResults.put(PreOrderStackIteratorImpl.class, preArray);
 
-        expectedResults.put(InOrderIteratorImpl.class,         new Integer[]{1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30});
-        expectedResults.put(InOrderStackIteratorImpl.class,    new Integer[]{1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30});
+        Integer[] inArray = {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
+        expectedResults.put(InOrderIteratorImpl.class, inArray);
+        expectedResults.put(InOrderStackIteratorImpl.class, inArray);
 
-        expectedResults.put(PostOrderIteratorImpl.class,       new Integer[]{3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15});
-        expectedResults.put(PostOrderStackIteratorImpl.class,  new Integer[]{3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15});
+        Integer[] postArray = {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
+        expectedResults.put(PostOrderIteratorImpl.class, postArray);
+        expectedResults.put(PostOrderStackIteratorImpl.class, postArray);
 
-        expectedResults.put(LevelOrderIteratorImpl.class,      new Integer[]{15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8});
-        expectedResults.put(LevelOrderQueueIteratorImpl.class, new Integer[]{15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8});
+        Integer[] levelArray = {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
+        expectedResults.put(LevelOrderIteratorImpl.class, levelArray);
+        expectedResults.put(LevelOrderQueueIteratorImpl.class, levelArray);
     }
 
     @Override

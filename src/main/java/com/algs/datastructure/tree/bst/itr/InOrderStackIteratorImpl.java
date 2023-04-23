@@ -33,9 +33,8 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends BstIte
     }
 
     /**
-     * 1. all the left nodes push to stack, from the perspective of left size of the tree,
-     * the pop order of nodes are always: left node first, then root node;
-     * 2. pop the node from stack, visit it, access the right subtree
+     * 1. all the left nodes push to stack, from the perspective of left size of the tree, the pop order of nodes are always: left node first, then root node;
+     * 2. pop the node from stack, visit it, then visit the right subtree
      */
     @Override
     public BstNode<K, V> nextNode() {
@@ -43,9 +42,9 @@ public class InOrderStackIteratorImpl<K extends Comparable<K>, V> extends BstIte
             stack.push(node);
             node = node.left;
         }
-        BstNode<K, V> pop = (BstNode<K, V>) stack.pop();
+        BstNode<K, V> pop = stack.pop();
         visit(pop);
         node = pop.right;
-        return (BstNode<K, V>) pop;
+        return pop;
     }
 }

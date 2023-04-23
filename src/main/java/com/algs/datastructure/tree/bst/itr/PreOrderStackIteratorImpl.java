@@ -40,6 +40,6 @@ public class PreOrderStackIteratorImpl<K extends Comparable<K>, V> extends BstIt
         if (Objects.nonNull(node.left)) {
             stack.push(node.left);
         }
-        return (BstNode<K, V>) node;
+        return node;
     }
 }
