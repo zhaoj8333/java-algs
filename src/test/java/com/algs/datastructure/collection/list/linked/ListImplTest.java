@@ -5,10 +5,9 @@ import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.utils.array.ArraysUtil;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class ListImplTest extends ImplFunctionalityTest {
 

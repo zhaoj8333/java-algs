@@ -3,7 +3,6 @@ package com.algs.datastructure.collection.steque;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.DoublyLinkNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 /**

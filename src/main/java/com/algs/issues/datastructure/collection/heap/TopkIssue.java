@@ -1,11 +1,10 @@
 package com.algs.issues.datastructure.collection.heap;
 
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.heap.array.BinaryArrayPqImpl;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Comparator;
 
 public class TopkIssue<E extends Comparable<E>> {

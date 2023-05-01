@@ -3,10 +3,9 @@ package com.algs.algo.unionfind;
 import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.non_generic.IDynamicUnionFind;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedLinkedListImpl;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class IDynamicUnionFindImplTest extends ImplFunctionalityTest {
 

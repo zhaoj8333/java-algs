@@ -3,8 +3,8 @@ package com.algs;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.utils.DrawUtil;
-
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
 
 public abstract class ImplComplexityGrowthCompareAnalysis<E> {
 

@@ -1,7 +1,6 @@
 package com.algs.issues.datastructure.collection.stack;
 
 import com.algs.datastructure.collection.stack.IStack;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;

@@ -3,9 +3,8 @@ package com.algs.datastructure.collection.heap.array;
 import com.algs.ImplPerformanceTest;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
+import org.junit.jupiter.api.Test;
 
 /**
  * Looks like the best K value for {@link KWayArrayPqImpl} is 3

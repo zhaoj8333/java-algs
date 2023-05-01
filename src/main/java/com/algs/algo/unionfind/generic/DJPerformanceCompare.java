@@ -6,7 +6,6 @@ import com.algs.datastructure.collection.deque.IDeque;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.Connection;
-
 import java.util.Random;
 
 public class DJPerformanceCompare<E> extends StopWatchTask<E> {

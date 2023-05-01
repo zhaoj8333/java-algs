@@ -4,7 +4,6 @@ import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
 import com.algs.datastructure.collection.bag.IBag;
 import com.algs.datastructure.collection.bag.RandomArrayBagImpl;
 import com.algs.utils.Connection;
-
 import java.util.Random;
 
 public class RandomGridGenerator extends QuickUnionImpl {

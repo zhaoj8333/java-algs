@@ -4,7 +4,6 @@ import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.utils.Connection;
-
 import java.util.Random;
 
 public class ErdosRenyi {

@@ -1,19 +1,28 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.ImplPerformanceTest;
-import com.algs.algo.sort.array.cmp_swp.merge.*;
-import com.algs.algo.sort.array.cmp_swp.quick.*;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortBuOptmImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdOptmImpl;
+import com.algs.algo.sort.array.cmp_swp.merge.NaturalMergeSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.NonRecursiveQuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomSelectImpl0;
+import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomizeArrayImpl0;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 

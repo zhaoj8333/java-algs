@@ -3,7 +3,6 @@ package com.algs.algo.unionfind.generic.qu;
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.generic.IDisjointSet;
 import com.algs.algo.unionfind.generic.UFNode;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;

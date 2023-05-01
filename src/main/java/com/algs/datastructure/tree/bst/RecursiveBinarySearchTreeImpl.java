@@ -2,9 +2,7 @@ package com.algs.datastructure.tree.bst;
 
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.node.BstNode;
-import com.algs.datastructure.node.BstNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySearchTree<K, V> {

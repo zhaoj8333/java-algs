@@ -6,7 +6,6 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.array.ArraysUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 

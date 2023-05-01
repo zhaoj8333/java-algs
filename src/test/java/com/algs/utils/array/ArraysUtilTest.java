@@ -1,7 +1,5 @@
 package com.algs.utils.array;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 class ArraysUtilTest {

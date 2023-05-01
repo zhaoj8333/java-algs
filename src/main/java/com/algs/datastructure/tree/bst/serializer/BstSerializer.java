@@ -5,9 +5,8 @@ import com.algs.ISerializable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-import com.algs.utils.ObjectUtil;
 import com.algs.datastructure.tree.ITree;
-
+import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
 public abstract class BstSerializer<K extends Comparable<K>, V> implements ISerializable {

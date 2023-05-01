@@ -1,7 +1,7 @@
 package com.algs.issues.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

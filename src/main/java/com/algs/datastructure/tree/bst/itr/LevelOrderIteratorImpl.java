@@ -1,13 +1,8 @@
 package com.algs.datastructure.tree.bst.itr;
 
 import com.algs.datastructure.IVisitor;
-import com.algs.datastructure.Iterator;
-import com.algs.datastructure.collection.list.IList;
-import com.algs.datastructure.collection.list.array.NullableResizableArrayImpl;
-import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.ITree;
-import com.algs.utils.CollectionUtil;
 import java.util.Objects;
 
 /**
@@ -22,18 +17,20 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends BstRecur
 
     private static final int sizeMultiply = 4;  // ???
 
+    private final BstNode<K, V>[] array;
+
     public LevelOrderIteratorImpl(ITree<K, V> tree) {
         this(tree, null);
     }
 
     public LevelOrderIteratorImpl(ITree<K, V> tree, IVisitor visitor) {
         super(tree, visitor);
+        array = new BstNode[(tree.size() * sizeMultiply)];
     }
 
     @Override
     protected void iterate(BstNode<K, V> node) {
-        BstNode<K, V>[] array = new BstNode[(tree.size() * sizeMultiply)];
-        iterate(node, 1, array);
+        iterate(node, 1);
         for (BstNode<K, V> n : array) {
             if (Objects.nonNull(n)) {
                 visit(n);
@@ -41,13 +38,13 @@ public class LevelOrderIteratorImpl<K extends Comparable<K>, V> extends BstRecur
         }
     }
 
-    protected void iterate(BstNode<K, V> node, int i, BstNode<K, V>[] array) {
+    protected void iterate(BstNode<K, V> node, int i) {
         if (Objects.isNull(node)) {
             return;
         }
         array[i] = node;
-        iterate(node.left, 2 * i, array);
-        iterate(node.right, 2 * i + 1, array);
+        iterate(node.left, 2 * i);
+        iterate(node.right, 2 * i + 1);
     }
 
 }

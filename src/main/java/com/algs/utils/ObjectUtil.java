@@ -1,7 +1,6 @@
 package com.algs.utils;
 
 import com.algs.datastructure.collection.ICollection;
-
 import java.util.Objects;
 
 public final class ObjectUtil<E> {

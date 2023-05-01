@@ -5,7 +5,6 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.LinkedSTNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 public class SelfOrganizedLinkedSTImpl<K, V> extends AbstractSymbolTable<K, V> {

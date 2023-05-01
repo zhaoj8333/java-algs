@@ -1,8 +1,8 @@
 package com.algs.datastructure.tree;
 
+import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.Iterator;
-import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.st.ordered.IOrderedSymbolTable;
 import com.algs.datastructure.tree.printer.BinaryTreeInfo;

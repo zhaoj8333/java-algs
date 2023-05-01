@@ -5,7 +5,6 @@ import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 

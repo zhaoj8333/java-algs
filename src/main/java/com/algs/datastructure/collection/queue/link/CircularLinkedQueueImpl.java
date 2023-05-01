@@ -4,7 +4,6 @@ import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.node.SinglyLinkNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 public class CircularLinkedQueueImpl<E> implements IQueue<E> {

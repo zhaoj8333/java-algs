@@ -3,9 +3,8 @@ package com.graph.analysis.algo.sort.quick;
 import com.algs.algo.sort.array.cmp_swp.quick.NoSentinelQuickSortImpl;
 import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * The average {@link CompareAndSwapSortAlys#arrayAcc} Which is fewer than 2*NlogN

@@ -1,10 +1,9 @@
 package com.algs.issues.datastructure.collection.median_find;
 
 import com.algs.utils.array.ArraysUtil;
+import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Objects;
 
 class MedianFinderTest {
 

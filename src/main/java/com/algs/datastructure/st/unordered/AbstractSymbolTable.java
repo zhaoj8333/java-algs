@@ -1,7 +1,6 @@
 package com.algs.datastructure.st.unordered;
 
 import com.algs.datastructure.st.ISymbolTable;
-
 import java.util.Objects;
 
 public abstract class AbstractSymbolTable<K, V> implements ISymbolTable<K, V> {

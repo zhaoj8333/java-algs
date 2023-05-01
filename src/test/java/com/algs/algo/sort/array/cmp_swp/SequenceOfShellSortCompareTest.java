@@ -10,10 +10,9 @@ import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.graph.analysis.algo.sort.ShellSortAlysImpl;
+import java.lang.reflect.InvocationTargetException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.InvocationTargetException;
 
 class SequenceOfShellSortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 

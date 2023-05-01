@@ -3,7 +3,6 @@ package com.algs.algo.sort.linkedlist;
 import com.algs.algo.sort.ISortable;
 import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.datastructure.node.LinkNode;
-
 import java.util.Comparator;
 import java.util.Objects;
 

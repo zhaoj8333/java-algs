@@ -2,7 +2,6 @@ package com.algs.datastructure.collection.bag;
 
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.SinglyLinkNode;
-
 import java.util.Objects;
 
 public class LinkedBagImpl<E> implements IBag<E> {

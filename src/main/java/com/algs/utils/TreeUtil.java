@@ -1,10 +1,10 @@
 package com.algs.utils;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.tree.bst.itr.BstIterator;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.node.TreeNode;
 import com.algs.datastructure.tree.ITree;
+import com.algs.datastructure.tree.bst.itr.BstIterator;
 import java.util.Objects;
 
 public class TreeUtil<K extends Comparable<K>, V> {

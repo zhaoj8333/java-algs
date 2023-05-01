@@ -4,7 +4,6 @@ import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
-
 import com.algs.datastructure.tree.ITree;
 import java.util.Objects;
 

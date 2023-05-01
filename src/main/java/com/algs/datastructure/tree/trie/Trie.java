@@ -1,7 +1,6 @@
 package com.algs.datastructure.tree.trie;
 
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 public class Trie {

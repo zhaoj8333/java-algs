@@ -10,10 +10,9 @@ import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 class IUnionFindImplCompareTest<E> extends ImplPerformanceTest<E> {
 

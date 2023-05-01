@@ -2,9 +2,8 @@ package com.graph.analysis.algo.sort.quick;
 
 import com.algs.utils.array.ArraySortUtil;
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 public class NoSentinelQuickSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 

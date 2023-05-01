@@ -1,10 +1,9 @@
 package com.algs.issues.datastructure.collection.heap;
 
-import com.algs.issues.datastructure.collection.nodes.Cube;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
-
+import com.algs.issues.datastructure.collection.nodes.Cube;
 import java.math.BigInteger;
 import java.util.Objects;
 

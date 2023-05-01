@@ -2,10 +2,9 @@ package com.algs.datastructure.collection.queue;
 
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.queue.array.RandomArrayQueueImpl;
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 class RandomArrayQueueImplTest {
 

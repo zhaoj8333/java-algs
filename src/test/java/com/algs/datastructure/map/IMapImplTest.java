@@ -1,10 +1,9 @@
 package com.algs.datastructure.map;
 
 import com.algs.ImplFunctionalityTest;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class IMapImplTest extends ImplFunctionalityTest {
 

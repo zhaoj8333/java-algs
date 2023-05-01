@@ -2,6 +2,7 @@ package com.algs.datastructure.tree.bst;
 
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.tree.ITree;
+import com.algs.datastructure.tree.bst.serializer.BstSerializer;
 import com.algs.datastructure.tree.bst.serializer.InOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.LevelOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.PostOrderSerializerImpl;
@@ -9,7 +10,6 @@ import com.algs.datastructure.tree.bst.serializer.PreOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursiveInOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursivePostOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursivePreOrderSerializerImpl;
-import com.algs.datastructure.tree.bst.serializer.BstSerializer;
 import com.algs.datastructure.tree.bst.serializer.ValHandler;
 import com.algs.utils.TreeUtil;
 import com.algs.utils.array.ArraysUtil;
@@ -83,14 +83,14 @@ public class TreeSerializerImplTest<K extends Comparable<K>, V> extends ImplFunc
     protected void testEach(Object obj) {
         BstSerializer<Integer, String> serializer = (BstSerializer<Integer, String>) obj;
         // serialize
-        System.out.println("Serializing: ");
+//        System.out.println("Serializing: ");
         String serializedResult = serializer.serialize();
         String expectedResult   = ArraysUtil.toString(expectedResults.get(serializer.getClass()));
-        System.out.println("\tserializedResult: " + serializedResult);
-        System.out.println("\texpectedResult  : " + expectedResult);
+//        System.out.println("\tserializedResult: " + serializedResult);
+//        System.out.println("\texpectedResult  : " + expectedResult);
         Assertions.assertEquals(serializedResult, expectedResult);
         // deserialize
-        System.out.println("Deserializing: ");
+//        System.out.println("Deserializing: ");
         ITree<K, V> deserializedTree = (ITree<K, V>) serializer.deserialize(expectedResult);
         Assertions.assertTrue(TreeUtil.equals(tree, deserializedTree));
     }

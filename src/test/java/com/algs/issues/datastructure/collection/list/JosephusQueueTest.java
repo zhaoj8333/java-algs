@@ -1,8 +1,7 @@
 package com.algs.issues.datastructure.collection.list;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 class JosephusQueueTest {
 

@@ -2,12 +2,11 @@ package com.algs.utils.array;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.Iterator;
-import com.algs.issues.algo.sort.array.ArrayInversionCounter;
 import com.algs.datastructure.collection.ICollection;
+import com.algs.issues.algo.sort.array.ArrayInversionCounter;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.Random;

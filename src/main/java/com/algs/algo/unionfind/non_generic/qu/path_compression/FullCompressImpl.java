@@ -2,9 +2,8 @@ package com.algs.algo.unionfind.non_generic.qu.path_compression;
 
 import com.algs.DefaultValues;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
-import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.RangeUtil;
-
+import com.algs.utils.array.ArraysUtil;
 import java.util.Objects;
 
 /**

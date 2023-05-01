@@ -2,7 +2,6 @@ package com.algs.datastructure.collection.queue.array;
 
 import com.algs.datastructure.Iterator;
 import com.algs.utils.array.ArraysUtil;
-
 import java.util.Random;
 
 @SuppressWarnings("unchecked")

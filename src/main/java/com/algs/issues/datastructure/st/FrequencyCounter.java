@@ -1,8 +1,7 @@
 package com.algs.issues.datastructure.st;
 
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
-
+import com.algs.datastructure.collection.ICollection;
 import java.util.HashMap;
 import java.util.Map;
 

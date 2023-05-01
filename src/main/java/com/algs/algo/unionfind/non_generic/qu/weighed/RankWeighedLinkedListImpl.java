@@ -5,7 +5,6 @@ import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
 import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl0;
 import com.algs.utils.RangeUtil;
-
 import java.util.Objects;
 
 public class RankWeighedLinkedListImpl implements IDynamicUnionFind {

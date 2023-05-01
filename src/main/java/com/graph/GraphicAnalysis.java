@@ -1,8 +1,7 @@
 package com.graph;
 
 import com.algs.utils.DrawUtil;
-
-import java.awt.*;
+import java.awt.Color;
 
 public interface GraphicAnalysis {
 

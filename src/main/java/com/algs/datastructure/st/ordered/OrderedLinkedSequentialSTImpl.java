@@ -6,7 +6,6 @@ import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.LinkedSTNode;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 

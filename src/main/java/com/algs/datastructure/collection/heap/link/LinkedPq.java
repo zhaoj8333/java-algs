@@ -1,11 +1,10 @@
 package com.algs.datastructure.collection.heap.link;
 
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 import com.algs.datastructure.node.BinaryPqNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 

@@ -1,14 +1,14 @@
 package com.algs.algo.sort.array.cmp_swp.merge;
 
 import com.algs.algo.sort.ISortable;
-import com.algs.issues.algo.sort.SortedQueueMerger;
-import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
+import com.algs.issues.algo.sort.SortedQueueMerger;
 import com.algs.utils.CompareUtil;
 import com.algs.utils.array.ArrayBuilder;
-import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.array.ArraySortUtil;
+import com.algs.utils.array.ArraysUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

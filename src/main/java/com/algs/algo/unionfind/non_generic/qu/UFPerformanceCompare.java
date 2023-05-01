@@ -2,7 +2,6 @@ package com.algs.algo.unionfind.non_generic.qu;
 
 import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.analysis.StopWatchTask;
-
 import java.util.Random;
 
 public class UFPerformanceCompare extends StopWatchTask {

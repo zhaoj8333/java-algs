@@ -8,9 +8,8 @@ import com.algs.datastructure.st.ordered.InterpolationSearchSTImpl;
 import com.algs.datastructure.st.ordered.OrderedLinkedSequentialSTImpl;
 import com.algs.utils.RandomUtil;
 import com.algs.utils.array.ArrayBuilder;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
+import org.junit.jupiter.api.Test;
 
 class ISymbolTableImplCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 

@@ -1,8 +1,8 @@
 package com.algs.datastructure.collection.list.linked;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.collection.bag.LinkedBagImpl;
 import com.algs.datastructure.node.LinkNode;
 import com.algs.datastructure.node.SinglyLinkNode;
@@ -10,7 +10,6 @@ import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.RangeUtil;
 import com.algs.utils.array.ArraysUtil;
-
 import java.util.Objects;
 
 public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {

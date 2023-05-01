@@ -7,7 +7,6 @@ import com.algs.utils.Connection;
 import com.algs.utils.DrawUtil;
 import com.algs.utils.RangeUtil;
 import com.graph.analysis.algo.unionfind.IUnionFindAlys;
-
 import java.util.Objects;
 
 public class QuickUnionAlysImpl extends QuickUnionImpl implements IUnionFindAlys {

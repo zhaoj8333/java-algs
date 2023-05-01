@@ -1,7 +1,6 @@
 package com.algs.analysis;
 
 import com.algs.utils.DrawUtil;
-
 import java.util.Arrays;
 import java.util.Random;
 

@@ -1,9 +1,8 @@
 package com.algs.algo.filter;
 
 import com.algs.utils.StringUtil;
-import org.junit.jupiter.api.Test;
-
 import java.text.DecimalFormat;
+import org.junit.jupiter.api.Test;
 
 class BloomFilterImplTest {
 

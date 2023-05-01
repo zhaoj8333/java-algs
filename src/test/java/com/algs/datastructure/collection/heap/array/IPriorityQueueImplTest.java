@@ -7,12 +7,11 @@ import com.algs.issues.datastructure.collection.nodes.Cube;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
 import java.util.Objects;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
 

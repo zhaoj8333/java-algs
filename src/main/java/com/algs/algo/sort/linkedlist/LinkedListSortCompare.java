@@ -3,11 +3,10 @@ package com.algs.algo.sort.linkedlist;
 import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.list.linked.ISequentialAccessList;
 import com.algs.utils.list.LinkedListSortUtil;
-import org.junit.jupiter.api.Assertions;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 public class LinkedListSortCompare<E extends Comparable<E>> extends StopWatchTask<E> {
 

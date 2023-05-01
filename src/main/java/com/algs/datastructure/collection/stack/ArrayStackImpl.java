@@ -2,10 +2,9 @@ package com.algs.datastructure.collection.stack;
 
 import com.algs.DefaultValues;
 import com.algs.datastructure.Iterator;
-import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
-
+import com.algs.utils.array.ArraysUtil;
 import java.util.ConcurrentModificationException;
 
 public class ArrayStackImpl<E> implements IStack<E> {

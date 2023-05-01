@@ -1,14 +1,13 @@
 package com.algs.issues.datastructure.collection.stack;
 
-import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import com.algs.datastructure.collection.queue.IQueue;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.math.RandomUtils;
-import org.junit.jupiter.api.Test;
-
+import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Arrays;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.math.RandomUtils;
+import org.junit.jupiter.api.Test;
 
 class ArithmeticExpressionEvaluatorTest {
 

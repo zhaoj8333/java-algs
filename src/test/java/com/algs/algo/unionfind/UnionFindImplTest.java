@@ -5,15 +5,19 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.non_generic.IUnionFind;
 import com.algs.algo.unionfind.non_generic.qf.QuickFindImpl;
 import com.algs.algo.unionfind.non_generic.qu.QuickUnionImpl;
-import com.algs.algo.unionfind.non_generic.qu.path_compression.*;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.FullCompressImpl0;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingWithoutWeightImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingImpl;
+import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingWithoutWeightImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
 import com.algs.utils.Connection;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class UnionFindImplTest extends ImplFunctionalityTest {
 

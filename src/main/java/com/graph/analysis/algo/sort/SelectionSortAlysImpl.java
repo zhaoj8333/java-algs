@@ -1,9 +1,8 @@
 package com.graph.analysis.algo.sort;
 
 import com.algs.utils.array.ArraySortUtil;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 public class SelectionSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 

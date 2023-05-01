@@ -7,9 +7,8 @@ import com.algs.datastructure.st.unordered.SelfOrganizedLinkedSTImpl;
 import com.algs.utils.RandomUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
+import org.junit.jupiter.api.Test;
 
 class SelfOrganizedSTCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 

@@ -1,9 +1,8 @@
 package com.graph.analysis.algo.sort.merge;
 
 import com.algs.utils.array.ArraySortUtil;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 public class MergeSortTdAlysImpl<E extends Comparable<E>> extends MergeSortAlysImpl<E> {
 

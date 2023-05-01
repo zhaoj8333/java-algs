@@ -6,7 +6,6 @@ import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 /**

@@ -3,11 +3,10 @@ package com.graph.analysis.algo.unionfind.qu.weight;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedLinkedListImpl;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.DrawUtil;
 import com.algs.utils.Connection;
+import com.algs.utils.DrawUtil;
 import com.algs.utils.RangeUtil;
 import com.graph.GraphicAnalysis;
-
 import java.util.Objects;
 
 /**

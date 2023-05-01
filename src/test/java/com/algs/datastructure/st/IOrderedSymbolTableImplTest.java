@@ -1,5 +1,7 @@
 package com.algs.datastructure.st;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.Iterator;
@@ -14,11 +16,8 @@ import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
 

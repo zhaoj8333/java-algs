@@ -2,10 +2,9 @@ package com.algs.issues.datastructure.collection.queue;
 
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.queue.IQueue;
+import java.io.File;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 class FileSystemReadTest {
 

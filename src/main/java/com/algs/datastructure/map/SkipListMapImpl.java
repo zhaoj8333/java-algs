@@ -5,7 +5,6 @@ import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.array.ResizableArrayImpl;
 import com.algs.datastructure.node.SkipLinkNode;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Comparator;
 import java.util.Objects;
 

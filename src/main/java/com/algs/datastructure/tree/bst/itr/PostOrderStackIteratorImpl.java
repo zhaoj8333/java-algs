@@ -3,11 +3,9 @@ package com.algs.datastructure.tree.bst.itr;
 import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.collection.stack.IStack;
 import com.algs.datastructure.collection.stack.LinkedStackImpl;
-import com.algs.datastructure.collection.stack.NullableLinkedStackImpl;
-import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.tree.ITree;
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 // left, right, root

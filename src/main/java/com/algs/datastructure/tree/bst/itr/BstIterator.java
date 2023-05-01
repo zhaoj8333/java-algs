@@ -1,9 +1,8 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.Iterator;
 import com.algs.datastructure.IVisitor;
+import com.algs.datastructure.Iterator;
 import com.algs.datastructure.node.BstNode;
-
 import java.util.Objects;
 
 /**

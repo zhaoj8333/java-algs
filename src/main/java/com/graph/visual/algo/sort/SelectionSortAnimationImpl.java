@@ -1,8 +1,7 @@
 package com.graph.visual.algo.sort;
 
 import com.algs.utils.DrawUtil;
-
-import java.awt.*;
+import java.awt.Color;
 
 public class SelectionSortAnimationImpl<E extends Comparable<E>> extends CompareAndSwapSortAnimation<E> {
 

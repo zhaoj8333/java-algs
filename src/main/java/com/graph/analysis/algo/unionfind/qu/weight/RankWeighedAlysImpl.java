@@ -6,7 +6,6 @@ import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.Connection;
 import com.algs.utils.DrawUtil;
 import com.graph.analysis.algo.unionfind.IUnionFindAlys;
-
 import java.util.Objects;
 
 public class RankWeighedAlysImpl extends RankWeighedImpl implements IUnionFindAlys {

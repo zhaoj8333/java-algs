@@ -3,7 +3,6 @@ package com.algs.issues.datastructure.collection.stack;
 import com.algs.datastructure.collection.list.IList;
 import com.algs.datastructure.collection.stack.ArrayStackImpl;
 import com.algs.datastructure.collection.stack.IStack;
-
 import java.util.Objects;
 
 /**

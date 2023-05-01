@@ -4,10 +4,9 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.generic.IDisjointSet;
 import com.algs.algo.unionfind.generic.qu.WeighedPathHalvingImpl;
 import com.algs.utils.wrapper.Wrapper;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class IDisjointSetImplTest extends ImplFunctionalityTest {
 

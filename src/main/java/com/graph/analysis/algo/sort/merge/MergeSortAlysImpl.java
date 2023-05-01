@@ -1,7 +1,6 @@
 package com.graph.analysis.algo.sort.merge;
 
 import com.graph.analysis.algo.sort.CompareAndSwapSortAlys;
-
 import java.util.Comparator;
 
 public abstract class MergeSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {

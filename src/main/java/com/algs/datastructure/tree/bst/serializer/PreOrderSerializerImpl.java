@@ -8,7 +8,6 @@ import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.RecursiveBinarySearchTreeImpl;
-import com.algs.utils.StringUtil;
 import com.algs.utils.TreeUtil;
 import java.util.Objects;
 
@@ -50,7 +49,7 @@ public class PreOrderSerializerImpl<K extends Comparable<K>, V> extends BstSeria
     public ITree<K, V> deserialize(String data) {
         IQueue<String> queue = prepare(data);
         BinarySearchTree<K, V> tree = new RecursiveBinarySearchTreeImpl<>();
-        BstNode<K, V> root = (BstNode<K, V>) deserialize(queue);
+        BstNode<K, V> root = deserialize(queue);
         tree.setRoot(root);
         return tree;
     }
@@ -75,31 +74,8 @@ public class PreOrderSerializerImpl<K extends Comparable<K>, V> extends BstSeria
         if (strQueue.isEmpty()) {
             return null;
         }
-        IStack<BstNode<K, V>> nodeStack = new NullableLinkedStackImpl<>();
-        IStack<BstNode<K, V>> otherStack = new NullableLinkedStackImpl<>();
-        BstNode<K, V> root = buildNode(strQueue.deque(), null);
-        nodeStack.push(root);
-        while (!nodeStack.isEmpty()) {
-            BstNode<K, V> node = (BstNode<K, V>) nodeStack.pop();
-            while (!strQueue.isEmpty() && Objects.nonNull(node)) {
-                node.left = buildNode(strQueue.deque(), node);
-                if (Objects.isNull(node.left)) {
-                    break;
-                } else {
-                    if (!StringUtil.isNullString(strQueue.peek())) {
-                        otherStack.push(node);
-                    }
-                }
-                node = node.left;
-                nodeStack.push(node);
-            }
-            node.right = buildNode(strQueue.deque(), node);
-            if (Objects.nonNull(node.right)) {
-                nodeStack.push(node.right);
-                otherStack.push(node.right);
-            }
-        }
-        return root;
+
+        return null;
     }
 
 }

@@ -1,6 +1,9 @@
 package com.graph;
 
-import java.awt.*;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.Robot;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 

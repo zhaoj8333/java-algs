@@ -2,20 +2,17 @@ package com.algs.datastructure.tree;
 
 import com.algs.IJunitTestable;
 import com.algs.ImplFunctionalityTest;
-import com.algs.datastructure.Iterator;
-import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.TreeIteratorImplTest;
-import com.algs.datastructure.tree.bst.itr.*;
-import com.algs.datastructure.tree.bst.serializer.ValHandler;
 import com.algs.datastructure.tree.bst.TreeSerializerImplTest;
+import com.algs.datastructure.tree.bst.itr.morris.MorrisPreOrderIteratorImpl;
+import com.algs.datastructure.tree.bst.serializer.ValHandler;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 /**
  * @see com.algs.datastructure.st.IOrderedSymbolTableImplTest
@@ -77,8 +74,8 @@ class ITreeImplTest extends ImplFunctionalityTest {
 //        testMinMax(tree);
 //        testIsBalanced(tree);
 //        testFloorAndCeil(tree);
-//        testItr(tree);
-        testSerializer(tree);
+        testItr(tree);
+//        testSerializer(tree);
 //        testOther(tree);
 //        testDelete(tree);
 //        Assertions.assertFalse(tree.isEmpty());
@@ -96,6 +93,12 @@ class ITreeImplTest extends ImplFunctionalityTest {
     private void testItr(BinarySearchTree<Integer, String> tree) {
         IJunitTestable test = new TreeIteratorImplTest<>(tree);
         test.test();
+//        testMorris(tree);
+    }
+
+    public void testMorris(BinarySearchTree<Integer, String> tree) {
+        MorrisPreOrderIteratorImpl itr = new MorrisPreOrderIteratorImpl<>(tree);
+        itr.iterate();
     }
 
     private void testSerializer(BinarySearchTree<Integer, String> tree) {
@@ -224,5 +227,16 @@ class ITreeImplTest extends ImplFunctionalityTest {
         System.out.println();
         test(targetClasses);
     }
+
+//    @Test
+//    void _2_2_1() {
+//        ITree<Character, String> tree = new BinarySearchTreeImpl<>();
+//        String eq = "EASYQUESTION";
+//        for (int i = 0; i < eq.length(); i++) {
+//            char c = eq.charAt(i);
+//            tree.put(c, String.valueOf(c));
+//        }
+//        BinaryTrees.println(tree);
+//    }
 
 }

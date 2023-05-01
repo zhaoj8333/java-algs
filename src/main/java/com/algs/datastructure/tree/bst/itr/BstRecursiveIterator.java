@@ -1,8 +1,8 @@
 package com.algs.datastructure.tree.bst.itr;
 
-import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.tree.ITree;
 import java.util.Objects;
 
 /**
@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public abstract class BstRecursiveIterator<K extends Comparable<K>, V> implements IRecursiveIterator<K> {
 
-    protected final ITree<K, V> tree;
+    protected final BstNode<K, V> root;
 
     protected final IVisitor visitor;
 
@@ -24,7 +24,7 @@ public abstract class BstRecursiveIterator<K extends Comparable<K>, V> implement
     }
 
     public BstRecursiveIterator(ITree<K, V> tree, IVisitor visitor) {
-        this.tree = tree;
+        root = (BstNode<K, V>) tree.getRoot();
         this.visitor = visitor;
     }
 
@@ -37,7 +37,7 @@ public abstract class BstRecursiveIterator<K extends Comparable<K>, V> implement
 
     @Override
     public void iterate() {
-        iterate((BstNode<K, V>) tree.getRoot());
+        iterate(root);
     }
 
     protected abstract void iterate(BstNode<K, V> node);

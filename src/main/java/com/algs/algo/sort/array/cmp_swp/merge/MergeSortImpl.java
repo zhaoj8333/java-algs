@@ -1,7 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp.merge;
 
 import com.algs.algo.sort.array.cmp_swp.ArrayCompareAndSwapSort;
-
 import java.util.Comparator;
 
 /**

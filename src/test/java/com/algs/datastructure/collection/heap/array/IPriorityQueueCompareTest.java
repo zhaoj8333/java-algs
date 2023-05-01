@@ -3,10 +3,9 @@ package com.algs.datastructure.collection.heap.array;
 import com.algs.ImplPerformanceTest;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import org.junit.jupiter.api.Test;
 
 class IPriorityQueueCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<E> {
 

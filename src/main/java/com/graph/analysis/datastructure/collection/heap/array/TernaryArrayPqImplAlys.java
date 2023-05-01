@@ -1,7 +1,6 @@
 package com.graph.analysis.datastructure.collection.heap.array;
 
 import com.algs.datastructure.Iterator;
-
 import java.util.Comparator;
 
 public class TernaryArrayPqImplAlys<E extends Comparable<E>> extends ArrayPqAlys<E> {

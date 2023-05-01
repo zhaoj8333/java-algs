@@ -4,11 +4,10 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class ArraySortImplTest extends ImplFunctionalityTest {
 

@@ -1,11 +1,10 @@
 package com.algs.datastructure.collection.heap.array;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.collection.ICollection;
 import com.algs.datastructure.Iterator;
+import com.algs.datastructure.collection.ICollection;
 import com.algs.utils.ObjectUtil;
 import com.algs.utils.array.ArraysUtil;
-
 import java.util.Comparator;
 
 /**

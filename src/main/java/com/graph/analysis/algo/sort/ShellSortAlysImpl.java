@@ -4,9 +4,8 @@ import com.algs.algo.sort.array.cmp_swp.shell.sequence.SedgeWick;
 import com.algs.algo.sort.array.cmp_swp.shell.sequence.SequenceGenerator;
 import com.algs.datastructure.Iterator;
 import com.algs.utils.array.ArraySortUtil;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Comparator;
+import org.junit.jupiter.api.Assertions;
 
 public class ShellSortAlysImpl<E extends Comparable<E>> extends CompareAndSwapSortAlys<E> {
 

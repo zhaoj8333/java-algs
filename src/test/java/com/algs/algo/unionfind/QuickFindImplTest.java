@@ -10,10 +10,9 @@ import com.algs.algo.unionfind.non_generic.qu.path_compression.HalvingImpl;
 import com.algs.algo.unionfind.non_generic.qu.path_compression.SplittingImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.RankWeighedImpl;
 import com.algs.algo.unionfind.non_generic.qu.weighed.SizeWeighedImpl;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class QuickFindImplTest extends ImplFunctionalityTest {
 

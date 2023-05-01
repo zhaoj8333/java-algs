@@ -1,7 +1,6 @@
 package com.algs.algo.unionfind.generic;
 
 import com.algs.utils.ObjectUtil;
-
 import java.util.Objects;
 
 public class UFNode<E> {

@@ -2,7 +2,6 @@ package com.algs.datastructure.collection.list.array;
 
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.list.IList;
-
 import java.util.Collection;
 
 /**

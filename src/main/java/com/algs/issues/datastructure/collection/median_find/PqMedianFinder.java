@@ -3,7 +3,6 @@ package com.algs.issues.datastructure.collection.median_find;
 import com.algs.datastructure.collection.heap.array.BinaryArrayPqImpl;
 import com.algs.datastructure.collection.heap.array.IPriorityQueue;
 import com.algs.utils.CompareUtil;
-
 import java.util.Comparator;
 
 public class PqMedianFinder<E extends Comparable<E>> implements MedianFinder<E> {

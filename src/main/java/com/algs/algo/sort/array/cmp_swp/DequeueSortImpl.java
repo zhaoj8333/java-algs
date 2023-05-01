@@ -1,7 +1,6 @@
 package com.algs.algo.sort.array.cmp_swp;
 
 import com.algs.utils.array.ArraysUtil;
-
 import java.util.Comparator;
 
 public class DequeueSortImpl<E extends Comparable<E>> extends ArrayCompareAndSwapSort<E> {

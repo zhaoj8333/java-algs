@@ -1,13 +1,7 @@
 package com.algs.datastructure.collection.list.array;
 
 import com.algs.DefaultValues;
-import com.algs.datastructure.Iterator;
-import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
-import com.algs.utils.RangeUtil;
-import com.algs.utils.array.ArraysUtil;
-
-import java.util.Objects;
 
 public class ResizableArrayImpl<E> extends NullableResizableArrayImpl<E> {
 

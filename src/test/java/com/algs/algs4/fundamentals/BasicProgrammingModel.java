@@ -1,9 +1,8 @@
 package com.algs.algs4.fundamentals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.Scanner;
+import org.junit.jupiter.api.Test;
 
 public class BasicProgrammingModel {
 

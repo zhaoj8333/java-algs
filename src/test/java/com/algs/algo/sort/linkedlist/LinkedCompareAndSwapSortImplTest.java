@@ -6,10 +6,9 @@ import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
+import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Constructor;
 
 class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
 
