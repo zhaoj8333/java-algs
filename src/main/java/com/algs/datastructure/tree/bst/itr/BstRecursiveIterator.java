@@ -13,7 +13,7 @@ public abstract class BstRecursiveIterator<K extends Comparable<K>, V> implement
 
     protected final BstNode<K, V> root;
 
-    protected final IVisitor visitor;
+    private final IVisitor visitor;
 
     public BstRecursiveIterator() {
         this(null);

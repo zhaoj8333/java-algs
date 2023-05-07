@@ -88,6 +88,7 @@ public final class ArraysUtil {
     }
 
     public static <E> boolean equals(E[] a, E[] b) {
+        ObjectUtil.requireNonNull(a, b);
         if (!Objects.equals(a.length, b.length)) {
             return false;
         }
@@ -101,13 +102,21 @@ public final class ArraysUtil {
     }
 
     public static <E> boolean equals(E[] a, ICollection<E> b) {
+        ObjectUtil.requireNonNull(a, b);
         if (!Objects.equals(a.length, b.size())) {
             return false;
         }
+        return sameElements(a, b);
+    }
+
+    public static <E> boolean sameElements(E[] a, ICollection<E> b) {
         Iterator<E> itr = b.iterator();
         int len = a.length;
         for (int i = 0; i < len; i++) {
-            if (itr.hasNext() && !Objects.equals(a[i], itr.next())) {
+            if (!itr.hasNext()) {
+                return false;
+            }
+            if (!Objects.equals(a[i], itr.next())) {
                 return false;
             }
         }
