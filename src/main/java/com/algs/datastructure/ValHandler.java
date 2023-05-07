@@ -1,4 +1,4 @@
-package com.algs.datastructure.tree.bst.serializer;
+package com.algs.datastructure;
 
 public interface ValHandler {
 

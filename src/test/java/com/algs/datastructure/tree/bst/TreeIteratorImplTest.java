@@ -29,22 +29,19 @@ import org.junit.jupiter.api.Assertions;
 public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-            // Recursive
 //            PreOrderIteratorImpl.class,
 //            InOrderIteratorImpl.class,
 //            PostOrderIteratorImpl.class,
 //            LevelOrderIteratorImpl.class,
-
-            // Non Recursive
+//
 //            PreOrderStackIteratorImpl.class,
 //            InOrderStackIteratorImpl.class,
 //            PostOrderStackIteratorImpl.class,
 //            LevelOrderQueueIteratorImpl.class,
-
-            // Morris
-            MorrisPreOrderIteratorImpl.class,
-//            MorrisInIteratorImpl.class,
-//            MorrisPostIteratorImpl.class,
+//
+//            MorrisPreOrderIteratorImpl.class,
+//            MorrisInOrderIteratorImpl.class,
+            MorrisPostOrderIteratorImpl.class,
     };
 
     protected HashMap<Class<?>, Integer[]> expectedResults;
@@ -54,24 +51,25 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
     public TreeIteratorImplTest(ITree<K, V> tree) {
         this.tree = tree;
         expectedResults = new HashMap<>();
-        Integer[] preArray = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
+        final Integer[] preArray = {15, 11, 9, 1, 4, 3, 7, 5, 8, 10, 13, 14, 22, 17, 20, 30, 25, 26};
         expectedResults.put(PreOrderIteratorImpl.class, preArray);
         expectedResults.put(PreOrderStackIteratorImpl.class, preArray);
         expectedResults.put(MorrisPreOrderIteratorImpl.class, preArray);
 
-        Integer[] inArray = {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
+        final Integer[] inArray = {1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 17, 20, 22, 25, 26, 30};
         expectedResults.put(InOrderIteratorImpl.class, inArray);
         expectedResults.put(InOrderStackIteratorImpl.class, inArray);
         expectedResults.put(MorrisInOrderIteratorImpl.class, inArray);
 
-        Integer[] postArray = {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
+        final Integer[] postArray = {3, 5, 8, 7, 4, 1, 10, 9, 14, 13, 11, 20, 17, 26, 25, 30, 22, 15};
         expectedResults.put(PostOrderIteratorImpl.class, postArray);
         expectedResults.put(PostOrderStackIteratorImpl.class, postArray);
         expectedResults.put(MorrisPostOrderIteratorImpl.class, postArray);
 
-        Integer[] levelArray = {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
+        final Integer[] levelArray = {15, 11, 22, 9, 13, 17, 30, 1, 10, 14, 20, 25, 4, 26, 3, 7, 5, 8};
         expectedResults.put(LevelOrderIteratorImpl.class, levelArray);
         expectedResults.put(LevelOrderQueueIteratorImpl.class, levelArray);
+        // MorrisLevelOrderIterator // TODO: 5/5/2023  
     }
 
     @Override
@@ -91,7 +89,7 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
     @Override
     protected Object construct(Class<?> targetClass) {
         Class<?> superclass = targetClass.getSuperclass();
-        if (superclass.equals(BstIterator.class) || superclass.equals(MorrisIterator.class)) {
+        if (superclass.equals(BstIterator.class)) {
             Object instance = null;
             try {
                 Constructor<?> constructor = targetClass.getConstructor(ITree.class, IVisitor.class);
@@ -101,7 +99,7 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
             }
             return instance;
         }
-        if (superclass.equals(BstRecursiveIterator.class)) {
+        if (superclass.equals(BstRecursiveIterator.class) || superclass.equals(MorrisIterator.class)) {
             Object instance = null;
             try {
                 Constructor<?> constructor = targetClass.getConstructor(ITree.class, IVisitor.class);

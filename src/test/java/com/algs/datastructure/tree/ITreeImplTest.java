@@ -2,12 +2,15 @@ package com.algs.datastructure.tree;
 
 import com.algs.IJunitTestable;
 import com.algs.ImplFunctionalityTest;
+import com.algs.datastructure.IVisitor;
+import com.algs.datastructure.collection.queue.IQueue;
+import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
+import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.TreeIteratorImplTest;
 import com.algs.datastructure.tree.bst.TreeSerializerImplTest;
-import com.algs.datastructure.tree.bst.itr.morris.MorrisPreOrderIteratorImpl;
-import com.algs.datastructure.tree.bst.serializer.ValHandler;
+import com.algs.datastructure.ValHandler;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import java.lang.reflect.Constructor;
@@ -93,13 +96,16 @@ class ITreeImplTest extends ImplFunctionalityTest {
     private void testItr(BinarySearchTree<Integer, String> tree) {
         IJunitTestable test = new TreeIteratorImplTest<>(tree);
         test.test();
-//        testMorris(tree);
     }
 
-    public void testMorris(BinarySearchTree<Integer, String> tree) {
-        MorrisPreOrderIteratorImpl itr = new MorrisPreOrderIteratorImpl<>(tree);
-        itr.iterate();
-    }
+    private final IQueue<Integer> recursiveSeq = new LinkedQueueImpl<>();
+
+    private final IVisitor visitor = new IVisitor() {
+        @Override
+        public void visit(Object obj) {
+            recursiveSeq.enque(((BstNode<Integer, String>) obj).key);
+        }
+    };
 
     private void testSerializer(BinarySearchTree<Integer, String> tree) {
         IJunitTestable test = new TreeSerializerImplTest(tree, keyHandler, valHandler);

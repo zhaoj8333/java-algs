@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public abstract class BstIterator<K extends Comparable<K>, V> implements Iterator<K> {
 
-    protected final IVisitor visitor;
+    private final IVisitor visitor;
 
     public BstIterator() {
         this(null);

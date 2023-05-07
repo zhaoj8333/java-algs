@@ -1,5 +1,6 @@
 package com.algs.datastructure.tree.bst.serializer;
 
+import com.algs.datastructure.ValHandler;
 import com.algs.datastructure.tree.ITree;
 
 public class InOrderSerializerImpl<K extends Comparable<K>, V> extends BstSerializer<K, V> {
