@@ -3,7 +3,6 @@ package com.algs.datastructure.tree.bst.itr.morris;
 import com.algs.datastructure.IVisitor;
 import com.algs.datastructure.node.BstNode;
 import com.algs.datastructure.tree.ITree;
-import com.algs.datastructure.tree.bst.itr.BstIterator;
 import com.algs.datastructure.tree.bst.itr.BstRecursiveIterator;
 
 /**

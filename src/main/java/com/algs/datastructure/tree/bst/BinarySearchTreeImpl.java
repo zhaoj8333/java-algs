@@ -118,10 +118,7 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySear
         }
         BstNode<K, V> tmp = node.left;
         if (Objects.nonNull(tmp)) {
-            while (Objects.nonNull(tmp.right)) {
-                tmp = tmp.right;
-            }
-            return tmp;
+            return max(tmp);
         }
         // parent
         while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.left)) {
@@ -142,10 +139,7 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySear
         }
         BstNode<K, V> tmp = node.right;
         if (Objects.nonNull(tmp)) {
-            while (Objects.nonNull(tmp.left)) {
-                tmp = tmp.left;
-            }
-            return tmp;
+            return min(tmp);
         }
         // parent
         while (Objects.nonNull(node.parent) && Objects.equals(node, node.parent.right)) {
@@ -189,6 +183,22 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySear
     @Override
     public boolean isBalanced() {
         return false;
+    }
+
+    @Override
+    public int minDistance(K a, K b) {
+        BstNode<K, V> aNode = getNode(a);
+        BstNode<K, V> bNode = getNode(b);
+        return distance(aNode, bNode);
+    }
+
+    @Override
+    public int maxDistance() {
+        return 0;
+    }
+
+    public int distance(BstNode<K, V> a, BstNode<K, V> b) {
+        return 0;
     }
 
     @Override

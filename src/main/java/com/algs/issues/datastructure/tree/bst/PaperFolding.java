@@ -1,9 +1,14 @@
 package com.algs.issues.datastructure.tree.bst;
 
+/**
+ * {@link ../../../../../../../../../resources/images/Paper-folding.png}
+ */
 public class PaperFolding {
 
     public static void printFolds(int n) {
+        System.out.print(n + ": ");
         print(1, n, true);
+        System.out.println();
     }
 
     /**
@@ -15,7 +20,8 @@ public class PaperFolding {
             return;
         }
         print(i + 1, n, true);
-        System.out.println(down ? "D" : "B");
+        String d = down ? "D" : "B";
+        System.out.print(d + " ");
         print(i + 1, n, false);
     }
 

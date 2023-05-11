@@ -7,6 +7,8 @@ class PaperFoldingTest {
     @Test
     void test() {
         PaperFolding.printFolds(3);
+        PaperFolding.printFolds(4);
+        PaperFolding.printFolds(5);
     }
 
 }

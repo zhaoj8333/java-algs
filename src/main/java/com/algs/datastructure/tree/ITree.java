@@ -56,6 +56,10 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     boolean isBalanced();
 
+    int minDistance(K a, K b);     // arrive from a to b, how many steps
+
+    int maxDistance();
+
     Iterator<K> iterator(Class<?> itrClass, IVisitor visitor);
 
 }

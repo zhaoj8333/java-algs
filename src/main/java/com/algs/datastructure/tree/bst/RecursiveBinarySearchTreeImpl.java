@@ -176,7 +176,43 @@ public class RecursiveBinarySearchTreeImpl<K extends Comparable<K>, V> extends B
             return true;
         }
         return isBalanced(node.left) && isBalanced(node.right)
-                && Math.abs(height(node.left) - height(node.right)) <= 1;
+                && Math.abs(height(node.left) - height(node.right)) < 2;
+    }
+
+    @Override
+    public int minDistance(K a, K b) {
+        return distance(get(root, a), get(root, b));
+    }
+
+    public int distance(BstNode<K, V> a, BstNode<K, V> b) {
+        if (Objects.isNull(a) || Objects.isNull(b)) {
+            return 0;
+        }
+        return 0;
+    }
+
+    /**
+     * X point, A point to B point:
+     *  1. irrelavent to X, dont't pass X:
+     *      {@link Math#max(int: maxDistance(left), int: maxDistance(right))}
+     *
+     *  2. relavent to X, will pass Y:
+     *      {@link #height(BstNode: left)} + {@link #height(BstNode: right)} + 1
+     */
+    @Override
+    public int maxDistance() {
+        return maxDistance(root);
+    }
+
+    private int maxDistance(BstNode<K, V> node) {
+        if (Objects.isNull(node)) {
+            return 0;
+        }
+        int lh = maxDistance(node.left);
+        int rh = maxDistance(node.right);
+        int h = Math.max(lh, rh) + 1;
+
+        return 0;
     }
 
     @Override

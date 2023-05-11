@@ -3,6 +3,7 @@ package com.algs.datastructure.tree;
 import com.algs.IJunitTestable;
 import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.IVisitor;
+import com.algs.datastructure.ValHandler;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
@@ -10,7 +11,6 @@ import com.algs.datastructure.tree.bst.BinarySearchTree;
 import com.algs.datastructure.tree.bst.BinarySearchTreeImpl;
 import com.algs.datastructure.tree.bst.TreeIteratorImplTest;
 import com.algs.datastructure.tree.bst.TreeSerializerImplTest;
-import com.algs.datastructure.ValHandler;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import java.lang.reflect.Constructor;
@@ -77,10 +77,12 @@ class ITreeImplTest extends ImplFunctionalityTest {
 //        testMinMax(tree);
 //        testIsBalanced(tree);
 //        testFloorAndCeil(tree);
-        testItr(tree);
+//        testItr(tree);
 //        testSerializer(tree);
 //        testOther(tree);
 //        testDelete(tree);
+//        testPredAndSucc(tree);
+        testDistance(tree);
 //        Assertions.assertFalse(tree.isEmpty());
 //        Assertions.assertEquals(6, tree.height());
 //        Assertions.assertFalse(tree.isComplete());
@@ -91,6 +93,33 @@ class ITreeImplTest extends ImplFunctionalityTest {
 //        BinaryTrees.print(tree);
 //        System.out.println();
 
+    }
+
+    private void testDistance(ITree<Integer, String> tree) {
+        int h = tree.maxDistance();
+        Assertions.assertEquals(0, h);
+
+    }
+
+    private void testPredAndSucc(ITree<Integer, String> tree) {
+        Assertions.assertEquals(null, tree.pred(1));
+        Assertions.assertEquals(1, tree.pred(3));
+        Assertions.assertEquals(3, tree.pred(4));
+        Assertions.assertEquals(7, tree.pred(8));
+        Assertions.assertEquals(14, tree.pred(15));
+        Assertions.assertEquals(20, tree.pred(22));
+        Assertions.assertEquals(22, tree.pred(25));
+        Assertions.assertEquals(26, tree.pred(30));
+
+        Assertions.assertEquals(null, tree.succ(30));
+        Assertions.assertEquals(3, tree.succ(1));
+        Assertions.assertEquals(5, tree.succ(4));
+        Assertions.assertEquals(9, tree.succ(8));
+        Assertions.assertEquals(17, tree.succ(15));
+        Assertions.assertEquals(25, tree.succ(22));
+        Assertions.assertEquals(26, tree.succ(25));
+
+        Assertions.assertEquals(null, tree.succ(30));
     }
 
     private void testItr(BinarySearchTree<Integer, String> tree) {
@@ -169,21 +198,6 @@ class ITreeImplTest extends ImplFunctionalityTest {
         }
     }
 
-    /**
-     *          ┌─────15────┐
-     *          │           │
-     *       ┌─11─┐     ┌───22──┐
-     *       │    │     │       │
-     *     ┌─9─┐  13─┐ 17─┐   ┌─30
-     *     │   │     │    │   │
-     *     1─┐ 10    14   20 25─┐
-     *       │                  │
-     *     ┌─4─┐                26
-     *     │   │
-     *     3 ┌─7─┐
-     *       │   │
-     *       5   8
-     */
     private void testDelete(BinarySearchTree<Integer, String> tree) {
         Assertions.assertEquals(20, tree.size());
         tree.delete(5);

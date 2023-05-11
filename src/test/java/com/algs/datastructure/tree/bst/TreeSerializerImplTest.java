@@ -1,6 +1,7 @@
 package com.algs.datastructure.tree.bst;
 
 import com.algs.ImplFunctionalityTest;
+import com.algs.datastructure.ValHandler;
 import com.algs.datastructure.tree.ITree;
 import com.algs.datastructure.tree.bst.serializer.BstSerializer;
 import com.algs.datastructure.tree.bst.serializer.InOrderSerializerImpl;
@@ -10,7 +11,6 @@ import com.algs.datastructure.tree.bst.serializer.PreOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursiveInOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursivePostOrderSerializerImpl;
 import com.algs.datastructure.tree.bst.serializer.RecursivePreOrderSerializerImpl;
-import com.algs.datastructure.ValHandler;
 import com.algs.utils.TreeUtil;
 import com.algs.utils.array.ArraysUtil;
 import java.lang.reflect.Constructor;
