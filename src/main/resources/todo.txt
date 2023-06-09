@@ -1,1 +1,0 @@
-can also draw the stack structure of a algorithm : Fibonacci

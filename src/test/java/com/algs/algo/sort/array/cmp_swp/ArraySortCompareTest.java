@@ -7,12 +7,7 @@ import com.algs.algo.sort.array.cmp_swp.merge.MergeSortImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.MergeSortTdOptmImpl;
 import com.algs.algo.sort.array.cmp_swp.merge.NaturalMergeSortImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.NonRecursiveQuickSortImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSort3wayImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortImpl0;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomSelectImpl0;
-import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomizeArrayImpl0;
+import com.algs.algo.sort.array.cmp_swp.quick.*;
 import com.algs.algo.sort.array.cmp_swp.shell.ShellSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArrayBuilder;
@@ -29,7 +24,7 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     protected static final Integer[] testArray;
 
     static {
-        testArray = ArrayBuilder.randomIntArray(900000);
+        testArray = ArrayBuilder.randomIntArray(90000);
 //        testArray = ArrayBuilder.randomArrayWithSeveralValues(900000, 10);
     }
 
@@ -37,11 +32,11 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
      * {@link QuickSortRandomSelectImpl0} is better than {@link QuickSortRandomizeArrayImpl0}
      */
     private final Class<?>[] targetClasses = new Class<?>[] {
-//            SelectionSortImpl.class,
+            SelectionSortImpl.class,
 //            HeapSortImpl.class,
 //            BubbleSortImpl.class,
-//            InsertionSortImpl.class,
-//            SentinelInsertionSortImpl.class
+            InsertionSortImpl.class,
+//            SentinelInsertionSortImpl.class,
 //            ShellSortImpl.class,
 //            MergeSortTdImpl.class,
 //            MergeSortTdOptmImpl.class,
@@ -49,13 +44,13 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
 //            MergeSortBuOptmImpl.class,
 //            NaturalMergeSortImpl.class,
 //            QuickSortImpl.class,
-//            QuickSortImpl0.class,
+//            QuickSortImpl0.class
 //            QuickSortIgnoreSmallArrayImpl0.class,
 //            QuickSort3wayImpl.class,
 //            NoSentinelQuickSortImpl.class,
 //            KMedianQuickSortImpl.class,
 //            NonRecursiveQuickSortImpl.class,
-
+//
 //            QuickSortRandomSelectImpl0.class,
 //            QuickSortRandomizeArrayImpl0.class,
 //            QuickSampleSortImpl.class

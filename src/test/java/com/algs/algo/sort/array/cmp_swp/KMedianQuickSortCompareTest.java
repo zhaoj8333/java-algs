@@ -4,11 +4,12 @@ import com.algs.algo.sort.array.cmp_swp.quick.KMedianQuickSortImpl;
 import com.algs.analysis.StopWatchTask;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 /**
  * When k == 3, is the best
