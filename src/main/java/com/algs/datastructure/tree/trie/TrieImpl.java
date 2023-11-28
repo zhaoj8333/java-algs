@@ -3,7 +3,7 @@ package com.algs.datastructure.tree.trie;
 import com.algs.utils.ObjectUtil;
 import java.util.Objects;
 
-public class Trie {
+public class TrieImpl {
 
     private int size;
     private final Node root = new Node();  // root Node doesn't store value

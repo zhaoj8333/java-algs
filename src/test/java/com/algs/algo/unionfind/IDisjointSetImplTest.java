@@ -38,7 +38,7 @@ class IDisjointSetImplTest extends ImplFunctionalityTest {
         }
         uf.union(wrapper1, wrapper2);
 
-        Assertions.assertTrue(uf.connected(wrapper1, wrapper2));
+        Assertions.assertTrue(uf.isSameSet(wrapper1, wrapper2));
     }
 
     @Test
@@ -46,4 +46,5 @@ class IDisjointSetImplTest extends ImplFunctionalityTest {
     public void test() {
         test(targetClasses);
     }
+
 }

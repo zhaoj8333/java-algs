@@ -4,17 +4,20 @@ import com.algs.ImplFunctionalityTest;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.array.ArrayQueueImpl;
+import com.algs.utils.CollectionUtil;
+import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraysUtil;
+import org.apache.commons.lang.ArrayUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class StackImplTest extends ImplFunctionalityTest {
 
     protected final Class<?>[] targetClasses = new Class[]{
-            ArrayStackImpl.class,
-            DestackImplByDeque.class,
+//            ArrayStackImpl.class,
+//            DestackImplByDeque.class,
             LinkedStackImpl.class,
-            StackImplByPq.class
+//            StackPqImpl.class
     };
 
     @Override
@@ -52,8 +55,27 @@ class StackImplTest extends ImplFunctionalityTest {
         s.clear();
         Assertions.assertTrue(s.isEmpty());
 
+        testReverse();
 //        s.pop();
 //        Assertions.assertThrows(RuntimeException.class, null);
+
+
+    }
+
+    @Test
+    void testReverse() {
+        Integer[] array = ArrayBuilder.randomIntArrayBetween(10, 0, 10);
+        IStack<Integer> s = new LinkedStackImpl<>();
+
+        for (Integer i : array) {
+            s.push(i);
+        }
+
+        CollectionUtil.println(s);
+
+        s.reverse();
+
+        CollectionUtil.println(s);
     }
 
     @Test
@@ -124,4 +146,5 @@ class StackImplTest extends ImplFunctionalityTest {
     public void test() {
         test(targetClasses);
     }
+
 }

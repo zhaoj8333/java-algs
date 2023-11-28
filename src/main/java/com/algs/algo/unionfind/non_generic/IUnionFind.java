@@ -8,7 +8,7 @@ public interface IUnionFind {
 
     int find(int p);
 
-    boolean connected(int a, int b);
+    boolean isSameSet(int a, int b);
 
     int[] getIds();
 

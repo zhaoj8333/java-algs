@@ -1,4 +1,4 @@
-package com.algs.datastructure.trie;
+package com.algs.datastructure.tree.trie;
 
 /**
  * Trie related data structure and algs:

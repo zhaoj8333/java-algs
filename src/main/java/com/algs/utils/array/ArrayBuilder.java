@@ -125,13 +125,16 @@ public final class ArrayBuilder {
         return ascIntArray(0, size);
     }
 
-    public static Integer[] ascIntArray(int from, int to) {
-        int size = to - from;
+    public static Integer[] ascIntArray(int from, int to, int size) {
         Integer[] array = new Integer[size];
         for (int i = 0; i < size; i++) {
             array[i] = i + from;
         }
         return array;
+    }
+
+    public static Integer[] ascIntArray(int from, int to) {
+        return ascIntArray(from, to, to - from);
     }
 
     public static Coord3D[] randomCoords(int length) {

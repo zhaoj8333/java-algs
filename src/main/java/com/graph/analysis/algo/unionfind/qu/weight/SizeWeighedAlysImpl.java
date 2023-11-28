@@ -49,7 +49,7 @@ public class SizeWeighedAlysImpl extends SizeWeighedImpl implements IUnionFindAl
             Connection<Integer> connection = itr.next();
             Integer a = connection.a;
             Integer b = connection.b;
-            if (connected(a, b)) {
+            if (isSameSet(a, b)) {
                 i++;
                 totalCost += cost;
                 plot(i, cost, totalCost);

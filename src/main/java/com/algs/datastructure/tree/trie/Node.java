@@ -12,14 +12,13 @@ public class Node {
     private Map<Character, Node> children;
     private Node parent;
 
-    public Node() {
-    }
-
     public Node(Character value, Node parent) {
         this.value = value;
-        this.isEnd = false;
         this.parent = parent;
+        this.isEnd = false;
     }
+
+    public Node() {}
 
     public boolean isEnd() {
         return isEnd;

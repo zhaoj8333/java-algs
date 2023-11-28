@@ -8,27 +8,27 @@ import com.algs.utils.array.ArraysUtil;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class StackImplByPq<E extends Comparable<E>> implements IStack<E> {
+public class StackPqImpl<E extends Comparable<E>> implements IStack<E> {
 
     private int size;
     private E[] entries;
     private final Comparator<E> comparator;
 
-    public StackImplByPq() {
+    public StackPqImpl() {
         this(DefaultValues.DEFAULT_CAPACITY, null);
     }
 
-    public StackImplByPq(int size) {
+    public StackPqImpl(int size) {
         this(size, null);
     }
 
-    public StackImplByPq(int size, Comparator<E> comparator) {
+    public StackPqImpl(int size, Comparator<E> comparator) {
         this.size = size;
         this.entries = (E[]) new Comparable[size];
         this.comparator = comparator;
     }
 
-    public StackImplByPq(ICollection<E> collection, Comparator<E> comparator) {
+    public StackPqImpl(ICollection<E> collection, Comparator<E> comparator) {
         this.size = collection.size();
         this.entries = (E[]) new Comparable[size];
         this.comparator = comparator;

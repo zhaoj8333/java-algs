@@ -205,9 +205,26 @@ public class NullableLinkedStackImpl<E> implements IStack<E> {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
+    // TODO: 2023/10/10  
     @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
+    public void reverse() {
+        if (isEmpty()) {
+            return;
+        }
+        E reversed = f(this);
+        reverse();
+        push(reversed);
+    }
+
+    private E f(IStack<E> stack) {
+        E r = stack.pop();
+        if (stack.isEmpty()) {
+            return r;
+        } else {
+            E pop = f(this);
+            stack.push(r);
+            return pop;
+        }
     }
 
 }

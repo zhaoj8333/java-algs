@@ -66,7 +66,7 @@ public class WeighedQuickFindImpl implements IUnionFind {
     }
 
     @Override
-    public boolean connected(int a, int b) {
+    public boolean isSameSet(int a, int b) {
         return Objects.equals(find(a), find(b));
     }
 

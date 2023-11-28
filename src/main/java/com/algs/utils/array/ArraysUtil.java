@@ -16,6 +16,12 @@ public final class ArraysUtil {
 
     private static Random r = new Random();
 
+    public static void fill(int[][] array, int value) {
+        for (int i = 0; i < array.length; i++) {
+            fill(array[i], 0, array.length, value);
+        }
+    }
+
     public static void fill(int[] array, int value) {
         fill(array, 0, array.length, value);
     }
@@ -476,4 +482,7 @@ public final class ArraysUtil {
         return array[r.nextInt(array.length)];
     }
 
+    public static <E> boolean isEmpty(E[] array) {
+        return Objects.isNull(array) || array.length == 0;
+    }
 }

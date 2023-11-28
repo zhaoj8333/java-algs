@@ -3,6 +3,9 @@ package com.algs.utils;
 import com.algs.DefaultValues;
 import com.algs.datastructure.Iterator;
 import com.algs.datastructure.collection.ICollection;
+import com.algs.datastructure.collection.list.linked.SinglyLinkedListImpl;
+import com.algs.utils.array.ArraysUtil;
+
 import java.util.Objects;
 
 public class CollectionUtil<E> {
@@ -153,4 +156,14 @@ public class CollectionUtil<E> {
         return longs;
     }
 
+    public static SinglyLinkedListImpl<Integer> toSinglyLinkedList(Integer[] array) {
+        if (Objects.isNull(array) || ArraysUtil.isEmpty(array)) {
+            return null;
+        }
+        SinglyLinkedListImpl<Integer> list = new SinglyLinkedListImpl<>();
+        for (Integer ele : array) {
+            list.add(0, ele);
+        }
+        return list;
+    }
 }

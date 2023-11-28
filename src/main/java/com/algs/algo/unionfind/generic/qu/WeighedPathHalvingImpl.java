@@ -71,7 +71,7 @@ public class WeighedPathHalvingImpl<E> implements IDisjointSet<E> {
     }
 
     @Override
-    public boolean connected(E a, E b) {
+    public boolean isSameSet(E a, E b) {
         return Objects.equals(find(a), find(b));
     }
 

@@ -10,6 +10,6 @@ public interface IDisjointSet<E> {
 
     E find(E a);
 
-    boolean connected(E a, E b);
+    boolean isSameSet(E a, E b);
 
 }

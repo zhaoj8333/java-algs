@@ -47,7 +47,7 @@ public class ErdosRenyiAlysImpl implements GraphicAnalysis {
         int i = 0;
         while (itr.hasNext()) {
             Connection<Integer> conn = itr.next();
-            if (uf.connected(conn.a, conn.b)) {
+            if (uf.isSameSet(conn.a, conn.b)) {
                 result[i++] = uf.getCost();
                 continue;
             }

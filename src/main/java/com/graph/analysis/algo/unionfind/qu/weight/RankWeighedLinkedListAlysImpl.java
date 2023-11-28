@@ -67,7 +67,7 @@ public class RankWeighedLinkedListAlysImpl extends RankWeighedLinkedListImpl imp
     }
 
     @Override
-    public boolean connected(int a, int b) {
+    public boolean isSameSet(int a, int b) {
         return Objects.equals(find(a), find(b));
     }
 
@@ -86,7 +86,7 @@ public class RankWeighedLinkedListAlysImpl extends RankWeighedLinkedListImpl imp
             Connection<Integer> connection = itr.next();
             Integer a = connection.a;
             Integer b = connection.b;
-            if (connected(a, b)) {
+            if (this.isSameSet(a, b)) {
                 i++;
                 totalCost += cost;
                 plot(i, cost, totalCost);

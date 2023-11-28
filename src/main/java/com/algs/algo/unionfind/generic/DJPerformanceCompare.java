@@ -34,7 +34,7 @@ public class DJPerformanceCompare<E> extends StopWatchTask<E> {
         Iterator<Connection<E>> itr = pairs.iterator();
         while (itr.hasNext()) {
             Connection<E> pair = itr.next();
-            if (uf.connected(pair.a, pair.b)) {
+            if (uf.isSameSet(pair.a, pair.b)) {
                 continue;
             }
             uf.union(pair.a, pair.b);
