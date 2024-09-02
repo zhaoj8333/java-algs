@@ -16,7 +16,6 @@ import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
 import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
-import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Test;
 
 class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
@@ -30,15 +29,8 @@ class IOrderedSymbolTableImplTest extends ImplFunctionalityTest {
     };
 
     @Override
-    protected Object construct(Class<?> targetClass) {
-        Object instance = null;
-        try {
-            Constructor<?> constructor = targetClass.getConstructor();
-            instance = constructor.newInstance();
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-        return instance;
+    protected Class<?>[] getConstructorParameters() {
+        return null;
     }
 
     @Override

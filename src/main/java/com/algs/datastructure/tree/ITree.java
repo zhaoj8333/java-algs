@@ -56,6 +56,8 @@ public interface ITree<K extends Comparable<K>, V> extends IOrderedSymbolTable<K
 
     boolean isBalanced();
 
+    boolean equals(ITree<K, V> that);
+
     int minDistance(K a, K b);     // arrive from a to b, how many steps
 
     int maxDistance();

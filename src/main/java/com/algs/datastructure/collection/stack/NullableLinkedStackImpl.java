@@ -206,15 +206,15 @@ public class NullableLinkedStackImpl<E> implements IStack<E> {
     }
 
     // TODO: 2023/10/10  
-    @Override
-    public void reverse() {
-        if (isEmpty()) {
-            return;
-        }
-        E reversed = f(this);
-        reverse();
-        push(reversed);
-    }
+//    @Override
+//    public void reverse() {
+//        if (isEmpty()) {
+//            return;
+//        }
+//        E reversed = f(this);
+//        reverse();
+//        push(reversed);
+//    }
 
     private E f(IStack<E> stack) {
         E r = stack.pop();

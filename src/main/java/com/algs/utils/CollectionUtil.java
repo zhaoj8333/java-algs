@@ -28,9 +28,7 @@ public class CollectionUtil<E> {
         Iterator<E> itr = collection.iterator();
         StringBuilder sb = new StringBuilder();
         sb.append(DefaultValues.LEFT_BRACE_BRACKET);
-        int i = 0;
         while (itr.hasNext()) {
-            i++;
             E next = itr.next();
             if (Objects.isNull(next)) {
                 sb.append(DefaultValues.NULLVAL);

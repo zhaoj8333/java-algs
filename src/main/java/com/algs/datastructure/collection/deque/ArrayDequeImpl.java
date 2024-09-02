@@ -6,10 +6,14 @@ import com.algs.utils.ObjectUtil;
 import com.algs.utils.array.ArraysUtil;
 import java.util.Objects;
 
+/**
+ * Circular Deque
+ */
 public class ArrayDequeImpl<E> implements IDeque<E> {
 
+    private int head;
     private int size;
-    private int headIndex;
+    private int tail;
     private final E[] entries;
 
     public ArrayDequeImpl() {
@@ -22,20 +26,29 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
 
     @Override
     public int size() {
-        return size;
+        return tail;
     }
 
-    private int getTailIndex() {
-        return (headIndex + size) % entries.length;
+    /**
+     * 1.  --======================--------------
+     *       |                    |
+     *    head                tail = (head + size) % entries.length
+     *
+     * 2.  =========---------------==========
+     *            |               |
+     *            tail            head
+     */
+    private int tailIndex() {
+        return (head + tail) % entries.length;
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return tail == 0;
     }
 
     public boolean isFull() {
-        return size == entries.length;
+        return tail == entries.length;
     }
 
     @Override
@@ -44,9 +57,9 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
             throw new RuntimeException("Already Full");
         }
         ObjectUtil.requireNonNull(item);
-        headIndex = ((headIndex - 1) + entries.length) % entries.length;
-        entries[headIndex] = item;
-        size++;
+        head = ((head - 1) + entries.length) % entries.length;
+        entries[head] = item;
+        tail++;
     }
 
     @Override
@@ -62,21 +75,21 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
     @Override
     public E dequeTail() {
         ObjectUtil.requireNonEmpty(this);
-        int tailIndex = (headIndex + size - 1) % entries.length;
+        int tailIndex = (head + tail - 1) % entries.length;
         E entry = entries[tailIndex];
         entries[tailIndex] = null;
-        size--;
+        tail--;
         return entry;
     }
 
     @Override
     public E peekHead() {
-        return entries[headIndex];
+        return entries[head];
     }
 
     @Override
     public E peekTail() {
-        return entries[getTailIndex()];
+        return entries[tailIndex()];
     }
 
     @Override
@@ -85,17 +98,17 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
             throw new RuntimeException("Already Full");
         }
         ObjectUtil.requireNonNull(item);
-        entries[getTailIndex()] = item;
-        size++;
+        entries[tailIndex()] = item;
+        tail++;
     }
 
     @Override
     public E deque() {
         ObjectUtil.requireNonEmpty(this);
-        E entry = entries[headIndex];
-        entries[headIndex] = null;
-        headIndex = (++headIndex) % entries.length;
-        size--;
+        E entry = entries[head];
+        entries[head] = null;
+        head = (++head) % entries.length;
+        tail--;
         return entry;
     }
 
@@ -106,8 +119,8 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
 
     @Override
     public boolean contains(E item) {
-        for (int i = 0; i < size; i++) {
-            if (Objects.equals(entries[(headIndex + i) % entries.length], item)) {
+        for (int i = 0; i < tail; i++) {
+            if (Objects.equals(entries[(head + i) % entries.length], item)) {
                 return true;
             }
         }
@@ -119,16 +132,16 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
 //        while (!isEmpty()) {
 //            deque();
 //        }
-        ArraysUtil.fill(entries, 0, size, null);
-        headIndex = 0;
-        size = 0;
+        ArraysUtil.fill(entries, 0, tail, null);
+        head = 0;
+        tail = 0;
     }
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = entries[(headIndex + i) % entries.length];
+        E[] array = (E[]) new Object[tail];
+        for (int i = 0; i < tail; i++) {
+            array[i] = entries[(head + i) % entries.length];
         }
         return array;
     }
@@ -139,7 +152,7 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
 
         @Override
         public boolean hasNext() {
-            return n < size - 1;
+            return n < tail - 1;
         }
 
         @Override
@@ -173,9 +186,9 @@ public class ArrayDequeImpl<E> implements IDeque<E> {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }

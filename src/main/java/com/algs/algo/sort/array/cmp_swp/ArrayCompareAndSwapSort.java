@@ -20,7 +20,7 @@ public abstract class ArrayCompareAndSwapSort<E extends Comparable<E>> implement
     }
 
     public ArrayCompareAndSwapSort(E[] array, Comparator<E> comparator) {
-        ObjectUtil.requireNonNull(array);
+        ObjectUtil.requireNonNull((Object) array);
         this.array = array;
         this.comparator = comparator;
     }

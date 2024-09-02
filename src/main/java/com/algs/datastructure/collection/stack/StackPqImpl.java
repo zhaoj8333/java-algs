@@ -125,10 +125,10 @@ public class StackPqImpl<E extends Comparable<E>> implements IStack<E> {
         }
     }
 
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
     @Override
     public E get(int i) {

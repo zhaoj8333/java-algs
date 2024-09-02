@@ -180,9 +180,4 @@ public class LinkedDequeImpl0<E> implements IDeque<E> {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
-
 }

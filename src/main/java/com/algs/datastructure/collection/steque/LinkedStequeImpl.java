@@ -166,9 +166,9 @@ public class LinkedStequeImpl<E> implements ISteque<E> {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }

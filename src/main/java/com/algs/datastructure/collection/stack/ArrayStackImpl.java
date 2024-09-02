@@ -164,9 +164,9 @@ public class ArrayStackImpl<E> implements IStack<E> {
         throw new UnsupportedOperationException("UnsupportedOperation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }

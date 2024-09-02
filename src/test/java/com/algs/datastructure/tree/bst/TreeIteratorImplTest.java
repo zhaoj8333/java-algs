@@ -113,6 +113,11 @@ public class TreeIteratorImplTest<K extends Comparable<K>, V> extends ImplFuncti
         return null;
     }
 
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return null;
+    }
+
     /**
      *      ┌─────15────┐
      *      │           │

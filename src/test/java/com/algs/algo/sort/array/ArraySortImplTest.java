@@ -36,13 +36,18 @@ class ArraySortImplTest extends ImplFunctionalityTest {
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(Integer[].class, Comparator.class);
+            Constructor<?> constructor = targetClass.getConstructor(this.getConstructorParameters());
             Integer[] data = ArraysUtil.copyAll(testIntArray);
             instance = constructor.newInstance(data, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
         return instance;
+    }
+
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class<?>[] {Integer[].class, Comparator.class};
     }
 
     @Test

@@ -30,6 +30,11 @@ class ListImplTest extends ImplFunctionalityTest {
         return instance;
     }
 
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
     @Test
     @Override
     public void test() {

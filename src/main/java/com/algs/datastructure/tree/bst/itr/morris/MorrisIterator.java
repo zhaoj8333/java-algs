@@ -10,7 +10,7 @@ import com.algs.datastructure.tree.bst.itr.BstRecursiveIterator;
  *  递归：函数调用栈，空间复杂度O(logN)
  *  非递归：实质是模拟系统栈进行遍历，空间复杂度依旧是O(logN)
  * 
- * 而消除栈的遍历方式就是 {@link #MorrisPreIteratorImpl(ITree)}遍历方式
+ * 而消除栈的遍历方式就是 {@link MorrisPreOrderIteratorImpl(ITree)}遍历方式
  * {@link MorrisIterator}遍历方式时间复杂度依然是O(N), 但空间复杂度为O(1)
  *
  * Morris序: ...

@@ -13,7 +13,6 @@ import com.algs.datastructure.tree.bst.TreeIteratorImplTest;
 import com.algs.datastructure.tree.bst.TreeSerializerImplTest;
 import com.algs.datastructure.tree.printer.BinaryTrees;
 import com.algs.utils.array.ArraysUtil;
-import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,18 +29,6 @@ class ITreeImplTest extends ImplFunctionalityTest {
     private final Integer[][] testArrays = {
             { 15, 11, 9, 13, 22, 14, 30, 1, 4, 10, 17, 7, 4, 5, 25, 20, 8, 3, 3, 26 },
     };
-
-    @Override
-    protected Object construct(Class<?> targetClass) {
-        Object instance = null;
-        try {
-            Constructor<?> constructor = targetClass.getConstructor();
-            instance = constructor.newInstance();
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-        return instance;
-    }
 
     private final ValHandler keyHandler = new ValHandler() {
         @Override
@@ -61,6 +48,11 @@ class ITreeImplTest extends ImplFunctionalityTest {
             return "(" + String.valueOf(parameter) + ")";
         }
     };
+
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return null;
+    }
 
     @Override
     protected void testEach(Object obj) {

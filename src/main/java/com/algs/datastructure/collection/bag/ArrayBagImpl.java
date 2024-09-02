@@ -4,6 +4,7 @@ import com.algs.DefaultValues;
 import com.algs.datastructure.Iterator;
 import com.algs.utils.CollectionUtil;
 import com.algs.utils.array.ArraysUtil;
+
 import java.util.Objects;
 
 @SuppressWarnings("unchecked")
@@ -20,12 +21,9 @@ public class ArrayBagImpl<E> implements IBag<E> {
         entries = (E[]) new Object[size];
     }
 
-    private void ensureCapacity(int capacity) {
-        int oldCapacity = entries.length;
-        if (oldCapacity >= capacity) {
-            return;
-        }
-        E[] newEntries = (E[]) new Object[capacity];
+    private void ensureCapacity(int newCap) {
+        if (entries.length >= newCap) return;
+        E[] newEntries = (E[]) new Object[newCap];
         System.arraycopy(entries, 0, newEntries, 0, entries.length);
         entries = newEntries;
     }
@@ -53,7 +51,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
         int number = 0;
         for (E datum : entries) {
             if (Objects.equals(item, datum)) {
-                number ++;
+                number++;
             }
         }
         return number;
@@ -74,9 +72,7 @@ public class ArrayBagImpl<E> implements IBag<E> {
      * then the last item assigned with null
      */
     private E removeIndexOf(int index) {
-        if (isEmpty()) {
-            throw new RuntimeException("Already empty");
-        }
+        if (isEmpty()) throw new RuntimeException("Already empty");
         E item = entries[index];
         entries[index] = entries[size - 1];
         entries[--size] = null;
@@ -111,7 +107,22 @@ public class ArrayBagImpl<E> implements IBag<E> {
 
     @Override
     public E[] toArray() {
-        return (E[]) CollectionUtil.toArray(this);
+        return CollectionUtil.toArray(this);
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayIterator<>();
+    }
+
+    @Override
+    public E get(int i) {
+        throw new UnsupportedOperationException("Unsupported Operation");
+    }
+
+    @Override
+    public E remove(int i) {
+        throw new UnsupportedOperationException("Unsupported Operation");
     }
 
     private class ArrayIterator<E> implements Iterator<E> {
@@ -127,26 +138,6 @@ public class ArrayBagImpl<E> implements IBag<E> {
         public E next() {
             return (E) entries[++n];
         }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new ArrayIterator<>();
-    }
-
-    @Override
-    public E get(int i) {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
-    @Override
-    public E remove(int i) {
-        throw new UnsupportedOperationException("Unsupported Operation");
     }
 
 }

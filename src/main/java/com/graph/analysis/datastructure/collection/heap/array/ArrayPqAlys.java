@@ -134,9 +134,9 @@ public abstract class ArrayPqAlys<E extends Comparable<E>> extends CollectionAly
         throw new UnsupportedOperationException("unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("unsupported operation");
+//    }
 
 }

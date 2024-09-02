@@ -82,6 +82,11 @@ class ArraySortCompareTest<E extends Comparable<E>> extends ImplPerformanceTest<
     }
 
     @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void execEach(Object obj) {
         ArrayCompareAndSwapSort<Integer> sort = (ArrayCompareAndSwapSort) obj;
         StopWatchTask<Object> sw = new StopWatchTask<>() {

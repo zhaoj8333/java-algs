@@ -109,20 +109,20 @@ public class SinglyLinkedListImpl<E> implements ISequentialAccessList<E> {
      *  in each iteration, get the node(firstSinglyLinkNode) and insert it to the newHead,
      *  keep node(first) point to the first node of the rest of previous linkedlist
      *
-     *  Essentially, iterate reverse is {@link LinkedBagImpl#linkHead(Object)}
+     * Essentially, reversing a linkedlist is similar with {@link LinkedBagImpl#linkHead(Object)}
      *
      * @param node oldHead
      * @return newHead
      */
     private SinglyLinkNode<E> reverse0(SinglyLinkNode<E> node) {
-        SinglyLinkNode<E> prev = null;
+        SinglyLinkNode<E> newHead = null;
         while (Objects.nonNull(node)) {
             SinglyLinkNode<E> next = node.next;
-            node.next = prev;
-            prev = node;
+            node.next = newHead;
+            newHead = node;
             node = next;
         }
-        return prev;
+        return newHead;
     }
 
     /**

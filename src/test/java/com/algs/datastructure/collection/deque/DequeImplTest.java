@@ -8,20 +8,20 @@ import org.junit.jupiter.api.Test;
 class DequeImplTest extends ImplFunctionalityTest {
 
     protected Class<?>[] targetClasses = new Class<?>[] {
-        ArrayDequeImpl.class,
+            ArrayDequeImpl.class,
             CircularLinkedDequeImpl.class,
             LinkedDequeImpl.class,
             LinkedDequeImpl0.class,
     };
 
     @Override
-    protected Object construct(Class<?> targetClass) {
+    protected Class<?>[] getConstructorParameters() {
         return null;
     }
 
     @Override
     protected void testEach(Object obj) {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+        IDeque<Integer> q = (IDeque<Integer>) obj;
         Assertions.assertTrue(q.isEmpty());
         for (int i = 0; i < 3; i++) {
             q.enque(i);
@@ -36,12 +36,18 @@ class DequeImplTest extends ImplFunctionalityTest {
         Assertions.assertTrue(q.contains(0));
         Assertions.assertFalse(q.contains(10));
 
-
         Integer d1 = q.deque();
         Assertions.assertEquals(4, d1);
 
         Integer d2 = q.dequeTail();
         Assertions.assertEquals(2, d2);
+
+        enqueueHead(q);
+        dequeueTail(q);
+        enqueueHead(q);
+        dequeue(q);
+        iterate(q);
+        enqueue(q);
     }
 
     @Test
@@ -50,8 +56,7 @@ class DequeImplTest extends ImplFunctionalityTest {
         test(targetClasses);
     }
 
-    void enqueueHead() {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+    public void enqueueHead(IDeque<Integer> q) {
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -64,8 +69,7 @@ class DequeImplTest extends ImplFunctionalityTest {
 
     }
 
-    void dequeueTail() {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+    public void dequeueTail(IDeque<Integer> q) {
         q.enque(-1);
         q.enque(-2);
         for (int i = 0; i < 3; i++) {
@@ -86,8 +90,7 @@ class DequeImplTest extends ImplFunctionalityTest {
         Assertions.assertTrue(q.isEmpty());
     }
 
-    void enqueue() {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+    public void enqueue(IDeque<Integer> q) {
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -99,8 +102,7 @@ class DequeImplTest extends ImplFunctionalityTest {
         Assertions.assertThrows(RuntimeException.class, null);
     }
 
-    void dequeue() {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+    public void dequeue(IDeque<Integer> q) {
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }
@@ -125,8 +127,7 @@ class DequeImplTest extends ImplFunctionalityTest {
 
     }
 
-    void iterate() {
-        IDeque<Integer> q = new ArrayDequeImpl<>();
+    public void iterate(IDeque<Integer> q) {
         for (int i = 0; i < 10; i++) {
             q.enque(i);
         }

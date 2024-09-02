@@ -48,14 +48,12 @@ class ISymbolTableImplCompareTest<E extends Comparable<E>> extends ImplPerforman
 
     @Override
     protected Object construct(Class<?> targetClass) {
-        Object instance = null;
-        try {
-            Constructor<?> constructor = targetClass.getConstructor();
-            instance = constructor.newInstance();
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-        return instance;
+        return null;
+    }
+
+    @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
     }
 
     @Override

@@ -9,5 +9,6 @@ public interface IList<E> extends ICollection<E> {
     E set(int index, E item);
     int indexOf(E item);
     Iterator<E> reverseIterator();
+    void reverse();
 
 }

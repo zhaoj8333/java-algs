@@ -4,6 +4,7 @@ import com.algs.datastructure.Iiterable;
 import com.algs.datastructure.collection.queue.IQueue;
 import com.algs.datastructure.collection.queue.link.LinkedQueueImpl;
 import com.algs.datastructure.node.BstNode;
+import com.algs.datastructure.tree.ITree;
 import com.algs.utils.ObjectUtil;
 import java.util.Comparator;
 import java.util.Objects;
@@ -356,4 +357,8 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, V> extends BinarySear
         return null;
     }
 
+    @Override
+    public boolean equals(ITree<K, V> that) {
+        return false;
+    }
 }

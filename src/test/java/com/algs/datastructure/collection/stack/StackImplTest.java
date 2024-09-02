@@ -26,6 +26,11 @@ class StackImplTest extends ImplFunctionalityTest {
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Override
     protected void testEach(Object obj) {
         IStack<Integer> s = new ArrayStackImpl<>();
         Assertions.assertTrue(s.isEmpty());
@@ -73,7 +78,7 @@ class StackImplTest extends ImplFunctionalityTest {
 
         CollectionUtil.println(s);
 
-        s.reverse();
+//        s.reverse();
 
         CollectionUtil.println(s);
     }

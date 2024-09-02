@@ -80,6 +80,11 @@ public class TreeSerializerImplTest<K extends Comparable<K>, V> extends ImplFunc
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Override
     protected void testEach(Object obj) {
         BstSerializer<Integer, String> serializer = (BstSerializer<Integer, String>) obj;
         // serialize

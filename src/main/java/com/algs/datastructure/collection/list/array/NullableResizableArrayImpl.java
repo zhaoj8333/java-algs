@@ -119,7 +119,7 @@ public class NullableResizableArrayImpl<E> implements RandomAccessable<E> {
 
     @Override
     public void clear() {
-        ArraysUtil.rangeClear(entries, 0, size - 1);
+        ArraysUtil.clear(entries, 0, size - 1);
         size = 0;
     }
 

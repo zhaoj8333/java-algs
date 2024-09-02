@@ -48,6 +48,11 @@ class SequenceOfShellSortCompareTest<E extends Comparable<E>> extends ImplPerfor
     }
 
     @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void execEach(Object obj) {
         ShellSortAlysImpl<Integer> sort = (ShellSortAlysImpl<Integer>) obj;
         StopWatchTask<Object> sw = new StopWatchTask<>() {

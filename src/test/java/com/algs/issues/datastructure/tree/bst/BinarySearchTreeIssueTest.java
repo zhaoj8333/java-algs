@@ -39,6 +39,11 @@ class BinarySearchTreeIssueTest extends ImplFunctionalityTest {
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Override
     protected void testEach(Object obj) {
         BinarySearchTreeIssue<Integer, String> bstApp = (BinarySearchTreeIssue<Integer, String>) obj;
 

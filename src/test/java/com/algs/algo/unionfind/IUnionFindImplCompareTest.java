@@ -43,6 +43,11 @@ class IUnionFindImplCompareTest<E> extends ImplPerformanceTest<E> {
     }
 
     @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void execEach(Object obj) {
         StopWatchTask<Object> sw = new StopWatchTask<>() {
 

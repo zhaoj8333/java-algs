@@ -47,6 +47,11 @@ class UnionFindImplTest extends ImplFunctionalityTest {
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void testEach(Object obj) {
 
         IUnionFind uf = (IUnionFind) obj;

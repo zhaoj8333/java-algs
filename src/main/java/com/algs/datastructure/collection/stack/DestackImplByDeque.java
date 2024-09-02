@@ -191,9 +191,9 @@ public class DestackImplByDeque<E> implements ICollection<E> {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
+//    @Override
+//    public void reverse() {
+//        throw new UnsupportedOperationException("Unsupported Operation");
+//    }
 
 }

@@ -81,7 +81,7 @@ public final class ArraysUtil {
         return false;
     }
 
-    public static <E> boolean sameElements(E[] a, E[] b) {
+    public static <E> boolean matchesInOrder(E[] a, E[] b) {
         if (!Objects.equals(a.length, b.length)) {
             return false;
         }
@@ -112,10 +112,10 @@ public final class ArraysUtil {
         if (!Objects.equals(a.length, b.size())) {
             return false;
         }
-        return sameElements(a, b);
+        return matchesInOrder(a, b);
     }
 
-    public static <E> boolean sameElements(E[] a, ICollection<E> b) {
+    public static <E> boolean matchesInOrder(E[] a, ICollection<E> b) {
         Iterator<E> itr = b.iterator();
         int len = a.length;
         for (int i = 0; i < len; i++) {
@@ -191,11 +191,11 @@ public final class ArraysUtil {
         System.out.println(list.toString());
     }
 
-    public static <E> void rangeClear(E[] array) {
-        rangeClear(array, 0, array.length - 1);
+    public static <E> void clear(E[] array) {
+        clear(array, 0, array.length - 1);
     }
 
-    public static <E> void rangeClear(E[] array, int begin, int end) {
+    public static <E> void clear(E[] array, int begin, int end) {
         RangeUtil.requireIntRange(begin, 0, array.length - 1);
         RangeUtil.requireIntRange(end, 0, array.length - 1);
         for (int i = begin; i <= end; i++) {

@@ -136,9 +136,9 @@ public class StackQueueImplOptm<E> implements IQueue<E> {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("Unsupported Operation");
+//    }
 
 }

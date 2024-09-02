@@ -5,8 +5,7 @@ import com.algs.datastructure.collection.queue.IQueue;
 
 public abstract class ArrayQueue<E> implements IQueue<E> {
 
-    protected int size;
-    protected int headIndex;
+    protected int head;
     protected E[] entries;
 
     public ArrayQueue() {
@@ -15,16 +14,6 @@ public abstract class ArrayQueue<E> implements IQueue<E> {
 
     public ArrayQueue(int capacity) {
         entries = (E[]) new Object[capacity];
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
-    public int size() {
-        return size;
     }
 
     @Override
@@ -47,9 +36,9 @@ public abstract class ArrayQueue<E> implements IQueue<E> {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }

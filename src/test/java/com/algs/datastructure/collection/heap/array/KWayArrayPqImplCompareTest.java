@@ -54,6 +54,11 @@ class KWayArrayPqImplCompareTest<E extends Comparable<E>> extends ImplPerformanc
     }
 
     @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void execEach(Object obj) {
         IPriorityQueue<Integer> pq = (IPriorityQueue<Integer>) obj;
         IPriorityQueue<Integer> finalPq = pq;

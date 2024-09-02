@@ -144,9 +144,9 @@ public class LinkedBagImpl<E> implements IBag<E> {
         throw new UnsupportedOperationException("unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }

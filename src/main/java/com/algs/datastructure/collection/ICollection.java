@@ -35,7 +35,6 @@ public interface ICollection<E> extends Iiterable<E> {
 //    void shuffle();
 //    void sort(IComparable<E> b);
 //    void sort(IComparable<E> b, int fromIndex, int toIndex);
-    void reverse();
 //    void reverse(int fromIndex, int toIndex);
 //    Collection<E> merge(Collection<E> b);
 //    Collection<E> merge(Collection<E> b, int fromAIndex, int toAIndex, int fromBIndex, int endBIndex);

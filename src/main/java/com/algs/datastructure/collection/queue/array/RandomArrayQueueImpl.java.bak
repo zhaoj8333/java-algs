@@ -10,7 +10,7 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
     @Override
     public E deque() {
         int ri = randomIndex();
-        int li = (headIndex + size - 1) % entries.length;
+        int li = (head + size - 1) % entries.length;
         E entry = entries[ri];
         entries[ri] = entries[li];
         entries[li] = null;
@@ -20,7 +20,7 @@ public class RandomArrayQueueImpl<E> extends ArrayQueueImpl<E> {
 
     private int randomIndex() {
         Random r = new Random();
-        return (headIndex + r.nextInt(size)) % entries.length;
+        return (head + r.nextInt(size)) % entries.length;
     }
 
     @Override

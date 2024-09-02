@@ -49,6 +49,11 @@ class IPriorityQueueImplTest<E> extends ImplFunctionalityTest {
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Override
     protected void testEach(Object obj) {
         IPriorityQueue<Integer> pq = (IPriorityQueue) obj;
 

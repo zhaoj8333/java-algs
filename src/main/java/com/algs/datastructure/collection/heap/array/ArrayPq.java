@@ -150,9 +150,4 @@ public abstract class ArrayPq<E extends Comparable<E>> implements IPriorityQueue
         throw new UnsupportedOperationException("unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
-
 }

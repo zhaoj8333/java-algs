@@ -3,7 +3,7 @@ package com.algs.algo.unionfind;
 import com.algs.ImplFunctionalityTest;
 import com.algs.algo.unionfind.generic.IDisjointSet;
 import com.algs.algo.unionfind.generic.qu.WeighedPathHalvingImpl;
-import com.algs.utils.wrapper.Wrapper;
+import com.algs.utils.pojo.Wrapper;
 import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,6 +24,11 @@ class IDisjointSetImplTest extends ImplFunctionalityTest {
             e.printStackTrace();
         }
         return instance;
+    }
+
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class<?>[] {int.class};
     }
 
     @Override

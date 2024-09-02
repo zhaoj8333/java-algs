@@ -42,6 +42,11 @@ class ISymbolTableImplTest extends ImplFunctionalityTest {
     }
 
     @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Override
     protected void testEach(Object obj) {
         ISymbolTable<String, Integer> st = (ISymbolTable<String, Integer>) obj;
         Assertions.assertTrue(st.isEmpty());

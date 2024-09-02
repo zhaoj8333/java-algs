@@ -8,7 +8,7 @@ import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomSelectImpl0;
 import com.algs.algo.sort.array.cmp_swp.quick.QuickSortRandomizeArrayImpl0;
 import com.algs.analysis.StopWatchTask;
 import com.algs.datastructure.collection.list.IList;
-import com.algs.utils.Student;
+import com.algs.utils.pojo.Student;
 import com.algs.utils.array.ArrayBuilder;
 import com.algs.utils.array.ArraySortUtil;
 import com.algs.utils.array.ArraysUtil;
@@ -52,13 +52,18 @@ class ArrayCompareAndSwapSortImplTest extends ImplFunctionalityTest {
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(Comparable[].class, Comparator.class);
+            Constructor<?> constructor = targetClass.getConstructor(this.getConstructorParameters());
             Character[] testedData = ArraysUtil.copyAll(array);
             instance = constructor.newInstance(testedData, null);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
         return instance;
+    }
+
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class<?>[]{Comparable[].class, Comparator.class};
     }
 
     @Test

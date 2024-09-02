@@ -2,6 +2,7 @@ package com.algs.analysis;
 
 import com.algs.datastructure.collection.list.IList;
 import com.algs.utils.CollectionUtil;
+import com.algs.utils.file.FilePath;
 import com.algs.utils.file.FileUtil;
 import org.junit.jupiter.api.Test;
 
@@ -16,16 +17,16 @@ class ThreeSumTest {
         countM();
     }
 
-    void countK() {
-        IList<Integer> array = FileUtil.readInts("data/1Kints.txt");
+    private void countK() {
+        IList<Integer> array = FileUtil.readInts(FilePath.INT_1K);
         assert array != null;
         Integer[] ints = CollectionUtil.toIntegerArray(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);
         ts.exec(true);
     }
 
-    void countM() {
-        IList<Integer> array = FileUtil.readInts("data/32Kints.txt");
+    private void countM() {
+        IList<Integer> array = FileUtil.readInts(FilePath.INT_2K);
         assert array != null;
         Integer[] ints = CollectionUtil.toIntegerArray(array);
         StopWatchTask ts = new ThreeSum(ints, 0l);

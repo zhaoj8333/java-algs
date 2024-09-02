@@ -19,12 +19,17 @@ class LinkedCompareAndSwapSortImplTest extends ImplFunctionalityTest {
     protected Object construct(Class<?> targetClass) {
         Object instance = null;
         try {
-            Constructor<?> constructor = targetClass.getConstructor(SinglyLinkedListImpl.class);
+            Constructor<?> constructor = targetClass.getConstructor(this.getConstructorParameters());
             instance = constructor.newInstance(FileUtil.readChars(FilePath.TINY));
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
         }
         return instance;
+    }
+
+    @Override
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[] {SinglyLinkedListImpl.class};
     }
 
     @Test

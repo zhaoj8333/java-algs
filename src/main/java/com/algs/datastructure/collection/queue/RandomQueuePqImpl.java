@@ -63,10 +63,10 @@ public class RandomQueuePqImpl<E> implements IQueue<E> {
         return null;
     }
 
-    @Override
-    public void reverse() {
-
-    }
+//    @Override
+//    public void reverse() {
+//
+//    }
 
     @Override
     public Iterator<E> iterator() {

@@ -47,6 +47,11 @@ class SelfOrganizedSTCompareTest<E extends Comparable<E>> extends ImplPerformanc
     }
 
     @Override
+    protected Class<?> getConstructorParameters() {
+        return null;
+    }
+
+    @Override
     protected void execEach(Object obj) {
         ISymbolTable<String, Integer> st = (ISymbolTable<String, Integer>) obj;
 

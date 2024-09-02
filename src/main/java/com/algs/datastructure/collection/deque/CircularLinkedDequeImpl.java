@@ -193,9 +193,4 @@ public class CircularLinkedDequeImpl<E> implements IDeque<E> {
         throw new UnsupportedOperationException("Unsupported Operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("Unsupported Operation");
-    }
-
 }

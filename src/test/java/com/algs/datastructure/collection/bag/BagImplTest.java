@@ -8,52 +8,68 @@ import org.junit.jupiter.api.Test;
 class BagImplTest extends ImplFunctionalityTest {
 
     @SuppressWarnings("unchecked")
-    protected Class<IBag>[] targetClasses = (Class<IBag>[]) new Class<?>[] {
+    protected Class<IBag<?>>[] targetClasses = (Class<IBag<?>>[]) new Class<?>[] {
             ArrayBagImpl.class,
             LinkedBagImpl.class,
     };
 
     @Override
-    protected Object construct(Class<?> targetClass) {
-        return null;
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
+    }
+
+    @Test
+    @Override
+    public void test() {
+        test(targetClasses);
     }
 
     protected void testEach(Object obj) {
-        IBag<Integer> bag = (IBag<Integer>) obj;
+        IBag<String> bag = (IBag<String>) obj;
         Assertions.assertTrue(bag.isEmpty());
-        bag.add(1);
+        bag.add("a");
         Assertions.assertFalse(bag.isEmpty());
 
-        Integer removed = bag.remove(8);
-        bag.remove(0);
-        Assertions.assertFalse(bag.contains(8));
-        Assertions.assertEquals(4, bag.size());
+        String removed = bag.remove();
+        Assertions.assertTrue(bag.isEmpty());
+        Assertions.assertFalse(bag.contains("b"));
+        Assertions.assertEquals(0, bag.size());
 
-        Assertions.assertTrue(bag.contains(21));
-        Assertions.assertTrue(bag.contains(13));
-        Assertions.assertTrue(bag.contains(28));
-        Assertions.assertTrue(bag.contains(8));
-        Assertions.assertTrue(bag.contains(15));
+        bag.add("21");
+        bag.add("21");
+        bag.add("15");
+        bag.add("c");
+        bag.add("12");
+        bag.add("28");
+        bag.add("8");
+        bag.add("15");
 
-        Assertions.assertEquals(2, bag.numberOf(21));
+        Assertions.assertEquals(8, bag.size());
+        Assertions.assertTrue(bag.contains("c"));
+        Assertions.assertTrue(bag.contains("21"));
+        Assertions.assertTrue(bag.contains("28"));
+        Assertions.assertTrue(bag.contains("8"));
+        Assertions.assertTrue(bag.contains("15"));
 
-        Object[] bagEntryArray = bag.toArray();
+        Assertions.assertEquals(2, bag.numberOf("21"));
 
-        int[] bagInts = new int[bagEntryArray.length];
-        for (int i = 0; i < bagEntryArray.length; i++) {
-            bagInts[i] = (int) bagEntryArray[i];
+        Object[] bagEntries = bag.toArray();
+
+        String[] entries = new String[bagEntries.length];
+        for (int i = 0; i < bagEntries.length; i++) {
+            entries[i] = (String) bagEntries[i];
         }
 
 //        Assertions.assertArrayEquals(ints, bagInts);
-//        int removed = bag.remove();
+        removed = bag.remove();
 
-        Assertions.assertEquals(15, removed);
-        Assertions.assertFalse(bag.contains(15));
-        Assertions.assertEquals(4, bag.size());
+        Assertions.assertEquals("15", removed);
+        Assertions.assertTrue(bag.contains("15"));
+        Assertions.assertEquals(7, bag.size());
 
-        Iterator<Integer> itr = bag.iterator();
+        Iterator<String> itr = bag.iterator();
         while (itr.hasNext()) {
-            Integer item = itr.next();
+            String item = itr.next();
             System.out.print(item + " ");
         }
         System.out.println();
@@ -63,12 +79,6 @@ class BagImplTest extends ImplFunctionalityTest {
 
         Assertions.assertTrue(bag.isEmpty());
         Assertions.assertThrows(RuntimeException.class, bag::remove);
-    }
-
-    @Test
-    @Override
-    public void test() {
-        test(targetClasses);
     }
 
 }

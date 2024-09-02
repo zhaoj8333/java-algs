@@ -1,4 +1,4 @@
-package com.algs.utils.wrapper;
+package com.algs.utils.pojo;
 
 import java.util.Objects;
 

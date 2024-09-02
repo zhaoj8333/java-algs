@@ -1,8 +1,21 @@
 package com.algs;
 
+import java.lang.reflect.Constructor;
+
 public abstract class ImplPerformanceTest<E> implements IJunitComparable {
 
-    protected abstract Object construct(Class<?> targetClass);
+    protected Object construct(Class<?> targetClass) {
+        Object instance = null;
+        try {
+            Constructor<?> constructor = targetClass.getConstructor();
+            instance = constructor.newInstance();
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        return instance;
+    }
+
+    protected abstract Class<?> getConstructorParameters();
 
     protected abstract void execEach(Object obj);
 

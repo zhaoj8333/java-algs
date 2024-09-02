@@ -20,8 +20,11 @@ public abstract class TreeNode<K extends Comparable<K>, V> implements LinkNode<K
         return size == that.size && Objects.equals(key, that.key) && Objects.equals(value, that.value);
     }
 
+    public abstract boolean isSubNode(Object o);
+
     @Override
     public int hashCode() {
         return Objects.hash(size, key, value);
     }
+
 }

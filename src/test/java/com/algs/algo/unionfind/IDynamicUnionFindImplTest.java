@@ -14,15 +14,8 @@ class IDynamicUnionFindImplTest extends ImplFunctionalityTest {
     };
 
     @Override
-    protected Object construct(Class<?> targetClass) {
-        Object instance = null;
-        try {
-            Constructor<?> constructor = targetClass.getConstructor();
-            instance = constructor.newInstance();
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-        return instance;
+    protected Class<?>[] getConstructorParameters() {
+        return new Class[0];
     }
 
     @Override

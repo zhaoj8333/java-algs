@@ -78,6 +78,28 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
                 && Objects.equals(left, that.left) && Objects.equals(right, that.right);
     }
 
+    @Override
+    public boolean isSubNode(Object o) {
+        if (this == o) {
+            return true;
+        }
+        BstNode<K, V> that = (BstNode<K, V>) o;
+        if (this.equals(that)) {
+            return true;
+        }
+        return isSubNode(this.left, that) || isSubNode(this.right, that);
+    }
+
+    private boolean isSubNode(BstNode<K, V> node, BstNode<K, V> sub) {
+        if (Objects.isNull(node)) {
+            return Objects.isNull(sub);
+        }
+//        if (Objects.isNull(sub) || ) {
+//            return false;
+//        }
+        return false;
+    }
+
     public boolean equalsWithoutParent(BstNode<K, V> that) {
         if (this == that) {
             return true;
@@ -99,4 +121,5 @@ public class BstNode<K extends Comparable<K>, V> extends TreeNode<K, V> {
     public int hashCode() {
         return Objects.hash(parent, left, right);
     }
+
 }

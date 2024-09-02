@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class XorOperationTest {
 
     /**
-     * Give a integer array:
+     * Give an integer array:
      * one number occurred odd number times
      * other number occurred for even number times
      * find the number of occurred odd number

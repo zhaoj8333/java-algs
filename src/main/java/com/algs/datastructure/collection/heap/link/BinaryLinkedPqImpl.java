@@ -13,9 +13,7 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
 
     @Override
     public E peek() {
-        if (isEmpty()) {
-            return null;
-        }
+        if (isEmpty()) return null;
         return root.value;
     }
 
@@ -87,10 +85,10 @@ public class BinaryLinkedPqImpl<E extends Comparable<E>> extends LinkedPq<E> {
         return null;
     }
 
-    @Override
-    public void reverse() {
-        throw new UnsupportedOperationException("unsupported operation");
-    }
+//    @Override
+//    public void reverse() {
+//        throw new UnsupportedOperationException("unsupported operation");
+//    }
 
     @Override
     public Iterator<E> iterator() {

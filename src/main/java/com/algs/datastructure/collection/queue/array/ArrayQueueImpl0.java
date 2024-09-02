@@ -1,51 +1,38 @@
 package com.algs.datastructure.collection.queue.array;
 
 import com.algs.datastructure.Iterator;
-import com.algs.utils.CollectionUtil;
 import com.algs.utils.ObjectUtil;
+
 import java.util.Objects;
 
 /**
- * {@link ArrayQueueImpl}: also name is CircularQueue, RingBuffer
+ * {@link ArrayQueueImpl0}: also name is CircularQueue, RingBuffer
  */
-public class ArrayQueueImpl<E> extends ArrayQueue<E> {
+public class ArrayQueueImpl0<E> extends ArrayQueue<E> {
 
-    protected int tail;
-
-    public ArrayQueueImpl() {
+    public ArrayQueueImpl0() {
         super();
     }
 
-    public ArrayQueueImpl(int cap) {
+    public ArrayQueueImpl0(int cap) {
         super(cap);
     }
 
-    protected void reset() {
-        head = tail = 0;
-    }
+    private int size;
 
     @Override
     public int size() {
-        if (tail >= head) {
-            return tail - head;
-        }
-        return tail - head + entries.length;
-    }
-
-    protected boolean isFull() {
-        return head - tail == 1;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return head == tail;
+        return size == 0;
     }
 
     @Override
     public boolean contains(E o) {
-        if (Objects.isNull(o)) {
-            return false;
-        }
+        if (Objects.isNull(o)) return false;
         for (int i = 0; i < size(); i++) {
             E entry = entries[(head + i) % entries.length];
             if (Objects.equals(entry, o)) {
@@ -55,13 +42,8 @@ public class ArrayQueueImpl<E> extends ArrayQueue<E> {
         return false;
     }
 
-    /**
-     * When {@link ArrayQueueImpl#enque(Object)}, this will be called, will extend the entries automatically
-     */
-    private void ensureCapacity(int newCap) {
-        if (newCap <= entries.length) {
-            return;
-        }
+    private void grow(int newCap) {
+        if (newCap <= entries.length) return;
         E[] newEntries = (E[]) new Object[newCap];
         for (int i = 0; i < size(); i++) {
             newEntries[i] = entries[(head + i) % entries.length];
@@ -70,31 +52,37 @@ public class ArrayQueueImpl<E> extends ArrayQueue<E> {
         head = 0;
     }
 
+    private boolean isFull() {
+        return size == entries.length;
+    }
+
+    private void reset() {
+        head = size = 0;
+    }
+
     /**
-     * 1. =========-----------------
-     *    |       |
-     *    head    tail
-     *
-     * 2. ======-------===============
-     *         |       |
-     *         tail    head
+     * 1. = = = = = = = = = =
+     *    |                 |
+     *    head              head + size - 1
      */
     @Override
     public void enque(E item) {
         ObjectUtil.requireNonNull(item);
         if (isFull()) {
-            ensureCapacity(entries.length << 1);
+            grow(entries.length << 1);
         }
-        entries[(tail++) % entries.length] = item;
+        entries[(head + size) % entries.length] = item;
+        size++;
     }
 
     @Override
     public E deque() {
         ObjectUtil.requireNonEmpty(this);
-        E headEntry = entries[head];
+        E entry = entries[head];
         entries[head] = null;
-        head = (++head) % entries.length;
-        return headEntry;
+        size--;
+        head = ++head % entries.length;
+        return entry;
     }
 
     @Override
@@ -104,7 +92,7 @@ public class ArrayQueueImpl<E> extends ArrayQueue<E> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i < size; i++) {
             entries[(head + i) % entries.length] = null;
         }
         reset();
@@ -112,8 +100,8 @@ public class ArrayQueueImpl<E> extends ArrayQueue<E> {
 
     @Override
     public E[] toArray() {
-        E[] array = (E[]) new Object[size()];
-        for (int i = 0; i < size(); i++) {
+        E[] array = (E[]) new Object[size];
+        for (int i = 0; i < size; i++) {
             array[i] = entries[(head + i) % entries.length];
         }
         return array;

@@ -154,9 +154,9 @@ public class NullableLinkedQueueImpl<E> implements IQueue<E> {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    @Override
-    public final void reverse() {
-        throw new UnsupportedOperationException("UnsupportedOperation");
-    }
+//    @Override
+//    public final void reverse() {
+//        throw new UnsupportedOperationException("UnsupportedOperation");
+//    }
 
 }
